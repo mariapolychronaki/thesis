@@ -1,0 +1,9 @@
+.row-full-footer{
+    color:white;
+    background-color: rgb(90, 90, 91);
+    height: 8vh;
+    text-align: center;
+    position: fixed;
+    bottom:0;
+    width: 100%;
+}

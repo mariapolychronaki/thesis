@@ -1,0 +1,18 @@
+.Icon{
+    width: 5vh;
+    height: 5vh;
+}
+.player{
+    text-align: center;
+    justify-content: center;
+    z-index: 100;
+    position: relative;
+}
+
+.player_name{
+    height: 50%;
+    background-color: rgb(0, 253, 106);
+    border-radius: 10px;
+    width:fit-content;
+   
+}
