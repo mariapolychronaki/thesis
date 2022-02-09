@@ -1,0 +1,27 @@
+.form_settings{
+    width: 50%;
+    margin-left:25%;
+    height: 25rem;
+    padding-top: 2%;
+}
+
+.container_settings{
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 5%;
+}
+.form-inputs_settings{
+    margin-top: 10%;
+}
+.Btn_settings{
+    margin-left: 50%;
+    width: 40%;
+    height: 40px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background: rgb(200,200,200);
+    outline: none;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+}

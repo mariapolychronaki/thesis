@@ -1,13 +1,18 @@
 import React from 'react'
-import './Form.css'
-import { useState,useEffect } from 'react';
+import '../../assets/Style/Form.css'
+import { useState, useEffect,useRef } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
+
+<script src="https://www.google.com/recaptcha/api.js"></script>
+
+
 
 const FormSignup = ({ submitForm }) => {
 
     const [errors, setErrors] = useState({});
     const [isSubmiting, setIsSubmiting] = useState(false);
     const [values, setValues] = useState({
-        user: '',
+        user: 'player',
         username: '',
         email: '',
         password: '',
@@ -17,8 +22,12 @@ const FormSignup = ({ submitForm }) => {
     });
 
 
+    function onChange(value) {
+        console.log('Captcha value:', value);
+    }
 
-    const validate= (values) => {
+
+    const validate = (values) => {
 
         let errors = {}
 
@@ -65,7 +74,7 @@ const FormSignup = ({ submitForm }) => {
             ...values,
             [name]: value
         });
-
+        console.log(values)
     };
     const hadleSubmit = e => {
         e.preventDefault();
@@ -75,17 +84,18 @@ const FormSignup = ({ submitForm }) => {
 
     useEffect(() => {
         if (Object.keys(errors).length === 0 && isSubmiting) {
-            submitForm();
+            submitForm(values);
         }
     }, [errors])
 
 
+    const recaptchaRef = useRef(null)
 
 
     return (
-        <div className='form-content-right' >
+        <div className='form-content-right container' >
             <form className='form' onSubmit={hadleSubmit}>
-                <div className='title'>Welcome to Football App</div>
+                <div className='title1'>Welcome to Football App</div>
                 <div className='form-inputs'>
                     <label htmlFor='username'
                         className='form-label'>
@@ -154,12 +164,12 @@ const FormSignup = ({ submitForm }) => {
                 <div className='form-inputs'>
                     <label htmlFor='username'
                         className='form-label'>
-                        *Password verification
+                        *Password Verification
                     </label>
                     <input type='password'
                         name='password2'
                         className='form-input'
-                        placeholder='Enter your password verification'
+                        placeholder='Verify your password'
                         value={values.password2}
                         onChange={hadleChange}
                     />
@@ -173,7 +183,7 @@ const FormSignup = ({ submitForm }) => {
                     <input type='text'
                         name='name'
                         className='form-input'
-                        placeholder='Enter your password name'
+                        placeholder='Enter your name'
                         value={values.name}
                         onChange={hadleChange}
                     />
@@ -187,15 +197,25 @@ const FormSignup = ({ submitForm }) => {
                     <input type='text'
                         name='surname'
                         className='form-input'
-                        placeholder='Enter your password surname'
+                        placeholder='Enter your surname'
                         value={values.surname}
                         onChange={hadleChange}
                     />
                     {errors.surname && <p>{errors.surname}</p>}
                 </div>
                 <button className='form-input-btn' type='submit'>Submit</button>
-                <div className='Already'>Already have an account? <a href='#'>Sign in</a></div>
+                <div className='Already'>Already have an account? <a href='/signIn'>Sign in</a></div>
+
+
+                <ReCAPTCHA
+
+                    ref={recaptchaRef}
+                    sitekey={"6LenpmUeAAAAABlCeNuWA4XhfR7LB-viqjrvvtNa"}
+                    onChange={onChange}
+                />
             </form>
+
+
 
         </div>
     )

@@ -1,0 +1,92 @@
+.modalBackground_injured{
+ height: auto;
+ min-height: 150vh;
+ background-color: rgb(200, 200, 200);
+ border-radius: 8px ;
+ width: 100%;
+ left:0;
+ position:absolute;
+}
+
+.AddPlayerInjured{
+    height: fit-content;
+    width: 100%;
+    margin: auto;
+    background-color: rgb(199, 167, 167);
+    border-radius: 8px;
+
+}
+.AddPlayerInj{
+    position: absolute;
+    height: fit-content;
+    width: 100%;
+    margin: auto;
+    top:0;
+}
+
+.edit_btn_inj{
+    background-color: rgb(117,0,0);
+    color:white;
+    border-radius: 8px;
+}
+.modalContainer_Injured{
+    background-color: rgb(177, 177, 122);
+    text-align: center;
+    border-radius: 10px;
+    margin-top:2%;
+    width: 50%;
+    margin-left: 25%;
+    position: relative;
+}
+
+.x_injured{
+    background-color: rgb(117,0,0);
+    color:white;
+    border-radius: 10px;
+    margin-top:2%;
+    margin-left: 90%;
+    
+}
+.title_Injured{
+    font-size: 2rem;
+    color: rgb(117,0,0);
+}
+.tr_injured{
+    border: solid black;
+    border-style: dotted;
+}
+
+.modalbody_Injured{
+    margin-top:2%;
+}
+.button_Add_injured{
+    background-color: rgb(117,0,0);
+    color:white;
+    border-radius: 8px;
+}
+
+.confirm_button_injured{
+    border-radius: 8px;
+    background-color: cadetblue;
+    color: white;
+    margin-bottom: 8%;
+
+}
+
+.table_injured{
+    margin-top: 2%;
+    text-align: center;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+}
+
+.table_injured_ADD{
+    margin-top: 2%;
+    text-align: center;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+}
+
+

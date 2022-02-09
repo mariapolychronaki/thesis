@@ -1,0 +1,53 @@
+.modalBackgroundPositionPlayerRating{
+    min-height: 180vh;
+    width: 100%;
+    background-color: rgb(200, 200, 200);
+    top:21%;
+    left:0%;
+    position: absolute;
+}
+
+.modalContainerPositionPlayerRating{
+    background-color: rgb(142, 168, 142);
+    height: 60vh;
+    width: 45%;
+    margin-left:27.5% ;
+    border-radius: 10px;
+    border:solid black;
+    position: absolute;
+}
+
+.modalBackgroundPlayerEdit{
+    min-height: 180vh;
+    width: 100%;
+    background-color: rgb(200, 200, 200);
+    top:21%;
+    left:0%;
+    position: absolute;
+}
+
+.modalContainerPlayerEdit{
+    background-color: rgb(142, 168, 142);
+    height: 50vh;
+    width: 40%;
+    margin-left:30% ;
+    border-radius: 10px;
+    border:solid black;
+    position: absolute;
+}
+
+
+
+@media screen and (max-width:1100px){
+    .modalContainerPlayerEdit{
+    width: 60%;
+    margin-left: 20%;
+    }
+}
+
+@media screen and (max-width:1100px){
+    .modalContainerPositionPlayerRating{
+    width: 60%;
+    margin-left: 20%;
+    }
+}

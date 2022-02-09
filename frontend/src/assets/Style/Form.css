@@ -1,13 +1,19 @@
-.form-container {
-    margin: 100px auto;
+.form-container1 {
+    margin:10px auto;
+    height:auto;
+    min-height: 130vh;
     width:40%;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
     position: relative;
     border-radius: 10px;
-    height:100%;
     display: grid;
   }
+
+
   
+.SignIn{
+  height: 60vh;
+}
   .close-btn {
     position: absolute;
     top: 2%;
@@ -20,17 +26,14 @@
   
   
   
-  .title{
+  .title1{
     text-align: center;
     color: white;
     font-size: 2rem;
-    background: linear-gradient(
-      90deg,
-      rgb(39, 176, 255) 0%,
-      rgb(0, 232, 236) 100%
-    );
+    background-color:aqua;
     margin-bottom: 5%;
     padding: 13px;
+    border-radius: 10px;
   }
   
   .form-success {
@@ -41,7 +44,9 @@
   }
   
   .form-content-right {
-    border-radius: 0 10px 10px 0;
+    height: 100%;
+    background-color: gray;
+    border-radius: 10px;
     position: relative;
     background: linear-gradient(90deg, rgb(40, 40, 40) 0%, rgb(17, 17, 17) 100%);
   }
@@ -52,7 +57,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
-    height: 50%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -62,12 +67,13 @@
   
   .form-inputs {
     margin-bottom: 0.5rem;
-    width: 70%;
+    width: 80%;
     height: 20%;
+    border-radius: 10x;
   }
   
   .form-inputs p {
-    font-size: 0.8rem;
+    font-size: 70%;
     color: #f00e0e;
   }
   
@@ -89,10 +95,11 @@
   }
   
   .form-input::placeholder {
-    color: #595959;
     font-size: 12px;
   }
-  
+  th:hover{
+    cursor: pointer;
+  }
   .form-input-btn {
     width: 40%;
     height: 40px;

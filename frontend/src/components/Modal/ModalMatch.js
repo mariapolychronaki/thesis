@@ -1,5 +1,5 @@
 import React from 'react'
-import './Modal.css'
+import '../../assets/Style/Modal.css'
 import 'react-bootstrap'
 import ModalGoalkeeper from './ModalGoalkeeper'
 import { useState } from 'react'
@@ -75,7 +75,7 @@ const ModalMatch = ({ closeModalMatch }) => {
                             <button className='cancel-button' onClick={() => closeModalMatch(false)}>Cancel</button>
                         </div>
                         <div className='col-2'>
-                            <button className='next-button' onClick={() => setOpenModalMatchEachPlayer(true)}> Next </button>
+                            <button className='next-button Next_match' onClick={() => setOpenModalMatchEachPlayer(true)}> Next </button>
                             {OpenModalMatchEachPlayer && < ModalMatchEachPlayer closeModalMatchEachPlayer={setOpenModalMatchEachPlayer} />}
 
                         </div>

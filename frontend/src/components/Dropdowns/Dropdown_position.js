@@ -1,9 +1,13 @@
 import React from 'react'
 
-const Dropdown_position = () => {
+const Dropdown_position = ({handleChangeCallback}) => {
+
+    const handleChange = (e) =>{
+        handleChangeCallback(e.target.value);     
+    }
     return (
         <div>
-            <select className='positions'>
+            <select onChange={handleChange} className='positions'>
                 <option value="goalkeeper">Goalkeeper</option>
                 <option value="central_defender">Central Defender</option>
                 <option value="right_defender">Right Defender</option>

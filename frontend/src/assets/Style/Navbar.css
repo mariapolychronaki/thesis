@@ -8,6 +8,37 @@
     font-size:4vh;
     text-align: center;
 }
+.Username{
+    border-radius: 8px;
+    background-color: rgb(206, 209, 209);
+    color:black;
+}
+
+
+.Exit{
+    height:fit-content;
+    width: 40%;
+    display: none;
+}
+
+.userBTN{
+    height:fit-content;
+    width: 40%;
+    display: none;
+}
+
+.PlayersNav{
+    margin-left: 20%;
+}
+.logo{
+    text-align: left;
+    margin-left: 3%;
+}
+
+.FOOTBALLAPP{
+    text-align: left;
+    align-items: left;
+}
 .row-full-nav{
     display: flex;
     height: 8vh;
@@ -37,12 +68,53 @@
 }
 
 
+
+
+.active{
+    text-decoration: underline;
+    color: cadetblue;
+}
+
+
+
+
+
+
+@media screen and (max-width:1200px) {
+    .LogOut{
+        display: none;
+    }
+    .Username{
+        display: none;
+    }
+    .Exit{
+        display: flex;
+    }
+    
+    .userBTN{
+        display: flex;
+        margin-left: 30%;
+        border-radius: 8px;
+        padding:-1px;
+    }
+
+}
+
+
 @media screen and (max-width:1000px) {
     .nav-logo{
         font-size: 3vh;
     }
     .nav-links{
         font-size: 2vh;
+    }
+    
+    .PlayersNav{
+        margin-left: 25%;
+    }
+
+    .LogOut{
+        font-size: 80%;
     }
 }
 

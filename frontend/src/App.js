@@ -6,32 +6,77 @@ import { Training } from './Pages/Training';
 import { Lineup } from './Pages/Lineup';
 import { Matches } from './Pages/Matches';
 import Footer from './components/Footer/Footer';
-import { routes } from './allRoutes';
+import { routes, authroutes,authroutesPl } from './allRoutes';
+import { Provider } from 'react-redux'
+import store from './Store/store';
+import NavPlayer from './components/Navbar/NavPlayer';
+import ModalPlayerUser from './components/Modal/ModalPlayerUser';
+import AuthLayout from './Layouts/AuthLayout';
+import BlankLayout from './Layouts/BlankRoute';
 
 function App() {
 
   return (
     <>
-      <Router>
-        <Navbar />
 
-        <Routes>
+      <Provider store={store}>
 
-          {routes.map((route, index) => (
-            // {route.path !== "/log" &&  <Navbar />}
-            <Route
-              key={index}
-              path={route.path}
-              element={route.component}
-              exact
-            ></Route>
-          ))}
+        <Router>
 
-        </Routes>
+          <Routes>
 
-        <Footer />
-      </Router>
 
+            <Route element={<BlankLayout />}>
+              {authroutesPl.map((route, index) => (
+                // {route.path !== "/log" &&  <Navbar />}
+                <Route
+                  key={index}
+                  path={route.path}
+                  element={route.component}
+                  exact
+                ></Route>
+              ))}
+            </Route>
+
+            <Route element={<BlankLayout />}>
+              {routes.map((route, index) => (
+                // {route.path !== "/log" &&  <Navbar />}
+                <Route
+                  key={index}
+                  path={route.path}
+                  element={route.component}
+                  exact
+                ></Route>
+              ))}
+            </Route>
+
+            <Route element={<AuthLayout />}>
+
+              {authroutes.map((route, index) => (
+                // {route.path !== "/log" &&  <Navbar />}
+                <Route
+                  key={index}
+                  path={route.path}
+                  element={route.component}
+                  exact
+                ></Route>
+              ))}
+
+            </Route>
+
+
+
+
+          </Routes>
+
+
+
+          {/* <NavPlayer />
+          <ModalPlayerUser /> */}
+
+
+        </Router>
+      </Provider>
 
     </>
   );

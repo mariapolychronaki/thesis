@@ -1,7 +1,7 @@
 import React from 'react'
-import './Modal.css'
+import '../../assets/Style/Modal.css'
 import 'react-bootstrap'
-import './ModalPositions.css'
+import '../../assets/Style/ModalPositions.css'
 import Dropdown_rating from '../Dropdowns/Dropdown_rating'
 
 const ModalWideDefender = ({ closeModalWideDefender }) => {
@@ -192,7 +192,7 @@ const ModalWideDefender = ({ closeModalWideDefender }) => {
                             <button className='cancel-button' onClick={() => closeModalWideDefender(false)}>Cancel</button>
                         </div>
                         <div className='col-2'>
-                            <button className='next-button'> Comfirm </button>
+                            <button className='next-button'> Confirm </button>
                         </div>
                     </div>
                 </div>

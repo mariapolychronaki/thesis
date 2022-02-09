@@ -1,11 +1,34 @@
 import React from 'react'
-import './Pages.css'
+import '../assets/Style/Pages.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-bootstrap'
 import { NavLink } from 'react-router-dom';
 import ModalTraining from '../components/Modal/ModalTraining';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import ModalEveryPlayerRating from '../components/Modal/ModalEveryTrainingPlayerRating';
+import { ArrowRight } from 'react-bootstrap-icons';
+import { ArrowLeft } from 'react-bootstrap-icons';
+
 
 export const Training = () => {
     const [openModalTraining, setOpenModalTraining] = useState(false);
+    const arrayPlayers = [{ playername: "giorgos" },
+    {}
+    ]
+    const arrayTraining = [{ name: "startakis", rating1: "8" },
+    { rating: "8.1", rating1: "5" },
+    { rating: "8.1", rating1: "5" },
+    { rating: "8.1", rating1: "5" },
+    { rating: "8.1", rating1: "5" }
+    ]
+
+
+    const ref = useRef(null);
+
+    const scroll = (scrollOffset) => {
+        ref.current.scrollLeft += scrollOffset;
+    }
+
 
     return (
         <div class="container-fluid">
@@ -21,12 +44,80 @@ export const Training = () => {
 
                 </div>
                 <div className=' col-2 Add'>
-                    <button className='btn' onClick={()=>setOpenModalTraining(true)}>Add Session</button>
+                    <button className='btn' onClick={() => setOpenModalTraining(true)}>Add Session</button>
                 </div>
             </div>
+
+
+            {/* <ModalEveryTrainingPlayerRating /> */}
+
             {openModalTraining && < ModalTraining closeModalTraining={setOpenModalTraining} />}
 
+            <div className='table_container1' ref={ref}>
 
+               {!openModalTraining && <div className='row Scroll'>
+                    <button className= 'offset-1 col-1 scrollBtnLeft' onClick={() => scroll(-20)}> <ArrowLeft /> </button>
+
+                    <button className='offset-10 col-1 scrollBtnRight' onClick={() => scroll(+20)}>
+                        <ArrowRight />
+                    </button>
+
+                </div>}
+                <table className="table">
+
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Training#</th>
+                            <th scope="col">Training#</th>
+                            <th scope="col">Training#</th>
+                            <th scope="col">Training#</th>
+                            <th scope="col">Training#</th>
+                            <th scope="col">Training#</th>
+                            <th scope="col">Training#</th>
+                            <th scope="col">Training#</th>
+                            <th scope="col">Training#</th>
+                            <th scope="col">Training#</th>
+                            <th scope="col">Training#</th>
+                            <th scope="col">Training#</th>
+                            <th scope="col">Training#</th>
+                            <th scope="col">Training#</th>
+                            <th scope="col">Training#</th>
+                            <th scope="col">Training#</th>
+                            <th scope="col">Training#</th>
+                            <th scope="col">Training#</th>
+                            <th scope="col">Training#</th>
+                            <th scope="col">Actions</th>
+
+
+
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        {arrayTraining.map((player, index) => (
+                            <tr>
+                                <td>
+                                    {index}
+                                </td>
+                                <td>
+                                    {player.name}
+                                </td>
+                                <td>
+                                    {player.rating1}
+                                </td>
+
+
+                            </tr>
+
+                        ))}
+
+                    </tbody>
+
+
+                </table>
+            </div>
 
 
         </div>

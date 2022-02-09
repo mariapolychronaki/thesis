@@ -1,7 +1,7 @@
 import React from 'react'
-import './Modal.css'
+import '../../assets/Style/Modal.css'
 import 'react-bootstrap'
-import './ModalPositions.css'
+import '../../assets/Style/ModalPositions.css'
 import Dropdown_rating from '../Dropdowns/Dropdown_rating'
 
 const ModalGoalkeeper = ({ closeModalGoalkeeper }) => {
@@ -167,7 +167,7 @@ const ModalGoalkeeper = ({ closeModalGoalkeeper }) => {
                             <button className='cancel-button' onClick={() => closeModalGoalkeeper(false)}>Cancel</button>
                         </div>
                         <div className='col-2'>
-                            <button className='next-button'> Comfirm </button>
+                            <button className='next-button'> Confirm </button>
                         </div>
                     </div>
                 </div>

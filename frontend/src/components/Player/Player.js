@@ -1,7 +1,6 @@
 import React from 'react'
 import PlayerIcon from '../../assets/user.png'
-import './Player.css';
-import { Button } from 'react-bootstrap';
+import '../../assets/Style/Player.css'
 import { useState } from 'react';
 import "react-bootstrap"
 
@@ -14,7 +13,7 @@ const Player = ({name,position}) => {
             <div>
                 <img className='Icon' src={PlayerIcon} />
             </div>
-            <button className="player_name">{playerName}</button>
+            <button className="player_name" onClick={()=>setPlayername("Dorgiomanolakis")}>{playerName}</button>
            
 
 

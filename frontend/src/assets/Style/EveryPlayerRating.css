@@ -1,0 +1,153 @@
+.modalBackgroundPosition{
+    width: 90%;
+    height: auto;
+    position: absolute;
+    margin-top: 0.5%;
+    margin-left: 5%;
+    top:0;
+}
+.Training1{
+    margin-left: 5%;
+    background-color: gray;
+    border-radius: 8px;
+    padding: 2% ;
+}
+
+
+.Match1{
+    margin-left: 5%;
+    background-color: gray;
+    border-radius: 8px;
+    padding: 2% ;
+}
+.Tr2Cancel{
+    margin-left: 60%;
+}
+
+.Tr3Cancel{
+    margin-left: 80%;
+    
+}
+
+.Tr3Confirm{
+    margin-left: 20%;
+
+}
+
+
+.Train_Title{
+    background-color: rgb(255, 255, 255);
+    height: fit-content;
+    font-size: 3vh;
+    border-radius:8px;
+    border:solid black;
+}
+
+
+.Match_Title{
+    background-color: rgb(255, 255, 255);
+    height: fit-content;
+    font-size: 3vh;
+    border-radius:8px;
+    border:solid black;
+}
+
+
+.everyPlayerRating{
+    width: 90%;
+    margin-left: 5%;
+    height: fit-content;
+    border:solid black;
+    background-color: rgb(172, 189, 189);
+    margin-top: 2% ;
+}
+
+.title2{
+    font-size: 100%;
+}
+
+.surname{
+    font-weight:bold;
+    color:rgb(38, 78, 35);
+}
+.IndEval{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5%;
+}
+.IndividualPlayer{
+    height:fit-content;
+    min-height: 5rem;
+    border: solid rgb(104, 104, 104);
+    display: block;
+    text-align: center;
+    font-size: 80%;
+    
+}
+
+.every_player_rating{
+    font-size: 100%;
+}
+.x_btn{
+    margin-left: 90%;
+    width: fit-content;
+    border-radius: 10px;
+    background-color: rgb(117, 0, 0);
+    color:white;
+}
+
+@media screen and (max-width:1300px) {
+ 
+}
+
+
+
+@media screen and (max-width:1200px) {
+
+    .Tr2Cancel{
+        margin-left: 90%;
+    }
+    .IndEval{
+        display: block;
+        justify-content: space-between;
+        margin-top: 5%;
+    }
+
+}
+@media screen and (max-width:1100px) {
+   
+  
+    .Tr2Cancel{
+        margin-left: 80%;
+    }
+
+    
+}
+
+
+@media screen and (max-width:1100px) {
+
+
+
+    .Tr2Cancel{
+        margin-left: 60%;
+    }
+    
+}
+
+@media screen and (max-width:1000px) {
+
+    .Tr3Cancel{
+        margin-left: 60%;
+        
+    }
+    
+}
+
+@media screen and (max-width:1000px) {
+    .Tr3Cancel{
+        margin-left: 20%;
+        
+    }
+  
+}

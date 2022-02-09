@@ -1,0 +1,15 @@
+
+.Mess{
+    margin-top: 5%;
+    font-size: 100%;
+    text-align: center;
+}
+.MessageContainer{
+    background-color: rgb(173, 187, 173);
+    border:solid black;
+    border-radius: 8px;
+    height: 20vh;
+    text-align: left;
+    margin-top: 30%;
+    text-align: center;
+}

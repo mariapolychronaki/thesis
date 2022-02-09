@@ -1,11 +1,14 @@
 .modalBackground{
-    height: 100vh;
+    height: auto;
+    min-height: 140vh;
     width: 100%;
     background-color: rgb(200, 200, 200);
-    top:0;
+    border-radius: 8px ;
+    position:absolute;
+    left: 0;
 }
 
-.modalContainer{
+.modalContainerPlayer{
     background-color: rgb(142, 168, 142);
     height: 60vh;
     width: 30%;
@@ -18,14 +21,14 @@
 .modalContainerTraining{
     background-color: rgb(142, 168, 142);
     height: 35vh;
-    width: 25%;
-    margin-left: 37.5%;
+    width: 28%;
+    margin-left: 36%;
     border-radius: 10px;
     border: solid black;
 }
 
 
-.Training-Each-Player{
+.Training_each_player{
     background-color: rgb(142, 168, 142);
     height: 35vh;
     width: 25%;
@@ -71,20 +74,13 @@
 .x-button{
     text-align: right;
 }
-.x{ 
-    margin-top: 2%;
-    margin-right: 2%;
-    width: 8%;
-    text-align: center;
-    border-radius: 7px;
-    background-color: rgb(138, 3, 3);
-    color:white;
-}
+
+
+
 .title{
     margin-bottom: 5%;
     text-align: center;
     font-size: 4vh;
-    text-decoration: underline;
 }
 
 .title1{
@@ -112,12 +108,16 @@
     margin-top: 7%;
 }
 .cancel-button{
-    background-color: rgb(138, 3, 3);
+    background-color: rgb(117, 0, 0);
     text-align: right;
     border-radius: 10px;
     width: fit-content;
     text-align: center;
     color:white;
+}
+.cancel_button_col{
+    margin-left: 60%;
+    width: 20%;
 }
 
 .next-button{
@@ -126,7 +126,7 @@
     border-radius: 10px;
     width: fit-content;
     text-align:center;
-    margin-left: 10%;
+    margin-left: 30%;
     color:white;
 }
 
@@ -140,11 +140,11 @@
 
 
 @media screen and (max-width:1300px) {
-    .modalContainer{
+    .modalContainerPlayer{
         background-color: rgb(142, 168, 142);
         height: 60vh;
         width: 35%;
-        margin-left: 32.5%;
+        margin-left: 30%;
         border-radius: 10px;
         border: solid black;
     
@@ -152,14 +152,14 @@
     
     .modalContainerTraining{
         background-color: rgb(142, 168, 142);
-        height: 35vh;
-        width: 30%;
+        height: 40vh;
+        width: 30%; 
         margin-left: 35%;
         border-radius: 10px;
         border: solid black;
     }
-    .Training-Each-Player{
-        height: 35vh;
+    .Training_each_player{
+        height: 40vh;
         width:30%;
         margin-left: 35%;
     }
@@ -177,11 +177,15 @@
         border-radius: 10px;
         border: solid black;
     }
+    .cancel_button_col{
+        margin-left: 50%;
+        width: 25%;
+    }
     
 }
 
 @media screen and (max-width:1200px) {
-    .modalContainer{
+    .modalContainerPlayer{
         background-color: rgb(142, 168, 142);
         height: 60vh;
         width: 40%;
@@ -199,8 +203,8 @@
         border-radius: 10px;
         border: solid black;
     }   
-    .Training-Each-Player{
-        height: 35vh;
+    .Training_each_player{
+        height: 40vh;
         width:35%;
         margin-left: 32.5%;
         
@@ -244,7 +248,7 @@
         border-radius: 10px;
         border: solid black;
     }
-    .Training-Each-Player{
+    .Training_each_player{
         height: 35vh;
         width:40%;
         margin-left: 30%;
@@ -262,19 +266,37 @@
         border-radius: 10px;
         border: solid black;
     }
+    .cancel_button_col{
+        margin-left: 45%;
+        width: 30%;
+    }
+    .next-button{
+        margin-left: 10%;
+       
+    }
+  
+    .PL_next{
+        margin-left: 30%;
+    }
+    .Next_match{
+        margin-left: 30%;
+    }
 }
 
 
 
 
 @media screen and (max-width:950px) {
-    .Training-Each-Player{
+    .Training_each_player{
         height: 35vh;
         width:40%;
         margin-left: 30%;
     }
     .Tr{
         margin-top: 30%;
+        margin-left: 40%;
+    }
+    .Next_match{
         margin-left: 40%;
     }
 
@@ -323,11 +345,7 @@
         border-radius: 10px;
         border: solid black;
     }
-    .Training-Each-Player{
-        height: 35vh;
-        width:40%;
-        margin-left: 30%;
-    }
+   
     .modalContainerMatch{
         background-color: rgb(142, 168, 142);
         height: 35vh;
@@ -335,5 +353,10 @@
         margin-left: 25%;
         border-radius: 10px;
         border: solid black;
+    }
+    .Training_each_player{
+        height: 40vh;
+        width:40%;
+        margin-left: 30%;
     }
 }

@@ -1,6 +1,6 @@
 import React from 'react'
-import './Modal.css'
 import 'react-bootstrap'
+import '../../assets/Style/Modal.css'
 import ModalGoalkeeper from './ModalGoalkeeper'
 import { useState } from 'react'
 import DatePicker from 'react-datepicker'
@@ -25,7 +25,9 @@ const ModalTraining = ({ closeModalTraining }) => {
             <div className='col-12 space'></div>
             <div className='modalContainerTraining'>
                 <div className='col-12 x-button'>
-                    <button className='x' onClick={() => closeModalTraining(false)}>X</button>
+                    <div className='x_button_style'>
+                        <button className='x' onClick={() => closeModalTraining(false)}>X</button>
+                    </div>
                 </div>
                 <div className='col-12 title'>
                     New Session
@@ -39,7 +41,7 @@ const ModalTraining = ({ closeModalTraining }) => {
                             </div>
                             <div className='col-4 '>
 
-                            <DatePicker className='date' selected={startDate} onChange={(date) => setStartDate(date)} format='yyyy-MM-dd' />
+                                <DatePicker className='date' selected={startDate} onChange={(date) => setStartDate(date)} format='yyyy-MM-dd' />
 
                             </div>
                         </div>
@@ -54,7 +56,6 @@ const ModalTraining = ({ closeModalTraining }) => {
                             </div>
                         </div>
 
-                 
 
 
 
@@ -63,18 +64,19 @@ const ModalTraining = ({ closeModalTraining }) => {
 
 
 
-                    
+
+
                     </form>
                 </div>
                 <div className='footer'>
                     <div className='col-12 btns'>
-                        <div className='offset-7 col-2'>
+                        <div className='col-2 cancel_button_col'>
                             <button className='cancel-button' onClick={() => closeModalTraining(false)}>Cancel</button>
                         </div>
-                        <div className='col-2'>
+                        <div className=' col-2'>
                             <button className='next-button' onClick={() => setOpenModalTrainingEachPlayer(true)}> Next </button>
 
-                            {OpenModalTrainingEachPlayer && < ModalTrainingEachPlayer closeModalTrainingEachPlayer ={setOpenModalTrainingEachPlayer} />}
+                            {OpenModalTrainingEachPlayer && < ModalTrainingEachPlayer closeModalTrainingEachPlayer={setOpenModalTrainingEachPlayer} />}
 
                         </div>
                     </div>

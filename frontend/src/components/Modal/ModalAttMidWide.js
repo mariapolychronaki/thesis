@@ -1,7 +1,7 @@
 import React from 'react'
-import './Modal.css'
+import '../../assets/Style/Modal.css'
 import 'react-bootstrap'
-import './ModalPositions.css'
+import '../../assets/Style/ModalPositions.css'
 import Dropdown_rating from '../Dropdowns/Dropdown_rating'
 
 const ModalAttackingMidfielderWide = ({ closeModalAttackingMidfielderWide }) => {
@@ -190,7 +190,7 @@ const ModalAttackingMidfielderWide = ({ closeModalAttackingMidfielderWide }) => 
                                     <Dropdown_rating className="rating" />
                                 </div>
                                 <div className='offset-1 col-2 evaluation'>
-                                    <label>Composure</label>
+                                    <label>Finishing</label>
                                 </div>
                                 <div className='col-4 rating'>
 
@@ -216,7 +216,7 @@ const ModalAttackingMidfielderWide = ({ closeModalAttackingMidfielderWide }) => 
                             <button className='cancel-button' onClick={() => closeModalAttackingMidfielderWide(false)}>Cancel</button>
                         </div>
                         <div className='col-2'>
-                            <button className='next-button'> Comfirm </button>
+                            <button className='next-button'> Confirm </button>
                         </div>
                     </div>
                 </div>

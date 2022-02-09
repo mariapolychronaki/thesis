@@ -1,0 +1,22 @@
+.pa3{
+    text-align: right;
+    border-radius: 8px;
+    margin-top: 1%;
+}
+.MyTeam{
+    text-align: right;
+}
+
+.search{
+    width: 20%;
+}
+
+.bb   {
+    text-align: left;
+}
+
+.enquiry_btn{
+    border-radius: 8px;
+    color:white;
+    background-color: cadetblue;
+}

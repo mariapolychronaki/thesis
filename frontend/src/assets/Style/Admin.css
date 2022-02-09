@@ -1,0 +1,135 @@
+
+.RowAdmin{
+    height: 4rem;
+    background-color: rgb(90, 90, 91);
+}
+
+.Sign_UP_messages{
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+
+.User_Mes{
+    margin-top: 6%;
+    width: fit-content;  
+    min-height:2rem;
+    height: fit-content;
+    border-radius: 8px; 
+    background-color: rgb(84, 110, 133);
+    color:white;
+}
+.Coach_en{
+    margin-top: 6%;
+    width: fit-content;
+    min-height:2rem;
+    height: fit-content;
+    border-radius: 8px;
+    background-color: rgb(192, 155, 86);
+    color:white;
+}
+
+.user_sign_up_messages{
+    display: flex;
+}
+
+.CE{
+    border:solid black;
+    text-align: center;
+}
+.SM{
+    border:solid black;
+    text-align: center;
+
+}
+
+.BTN_Approve{
+    border-radius: 8px;
+    background-color: cadetblue;
+    color:white;
+}
+
+
+
+
+.BTN_Decline{
+    margin-left: 2%;
+    border-radius: 8px;
+    background-color: rgb(117,0,0);
+    color:white;
+}
+
+
+.overlay {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+  }
+  .popup {
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 30%;
+    position: relative;
+    transition: all 5s ease-in-out;
+  }
+  
+  .popup h2 {
+    margin-top: 0;
+    color: #333;
+    font-family: Tahoma, Arial, sans-serif;
+  }
+  .popup .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+  }
+  .popup .close:hover {
+    cursor: pointer;
+    color: #000;
+  }
+  .popup .content {
+    max-height: 30%;
+    overflow: auto;
+  }
+  
+  @media screen and (max-width: 700px) {
+    .popup {
+      width: 70%;
+    }
+  }
+  
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width:1200px) {
+    .Coach_en{
+        height: 3rem;
+        font-size: 80%;
+    }
+    .User_Mes{
+        height: 3rem;
+        font-size: 80%;
+
+    }
+}
