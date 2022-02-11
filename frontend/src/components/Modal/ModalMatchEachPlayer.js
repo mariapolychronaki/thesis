@@ -21,7 +21,7 @@ const ModalMatchEachPlayer = ({ closeModalMatchEachPlayer }) => {
                         <button className='cancel-button Tr3Cancel' onClick={() => closeModalMatchEachPlayer(false)}>Cancel</button>
                     </div>
                     <div className='col-2'>
-                        <button className='next-button Tr3Confirm'> Confirm </button>
+                        <button className='next-button Tr3Confirm'>  Confirm </button>
                     </div>
                 </div>
             </div>

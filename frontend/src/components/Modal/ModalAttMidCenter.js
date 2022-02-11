@@ -216,7 +216,7 @@ const ModalAttackingMidfielderCenter = ({ closeModalAttackingMidfielderCenter })
                             <button className='cancel-button' onClick={() => closeModalAttackingMidfielderCenter(false)}>Cancel</button>
                         </div>
                         <div className='col-2'>
-                            <button className='next-button'> Confirm </button>
+                            <button className='next-button' > Confirm </button>
                         </div>
                     </div>
                 </div>

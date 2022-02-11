@@ -167,7 +167,7 @@ const ModalPlayerRating = ({ closeModalPlayerRating }) => {
                             <button className='cancel-button' onClick={() => closeModalPlayerRating(false)}>Cancel</button>
                         </div>
                         <div className='col-2'>
-                            <button className='next-button'> Confirm </button>
+                            <button className='next-button' onClick={() => closeModalPlayerRating(false)}> Confirm </button>
                         </div>
                     </div>
                 </div>

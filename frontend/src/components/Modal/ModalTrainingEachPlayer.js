@@ -21,7 +21,7 @@ const ModalTrainingEachPlayer = ({ closeModalTrainingEachPlayer }) => {
 
                     </div>
                     <div className='col-2 '>
-                        <button className='next-button Tr2Confirm' > Confirm </button>
+                        <button className='next-button Tr2Confirm'> Confirm </button>
                     </div>
                 </div>
             </div>

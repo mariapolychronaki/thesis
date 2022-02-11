@@ -182,7 +182,7 @@ const ModalEditPlayer = ({ closeModalEditPlayer }) => {
                             <button className='cancel-button PL_cancel' onClick={() => closeModalEditPlayer(false)}>Cancel</button>
                         </div>
                         <div className='col-2'>
-                            <button className='next-button PL_next'> Confirm </button>
+                            <button className='next-button PL_next'onClick={() => closeModalEditPlayer(false)}> Confirm </button>
 
 
 

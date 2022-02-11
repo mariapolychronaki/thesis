@@ -8,19 +8,14 @@ import { useState, useRef } from 'react';
 import ModalEveryPlayerRating from '../components/Modal/ModalEveryTrainingPlayerRating';
 import { ArrowRight } from 'react-bootstrap-icons';
 import { ArrowLeft } from 'react-bootstrap-icons';
+import { arrayPlayers, arrayplayersRating, arrayPlayerTrainingRating1, arrayPlayerTrainingRating2 } from '../Constants/Constants';
+import { arrayPlayerTrainingRating3, arrayPlayerTrainingRating4, arrayPlayerTrainingRating5 } from '../Constants/Constants';
+import { arrayPlayerMatchRating1, arrayPlayerMatchRating2 } from '../Constants/Constants';
 
 
 export const Training = () => {
     const [openModalTraining, setOpenModalTraining] = useState(false);
-    const arrayPlayers = [{ playername: "giorgos" },
-    {}
-    ]
-    const arrayTraining = [{ name: "startakis", rating1: "8" },
-    { rating: "8.1", rating1: "5" },
-    { rating: "8.1", rating1: "5" },
-    { rating: "8.1", rating1: "5" },
-    { rating: "8.1", rating1: "5" }
-    ]
+    var AVGRating_training;
 
 
     const ref = useRef(null);
@@ -28,7 +23,11 @@ export const Training = () => {
     const scroll = (scrollOffset) => {
         ref.current.scrollLeft += scrollOffset;
     }
-
+    // const ArrayT =()=>{
+    //     AVGRating_training = parseFloat( (parseFloat(arrayPlayerTrainingRating1[1])+parseFloat(arrayPlayerTrainingRating1[2]))/2);
+    //     console.log(AVGRating_training);
+    //     return AVGRating_training;
+    // }
 
     return (
         <div class="container-fluid">
@@ -55,8 +54,8 @@ export const Training = () => {
 
             <div className='table_container1' ref={ref}>
 
-               {!openModalTraining && <div className='row Scroll'>
-                    <button className= 'offset-1 col-1 scrollBtnLeft' onClick={() => scroll(-20)}> <ArrowLeft /> </button>
+                {!openModalTraining && <div className='row Scroll'>
+                    <button className='offset-1 col-1 scrollBtnLeft' onClick={() => scroll(-20)}> <ArrowLeft /> </button>
 
                     <button className='offset-10 col-1 scrollBtnRight' onClick={() => scroll(+20)}>
                         <ArrowRight />
@@ -96,7 +95,7 @@ export const Training = () => {
 
                     </thead>
                     <tbody>
-                        {arrayTraining.map((player, index) => (
+                        {arrayPlayerTrainingRating1.map((player, index) => (
                             <tr>
                                 <td>
                                     {index}
@@ -105,9 +104,10 @@ export const Training = () => {
                                     {player.name}
                                 </td>
                                 <td>
-                                    {player.rating1}
+                                    <div>
+                                        {player.Rating}
+                                   </div>
                                 </td>
-
 
                             </tr>
 

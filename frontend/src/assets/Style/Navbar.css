@@ -2,6 +2,12 @@
     display: flex;
 }
 
+.container_settings{
+    background-color: black;
+}
+.modal{
+    width: 100%;
+}
 .nav-logo{
     color:white;
     text-decoration: none;
@@ -20,7 +26,12 @@
     width: 40%;
     display: none;
 }
-
+.Exit:hover{
+    cursor: pointer;
+}
+.userBTN:hover{
+    cursor: pointer;
+}
 .userBTN{
     height:fit-content;
     width: 40%;

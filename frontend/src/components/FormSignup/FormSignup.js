@@ -1,6 +1,6 @@
 import React from 'react'
 import '../../assets/Style/Form.css'
-import { useState, useEffect,useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 
 <script src="https://www.google.com/recaptcha/api.js"></script>
@@ -210,7 +210,7 @@ const FormSignup = ({ submitForm }) => {
                 <ReCAPTCHA
 
                     ref={recaptchaRef}
-                    sitekey={"6LenpmUeAAAAABlCeNuWA4XhfR7LB-viqjrvvtNa"}
+                    sitekey={"6Ldr7GoeAAAAAGvm11RyeyquphZY8YHo5alDE2YV"}
                     onChange={onChange}
                 />
             </form>

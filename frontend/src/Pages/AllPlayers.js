@@ -142,7 +142,19 @@ export const AllPlayers = () => {
         return { arrayPlayers: sortedarrayPlayers, requestSort, sortConfig };
     };
 
-
+    const Pending_Btn = (e) => {
+        if (e.target.value === "Enquiry") {
+            console.log(e.target);
+            e.target.innerHTML = "Pending";
+            e.target.className = "Pending";
+            e.target.value = "Pending";
+            console.log(e.target);
+        } else {
+            e.target.innerHTML = "Enquiry";
+            e.target.className = "enquiry_btn";
+            e.target.value = "Enquiry";
+        }
+    }
 
     const ProductTable = (props) => {
         console.log(props);
@@ -184,7 +196,7 @@ export const AllPlayers = () => {
 
                 <tbody>
                     {arrayPlayers.map((player, index) => (
-                        <tr key={player.id}>
+                        <tr key={player.ssn}>
                             <td>{index + 1}</td>
                             <td>{player.name}</td>
                             <td>{player.surname}</td>
@@ -195,7 +207,7 @@ export const AllPlayers = () => {
                             <td>{player.height}</td>
                             <td>{player.weight}</td>
                             <td className='action_buttons'>
-                                <button className='enquiry_btn' onClick={()=>{setEnquiry("Pending")}}> {enquiry} </button>
+                                <button className='enquiry_btn' name={player.ssn} value="Enquiry" onClick={Pending_Btn}> Enquiry </button>
                             </td>
                         </tr>
                     ))}

@@ -1,6 +1,8 @@
 import React from 'react'
 import '../../assets/Style/FormSignIn.css'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
+
 
 const FormSignIn = ({ submitForm }) => {
 
@@ -10,7 +12,9 @@ const FormSignIn = ({ submitForm }) => {
         username: '',
         password: '',
     });
-
+    function onChange(value) {
+        console.log('Captcha value:', value);
+    }
 
 
     const validate = (values) => {
@@ -58,6 +62,7 @@ const FormSignIn = ({ submitForm }) => {
 
 
 
+    const recaptchaRef = useRef(null)
 
     return (
         <div className='form-content-right' >
@@ -96,7 +101,15 @@ const FormSignIn = ({ submitForm }) => {
                 </div>
                 <button className='form-input-btn' type='submit'>Submit</button>
                 <div className='Already'>You don't have an account? <a href='/'>Sign up</a></div>
+                <ReCAPTCHA
+
+                    ref={recaptchaRef}
+                    sitekey={"6Ldr7GoeAAAAAGvm11RyeyquphZY8YHo5alDE2YV"}
+                    onChange={onChange}
+                />
             </form>
+
+
 
         </div>
     )

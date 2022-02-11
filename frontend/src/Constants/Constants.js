@@ -472,24 +472,24 @@ export const arrayplayersRating = [
     {
         name: "Konstantinos",
         surname: "Kafousis",
-        Personality: "5",
+        Personality: "3",
         Experience: "5",
-        Agility: "7",
+        Agility: "8",
         Team_work: "7",
         Leadership: "5",
         Tactics: "6",
-        Communication: "6",
-        Pace: "6",
-        Strength: "4",
-        Technique: "7",
+        Communication: "7",
+        Pace: "4",
+        Strength: "3",
+        Technique: "6",
         One_on_ones: "5",
         Dribbling: "7",
-        Crossing: "6",
-        Shots: "6",
-        Stamina: "6",
-        Composure: "5",
-        Shots: "5",
-        Finishing: "6"
+        Crossing: "7",
+        Aerial_ability: "5",
+        Stamina: "5",
+        Composure: "7",
+        Shots: "7",
+        Finishing: "5"
 
 
 

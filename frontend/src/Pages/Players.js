@@ -10,7 +10,7 @@ import ModalPlayerRating from '../components/Modal/ModalPlayerRating';
 import { arrayPlayers } from '../Constants/Constants';
 import ModalEditPlayer from '../components/Modal/ModalEditPlayer';
 import { NavLink } from 'react-bootstrap';
-
+import CustomPopup from './Admin/PopUp';
 
 export const Players = () => {
 
@@ -182,6 +182,7 @@ export const Players = () => {
                 </thead>
 
 
+
                 <tbody>
                     {arrayPlayers.map((player, index) => (
                         <tr key={player.id}>
@@ -207,6 +208,12 @@ export const Players = () => {
         );
     };
 
+    const [visibility, setVisibility] = useState(false);
+
+    const popupCloseHandler = (e) => {
+        setVisibility(e);
+    };
+
 
 
 
@@ -216,6 +223,13 @@ export const Players = () => {
         <>
 
             <div class="container-fluid">
+
+                <CustomPopup
+                    onClose={popupCloseHandler, () => setVisibility(!visibility)}
+                    show={!visibility}
+                >
+                    <h2>Your request to sign player ### has been approved</h2>
+                </CustomPopup>
 
 
 

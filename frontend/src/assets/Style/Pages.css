@@ -185,7 +185,11 @@
 
 
 
-
+.Pending{
+    background-color: #538c2b;
+    border-radius: 8px;
+    color:white;
+}
 
   .top-box {
     border:solid 1px #fff;
@@ -264,13 +268,13 @@
 
 
 .forward{
-    margin-top: 6%;
+    margin-top: 5%;
     margin-left: 40%;
     width: 20%;
 
 }
 .Att_mid{
-    width: 33.3%;
+    width: 33%;
     display: flex;
     margin-top: 10%;
 }
@@ -280,13 +284,13 @@
     display: flex;
     width: 35%;
     margin-left: 15%;
-    margin-top:10%
+    margin-top:8%
 }
 
 .defenders{
     display: flex;
     width: 25%;
-    margin-top:10%
+    margin-top:8%
 }
 
 

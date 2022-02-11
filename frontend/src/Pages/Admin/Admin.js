@@ -9,12 +9,7 @@ import CustomPopup from './PopUp';
 
 const Admin = () => {
 
-    const [visibility, setVisibility] = useState(false);
-
-    const popupCloseHandler = (e) => {
-        setVisibility(e);
-    };
-
+   
     const [Sign_UP_messages, setSign_UP_messages] = useState(true);
     const [Coach_Enquries, setCoach_Enquries] = useState(false);
 
@@ -52,12 +47,7 @@ const Admin = () => {
 
 
 
-                <CustomPopup
-                    onClose={popupCloseHandler, () => setVisibility(!visibility)}
-                    show={!visibility}
-                >                    
-                <h2>Your request to sign player tade has been approved</h2>
-                </CustomPopup>
+               
 
 
 
