@@ -14,6 +14,38 @@ import { useState } from 'react';
 
 export const Lineup = () => {
 
+    const [best_for1, setBest_for1] = useState("None");
+    const [best_for2, setBest_for2] = useState("None");
+
+    const [best_Att_Mid_Center1, setBest_Att_Mid_Center1] = useState("None");
+    const [best_Att_Mid_Center2, setBest_Att_Mid_Center2] = useState("None");
+
+
+    const [best_Att_Mid_Right1, setBest_Att_Mid_Right1] = useState("None");
+    const [best_Att_Mid_Right2, setBest_Att_Mid_Right2] = useState("None");
+
+    const [best_Att_Mid_Left1, setBest_Att_Mid_Left1] = useState("None");
+    const [best_Att_Mid_Left2, setBest_Att_Mid_Left2] = useState("None");
+
+    const [best_Midfielder1, setBest_Midfielder1] = useState("None");
+    const [best_Midfielder2, setBest_Midfielder2] = useState("None");
+    const [best_Midfielder3, setBest_Midfielder3] = useState("None");
+
+
+
+    const [best_Right_Defender1, setBest_Right_Defender1] = useState("None");
+    const [best_Right_Defender2, setBest_Right_Defender2] = useState("None");
+
+    const [best_Central_Defender1, setBest_Central_Defender1] = useState("None");
+    const [best_Central_Defender2, setBest_Central_Defender2] = useState("None");
+    const [best_Central_Defender3, setBest_Central_Defender3] = useState("None");
+
+    const [best_Left_Defender1, setBest_Left_Defender1] = useState("None");
+    const [best_Left_Defender2, setBest_Left_Defender2] = useState("None");
+
+    const [best_Goalkeeper1, setBest_Goalkeeper1] = useState("None");
+    const [best_Goalkeeper2, setBest_Goalkeeper2] = useState("None");
+
 
     const suggested_lineup = () => {
         const filtered_by_position_Forward = arrayPlayers.filter((player) => {
@@ -87,6 +119,7 @@ export const Lineup = () => {
         var AVG_Central_Defender_training = [];
         var AVG_Goalkeeper_training = [];
 
+        var AVG_Forward_trainings = [];
 
 
         var AVG_Forward_Match = [];
@@ -116,12 +149,25 @@ export const Lineup = () => {
 
                 if (player.name === player_rating.name && player.surname === player_rating.surname) {
 
-                    temp_FOR = ((parseFloat(player.Aerial_ability) + parseFloat(player.Agility) + parseFloat(player.Communication) +
-                        parseFloat(player.Composure) + parseFloat(player.Dribbling) + parseFloat(player.Experience) +
-                        parseFloat(player.Finishing) + parseFloat(player.Leadership) + parseFloat(player.Pace) + parseFloat(player.Passing) +
-                        parseFloat(player.Personality) + parseFloat(player.Positioning) + parseFloat(player.Shots) + parseFloat(player.Stamina) +
-                        parseFloat(player.Strength) + parseFloat(player.Tactics) + parseFloat(player.Team_work)
-                        + parseFloat(player.Technique)) / 18)
+                    temp_FOR = ((
+                        0.05 * parseFloat(player.Aerial_ability) +
+                        0.05 * parseFloat(player.Agility) +
+                        0.05 * parseFloat(player.Communication) +
+                        0.05 * parseFloat(player.Composure) +
+                        0.05 * parseFloat(player.Dribbling) +
+                        0.05 * parseFloat(player.Experience) +
+                        0.1 * parseFloat(player.Finishing) +
+                        0.05 * parseFloat(player.Leadership) +
+                        0.05 * parseFloat(player.Pace) +
+                        0.05 * parseFloat(player.Passing) +
+                        0.05 * parseFloat(player.Personality) +
+                        0.1 * parseFloat(player.Positioning) +
+                        0.05 * parseFloat(player.Shots) +
+                        0.05 * parseFloat(player.Stamina) +
+                        0.05 * parseFloat(player.Strength) +
+                        0.05 * parseFloat(player.Tactics) +
+                        0.05 * parseFloat(player.Team_work) +
+                        0.05 * parseFloat(player.Technique)))
                     // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
                     AVG_Forward.push({ id: player_rating.surname, rating: temp_FOR })
 
@@ -138,13 +184,13 @@ export const Lineup = () => {
 
         filtered_by_position_Forward.map((player_rating) => {
 
-            AVG_Forward_training.push(player_rating.surname);
 
             const temp1 = arrayPlayerTrainingRating1.find((player) => {
 
                 if (player.name === player_rating.name && player.surname === player_rating.surname) {
                     temp_FOR = ((parseFloat(player.Behaviour) + parseFloat(player.Rating)) / 2);
                     // AVG_Forward_training.push(parseFloat(temp_FOR));
+                    AVG_Forward_trainings.push({ id: player_rating.surname, rating: temp_FOR })
                     return player;
                 }
             })
@@ -153,6 +199,8 @@ export const Lineup = () => {
                 if (player.name === player_rating.name && player.surname === player_rating.surname) {
                     temp_FOR += ((parseFloat(player.Behaviour) + parseFloat(player.Rating)) / 2);
                     // AVG_Forward_training.push(parseFloat(temp_FOR));
+                    AVG_Forward_trainings.push({ id: player_rating.surname, rating: temp_FOR })
+
                     return player;
                 }
             })
@@ -161,6 +209,8 @@ export const Lineup = () => {
                 if (player.name === player_rating.name && player.surname === player_rating.surname) {
                     temp_FOR += ((parseFloat(player.Behaviour) + parseFloat(player.Rating)) / 2);
                     // AVG_Forward_training.push(parseFloat(temp_FOR));
+                    AVG_Forward_trainings.push({ id: player_rating.surname, rating: temp_FOR })
+
                     return player;
                 }
             })
@@ -169,6 +219,8 @@ export const Lineup = () => {
                 if (player.name === player_rating.name && player.surname === player_rating.surname) {
                     temp_FOR += ((parseFloat(player.Behaviour) + parseFloat(player.Rating)) / 2);
                     // AVG_Forward_training.push(parseFloat(temp_FOR));
+                    AVG_Forward_trainings.push({ id: player_rating.surname, rating: temp_FOR })
+
                     return player;
                 }
             })
@@ -178,6 +230,8 @@ export const Lineup = () => {
                     temp_FOR += ((parseFloat(player.Behaviour) + parseFloat(player.Rating)) / 2);
                     temp_FOR = temp_FOR / 5;
                     // AVG_Forward_training.push(parseFloat(temp_FOR));
+                    AVG_Forward_trainings.push({ id: player_rating.surname, rating: temp_FOR })
+
                     AVG_Forward_training.push({ id: player_rating.surname, rating: temp_FOR })
 
                     return player;
@@ -186,7 +240,7 @@ export const Lineup = () => {
 
         })
 
-
+        console.log(AVG_Forward_trainings);
 
 
 
@@ -240,12 +294,25 @@ export const Lineup = () => {
 
                 if (player.name === player_rating.name && player.surname === player_rating.surname) {
 
-                    temp_AMC = ((parseFloat(player.Through_balls) + parseFloat(player.Agility) + parseFloat(player.Communication) +
-                        parseFloat(player.Composure) + parseFloat(player.Dribbling) + parseFloat(player.Experience) +
-                        parseFloat(player.Finishing) + parseFloat(player.Leadership) + parseFloat(player.Pace) + parseFloat(player.Passing) +
-                        parseFloat(player.Personality) + parseFloat(player.Crossing) + parseFloat(player.Shots) + parseFloat(player.Stamina) +
-                        parseFloat(player.Strength) + parseFloat(player.Tactics) + parseFloat(player.Team_work)
-                        + parseFloat(player.Technique)) / 18)
+                    temp_AMC = ((
+                        0.1 * parseFloat(player.Through_balls) +
+                        0.05 * parseFloat(player.Agility) +
+                        0.05 * parseFloat(player.Communication) +
+                        0.05 * parseFloat(player.Composure) +
+                        0.1 * parseFloat(player.Dribbling) +
+                        0.05 * parseFloat(player.Experience) +
+                        0.05 * parseFloat(player.Finishing) +
+                        0.05 * parseFloat(player.Leadership) +
+                        0.05 * parseFloat(player.Pace) +
+                        0.05 * parseFloat(player.Passing) +
+                        0.05 * parseFloat(player.Personality) +
+                        0.05 * parseFloat(player.Crossing) +
+                        0.05 * parseFloat(player.Shots) +
+                        0.05 * parseFloat(player.Stamina) +
+                        0.05 * parseFloat(player.Strength) +
+                        0.05 * parseFloat(player.Tactics) +
+                        0.05 * parseFloat(player.Team_work) +
+                        0.05 * parseFloat(player.Technique)))
                     // AVG_Att_Mid_Center.push(player_rating.surname, temp_AMC);
                     AVG_Att_Mid_Center.push({ id: player_rating.surname, rating: temp_AMC })
 
@@ -382,12 +449,25 @@ export const Lineup = () => {
 
                 if (player.name === player_rating.name && player.surname === player_rating.surname) {
 
-                    temp_AMC = ((parseFloat(player.One_on_ones) + parseFloat(player.Agility) + parseFloat(player.Communication) +
-                        parseFloat(player.Composure) + parseFloat(player.Dribbling) + parseFloat(player.Experience) +
-                        parseFloat(player.Finishing) + parseFloat(player.Leadership) + parseFloat(player.Pace) + parseFloat(player.Aerial_ability) +
-                        parseFloat(player.Personality) + parseFloat(player.Crossing) + parseFloat(player.Shots) + parseFloat(player.Stamina) +
-                        parseFloat(player.Strength) + parseFloat(player.Tactics) + parseFloat(player.Team_work)
-                        + parseFloat(player.Technique)) / 18)
+                    temp_AMC = ((
+                        0.1 * parseFloat(player.One_on_ones) +
+                        0.05 * parseFloat(player.Agility) +
+                        0.05 * parseFloat(player.Communication) +
+                        0.05 * parseFloat(player.Composure) +
+                        0.1 * parseFloat(player.Dribbling) +
+                        0.05 * parseFloat(player.Experience) +
+                        0.05 * parseFloat(player.Finishing) +
+                        0.05 * parseFloat(player.Leadership) +
+                        0.05 * parseFloat(player.Pace) +
+                        0.05 * parseFloat(player.Aerial_ability) +
+                        0.05 * parseFloat(player.Personality) +
+                        0.05 * parseFloat(player.Crossing) +
+                        0.05 * parseFloat(player.Shots) +
+                        0.05 * parseFloat(player.Stamina) +
+                        0.05 * parseFloat(player.Strength) +
+                        0.05 * parseFloat(player.Tactics) +
+                        0.05 * parseFloat(player.Team_work) +
+                        0.05 * parseFloat(player.Technique)))
                     // AVG_Att_Mid_Right.push(player_rating.surname, temp_AMC);
                     AVG_Att_Mid_Right.push({ id: player_rating.surname, rating: temp_AMC })
 
@@ -524,12 +604,25 @@ export const Lineup = () => {
 
                 if (player.name === player_rating.name && player.surname === player_rating.surname) {
 
-                    temp_AMC = ((parseFloat(player.One_on_ones) + parseFloat(player.Agility) + parseFloat(player.Communication) +
-                        parseFloat(player.Composure) + parseFloat(player.Dribbling) + parseFloat(player.Experience) +
-                        parseFloat(player.Finishing) + parseFloat(player.Leadership) + parseFloat(player.Pace) + parseFloat(player.Aerial_ability) +
-                        parseFloat(player.Personality) + parseFloat(player.Crossing) + parseFloat(player.Shots) + parseFloat(player.Stamina) +
-                        parseFloat(player.Strength) + parseFloat(player.Tactics) + parseFloat(player.Team_work)
-                        + parseFloat(player.Technique)) / 18)
+                    temp_AMC = ((
+                        0.1 * parseFloat(player.One_on_ones) +
+                        0.05 * parseFloat(player.Agility) +
+                        0.05 * parseFloat(player.Communication) +
+                        0.05 * parseFloat(player.Composure) +
+                        0.1 * parseFloat(player.Dribbling) +
+                        0.05 * parseFloat(player.Experience) +
+                        0.05 * parseFloat(player.Finishing) +
+                        0.05 * parseFloat(player.Leadership) +
+                        0.05 * parseFloat(player.Pace) +
+                        0.05 * parseFloat(player.Aerial_ability) +
+                        0.05 * parseFloat(player.Personality) +
+                        0.05 * parseFloat(player.Crossing) +
+                        0.05 * parseFloat(player.Shots) +
+                        0.05 * parseFloat(player.Stamina) +
+                        0.05 * parseFloat(player.Strength) +
+                        0.05 * parseFloat(player.Tactics) +
+                        0.05 * parseFloat(player.Team_work) +
+                        0.05 * parseFloat(player.Technique)))
                     // AVG_Att_Mid_Left.push(player_rating.surname, temp_AMC);
                     AVG_Att_Mid_Left.push({ id: player_rating.surname, rating: temp_AMC })
 
@@ -665,19 +758,31 @@ export const Lineup = () => {
 
                 if (player.name === player_rating.name && player.surname === player_rating.surname) {
 
-                    temp_AMC = ((parseFloat(player.Aerial_ability) + parseFloat(player.Agility) + parseFloat(player.Communication) +
-                        parseFloat(player.Composure) + parseFloat(player.Creativity) + parseFloat(player.Experience) +
-                        parseFloat(player.Leadership) + parseFloat(player.Marking) + parseFloat(player.Pace) + parseFloat(player.Passing) +
-                        parseFloat(player.Personality) + parseFloat(player.Positioning) + parseFloat(player.Shots) + parseFloat(player.Stamina) +
-                        parseFloat(player.Strength) + parseFloat(player.Tactics) + parseFloat(player.Team_work)
-                        + parseFloat(player.Technique)) / 18)
+                    temp_AMC = ((
+                        0.05 * parseFloat(player.Aerial_ability) +
+                        0.05 * parseFloat(player.Agility) +
+                        0.05 * parseFloat(player.Communication) +
+                        0.05 * parseFloat(player.Composure) +
+                        0.05 * parseFloat(player.Creativity) +
+                        0.05 * parseFloat(player.Experience) +
+                        0.1 * parseFloat(player.Leadership) +
+                        0.05 * parseFloat(player.Marking) +
+                        0.05 * parseFloat(player.Pace) +
+                        0.05 * parseFloat(player.Passing) +
+                        0.05 * parseFloat(player.Personality) +
+                        0.05 * parseFloat(player.Positioning) +
+                        0.05 * parseFloat(player.Shots) +
+                        0.1 * parseFloat(player.Stamina) +
+                        0.05 * parseFloat(player.Strength) +
+                        0.05 * parseFloat(player.Tactics) +
+                        0.05 * parseFloat(player.Team_work) +
+                        0.05 * parseFloat(player.Technique)))
                     // AVG_Midfielder.push(player_rating.surname, temp_AMC);
                     AVG_Midfielder.push({ id: player_rating.surname, rating: temp_AMC })
 
                     return player;
                 }
             })
-
 
 
         })
@@ -788,18 +893,32 @@ export const Lineup = () => {
 
                 if (player.name === player_rating.name && player.surname === player_rating.surname) {
 
-                    temp_AMC = ((parseFloat(player.Agility) + parseFloat(player.Communication) +
-                        parseFloat(player.Crossing) + parseFloat(player.Experience) + parseFloat(player.Going_forward) +
-                        parseFloat(player.Leadership) + parseFloat(player.Marking) + parseFloat(player.Pace) + parseFloat(player.Passing) +
-                        parseFloat(player.Personality) + parseFloat(player.Positioning) + parseFloat(player.Stamina) +
-                        parseFloat(player.Strength) + parseFloat(player.Tactics) + parseFloat(player.Team_work)
-                        + parseFloat(player.Technique)) / 18)
+                    temp_AMC = ((
+                        (0.05 * parseFloat(player.Agility)) +
+                        (0.05 * parseFloat(player.Communication)) +
+                        (0.1 * parseFloat(player.Crossing)) +
+                        (0.05 * parseFloat(player.Experience)) +
+                        (0.1 * parseFloat(player.Going_forward)) +
+                        (0.05 * parseFloat(player.Leadership)) +
+                        (0.1 * parseFloat(player.Marking)) +
+                        (0.1 * parseFloat(player.Pace)) +
+                        (0.05 * parseFloat(player.Passing)) +
+                        (0.05 * parseFloat(player.Personality)) +
+                        (0.05 * parseFloat(player.Positioning)) +
+                        (0.05 * parseFloat(player.Stamina)) +
+                        (0.05 * parseFloat(player.Strength)) +
+                        (0.05 * parseFloat(player.Tactics)) +
+                        (0.05 * parseFloat(player.Team_work)) +
+                        (0.05 * parseFloat(player.Technique))))
                     // AVG_Right_Defender.push(player_rating.surname, temp_AMC);
                     AVG_Right_Defender.push({ id: player_rating.surname, rating: temp_AMC })
 
                     return player;
                 }
             })
+
+
+
 
 
             Player_rating_Right_Defender.push(temp);
@@ -915,12 +1034,22 @@ export const Lineup = () => {
 
                 if (player.name === player_rating.name && player.surname === player_rating.surname) {
 
-                    temp_AMC = ((parseFloat(player.Agility) + parseFloat(player.Communication) +
-                        parseFloat(player.Crossing) + parseFloat(player.Experience) + parseFloat(player.Going_forward) +
-                        parseFloat(player.Leadership) + parseFloat(player.Marking) + parseFloat(player.Pace) + parseFloat(player.Passing) +
-                        parseFloat(player.Personality) + parseFloat(player.Positioning) + parseFloat(player.Stamina) +
-                        parseFloat(player.Strength) + parseFloat(player.Tactics) + parseFloat(player.Team_work)
-                        + parseFloat(player.Technique)) / 18)
+                    temp_AMC = ((0.05 * parseFloat(player.Agility)) +
+                        (0.05 * parseFloat(player.Communication)) +
+                        (0.1 * parseFloat(player.Crossing)) +
+                        (0.05 * parseFloat(player.Experience)) +
+                        (0.1 * parseFloat(player.Going_forward)) +
+                        (0.05 * parseFloat(player.Leadership)) +
+                        (0.1 * parseFloat(player.Marking)) +
+                        (0.1 * parseFloat(player.Pace)) +
+                        (0.05 * parseFloat(player.Passing)) +
+                        (0.05 * parseFloat(player.Personality)) +
+                        (0.05 * parseFloat(player.Positioning)) +
+                        (0.05 * parseFloat(player.Stamina)) +
+                        (0.05 * parseFloat(player.Strength)) +
+                        (0.05 * parseFloat(player.Tactics)) +
+                        (0.05 * parseFloat(player.Team_work)) +
+                        (0.05 * parseFloat(player.Technique)))
                     AVG_Left_Defender.push({ id: player_rating.surname, rating: temp_AMC })
 
                     return player;
@@ -1047,12 +1176,23 @@ export const Lineup = () => {
 
                 if (player.name === player_rating.name && player.surname === player_rating.surname) {
 
-                    temp_AMC = ((parseFloat(player.Aerial_ability) + parseFloat(player.Agility) +
-                        parseFloat(player.Communication) + parseFloat(player.Experience) + parseFloat(player.Leadership) +
-                        parseFloat(player.Marking) + parseFloat(player.Pace) + parseFloat(player.Passing) +
-                        parseFloat(player.Personality) + parseFloat(player.Positioning) + parseFloat(player.Stamina) +
-                        parseFloat(player.Strength) + parseFloat(player.Tactics) + parseFloat(player.Tactics) + parseFloat(player.Team_work)
-                        + parseFloat(player.Technique)) / 16)
+                    temp_AMC = (
+                        ((0.1 * parseFloat(player.Aerial_ability)) +
+                            (0.05 * parseFloat(player.Agility)) +
+                            (0.05 * parseFloat(player.Communication)) +
+                            (0.05 * parseFloat(player.Experience)) +
+                            (0.1 * parseFloat(player.Leadership)) +
+                            (0.1 * parseFloat(player.Marking)) +
+                            (0.025 * parseFloat(player.Pace)) +
+                            (0.025 * parseFloat(player.Passing)) +
+                            (0.05 * parseFloat(player.Personality)) +
+                            (0.1 * parseFloat(player.Positioning)) +
+                            (0.025 * parseFloat(player.Stamina)) +
+                            (0.1 * parseFloat(player.Strength)) +
+                            (0.05 * parseFloat(player.Tactics)) +
+                            (0.1 * parseFloat(player.Tackling)) +
+                            (0.05 * parseFloat(player.Team_work)) +
+                            (0.025 * parseFloat(player.Technique))))
                     AVG_Central_Defender.push({ id: player_rating.surname, rating: temp_AMC })
                     return player;
                 }
@@ -1166,12 +1306,22 @@ export const Lineup = () => {
 
                 if (player.name === player_rating.name && player.surname === player_rating.surname) {
 
-                    temp_AMC = ((parseFloat(player.Agility) +
-                        parseFloat(player.Communication) + parseFloat(player.Experience) + parseFloat(player.Leadership) +
-                        parseFloat(player.Kicking) + parseFloat(player.One_on_ones) + parseFloat(player.Penalty_saving) +
-                        parseFloat(player.Personality) + parseFloat(player.Positioning) + parseFloat(player.Rushing_out) +
-                        parseFloat(player.Shot_stopping) + parseFloat(player.Tactics) + parseFloat(player.Tactics) + parseFloat(player.Team_work)
-                    ) / 14)
+                    temp_AMC = (
+                        (0.05 * (parseFloat(player.Agility)) +
+                            (0.05 * parseFloat(player.Communication)) +
+                            (0.05 * parseFloat(player.Experience)) +
+                            (0.05 * parseFloat(player.Leadership)) +
+                            (0.05 * parseFloat(player.Kicking)) +
+                            (0.1 * parseFloat(player.One_on_ones)) +
+                            (0.1 * parseFloat(player.Penalty_saving)) +
+                            (0.05 * parseFloat(player.Personality)) +
+                            (0.1 * parseFloat(player.Positioning)) +
+                            (0.1 * parseFloat(player.Rushing_out)) +
+                            (0.1 * parseFloat(player.Shot_stopping)) +
+                            (0.1 * parseFloat(player.Reflexes)) +
+                            (0.05 * parseFloat(player.Tactics)) +
+                            (0.05 * parseFloat(player.Team_work))
+                        ))
                     // AVG_Goalkeeper.push(player_rating.surname, temp_AMC);
                     AVG_Goalkeeper.push({ id: player_rating.surname, rating: temp_AMC })
 
@@ -1284,67 +1434,31 @@ export const Lineup = () => {
 
 
 
+        console.log("Rating forwards");
+        console.log(AVG_Forward);
 
-        // console.log("Rating " + AVG_Forward);
+        console.log(" training  forwards");
+        console.log(AVG_Forward_training);
 
-        // console.log(" training  " + AVG_Forward_training);
-
-
-        // console.log("match   " + AVG_Forward_Match);
-
-        // console.log("Rating " + AVG_Att_Mid_Center);
-
-
-        // console.log(" training  " + AVG_Att_Mid_Center_training);
+        console.log("match   forwards")
+        console.log(AVG_Forward_Match);
 
 
-        // console.log("match   " + AVG_Att_Mid_Center_Match);
-
-        // console.log("Rating " + AVG_Att_Mid_Right);
 
 
-        // console.log(" training  " + AVG_Att_Mid_Right_training);
 
 
-        // console.log("match   " + AVG_Att_Mid_Right_Match);
+        console.log("Rating AMC");
 
-        // console.log("Rating " + AVG_Att_Mid_Left);
+        console.log(AVG_Att_Mid_Center);
 
+        console.log(" training AMC ");
 
-        // console.log(" training  " + AVG_Att_Mid_Left_training);
+        console.log(AVG_Att_Mid_Center_training);
 
-        // console.log("match   " + AVG_Att_Mid_Left_Match);
+        console.log("match   AMC")
 
-        // console.log("Rating " + AVG_Midfielder);
-
-
-        // console.log(" training  " + AVG_Midfielder_training);
-
-
-        // console.log("match   " + AVG_Midfielder_Match);
-
-        // console.log("Rating " + AVG_Right_Defender);
-
-
-        // console.log(" training  " + AVG_Right_Defender_training);
-
-        // console.log("match   " + AVG_Right_Defender_Match);
-
-        // console.log("Rating " + AVG_Left_Defender);
-
-
-        // console.log(" training  " + AVG_Left_Defender_training);
-
-
-        // console.log("match   " + AVG_Left_Defender_Match);
-
-        // console.log("Rating " + AVG_Central_Defender);
-
-
-        // console.log(" training  " + AVG_Central_Defender_training);
-
-
-        // console.log("match   " + AVG_Central_Defender_Match);
+        console.log(AVG_Att_Mid_Center_Match);
 
 
 
@@ -1356,23 +1470,119 @@ export const Lineup = () => {
 
 
 
+        console.log("Rating AMR");
+        console.log(AVG_Att_Mid_Right);
+
+        console.log(" training  AMR");
+        console.log(AVG_Att_Mid_Right_training);
+
+        console.log("match   AMR")
+        console.log(AVG_Att_Mid_Right_Match);
 
 
 
 
 
 
-        // console.log("this is goalie training ratingf");
 
-        // console.log(AVG_Goalkeeper_training);
+        console.log("Rating AML");
+        console.log(AVG_Att_Mid_Left);
 
-        // console.log("this is goalie match ratingf");
+        console.log(" training  AML");
+        console.log(AVG_Att_Mid_Left_training);
 
-        // console.log(AVG_Goalkeeper_Match);
+        console.log("match  AML ")
+        console.log(AVG_Att_Mid_Left_Match);
 
-        // console.log("this is goalie ratings");
 
-        // console.log(AVG_Goalkeeper);
+
+
+
+
+
+
+        console.log("Rating Midfielder");
+        console.log(AVG_Midfielder);
+
+        console.log(" training  Midfielder");
+        console.log(AVG_Midfielder_training);
+
+        console.log("match Midfielder ")
+        console.log(AVG_Midfielder_Match);
+
+
+
+
+
+
+
+
+
+
+
+        console.log("Rating Right_Defender");
+        console.log(AVG_Right_Defender);
+
+        console.log(" training Right_Defender ");
+        console.log(AVG_Right_Defender_training);
+
+        console.log("match   Right_Defender")
+        console.log(AVG_Right_Defender_Match);
+
+
+
+
+
+
+
+
+
+        console.log("Rating Left_Defender");
+        console.log(AVG_Left_Defender);
+
+        console.log(" training Left_Defender ");
+        console.log(AVG_Left_Defender_training);
+
+        console.log("match   Left_Defender")
+        console.log(AVG_Left_Defender_Match);
+
+
+
+
+
+        console.log("Rating Central_Defender");
+        console.log(AVG_Central_Defender);
+
+        console.log(" training  Central_Defender");
+        console.log(AVG_Central_Defender_training);
+
+        console.log("match  Central_Defender ")
+        console.log(AVG_Central_Defender_Match);
+
+
+
+
+
+
+
+
+
+
+
+
+
+        console.log("Rating Goalkeeper");
+        console.log(AVG_Goalkeeper);
+
+        console.log(" training  Goalkeeper");
+        console.log(AVG_Goalkeeper_training);
+
+        console.log("match  Goalkeeper ")
+        console.log(AVG_Goalkeeper_Match);
+
+
+
+
 
 
 
@@ -1645,17 +1855,36 @@ export const Lineup = () => {
 
 
         var ratings = [];
-        var best_Forward;
-        var best_AMC;
-        var best_AMR;
-        var best_AML;
+
+        var best_Forward1;
+        var best_Forward2;
+
+        var best_AMC1;
+        var best_AMC2;
+
+        var best_AMR1;
+        var best_AMR2;
+
+        var best_AML1;
+        var best_AML2;
+
         var best_Midfielder1;
         var best_Midfielder2;
-        var best_Right_Defender;
-        var best_Left_Defender;
+        var best_Midfielder3;
+
+        var best_Right_Defender1;
+        var best_Right_Defender2;
+
+        var best_Left_Defender1;
+        var best_Left_Defender2;
+
         var best_Central_Defender1;
         var best_Central_Defender2;
-        var best_Goalkeeper;
+        var best_Central_Defender3;
+
+        var best_Goalkeeper1;
+        var best_Goalkeeper2;
+
 
 
         var secondMax = function (arr) {
@@ -1667,16 +1896,68 @@ export const Lineup = () => {
             return secondMax;
         };
 
+
+
+        function thirdLargest(arr, arr_size) {
+            /* There should be
+            atleast three elements */
+            if (arr_size < 3) {
+                document.write(" Invalid Input ");
+                return;
+            }
+
+            // Find first
+            // largest element
+            let first = arr[0];
+            for (let i = 1;
+                i < arr_size; i++)
+                if (arr[i] > first)
+                    first = arr[i];
+
+            // Find second
+            // largest element
+            let second = Number.MIN_VALUE;
+            for (let i = 0;
+                i < arr_size; i++)
+                if (arr[i] > second &&
+                    arr[i] < first)
+                    second = arr[i];
+
+            // Find third
+            // largest element
+            let third = Number.MIN_VALUE;
+            for (let i = 0;
+                i < arr_size; i++)
+                if (arr[i] > third &&
+                    arr[i] < second)
+                    third = arr[i];
+
+            return third;
+        }
+
+
+
+
+
+
         const findBestLineup = () => {
 
             //best forward
             Suggest_FOR.map((player) => {
                 ratings.push(player.rating);
             })
-          
+
             Suggest_FOR.map((player) => {
                 if (player.rating === (Math.max(...ratings))) {
-                    best_Forward = player.id;
+                    best_Forward1 = player.id;
+                    setBest_for1(best_Forward1);
+
+                }
+            })
+            Suggest_FOR.map((player) => {
+                if (player.rating === (secondMax(ratings))) {
+                    best_Forward2 = player.id;
+                    setBest_for2(best_Forward2);
 
                 }
             })
@@ -1688,12 +1969,22 @@ export const Lineup = () => {
             Suggest_AMC.map((player) => {
                 ratings.push(player.rating);
             })
-        
+
 
             Suggest_AMC.map((player) => {
                 if (player.rating === (Math.max(...ratings))) {
-                  
-                    best_AMC = player.id;
+
+                    best_AMC1 = player.id;
+                    setBest_Att_Mid_Center1(best_AMC1);
+
+                }
+            })
+
+            Suggest_AMC.map((player) => {
+                if (player.rating === (secondMax(ratings))) {
+
+                    best_AMC2 = player.id;
+                    setBest_Att_Mid_Center2(best_AMC2);
 
                 }
             })
@@ -1706,12 +1997,22 @@ export const Lineup = () => {
             Suggest_AMR.map((player) => {
                 ratings.push(player.rating);
             })
-        
+
 
             Suggest_AMR.map((player) => {
                 if (player.rating === (Math.max(...ratings))) {
-                    
-                    best_AMR = player.id;
+
+                    best_AMR1 = player.id;
+                    setBest_Att_Mid_Right1(best_AMR1);
+
+                }
+            })
+
+            Suggest_AMR.map((player) => {
+                if (player.rating === (secondMax(ratings))) {
+
+                    best_AMR2 = player.id;
+                    setBest_Att_Mid_Right2(best_AMR2);
 
                 }
             })
@@ -1724,13 +2025,21 @@ export const Lineup = () => {
             Suggest_AML.map((player) => {
                 ratings.push(player.rating);
             })
-          
+
 
             Suggest_AML.map((player) => {
                 if (player.rating === (Math.max(...ratings))) {
-                   
-                    best_AML = player.id;
 
+                    best_AML1 = player.id;
+                    setBest_Att_Mid_Left1(best_AML1);
+                }
+            })
+
+            Suggest_AML.map((player) => {
+                if (player.rating === (secondMax(ratings))) {
+
+                    best_AML2 = player.id;
+                    setBest_Att_Mid_Left2(best_AML2);
                 }
             })
 
@@ -1741,10 +2050,11 @@ export const Lineup = () => {
             Suggest_Midfielder.map((player) => {
                 ratings.push(player.rating);
             })
-          
+
             Suggest_Midfielder.map((player) => {
                 if (player.rating === (Math.max(...ratings))) {
                     best_Midfielder1 = player.id;
+                    setBest_Midfielder1(best_Midfielder1);
 
                 }
 
@@ -1752,9 +2062,18 @@ export const Lineup = () => {
             Suggest_Midfielder.map((player) => {
                 if (player.rating === (secondMax(ratings))) {
                     best_Midfielder2 = player.id;
+                    setBest_Midfielder2(best_Midfielder2);
 
                 }
 
+            })
+
+            Suggest_Midfielder.map((player) => {
+                if (player.rating === (thirdLargest(ratings, ratings.length))) {
+                    best_Midfielder3 = player.id;
+                    setBest_Midfielder3(best_Midfielder3);
+
+                }
             })
 
 
@@ -1769,11 +2088,12 @@ export const Lineup = () => {
             Suggest_Central_Defender.map((player) => {
                 ratings.push(player.rating);
             })
-           
+
 
             Suggest_Central_Defender.map((player) => {
                 if (player.rating === (Math.max(...ratings))) {
                     best_Central_Defender1 = player.id;
+                    setBest_Central_Defender1(best_Central_Defender1);
 
                 }
             })
@@ -1781,13 +2101,23 @@ export const Lineup = () => {
 
             Suggest_Central_Defender.map((player) => {
                 if (player.rating === (secondMax(ratings))) {
-                   
+
                     best_Central_Defender2 = player.id;
+                    setBest_Central_Defender2(best_Central_Defender2);
 
                 }
             })
 
-            
+            Suggest_Central_Defender.map((player) => {
+                if (player.rating === (thirdLargest(ratings, ratings.length))) {
+
+                    best_Central_Defender3 = player.id;
+                    setBest_Central_Defender3(best_Central_Defender3);
+
+                }
+            })
+
+
 
 
 
@@ -1798,12 +2128,21 @@ export const Lineup = () => {
             Suggest_Right_Defender.map((player) => {
                 ratings.push(player.rating);
             })
-          
+
 
             Suggest_Right_Defender.map((player) => {
                 if (player.rating === (Math.max(...ratings))) {
-                    
-                    best_Right_Defender = player.id;
+
+                    best_Right_Defender1 = player.id;
+                    setBest_Right_Defender1(best_Right_Defender1);
+
+                }
+            })
+            Suggest_Right_Defender.map((player) => {
+                if (player.rating === (secondMax(ratings))) {
+
+                    best_Right_Defender2 = player.id;
+                    setBest_Right_Defender2(best_Right_Defender2);
 
                 }
             })
@@ -1815,11 +2154,20 @@ export const Lineup = () => {
             Suggest_Left_Defender.map((player) => {
                 ratings.push(player.rating);
             })
-            
+
 
             Suggest_Left_Defender.map((player) => {
                 if (player.rating === (Math.max(...ratings))) {
-                    best_Left_Defender = player.id;
+                    best_Left_Defender1 = player.id;
+                    setBest_Left_Defender1(best_Left_Defender1);
+
+                }
+            })
+
+            Suggest_Left_Defender.map((player) => {
+                if (player.rating === (secondMax(ratings))) {
+                    best_Left_Defender2 = player.id;
+                    setBest_Left_Defender2(best_Left_Defender2);
 
                 }
             })
@@ -1836,11 +2184,27 @@ export const Lineup = () => {
 
             Suggest_Goallkeeper.map((player) => {
                 if (player.rating === (Math.max(...ratings))) {
-                    best_Goalkeeper = player.id;
-
+                    best_Goalkeeper1 = player.id;
+                    setBest_Goalkeeper1(best_Goalkeeper1);
                 }
             })
 
+
+            Suggest_Goallkeeper.map((player) => {
+                if (player.rating === (Math.max(...ratings))) {
+                    best_Goalkeeper1 = player.id;
+                    setBest_Goalkeeper1(best_Goalkeeper1);
+                }
+            })
+
+            Suggest_Goallkeeper.map((player) => {
+                if (player.rating === (secondMax(ratings))) {
+                    best_Goalkeeper2 = player.id;
+                    setBest_Goalkeeper2(best_Goalkeeper2);
+                    console.log(best_Goalkeeper2)
+                }
+
+            })
 
 
 
@@ -1861,16 +2225,16 @@ export const Lineup = () => {
         findBestLineup();
 
         console.log("this is the best forward ")
-        console.log(best_Forward);
+        console.log(best_Forward1);
 
         console.log("this is the best AMC ")
-        console.log(best_AMC);
+        console.log(best_AMC1);
 
         console.log("this is the best AMR ")
-        console.log(best_AMR);
+        console.log(best_AMR1);
 
         console.log("this is the best AML")
-        console.log(best_AML);
+        console.log(best_AML1);
 
         console.log("this is the best midfielder")
         console.log(best_Midfielder1);
@@ -1883,14 +2247,17 @@ export const Lineup = () => {
         console.log(best_Central_Defender2);
 
         console.log("this is the best right defender")
-        console.log(best_Right_Defender);
+        console.log(best_Right_Defender1);
 
         console.log("this is the best left defender")
-        console.log(best_Left_Defender);
+        console.log(best_Left_Defender1);
 
 
         console.log("this is the best goalkeeper")
-        console.log(best_Goalkeeper);
+        console.log(best_Goalkeeper1);
+
+        console.log("this is the second best goalkeeper")
+        console.log(best_Goalkeeper1);
     }
 
 
@@ -1918,35 +2285,35 @@ export const Lineup = () => {
                         <div class="bottom-box"></div>
 
                         <div className='forward'>
-                            <Player />
+                            <Player player={best_for1} />
                         </div>
 
 
 
                         <div className='Att_mid'>
-                            <Player />
-                            <Player />
-                            <Player />
+                            <Player player={best_Att_Mid_Left1} />
+                            <Player player={best_Att_Mid_Center1} />
+                            <Player player={best_Att_Mid_Right1} />
                         </div>
 
 
                         <div className='midfielders'>
-                            <Player />
-                            <Player />
+                            <Player player={best_Midfielder2} />
+                            <Player player={best_Midfielder1} />
                         </div>
 
 
                         <div className='defenders'>
-                            <Player />
-                            <Player />
-                            <Player />
-                            <Player />
+                            <Player player={best_Left_Defender1} />
+                            <Player player={best_Central_Defender1} />
+                            <Player player={best_Central_Defender2} />
+                            <Player player={best_Right_Defender1} />
                         </div>
 
 
 
                         <div className='goalkeeper'>
-                            <Player />
+                            <Player player={best_Goalkeeper1} />
                         </div>
 
 
@@ -1980,10 +2347,10 @@ export const Lineup = () => {
 
                         <div className='row sub2'>
                             <div className='col-3 sub2'>
-                                <Player />
+                                <Player player={best_Goalkeeper2} />
                             </div>
                             <div className='col-3 sub2'>
-                                <Player />
+                                <Player player={best_Att_Mid_Center2} />
                             </div>
                             <div className='col-3 button_sub'>
                                 <button className='Suggested' onClick={suggested_lineup}>Suggested Lineup</button>
@@ -1992,10 +2359,10 @@ export const Lineup = () => {
                         </div>
                         <div className='row'>
                             <div className='col-3 sub2'>
-                                <Player />
+                                <Player player={best_Att_Mid_Left2} />
                             </div>
                             <div className='col-3 sub2'>
-                                <Player />
+                                <Player player={best_Att_Mid_Right2} />
                             </div>
                             <div className='col-3 button_sub'>
                                 <button className='Injuries' onClick={() => setOpenModalInjured(true)}>Injuries</button>
@@ -2004,25 +2371,25 @@ export const Lineup = () => {
                         </div>
                         <div className='row'>
                             <div className='col-3 sub2'>
-                                <Player />
+                                <Player player={best_for2} />
                             </div>
                             <div className='col-3 sub2'>
-                                <Player />
-                            </div>
-
-                        </div>
-                        <div className='row'>
-                            <div className='col-3 sub2'>
-                                <Player />
-                            </div>
-                            <div className='col-3 sub2'>
-                                <Player />
+                                <Player player={best_Left_Defender2} />
                             </div>
 
                         </div>
                         <div className='row'>
                             <div className='col-3 sub2'>
-                                <Player />
+                                <Player player={best_Right_Defender2} />
+                            </div>
+                            <div className='col-3 sub2'>
+                                <Player player={best_Midfielder3} />
+                            </div>
+
+                        </div>
+                        <div className='row'>
+                            <div className='col-3 sub2'>
+                                <Player player={best_Central_Defender3} />
                             </div>
 
                         </div>

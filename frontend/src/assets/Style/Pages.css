@@ -57,18 +57,43 @@
 .scrollBtnLeft{
     border-radius: 8px;
     position: absolute;
-    background-color: rgb(133, 115, 115);
-    color:white;
+    background-color: rgb(231, 231, 231);
+    color:black;
     width: 5%;
     height: 4%;
 }
+
+.popUpMessage{
+    font-size: 200%;
+    font-weight: 900;
+}
+.PlayerName{
+    color:rgb(117, 186, 218);
+    text-decoration: underline;
+}
+
+.MessAprroved{
+    color:#538c2b;
+    text-decoration: underline;
+}
+.MessDeclined{
+    color:rgb(117, 0, 0);
+    text-decoration: underline;
+}
+.alink{
+    text-decoration: none;
+    color: black;
+}
+
+
+
 
 .scrollBtnRight{
     border-radius: 8px;
     position: absolute;
     justify-content: space-around;
-    background-color: rgb(133, 115, 115);
-    color:white;
+    background-color: rgb(231, 231, 231);
+    color:black;
     width: 5%;
     height: 4%;
 }
@@ -161,7 +186,7 @@
     width: fit-content;
     border-radius: 7px;
     color:white;
-    background-color: rgb(136, 4, 15);
+    background-color: rgb(114, 68, 79);
     font-size: 80%;
 
 }
@@ -268,7 +293,7 @@
 
 
 .forward{
-    margin-top: 5%;
+    margin-top: 4%;
     margin-left: 40%;
     width: 20%;
 
@@ -479,7 +504,9 @@
     .table{
         font-size: 90%;
     }
-    
+    .Myteam{
+        width: 7rem;
+    }
 }
 
 

@@ -13,6 +13,7 @@ export const SignUpMessage = () => {
                     You wil be informed for its progress via e-mail.
                 </div>
             </div>
+
         </div>
     </div>;
 };

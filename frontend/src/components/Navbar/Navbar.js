@@ -12,6 +12,7 @@ import ModalSettings from '../Modal/ModalSettings';
 import { Modal } from 'react-bootstrap'
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import CustomPopup from '../../Pages/Admin/PopUp';
 
 const Navbar = () => {
 
@@ -40,9 +41,7 @@ const Navbar = () => {
         let errors = {}
 
 
-        if (!values.username.trim()) {
-            errors.username = "Username required"
-        }
+
 
         if (!values.email) {
             errors.email = "Email required"
@@ -51,7 +50,7 @@ const Navbar = () => {
         }
 
         if (!values.password) {
-            errors.password = "Password is required"
+            errors.password = "Password is required!"
         } else if (values.password.length < 6) {
             errors.password = 'Password must be more than 6 characters'
         }
@@ -63,13 +62,7 @@ const Navbar = () => {
 
         }
 
-        if (!values.name) {
-            errors.name = "Name is required"
-        }
 
-        if (!values.surname) {
-            errors.surname = "Surname is required"
-        }
 
         return errors;
     }
@@ -85,9 +78,11 @@ const Navbar = () => {
         console.log(values)
     };
     const hadleSubmit = e => {
-        e.preventDefault();
         setErrors(validate(values));
         setIsSubmiting(true);
+        setValues("")
+        // e.preventDefault();
+
     };
 
     useEffect(() => {
@@ -110,10 +105,18 @@ const Navbar = () => {
         setShow(true)
     }
 
-    const confirm_f =()=>{
+    const confirm_f = () => {
+        hadleSubmit();
         setShow(false);
         setEdit(!edit);
     }
+
+
+    const [visibility, setVisibility] = useState(false);
+
+    const popupCloseHandler = (e) => {
+        setVisibility(e);
+    };
 
     return (
         <>
@@ -183,39 +186,44 @@ const Navbar = () => {
                 </Modal.Header>
 
                 {!edit && <div className=' container_settings' >
-                    <form className='form_settings' onSubmit={hadleSubmit}>
+                    <form className='form_settings'>
 
                         <div className='form-inputs_settings'>
                             <label htmlFor='email' className='form-label'>
                                 E-mail
                             </label>
-                            <input
-                                id='email'
-                                type='email'
-                                name='email'
-                                className='form-input'
-                                placeholder='Enter your email'
-                                value={values.email}
-                                onChange={hadleChange}
-                            />
-                            {errors.email && <p>{errors.email}</p>}
+                            <div className='user_email'>
+                                strgiorgos@gmail.com
+                            </div>
                         </div>
                         <div className='form-inputs_settings'>
                             <label htmlFor='password_settings'
                                 className='form-label'>
-                                Password
+                                Username
                             </label>
-                            <input type='password_settings'
-                                name='password'
-                                className='form-input'
-                                placeholder='Enter your password'
-                                value={values.password}
-                                onChange={hadleChange}
-                            />
-                            {errors.password && <p>{errors.password}</p>}
+                            <div className='user_password'>
+                                stratos123
+                            </div>
                         </div>
                         <button className='Btn_settings' type='submit' onClick={() => setEdit(!edit)}>Edit</button>
+                        <div className='col-12'>
+                            <button className='Btn_settings_Delete' onClick={() => setVisibility(!visibility)}>Delete Account</button>
+                            {console.log(visibility)}
+                            <CustomPopup
+                                onClose={popupCloseHandler, () => setVisibility(!visibility)}
+                                show={visibility}
+                            >
+                                <div className='popUpMessage'>
+                                    Are you sure you want to delete your account?
+                                    <div className='YES_NO_BTNS'>
+                                        <button className='Yesbtn' onClick={() => setVisibility(!visibility)}>Yes</button>
+                                        <button className='NoBtn' onClick={() => setVisibility(!visibility)}>No</button>
+                                    </div>
+                                </div>
+                            </CustomPopup>
+                        </div>
                     </form>
+
 
                 </div>
                 }
@@ -241,12 +249,26 @@ const Navbar = () => {
                         <div className='form-inputs_settings'>
                             <label htmlFor='password_settings'
                                 className='form-label'>
-                                *New Password
+                                *Password
                             </label>
                             <input type='password_settings'
                                 name='password'
                                 className='form-input'
                                 placeholder='Enter your password'
+                                value={values.password}
+                                onChange={hadleChange}
+                            />
+                            {errors.password && <p>{errors.password}</p>}
+                        </div>
+                        <div className='form-inputs_settings'>
+                            <label htmlFor='password_settings'
+                                className='form-label'>
+                                *New Password
+                            </label>
+                            <input type='password_settings'
+                                name='password'
+                                className='form-input'
+                                placeholder='Enter your newpassword'
                                 value={values.password}
                                 onChange={hadleChange}
                             />
@@ -260,13 +282,15 @@ const Navbar = () => {
                             <input type='password_settings'
                                 name='password2'
                                 className='form-input'
-                                placeholder='Verify your password'
+                                placeholder='Verify your new password'
                                 value={values.password2}
                                 onChange={hadleChange}
                             />
                             {errors.password2 && <p>{errors.password2}</p>}
                         </div>
                         <button className='Btn_settings' type='submit' onClick={confirm_f}>Confirm</button>
+                        <button className='Btn_settingsCancel' >Cancel</button>
+
                     </form>
 
                 </div>

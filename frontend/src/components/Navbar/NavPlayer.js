@@ -10,6 +10,8 @@ import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Modal } from 'react-bootstrap'
+import CustomPopup from '../../Pages/Admin/PopUp';
+
 
 
 
@@ -112,6 +114,18 @@ const NavPlayer = () => {
         setShow(false);
         setEdit(!edit);
     }
+
+    const cancel_f = () => {
+        setShow(true);
+        setEdit(!edit);
+    }
+
+    
+    const [visibility, setVisibility] = useState(false);
+
+    const popupCloseHandler = (e) => {
+        setVisibility(e);
+    };
     return (
         <>
 
@@ -170,45 +184,37 @@ const NavPlayer = () => {
                 </Modal.Header>
 
                 {!edit && <div className=' container_settings' >
-                    <form className='form_settings' onSubmit={hadleSubmit}>
+                    <form className='form_settings'>
 
                         <div className='form-inputs_settings'>
                             <label htmlFor='email' className='form-label'>
                                 E-mail
                             </label>
-                            <input
-                                id='email'
-                                type='email'
-                                name='email'
-                                className='form-input'
-                                placeholder='Enter your email'
-                                value={values.email}
-                                onChange={hadleChange}
-                            />
-                            {errors.email && <p>{errors.email}</p>}
+                            <div className='user_email'>
+                                strgiorgos@gmail.com
+                            </div>
                         </div>
                         <div className='form-inputs_settings'>
                             <label htmlFor='password_settings'
                                 className='form-label'>
-                                Password
+                                Username
                             </label>
-                            <input type='password_settings'
-                                name='password'
-                                className='form-input'
-                                placeholder='Enter your password'
-                                value={values.password}
-                                onChange={hadleChange}
-                            />
-                            {errors.password && <p>{errors.password}</p>}
+                            <div className='user_password'>
+                                stratos123
+                            </div>
                         </div>
                         <button className='Btn_settings' type='submit' onClick={() => setEdit(!edit)}>Edit</button>
+                        <div className='col-12'>
+                           
+                        </div>
                     </form>
 
+                
                 </div>
                 }
 
                 {edit && <div className=' container_settings 2' >
-                    <form className='form_settings' onSubmit={hadleSubmit}>
+                    <form className='form_settings' onSubmit={hadleSubmit} >
 
                         <div className='form-inputs_settings'>
                             <label htmlFor='email' className='form-label'>
@@ -228,12 +234,26 @@ const NavPlayer = () => {
                         <div className='form-inputs_settings'>
                             <label htmlFor='password_settings'
                                 className='form-label'>
-                                *New Password
+                                *Password
                             </label>
                             <input type='password_settings'
                                 name='password'
                                 className='form-input'
                                 placeholder='Enter your password'
+                                value={values.password}
+                                onChange={hadleChange}
+                            />
+                            {errors.password && <p>{errors.password}</p>}
+                        </div>
+                        <div className='form-inputs_settings'>
+                            <label htmlFor='password_settings'
+                                className='form-label'>
+                                *New Password
+                            </label>
+                            <input type='password_settings'
+                                name='password'
+                                className='form-input'
+                                placeholder='Enter your newpassword'
                                 value={values.password}
                                 onChange={hadleChange}
                             />
@@ -247,13 +267,15 @@ const NavPlayer = () => {
                             <input type='password_settings'
                                 name='password2'
                                 className='form-input'
-                                placeholder='Verify your password'
+                                placeholder='Verify your new password'
                                 value={values.password2}
                                 onChange={hadleChange}
                             />
                             {errors.password2 && <p>{errors.password2}</p>}
                         </div>
                         <button className='Btn_settings' type='submit' onClick={confirm_f}>Confirm</button>
+                        <button className='Btn_settingsCancel' onClick={cancel_f}>Cancel</button>
+
                     </form>
 
                 </div>
@@ -261,6 +283,7 @@ const NavPlayer = () => {
 
                 </Modal.Footer>
             </Modal>
+
 
 
         </>

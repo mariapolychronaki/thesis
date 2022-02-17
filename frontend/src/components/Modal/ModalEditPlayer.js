@@ -17,7 +17,7 @@ import ModalForward from './ModalForward'
 import ModalInjured from './ModalInjured'
 
 
-const ModalEditPlayer = ({ closeModalEditPlayer }) => {
+const ModalEditPlayer = ({ closeModalEditPlayer ,player}) => {
 
     const [OpenModalGoalkeeper, setOpenModalGoalkeeper] = useState(false);
     const [OpenModalCentralDefender, setOpenModalCentralDefender] = useState(false);
@@ -106,7 +106,7 @@ const ModalEditPlayer = ({ closeModalEditPlayer }) => {
                     <button className='x' onClick={() => closeModalEditPlayer(false)}>X</button>
                 </div>
                 <div className='col-12 title'>
-                    Player Name
+                   {player.name}  {player.surname} 
                 </div>
                 <div className='modalbodyPlayerEdit'>
 
@@ -121,7 +121,7 @@ const ModalEditPlayer = ({ closeModalEditPlayer }) => {
                             </div>
                             <div className='col-4 '>
 
-                                <Dropdown_nationality />
+                                <Dropdown_nationality nationality={player.nationality} />
                             </div>
                         </div>
 

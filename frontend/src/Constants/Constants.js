@@ -131,7 +131,7 @@ export const arrayplayersRating = [
         Agility: "7",
         Team_work: "7",
         Leadership: "8",
-        Tactics: "6",
+        Reflexes: "6",
         Communication: "5",
         Shot_stopping: "9.5",
         Kicking: "6",
@@ -140,6 +140,7 @@ export const arrayplayersRating = [
         One_on_ones: "10",
         Rushing_out: "5",
         Positioning: "7"
+
 
     },
     {
@@ -150,7 +151,7 @@ export const arrayplayersRating = [
         Agility: "8",
         Team_work: "8",
         Leadership: "5",
-        Tactics: "7",
+        Reflexes: "7",
         Communication: "6",
         Shot_stopping: "6",
         Kicking: "9",
@@ -489,7 +490,7 @@ export const arrayplayersRating = [
         Stamina: "5",
         Composure: "7",
         Shots: "7",
-        Finishing: "5"
+        Finishing: "5x"
 
 
 
@@ -497,18 +498,18 @@ export const arrayplayersRating = [
     {
         name: "Ioannis",
         surname: "Xristoforakis",
-        Personality: "6",
-        Experience: "6",
+        Personality: "7",
+        Experience: "7",
         Agility: "7",
-        Team_work: "5",
+        Team_work: "6",
         Leadership: "6",
-        Tactics: "6",
+        Tactics: "7",
         Communication: "6",
         Pace: "10",
-        Strength: "5",
+        Strength: "6",
         Technique: "7",
-        One_on_ones: "4",
-        Dribbling: "5",
+        One_on_ones: "6",
+        Dribbling: "7",
         Crossing: "7",
         Aerial_ability: "5",
         Stamina: "9",
@@ -547,20 +548,20 @@ export const arrayplayersRating = [
         name: "Konstantinos",
         surname: "Nodarakis",
         Personality: "6",
-        Experience: "6",
-        Agility: "6",
-        Team_work: "5",
+        Experience: "4",
+        Agility: "5",
+        Team_work: "4",
         Leadership: "6",
-        Tactics: "5",
+        Tactics: "4",
         Communication: "5",
-        Pace: "9",
+        Pace: "7",
         Strength: "8",
-        Technique: "8",
-        One_on_ones: "7",
-        Dribbling: "7",
+        Technique: "7",
+        One_on_ones: "5",
+        Dribbling: "6",
         Crossing: "7",
         Aerial_ability: "5",
-        Stamina: "9",
+        Stamina: "7",
         Composure: "7",
         Shots: "8",
         Finishing: "8"
@@ -1396,256 +1397,1219 @@ export const arrayPlayerTrainingRating5 = [
 
 
 
+export const totalMatchRatings = [
+    {
+        name: "Nikolaos",
+        surname: "Chronakis",
+        matches: [{
+            Rating: "4",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "2",
+        },
+        {
+            Rating: "6",
+        }]
+    },
+
+    {
+        name: "Emmanouil ",
+        surname: "Kornilakis",
+        matches: [{
+            Rating: "5",
+        },
+        {
+            Rating: "3",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "5",
+        }]
+    },
+    {
+        name: "Georgios ",
+        surname: "Klados",
+        matches: [{
+            Rating: "6",
+        },
+        {
+            Rating: "7",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "8",
+        },
+        {
+            Rating: "5",
+        }]
+    },
+
+    {
+        name: "Konstintinos",
+        surname: "Drakakis",
+        matches: [{
+            Rating: "6",
+        },
+        {
+            Rating: "7",
+        },
+        {
+            Rating: "4",
+        },
+        {
+            Rating: "9",
+        },
+        {
+            Rating: "5",
+        }]
+    },
+    {
+        name: "Ioannis ",
+        surname: "Giounga",
+        matches: [{
+            Rating: "7",
+        },
+        {
+            Rating: "7",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "8",
+        },
+        {
+            Rating: "5",
+        }]
+    },
+    {
+        name: "Ioannis ",
+        surname: "Paxakis",
+        matches: [{
+            Rating: "7",
+        },
+        {
+            Rating: "4",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "3",
+        },
+        {
+            Rating: "6",
+        }]
+    },
+    {
+        name: "Georgios ",
+        surname: "Makrogiannakis",
+        matches: [{
+            Rating: "5",
+        },
+        {
+            Rating: "7",
+        },
+        {
+            Rating: "7",
+        },
+        {
+            Rating: "7",
+        },
+        {
+            Rating: "5",
+        }]
+    },
+    {
+        name: "Emmanouil ",
+        surname: "Dorgiomanolakis",
+        matches: [{
+            Rating: "5",
+        },
+        {
+            Rating: "5",
+        },
+        {
+            Rating: "5",
+        },
+        {
+            Rating: "4",
+        },
+        {
+            Rating: "5",
+        }]
+    },
+    {
+        name: "Marios ",
+        surname: "Xotza",
+        matches: [{
+            Rating: "5",
+        },
+        {
+            Rating: "8",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "4",
+        },
+        {
+            Rating: "5",
+        }]
+    },
+    {
+        name: "Vasilios",
+        surname: "Vardis",
+        matches: [{
+            Rating: "6",
+        },
+        {
+            Rating: "8",
+        },
+        {
+            Rating: "8",
+        },
+        {
+            Rating: "8",
+        },
+        {
+            Rating: "4",
+        }]
+    },
+    {
+        name: "Michail ",
+        surname: "Fournarakis",
+        matches: [{
+            Rating: "6",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "8",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "5",
+        }]
+    },
+    {
+        name: "Gergios ",
+        surname: "Stratakis",
+        matches: [{
+            Rating: "7",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "8",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "6",
+        }]
+    },
+    {
+        name: "Michail ",
+        surname: "Kefakis",
+        matches: [{
+            Rating: "6",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "5",
+        }]
+    },
+    {
+        name: "Ioannis",
+        surname: "Anifantakis",
+        matches: [{
+            Rating: "6",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "8",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "5",
+        }]
+    },
+    {
+        name: "Nikolaos",
+        surname: "Troulakis",
+        matches: [{
+            Rating: "6",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "8",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "5",
+        }]
+    },
+    {
+        name: "Nikolaos",
+        surname: "Kousidis",
+        matches: [{
+            Rating: "3",
+        },
+        {
+            Rating: "4",
+        },
+        {
+            Rating: "1",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "5",
+        }]
+    },
+    {
+        name: "Ioannis",
+        surname: "Xristoforakis",
+        matches: [{
+            Rating: "3",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "8",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "5",
+        }]
+    },
+    {
+        name: "Konstantinos ",
+        surname: "Nodarakis",
+        matches: [{
+            Rating: "6",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "5",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "5",
+        }]
+    },
+    {
+        name: "Alexandros",
+        surname: "Bernikou",
+        matches: [{
+            Rating: "6",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "3",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "5",
+        }]
+    },
+
+    {
+        name: "Konstantinos ",
+        surname: "Kafousis",
+        matches: [{
+            Rating: "6",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "5",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "5",
+        }]
+    },
+
+    {
+        name: "Nikolaos",
+        surname: "Drakoulis",
+        matches: [{
+            Rating: "6",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "5",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "5",
+        }]
+    },
+    {
+        name: "Emmanouil",
+        surname: "Pexynakis",
+        matches: [{
+            Rating: "6",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "5",
+        },
+        {
+            Rating: "6",
+        },
+        {
+            Rating: "5",
+        }]
+    },
+
+]
+
+
+
+export const totalTrainingRatings = [
+    {
+        name: "Nikolaos",
+        surname: "Chronakis",
+        trainings: [{
+            Behaviour: "6.5",
+            Rating: "4",
+        },
+        {
+            Behaviour: "7",
+            Rating: "6",
+        },
+        {
+            Behaviour: "7",
+            Rating: "6",
+        },
+        {
+            Behaviour: "5",
+            Rating: "2",
+        },
+        {
+            Behaviour: "9",
+            Rating: "6",
+        }]
+    },
+
+    {
+        name: "Emmanouil ",
+        surname: "Kornilakis",
+        trainings: [{
+            Behaviour: "6",
+            Rating: "5",
+        },
+        {
+            Behaviour: "5",
+            Rating: "3",
+        },
+        {
+            Behaviour: "4",
+            Rating: "6",
+        },
+        {
+            Behaviour: "5",
+            Rating: "6",
+        },
+        {
+            Behaviour: "7",
+            Rating: "5",
+        }]
+    },
+    {
+        name: "Georgios ",
+        surname: "Klados",
+        trainings: [{
+            Behaviour: "4",
+            Rating: "6",
+        },
+        {
+            Behaviour: "8",
+            Rating: "7",
+        },
+        {
+            Behaviour: "4",
+            Rating: "6",
+        },
+        {
+            Behaviour: "5",
+            Rating: "8",
+        },
+        {
+            Behaviour: "7",
+            Rating: "5",
+        }]
+    },
+
+    {
+        name: "Konstintinos",
+        surname: "Drakakis",
+        trainings: [{
+            Behaviour: "6",
+            Rating: "6",
+        },
+        {
+            Behaviour: "5",
+            Rating: "7",
+        },
+        {
+            Behaviour: "5",
+            Rating: "4",
+        },
+        {
+            Behaviour: "5",
+            Rating: "9",
+        },
+        {
+            Behaviour: "7",
+            Rating: "5",
+        }]
+    },
+    {
+        name: "Ioannis ",
+        surname: "Giounga",
+        trainings: [{
+            Behaviour: "6",
+            Rating: "7",
+        },
+        {
+            Behaviour: "8",
+            Rating: "7",
+        },
+        {
+            Behaviour: "8",
+            Rating: "6",
+        },
+        {
+            Behaviour: "5",
+            Rating: "8",
+        },
+        {
+            Behaviour: "6",
+            Rating: "5",
+        }]
+    },
+    {
+        name: "Ioannis ",
+        surname: "Paxakis",
+        trainings: [{
+            Behaviour: "6",
+            Rating: "7",
+        },
+        {
+            Behaviour: "8",
+            Rating: "4",
+        },
+        {
+            Behaviour: "4",
+            Rating: "6",
+        },
+        {
+            Behaviour: "5",
+            Rating: "3",
+        },
+        {
+            Behaviour: "7",
+            Rating: "6",
+        }]
+    },
+    {
+        name: "Georgios ",
+        surname: "Makrogiannakis",
+        trainings: [{
+            Behaviour: "5",
+            Rating: "5",
+        },
+        {
+            Behaviour: "3",
+            Rating: "7",
+        },
+        {
+            Behaviour: "4",
+            Rating: "7",
+        },
+        {
+            Behaviour: "5",
+            Rating: "7",
+        },
+        {
+            Behaviour: "7",
+            Rating: "5",
+        }]
+    },
+    {
+        name: "Emmanouil ",
+        surname: "Dorgiomanolakis",
+        trainings: [{
+            Behaviour: "6",
+            Rating: "5",
+        },
+        {
+            Behaviour: "6",
+            Rating: "5",
+        },
+        {
+            Behaviour: "7",
+            Rating: "5",
+        },
+        {
+            Behaviour: "5",
+            Rating: "4",
+        },
+        {
+            Behaviour: "9",
+            Rating: "5",
+        }]
+    },
+    {
+        name: "Marios ",
+        surname: "Xotza",
+        trainings: [{
+            Behaviour: "7",
+            Rating: "5",
+        },
+        {
+            Behaviour: "6",
+            Rating: "8",
+        },
+        {
+            Behaviour: "7",
+            Rating: "6",
+        },
+        {
+            Behaviour: "5",
+            Rating: "4",
+        },
+        {
+            Behaviour: "9",
+            Rating: "5",
+        }]
+    },
+    {
+        name: "Vasilios",
+        surname: "Vardis",
+        trainings: [{
+            Behaviour: "7",
+            Rating: "6",
+        },
+        {
+            Behaviour: "6",
+            Rating: "8",
+        },
+        {
+            Behaviour: "7",
+            Rating: "8",
+        },
+        {
+            Behaviour: "5",
+            Rating: "8",
+        },
+        {
+            Behaviour: "5",
+            Rating: "4",
+        }]
+    },
+    {
+        name: "Michail ",
+        surname: "Fournarakis",
+        trainings: [{
+            Behaviour: "7",
+            Rating: "6",
+        },
+        {
+            Behaviour: "6",
+            Rating: "6",
+        },
+        {
+            Behaviour: "7",
+            Rating: "8",
+        },
+        {
+            Behaviour: "8",
+            Rating: "6",
+        },
+        {
+            Behaviour: "9",
+            Rating: "5",
+        }]
+    },
+    {
+        name: "Gergios ",
+        surname: "Stratakis",
+        trainings: [{
+            Behaviour: "7",
+            Rating: "7",
+        },
+        {
+            Behaviour: "6",
+            Rating: "6",
+        },
+        {
+            Behaviour: "7",
+            Rating: "8",
+        },
+        {
+            Behaviour: "8",
+            Rating: "6",
+        },
+        {
+            Behaviour: "9",
+            Rating: "6",
+        }]
+    },
+    {
+        name: "Michail ",
+        surname: "Kefakis",
+        trainings: [{
+            Behaviour: "7",
+            Rating: "6",
+        },
+        {
+            Behaviour: "3",
+            Rating: "6",
+        },
+        {
+            Behaviour: "7",
+            Rating: "6",
+        },
+        {
+            Behaviour: "6",
+            Rating: "6",
+        },
+        {
+            Behaviour: "7",
+            Rating: "5",
+        }]
+    },
+    {
+        name: "Ioannis",
+        surname: "Anifantakis",
+        trainings: [{
+            Behaviour: "6",
+            Rating: "6",
+        },
+        {
+            Behaviour: "6",
+            Rating: "6",
+        },
+        {
+            Behaviour: "5",
+            Rating: "8",
+        },
+        {
+            Behaviour: "6",
+            Rating: "6",
+        },
+        {
+            Behaviour: "7",
+            Rating: "5",
+        }]
+    },
+    {
+        name: "Nikolaos",
+        surname: "Troulakis",
+        trainings: [{
+            Behaviour: "6",
+            Rating: "6",
+        },
+        {
+            Behaviour: "6",
+            Rating: "6",
+        },
+        {
+            Behaviour: "5",
+            Rating: "8",
+        },
+        {
+            Behaviour: "8",
+            Rating: "6",
+        },
+        {
+            Behaviour: "8",
+            Rating: "5",
+        }]
+    },
+    {
+        name: "Nikolaos",
+        surname: "Kousidis",
+        trainings: [{
+            Behaviour: "2",
+            Rating: "3",
+        },
+        {
+            Behaviour: "6",
+            Rating: "4",
+        },
+        {
+            Behaviour: "1",
+            Rating: "1",
+        },
+        {
+            Behaviour: "8",
+            Rating: "6",
+        },
+        {
+            Behaviour: "6",
+            Rating: "5",
+        }]
+    },
+    {
+        name: "Ioannis",
+        surname: "Xristoforakis",
+        trainings: [{
+            Behaviour: "6",
+            Rating: "3",
+        },
+        {
+            Behaviour: "6",
+            Rating: "6",
+        },
+        {
+            Behaviour: "7",
+            Rating: "8",
+        },
+        {
+            Behaviour: "8",
+            Rating: "6",
+        },
+        {
+            Behaviour: "8",
+            Rating: "5",
+        }]
+    },
+    {
+        name: "Konstantinos ",
+        surname: "Nodarakis",
+        trainings: [{
+            Behaviour: "3",
+            Rating: "6",
+        },
+        {
+            Behaviour: "6",
+            Rating: "6",
+        },
+        {
+            Behaviour: "4",
+            Rating: "5",
+        },
+        {
+            Behaviour: "4",
+            Rating: "6",
+        },
+        {
+            Behaviour: "9",
+            Rating: "5",
+        }]
+    },
+    {
+        name: "Alexandros",
+        surname: "Bernikou",
+        trainings: [{
+            Behaviour: "4",
+            Rating: "6",
+        },
+        {
+            Behaviour: "6",
+            Rating: "6",
+        },
+        {
+            Behaviour: "7",
+            Rating: "3",
+        },
+        {
+            Behaviour: "8",
+            Rating: "6",
+        },
+        {
+            Behaviour: "6",
+            Rating: "5",
+        }]
+    },
+
+    {
+        name: "Konstantinos ",
+        surname: "Kafousis",
+        trainings: [{
+            Behaviour: "7",
+            Rating: "6",
+        },
+        {
+            Behaviour: "6",
+            Rating: "6",
+        },
+        {
+            Behaviour: "7",
+            Rating: "5",
+        },
+        {
+            Behaviour: "8",
+            Rating: "6",
+        },
+        {
+            Behaviour: "6",
+            Rating: "5",
+        }]
+    },
+
+    {
+        name: "Nikolaos",
+        surname: "Drakoulis",
+        trainings: [{
+            Behaviour: "5",
+            Rating: "6",
+        },
+        {
+            Behaviour: "6",
+            Rating: "6",
+        },
+        {
+            Behaviour: "7",
+            Rating: "5",
+        },
+        {
+            Behaviour: "7",
+            Rating: "6",
+        },
+        {
+            Behaviour: "6",
+            Rating: "5",
+        }]
+    },
+    {
+        name: "Emmanouil",
+        surname: "Pexynakis",
+        trainings: [{
+            Behaviour: "4",
+            Rating: "6",
+        },
+        {
+            Behaviour: "6",
+            Rating: "6",
+        },
+        {
+            Behaviour: "7",
+            Rating: "5",
+        },
+        {
+            Behaviour: "8",
+            Rating: "6",
+        },
+        {
+            Behaviour: "2",
+            Rating: "5",
+        }]
+    },
+
+]
 
 
 
 export const arrayPlayerMatchRating1 = [
 
-	{
-	name:"Nikolaos",
-	surname:"Chronakis",
-	Rating:"6" 
-	},
-	{
-	name:"Emmanouil",
-	surname:"Kornilakis",
-	Rating:"6" 
-	},
-	{
-	name:"Georgios",
-	surname:"Klados",	
-	Rating:"6" 
-	},
-	{
-	name:"Konstantinos",
-	surname:"Drakakis",
-	Rating:"8" 
-	},
-	{
-	name:"Ioannis",
-	surname:"Giounga",
-	Rating:"8" 
-	},
-	{
-	name:"Emmanouil",
-	surname:"Kornilakis",
-	Rating:"8" 
-	},
-	{
-	name:"Emmanouil",
-	surname:"Kornilakis",	
-	Rating:"8" 
-	},
-	{
-	name:"Ioannis",
-	surname:"Paxakis",	
-	Rating:"8" 
-	},
-	{
-	name:"Georgios",
-	surname:"Makrogiannakis",	
-	Rating:"9" 
-	},
-	{
-	name:"Emmanouil",
-	surname:"Dorgiomanolakis",	
-	Rating:"9" 
-	},
-	{
-	name:"Marios",
-	surname:"Xotza",	
-	Rating:"9" 
-	},
-	{
-	name:"Vasilios",
-	surname:"Vardis",	
-	Rating:"9" 
-	},
-	{
-	name:"Michail",
-	surname:"Fournarakis",	
-	Rating:"9" 
-	},
-	{
-	name:"Georgios",
-	surname:"Stratakis",	
-	Rating:"8" 
-	},
-	{
-	name:"Michail",
-	surname:"Kefakis",	
-	Rating:"5" 
-	},
-	{
-	name:"Ioannis",
-	surname:"Anifantakis",	
-	Rating:"5" 
-	},
-	{
-	name:"Nikolaos",
-	surname:"Troulakis",	
-	Rating:"8" 
-	},
-	{
-	name:"Nikolaos",
-	surname:"Kousidis",	
-	Rating:"8" 
-	},
-	{
-	name:"Konstantinos",
-	surname:"Kafousis",	
-	Rating:"8" 
-	},
-	{
-	name:"Alexandros",
-	surname:"Bernikou",	
-	Rating:"7" 
-	},
-	{
-	name:"Ioannis",
-	surname:"Xristoforakis",	
-	Rating:"7" 
-	},
-	{
-	name:"Konstantinos",
-	surname:"Nodarakis",	
-	Rating:"7" 
-	},
-	{
-	name:"Nikolaos",
-	surname:"Drakoulis",	
-	Rating:"7" 
-	},
-	{
-	name:"Emmanouil",
-	surname:"Pexynakis",	
-	Rating:"6" 
-	}
+    {
+        name: "Nikolaos",
+        surname: "Chronakis",
+        Rating: "6"
+    },
+    {
+        name: "Emmanouil",
+        surname: "Kornilakis",
+        Rating: "6"
+    },
+    {
+        name: "Georgios",
+        surname: "Klados",
+        Rating: "6"
+    },
+    {
+        name: "Konstantinos",
+        surname: "Drakakis",
+        Rating: "8"
+    },
+    {
+        name: "Ioannis",
+        surname: "Giounga",
+        Rating: "8"
+    },
+    {
+        name: "Emmanouil",
+        surname: "Kornilakis",
+        Rating: "8"
+    },
+    {
+        name: "Emmanouil",
+        surname: "Kornilakis",
+        Rating: "8"
+    },
+    {
+        name: "Ioannis",
+        surname: "Paxakis",
+        Rating: "8"
+    },
+    {
+        name: "Georgios",
+        surname: "Makrogiannakis",
+        Rating: "9"
+    },
+    {
+        name: "Emmanouil",
+        surname: "Dorgiomanolakis",
+        Rating: "9"
+    },
+    {
+        name: "Marios",
+        surname: "Xotza",
+        Rating: "9"
+    },
+    {
+        name: "Vasilios",
+        surname: "Vardis",
+        Rating: "9"
+    },
+    {
+        name: "Michail",
+        surname: "Fournarakis",
+        Rating: "9"
+    },
+    {
+        name: "Georgios",
+        surname: "Stratakis",
+        Rating: "8"
+    },
+    {
+        name: "Michail",
+        surname: "Kefakis",
+        Rating: "5"
+    },
+    {
+        name: "Ioannis",
+        surname: "Anifantakis",
+        Rating: "5"
+    },
+    {
+        name: "Nikolaos",
+        surname: "Troulakis",
+        Rating: "8"
+    },
+    {
+        name: "Nikolaos",
+        surname: "Kousidis",
+        Rating: "8"
+    },
+    {
+        name: "Konstantinos",
+        surname: "Kafousis",
+        Rating: "8"
+    },
+    {
+        name: "Alexandros",
+        surname: "Bernikou",
+        Rating: "7"
+    },
+    {
+        name: "Ioannis",
+        surname: "Xristoforakis",
+        Rating: "7"
+    },
+    {
+        name: "Konstantinos",
+        surname: "Nodarakis",
+        Rating: "7"
+    },
+    {
+        name: "Nikolaos",
+        surname: "Drakoulis",
+        Rating: "7"
+    },
+    {
+        name: "Emmanouil",
+        surname: "Pexynakis",
+        Rating: "6"
+    }
 ]
 
 
 export const arrayPlayerMatchRating2 = [
 
-	{
-	name:"Nikolaos",
-	surname:"Chronakis",
-	Rating:"6" 
-	},
-	{
-	name:"Emmanouil",
-	surname:"Kornilakis",
-	Rating:"6" 
-	},
-	{
-	name:"Georgios",
-	surname:"Klados",	
-	Rating:"6" 
-	},
-	{
-	name:"Konstantinos",
-	surname:"Drakakis",
-	Rating:"7" 
-	},
-	{
-	name:"Ioannis",
-	surname:"Giounga",
-	Rating:"6" 
-	},
-	{
-	name:"Emmanouil",
-	surname:"Kornilakis",
-	Rating:"6" 
-	},
-	{
-	name:"Emmanouil",
-	surname:"Kornilakis",	
-	Rating:"6" 
-	},
-	{
-	name:"Ioannis",
-	surname:"Paxakis",	
-	Rating:"6" 
-	},
-	{
-	name:"Georgios",
-	surname:"Makrogiannakis",	
-	Rating:"6" 
-	},
-	{
-	name:"Emmanouil",
-	surname:"Dorgiomanolakis",	
-	Rating:"7" 
-	},
-	{
-	name:"Marios",
-	surname:"Xotza",	
-	Rating:"7" 
-	},
-	{
-	name:"Vasilios",
-	surname:"Vardis",	
-	Rating:"7" 
-	},
-	{
-	name:"Michail",
-	surname:"Fournarakis",	
-	Rating:"6" 
-	},
-	{
-	name:"Georgios",
-	surname:"Stratakis",	
-	Rating:"7" 
-	},
-	{
-	name:"Michail",
-	surname:"Kefakis",	
-	Rating:"5" 
-	},
-	{
-	name:"Ioannis",
-	surname:"Anifantakis",	
-	Rating:"5" 
-	},
-	{
-	name:"Nikolaos",
-	surname:"Troulakis",	
-	Rating:"6" 
-	},
-	{
-	name:"Nikolaos",
-	surname:"Kousidis",	
-	Rating:"6" 
-	},
-	{
-	name:"Konstantinos",
-	surname:"Kafousis",	
-	Rating:"7" 
-	},
-	{
-	name:"Alexandros",
-	surname:"Bernikou",	
-	Rating:"6" 
-	},
-	{
-	name:"Ioannis",
-	surname:"Xristoforakis",	
-	Rating:"6" 
-	},
-	{
-	name:"Konstantinos",
-	surname:"Nodarakis",	
-	Rating:"6" 
-	},
-	{
-	name:"Nikolaos",
-	surname:"Drakoulis",	
-	Rating:"6" 
-	},
-	{
-	name:"Emmanouil",
-	surname:"Pexynakis",	
-	Rating:"6" 
-	}
+    {
+        name: "Nikolaos",
+        surname: "Chronakis",
+        Rating: "6"
+    },
+    {
+        name: "Emmanouil",
+        surname: "Kornilakis",
+        Rating: "6"
+    },
+    {
+        name: "Georgios",
+        surname: "Klados",
+        Rating: "6"
+    },
+    {
+        name: "Konstantinos",
+        surname: "Drakakis",
+        Rating: "7"
+    },
+    {
+        name: "Ioannis",
+        surname: "Giounga",
+        Rating: "6"
+    },
+    {
+        name: "Emmanouil",
+        surname: "Kornilakis",
+        Rating: "6"
+    },
+    {
+        name: "Emmanouil",
+        surname: "Kornilakis",
+        Rating: "6"
+    },
+    {
+        name: "Ioannis",
+        surname: "Paxakis",
+        Rating: "6"
+    },
+    {
+        name: "Georgios",
+        surname: "Makrogiannakis",
+        Rating: "6"
+    },
+    {
+        name: "Emmanouil",
+        surname: "Dorgiomanolakis",
+        Rating: "7"
+    },
+    {
+        name: "Marios",
+        surname: "Xotza",
+        Rating: "7"
+    },
+    {
+        name: "Vasilios",
+        surname: "Vardis",
+        Rating: "7"
+    },
+    {
+        name: "Michail",
+        surname: "Fournarakis",
+        Rating: "6"
+    },
+    {
+        name: "Georgios",
+        surname: "Stratakis",
+        Rating: "7"
+    },
+    {
+        name: "Michail",
+        surname: "Kefakis",
+        Rating: "5"
+    },
+    {
+        name: "Ioannis",
+        surname: "Anifantakis",
+        Rating: "5"
+    },
+    {
+        name: "Nikolaos",
+        surname: "Troulakis",
+        Rating: "6"
+    },
+    {
+        name: "Nikolaos",
+        surname: "Kousidis",
+        Rating: "6"
+    },
+    {
+        name: "Konstantinos",
+        surname: "Kafousis",
+        Rating: "7"
+    },
+    {
+        name: "Alexandros",
+        surname: "Bernikou",
+        Rating: "6"
+    },
+    {
+        name: "Ioannis",
+        surname: "Xristoforakis",
+        Rating: "6"
+    },
+    {
+        name: "Konstantinos",
+        surname: "Nodarakis",
+        Rating: "6"
+    },
+    {
+        name: "Nikolaos",
+        surname: "Drakoulis",
+        Rating: "6"
+    },
+    {
+        name: "Emmanouil",
+        surname: "Pexynakis",
+        Rating: "6"
+    }
 ]
 
 
@@ -1839,7 +2803,7 @@ export const arrayAllPlayers = [
     {
         ssn: "170813175417", name: "Emmanouil", surname: "Pexynakis", nationality: "Greek",
         position: "Forward", preferred_foot: "Right", birthdate: "07/01/1989", height: "181", weight: "90"
-    },{
+    }, {
         ssn: "170813175417", name: "Nikolaos", surname: "Chronakis", nationality: "Greek",
         position: "Goalkeeper", preferred_foot: "Right", birthdate: "01/01/1987", height: "185", weight: "90"
     },
@@ -1948,7 +2912,7 @@ export const arrayAllPlayers = [
     {
         ssn: "170813175417", name: "Emmanouil", surname: "Pexynakis", nationality: "Greek",
         position: "Forward", preferred_foot: "Right", birthdate: "07/01/1989", height: "181", weight: "90"
-    },{
+    }, {
         ssn: "170813175417", name: "Nikolaos", surname: "Chronakis", nationality: "Greek",
         position: "Goalkeeper", preferred_foot: "Right", birthdate: "01/01/1987", height: "185", weight: "90"
     },
@@ -2057,7 +3021,7 @@ export const arrayAllPlayers = [
     {
         ssn: "170813175417", name: "Emmanouil", surname: "Pexynakis", nationality: "Greek",
         position: "Forward", preferred_foot: "Right", birthdate: "07/01/1989", height: "181", weight: "90"
-    },{
+    }, {
         ssn: "170813175417", name: "Nikolaos", surname: "Chronakis", nationality: "Greek",
         position: "Goalkeeper", preferred_foot: "Right", birthdate: "01/01/1987", height: "185", weight: "90"
     },
@@ -2166,7 +3130,7 @@ export const arrayAllPlayers = [
     {
         ssn: "170813175417", name: "Emmanouil", surname: "Pexynakis", nationality: "Greek",
         position: "Forward", preferred_foot: "Right", birthdate: "07/01/1989", height: "181", weight: "90"
-    },{
+    }, {
         ssn: "170813175417", name: "Nikolaos", surname: "Chronakis", nationality: "Greek",
         position: "Goalkeeper", preferred_foot: "Right", birthdate: "01/01/1987", height: "185", weight: "90"
     },
@@ -2275,7 +3239,7 @@ export const arrayAllPlayers = [
     {
         ssn: "170813175417", name: "Emmanouil", surname: "Pexynakis", nationality: "Greek",
         position: "Forward", preferred_foot: "Right", birthdate: "07/01/1989", height: "181", weight: "90"
-    },{
+    }, {
         ssn: "170813175417", name: "Nikolaos", surname: "Chronakis", nationality: "Greek",
         position: "Goalkeeper", preferred_foot: "Right", birthdate: "01/01/1987", height: "185", weight: "90"
     },
@@ -2384,7 +3348,7 @@ export const arrayAllPlayers = [
     {
         ssn: "170813175417", name: "Emmanouil", surname: "Pexynakis", nationality: "Greek",
         position: "Forward", preferred_foot: "Right", birthdate: "07/01/1989", height: "181", weight: "90"
-    },{
+    }, {
         ssn: "170813175417", name: "Nikolaos", surname: "Chronakis", nationality: "Greek",
         position: "Goalkeeper", preferred_foot: "Right", birthdate: "01/01/1987", height: "185", weight: "90"
     },
@@ -2493,7 +3457,7 @@ export const arrayAllPlayers = [
     {
         ssn: "170813175417", name: "Emmanouil", surname: "Pexynakis", nationality: "Greek",
         position: "Forward", preferred_foot: "Right", birthdate: "07/01/1989", height: "181", weight: "90"
-    },{
+    }, {
         ssn: "170813175417", name: "Nikolaos", surname: "Chronakis", nationality: "Greek",
         position: "Goalkeeper", preferred_foot: "Right", birthdate: "01/01/1987", height: "185", weight: "90"
     },
@@ -2602,7 +3566,7 @@ export const arrayAllPlayers = [
     {
         ssn: "170813175417", name: "Emmanouil", surname: "Pexynakis", nationality: "Greek",
         position: "Forward", preferred_foot: "Right", birthdate: "07/01/1989", height: "181", weight: "90"
-    },{
+    }, {
         ssn: "170813175417", name: "Nikolaos", surname: "Chronakis", nationality: "Greek",
         position: "Goalkeeper", preferred_foot: "Right", birthdate: "01/01/1987", height: "185", weight: "90"
     },
@@ -2711,7 +3675,7 @@ export const arrayAllPlayers = [
     {
         ssn: "170813175417", name: "Emmanouil", surname: "Pexynakis", nationality: "Greek",
         position: "Forward", preferred_foot: "Right", birthdate: "07/01/1989", height: "181", weight: "90"
-    },{
+    }, {
         ssn: "170813175417", name: "Nikolaos", surname: "Chronakis", nationality: "Greek",
         position: "Goalkeeper", preferred_foot: "Right", birthdate: "01/01/1987", height: "185", weight: "90"
     },
@@ -2820,7 +3784,7 @@ export const arrayAllPlayers = [
     {
         ssn: "170813175417", name: "Emmanouil", surname: "Pexynakis", nationality: "Greek",
         position: "Forward", preferred_foot: "Right", birthdate: "07/01/1989", height: "181", weight: "90"
-    },{
+    }, {
         ssn: "170813175417", name: "Nikolaos", surname: "Chronakis", nationality: "Greek",
         position: "Goalkeeper", preferred_foot: "Right", birthdate: "01/01/1987", height: "185", weight: "90"
     },
@@ -2929,7 +3893,7 @@ export const arrayAllPlayers = [
     {
         ssn: "170813175417", name: "Emmanouil", surname: "Pexynakis", nationality: "Greek",
         position: "Forward", preferred_foot: "Right", birthdate: "07/01/1989", height: "181", weight: "90"
-    },{
+    }, {
         ssn: "170813175417", name: "Nikolaos", surname: "Chronakis", nationality: "Greek",
         position: "Goalkeeper", preferred_foot: "Right", birthdate: "01/01/1987", height: "185", weight: "90"
     },
@@ -3038,7 +4002,7 @@ export const arrayAllPlayers = [
     {
         ssn: "170813175417", name: "Emmanouil", surname: "Pexynakis", nationality: "Greek",
         position: "Forward", preferred_foot: "Right", birthdate: "07/01/1989", height: "181", weight: "90"
-    },{
+    }, {
         ssn: "170813175417", name: "Nikolaos", surname: "Chronakis", nationality: "Greek",
         position: "Goalkeeper", preferred_foot: "Right", birthdate: "01/01/1987", height: "185", weight: "90"
     },
@@ -3147,7 +4111,7 @@ export const arrayAllPlayers = [
     {
         ssn: "170813175417", name: "Emmanouil", surname: "Pexynakis", nationality: "Greek",
         position: "Forward", preferred_foot: "Right", birthdate: "07/01/1989", height: "181", weight: "90"
-    },{
+    }, {
         ssn: "170813175417", name: "Nikolaos", surname: "Chronakis", nationality: "Greek",
         position: "Goalkeeper", preferred_foot: "Right", birthdate: "01/01/1987", height: "185", weight: "90"
     },
@@ -3256,7 +4220,7 @@ export const arrayAllPlayers = [
     {
         ssn: "170813175417", name: "Emmanouil", surname: "Pexynakis", nationality: "Greek",
         position: "Forward", preferred_foot: "Right", birthdate: "07/01/1989", height: "181", weight: "90"
-    },{
+    }, {
         ssn: "170813175417", name: "Nikolaos", surname: "Chronakis", nationality: "Greek",
         position: "Goalkeeper", preferred_foot: "Right", birthdate: "01/01/1987", height: "185", weight: "90"
     },
@@ -3365,7 +4329,7 @@ export const arrayAllPlayers = [
     {
         ssn: "170813175417", name: "Emmanouil", surname: "Pexynakis", nationality: "Greek",
         position: "Forward", preferred_foot: "Right", birthdate: "07/01/1989", height: "181", weight: "90"
-    },{
+    }, {
         ssn: "170813175417", name: "Nikolaos", surname: "Chronakis", nationality: "Greek",
         position: "Goalkeeper", preferred_foot: "Right", birthdate: "01/01/1987", height: "185", weight: "90"
     },
@@ -3474,7 +4438,7 @@ export const arrayAllPlayers = [
     {
         ssn: "170813175417", name: "Emmanouil", surname: "Pexynakis", nationality: "Greek",
         position: "Forward", preferred_foot: "Right", birthdate: "07/01/1989", height: "181", weight: "90"
-    },{
+    }, {
         ssn: "170813175417", name: "Nikolaos", surname: "Chronakis", nationality: "Greek",
         position: "Goalkeeper", preferred_foot: "Right", birthdate: "01/01/1987", height: "185", weight: "90"
     },
@@ -3583,7 +4547,7 @@ export const arrayAllPlayers = [
     {
         ssn: "170813175417", name: "Emmanouil", surname: "Pexynakis", nationality: "Greek",
         position: "Forward", preferred_foot: "Right", birthdate: "07/01/1989", height: "181", weight: "90"
-    },{
+    }, {
         ssn: "170813175417", name: "Nikolaos", surname: "Chronakis", nationality: "Greek",
         position: "Goalkeeper", preferred_foot: "Right", birthdate: "01/01/1987", height: "185", weight: "90"
     },
@@ -3692,7 +4656,7 @@ export const arrayAllPlayers = [
     {
         ssn: "170813175417", name: "Emmanouil", surname: "Pexynakis", nationality: "Greek",
         position: "Forward", preferred_foot: "Right", birthdate: "07/01/1989", height: "181", weight: "90"
-    },{
+    }, {
         ssn: "170813175417", name: "Nikolaos", surname: "Chronakis", nationality: "Greek",
         position: "Goalkeeper", preferred_foot: "Right", birthdate: "01/01/1987", height: "185", weight: "90"
     },
@@ -3801,7 +4765,7 @@ export const arrayAllPlayers = [
     {
         ssn: "170813175417", name: "Emmanouil", surname: "Pexynakis", nationality: "Greek",
         position: "Forward", preferred_foot: "Right", birthdate: "07/01/1989", height: "181", weight: "90"
-    },{
+    }, {
         ssn: "170813175417", name: "Nikolaos", surname: "Chronakis", nationality: "Greek",
         position: "Goalkeeper", preferred_foot: "Right", birthdate: "01/01/1987", height: "185", weight: "90"
     },
@@ -3910,7 +4874,7 @@ export const arrayAllPlayers = [
     {
         ssn: "170813175417", name: "Emmanouil", surname: "Pexynakis", nationality: "Greek",
         position: "Forward", preferred_foot: "Right", birthdate: "07/01/1989", height: "181", weight: "90"
-    },{
+    }, {
         ssn: "170813175417", name: "Nikolaos", surname: "Chronakis", nationality: "Greek",
         position: "Goalkeeper", preferred_foot: "Right", birthdate: "01/01/1987", height: "185", weight: "90"
     },
@@ -4019,7 +4983,7 @@ export const arrayAllPlayers = [
     {
         ssn: "170813175417", name: "Emmanouil", surname: "Pexynakis", nationality: "Greek",
         position: "Forward", preferred_foot: "Right", birthdate: "07/01/1989", height: "181", weight: "90"
-    },{
+    }, {
         ssn: "170813175417", name: "Nikolaos", surname: "Chronakis", nationality: "Greek",
         position: "Goalkeeper", preferred_foot: "Right", birthdate: "01/01/1987", height: "185", weight: "90"
     },
@@ -4128,7 +5092,7 @@ export const arrayAllPlayers = [
     {
         ssn: "170813175417", name: "Emmanouil", surname: "Pexynakis", nationality: "Greek",
         position: "Forward", preferred_foot: "Right", birthdate: "07/01/1989", height: "181", weight: "90"
-    },{
+    }, {
         ssn: "170813175417", name: "Nikolaos", surname: "Chronakis", nationality: "Greek",
         position: "Goalkeeper", preferred_foot: "Right", birthdate: "01/01/1987", height: "185", weight: "90"
     },

@@ -8,14 +8,13 @@ import { useState, useRef } from 'react';
 import ModalEveryPlayerRating from '../components/Modal/ModalEveryTrainingPlayerRating';
 import { ArrowRight } from 'react-bootstrap-icons';
 import { ArrowLeft } from 'react-bootstrap-icons';
-import { arrayPlayers, arrayplayersRating, arrayPlayerTrainingRating1, arrayPlayerTrainingRating2 } from '../Constants/Constants';
+import { arrayPlayers, arrayplayersRating, arrayPlayerTrainingRating1, arrayPlayerTrainingRating2, totalTrainingRatings } from '../Constants/Constants';
 import { arrayPlayerTrainingRating3, arrayPlayerTrainingRating4, arrayPlayerTrainingRating5 } from '../Constants/Constants';
 import { arrayPlayerMatchRating1, arrayPlayerMatchRating2 } from '../Constants/Constants';
 
 
 export const Training = () => {
     const [openModalTraining, setOpenModalTraining] = useState(false);
-    var AVGRating_training;
 
 
     const ref = useRef(null);
@@ -28,7 +27,11 @@ export const Training = () => {
     //     console.log(AVGRating_training);
     //     return AVGRating_training;
     // }
+    const calculate = (player) => {
+        return (parseFloat(player.Rating) + parseFloat(player.Behaviour)) / 2;
+    }
 
+    console.log(totalTrainingRatings);
     return (
         <div class="container-fluid">
 
@@ -68,26 +71,16 @@ export const Training = () => {
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Training#</th>
-                            <th scope="col">Training#</th>
-                            <th scope="col">Training#</th>
-                            <th scope="col">Training#</th>
-                            <th scope="col">Training#</th>
-                            <th scope="col">Training#</th>
-                            <th scope="col">Training#</th>
-                            <th scope="col">Training#</th>
-                            <th scope="col">Training#</th>
-                            <th scope="col">Training#</th>
-                            <th scope="col">Training#</th>
-                            <th scope="col">Training#</th>
-                            <th scope="col">Training#</th>
-                            <th scope="col">Training#</th>
-                            <th scope="col">Training#</th>
-                            <th scope="col">Training#</th>
-                            <th scope="col">Training#</th>
-                            <th scope="col">Training#</th>
-                            <th scope="col">Training#</th>
-                            <th scope="col">Actions</th>
+                            <th scope="col">Surname</th>
+                            {totalTrainingRatings[0].trainings.map((player, index) => (
+                                <th scope="col">Tr{index + 1}</th>
+                            ))}
+
+                            <th scope="col"> Tr6</th>
+                            <th scope="col"> Tr7</th>
+                            <th scope="col"> Tr8</th>
+                            <th scope="col"> Tr9</th>
+                            <th scope="col"> Tr10</th>
 
 
 
@@ -95,25 +88,41 @@ export const Training = () => {
 
                     </thead>
                     <tbody>
-                        {arrayPlayerTrainingRating1.map((player, index) => (
+
+
+                        {totalTrainingRatings.map((player, index) => (
+
                             <tr>
                                 <td>
-                                    {index}
+                                    {index + 1}
                                 </td>
-                                <td>
+                                <td style={{
+                                    color: "#004d00",
+                                }}>
                                     {player.name}
                                 </td>
-                                <td>
-                                    <div>
-                                        {player.Rating}
-                                   </div>
+                                <td style={{
+                                    color: "#004d00",
+                                }}>
+                                    {player.surname}
                                 </td>
+                                {player.trainings.map((player1) => (
+                                    <td>
+                                        {calculate(player1)}
+                                    </td>
+                                ))}
+
 
                             </tr>
 
+
                         ))}
 
+
+
                     </tbody>
+
+
 
 
                 </table>

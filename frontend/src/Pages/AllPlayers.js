@@ -51,8 +51,7 @@ export const AllPlayers = () => {
             }
 
         ))
-        console.log(searchField);
-        console.log(filteredPersons);
+       
 
     }, [searchField])
 
@@ -79,8 +78,8 @@ export const AllPlayers = () => {
                         var newDate_a = new Date(array_a[2], array_a[1], array_a[0]);
                         var newDate_b = new Date(array_b[2], array_b[1], array_b[0]);
 
-                        console.log(newDate_a);
-                        console.log(newDate_b);
+                        // console.log(newDate_a);
+                        // console.log(newDate_b);
 
                         if (newDate_a < newDate_b) {
                             console.log(a[sortConfig.key], b);
@@ -144,20 +143,19 @@ export const AllPlayers = () => {
 
     const Pending_Btn = (e) => {
         if (e.target.value === "Enquiry") {
-            console.log(e.target);
+            // console.log(e.target);
             e.target.innerHTML = "Pending";
             e.target.className = "Pending";
             e.target.value = "Pending";
-            console.log(e.target);
+            // console.log(e.target);
         } else {
-            e.target.innerHTML = "Enquiry";
+            e.target.innerHTML = "Claim";
             e.target.className = "enquiry_btn";
             e.target.value = "Enquiry";
         }
     }
 
     const ProductTable = (props) => {
-        console.log(props);
         const { arrayPlayers, requestSort, sortConfig } = useSortableData(filteredPersons);
         const getClassNamesFor = (name) => {
             if (!sortConfig) {
@@ -207,7 +205,7 @@ export const AllPlayers = () => {
                             <td>{player.height}</td>
                             <td>{player.weight}</td>
                             <td className='action_buttons'>
-                                <button className='enquiry_btn' name={player.ssn} value="Enquiry" onClick={Pending_Btn}> Enquiry </button>
+                                <button className='enquiry_btn' name={player.ssn} value="Enquiry" onClick={Pending_Btn}> Claim </button>
                             </td>
                         </tr>
                     ))}
@@ -238,7 +236,7 @@ export const AllPlayers = () => {
                     </div>
 
                     <div className='offset-8 col-2 MyTeam'>
-                        <button className='btn'><a className='alink' href='/players'>My Team</a></button>
+                        <button className='btn Myteam'><a className='alink' href='/players'>My Team</a></button>
 
                     </div>
 

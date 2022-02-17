@@ -4,7 +4,7 @@ import '../../assets/Style/Player.css'
 import { useState } from 'react';
 import "react-bootstrap"
 
-const Player = ({name,position}) => {
+const Player = ({player}) => {
 
     const [playerName, setPlayername] = useState("giorgos");
 
@@ -13,7 +13,7 @@ const Player = ({name,position}) => {
             <div>
                 <img className='Icon' src={PlayerIcon} />
             </div>
-            <button className="player_name" onClick={()=>setPlayername("Dorgiomanolakis")}>{playerName}</button>
+            <button className="player_name" >{player}</button>
            
 
 

@@ -27,7 +27,7 @@ const ModalPlayerUser = ({ }) => {
                     <div className='col-12 x-button'>
                     </div>
                     <div className='col-12 titleUser'>
-                        New Player
+                        Stratakis Georgios
                     </div>
                     <div className='modalbody'>
 
@@ -152,41 +152,9 @@ const ModalPlayerUser = ({ }) => {
                     <div className='modalbody'>
 
                         <form>
-                            <div className='col-12 name'>
-                                <div className='offset-1 col-4 text'>
-                                    <label>SSN</label>
-                                </div>
-                                <div className='col-4 '>
+                           
 
-                                    <input className="inputs">
-
-                                    </input>
-                                </div>
-                            </div>
-
-                            <div className='col-12 name'>
-                                <div className='offset-1 col-4 text'>
-                                    <label>Name</label>
-                                </div>
-                                <div className='col-4 '>
-
-                                    <input className="inputs">
-
-                                    </input>
-                                </div>
-                            </div>
-
-
-                            <div className='col-12 name'>
-                                <div className='offset-1 col-4 text'>
-                                    <label>Surname</label>
-                                </div>
-                                <div className='col-4 '>
-
-                                    <input className="inputs">
-                                    </input>
-                                </div>
-                            </div>
+                            
 
 
                             <div className='col-12 name'>
@@ -226,15 +194,7 @@ const ModalPlayerUser = ({ }) => {
                             </div>
 
 
-                            <div className='col-12 name'>
-                                <div className='offset-1 col-4 text'>
-                                    <label>Birth Date</label>
-                                </div>
-                                <div className='col-4'>
-                                    <DatePicker className='date' selected={startDate} onChange={(date) => setStartDate(date)} format='yyyy-MM-dd' />
-                                </div>
-                            </div>
-
+                           
 
                             <div className='col-12 name'>
                                 <div className='offset-1 col-4 text'>

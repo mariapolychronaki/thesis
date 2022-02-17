@@ -116,7 +116,7 @@ const ModalEveryMatchPlayerRating = (closeModalMatchEachPlayer) => {
             {arrayPlayers.map((player, index) => (
                 <div className='col-3 IndividualPlayer'>
                     <div className='flex'>
-                      
+
                         <span className='col-12 title2 surname'>
                             <span>{player.surname}</span>
 

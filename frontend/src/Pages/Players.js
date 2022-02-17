@@ -3,7 +3,7 @@ import '../assets/Style/Pages.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ModalPlayer from '../components/Modal/ModalPlayer';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ModalInjured from '../components/Modal/ModalInjured';
 import ModalGoalkeeper from '../components/Modal/ModalGoalkeeper';
 import ModalPlayerRating from '../components/Modal/ModalPlayerRating';
@@ -11,12 +11,15 @@ import { arrayPlayers } from '../Constants/Constants';
 import ModalEditPlayer from '../components/Modal/ModalEditPlayer';
 import { NavLink } from 'react-bootstrap';
 import CustomPopup from './Admin/PopUp';
+import { setisOpen } from '../Store/Slices/ModalSlice';
 
 export const Players = () => {
 
     const [searchField, setSearchField] = useState("");
 
+    const [Player, setPlayer] = useState({});
 
+    const isOpen = useSelector((state) => state.modal.isOpen)
 
 
     const coach = useSelector((state) => state.coach);
@@ -29,6 +32,18 @@ export const Players = () => {
     const handleChange = e => {
         setSearchField(e.target.value);
     };
+
+    const handleChangeParent =()=>{
+        console.log("khjvjagdfsuagvh")
+    }
+
+
+    const chooseModal = (player) => {
+        setOpenModalPlayerRating(true);
+        setPlayer(player);
+    }
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         setfilteredPersons(playersArray.filter(
@@ -142,6 +157,12 @@ export const Players = () => {
     const [openModalPlayerRating, setOpenModalPlayerRating] = useState(false);
     const [openModalEditPlayer, setOpenModalEditPlayer] = useState(false);
 
+    const functionEdit = (Player) => {
+        setPlayer(Player);
+        setOpenModalEditPlayer(true);
+        console.log(Player)
+    }
+
     const ProductTable = (props) => {
         console.log(props);
         const { arrayPlayers, requestSort, sortConfig } = useSortableData(filteredPersons);
@@ -187,8 +208,12 @@ export const Players = () => {
                     {arrayPlayers.map((player, index) => (
                         <tr key={player.id}>
                             <td>{index + 1}</td>
-                            <td>{player.name}</td>
-                            <td>{player.surname}</td>
+                            <td style={{
+                                color: "#004d00",
+                            }}>{player.name}</td>
+                            <td style={{
+                                color: "#004d00",
+                            }}>{player.surname}</td>
                             <td>{player.nationality}</td>
                             <td>{player.position}</td>
                             <td>{player.preferred_foot}</td>
@@ -197,8 +222,8 @@ export const Players = () => {
                             <td>{player.weight}</td>
                             <td>Rating</td>
                             <td className='action_buttons'>
-                                <button className='edit_btn' onClick={() => setOpenModalEditPlayer(true)}> Edit </button>
-                                <button className='rating_btn' onClick={() => setOpenModalPlayerRating(true)}> Rating </button>
+                                <button className='edit_btn' onClick={() => functionEdit(player)}> Edit </button>
+                                <button className='rating_btn' onClick={() => chooseModal(player)}> Rating </button>
                                 <button className='delete_btn'> Remove </button>
                             </td>
                         </tr>
@@ -222,15 +247,22 @@ export const Players = () => {
     return (
         <>
 
+
             <div class="container-fluid">
 
-                <CustomPopup
+                {/* <CustomPopup
                     onClose={popupCloseHandler, () => setVisibility(!visibility)}
                     show={!visibility}
                 >
-                    <h2>Your request to sign player ### has been approved</h2>
-                </CustomPopup>
+                    <div className='popUpMessage'>Your request to sign <span className='PlayerName'>player</span> ### has been <span className='MessAprroved'>approved</span></div>
+                </CustomPopup> */}
 
+                {/* <CustomPopup
+                    onClose={popupCloseHandler, () => setVisibility(!visibility)}
+                    show={!visibility}
+                >
+                    <div className='popUpMessage'>Your request to sign <span className='PlayerName'>player</span> ### has been <span className='MessDeclined'>declined</span></div>
+                </CustomPopup> */}
 
 
                 <div className='col-12 space'>
@@ -241,7 +273,7 @@ export const Players = () => {
                         Players
                     </div>
                     <div className='col-2 list_pl'>
-                        <button className='btn existing_players' ><a className='alink' href='/allplayers'>Existing Players</a></button>
+                        <button className='btn existing_players' ><a className='alink' href='/allplayers'>All Players</a></button>
 
                     </div>
                     <div className=' col-2 INJ'>
@@ -250,14 +282,14 @@ export const Players = () => {
 
                     </div>
                     <div className=' col-2 Add'>
-                        <button className='btn' onClick={() => setOpenModalPlayer(true)}>Add Player</button>
+                        <button className='btn' onClick={() => dispatch(setisOpen()), () => setOpenModalPlayer(true)}>Add Player</button>
                     </div>
                 </div>
 
-                {openModalPlayer && < ModalPlayer closeModalPlayer={setOpenModalPlayer} />}
+                {(isOpen || openModalPlayer) && < ModalPlayer isOpen={isOpen} closeModalPlayer={setOpenModalPlayer} />}
                 {openModalInjured && < ModalInjured closeModalInjured={setOpenModalInjured} />}
-                {openModalPlayerRating && < ModalPlayerRating closeModalPlayerRating={setOpenModalPlayerRating} />}
-                {openModalEditPlayer && < ModalEditPlayer
+                {openModalPlayerRating && < ModalPlayerRating closeModalPlayerRating={setOpenModalPlayerRating} player={Player} handeChangeCallback={handleChangeParent} />}
+                {openModalEditPlayer && < ModalEditPlayer player={Player}
                     closeModalEditPlayer={setOpenModalEditPlayer} />}
 
 

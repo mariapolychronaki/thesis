@@ -4,6 +4,7 @@ import { useState, useRef } from 'react';
 import ModalMatch from '../components/Modal/ModalMatch';
 import { ArrowRight } from 'react-bootstrap-icons';
 import { ArrowLeft } from 'react-bootstrap-icons';
+import { totalMatchRatings } from '../Constants/Constants';
 
 export const Matches = () => {
 
@@ -51,32 +52,41 @@ export const Matches = () => {
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Players</th>
-                            <th scope="col">Opponent</th>
-                            <th scope="col">Opponent</th>
-                            <th scope="col">Opponent</th>
-                            <th scope="col">Opponent</th>
-                            <th scope="col">Opponent</th>
-                            <th scope="col">Opponent</th>
-                            <th scope="col">Opponent</th>
-                            <th scope="col">Opponent</th>
-                            <th scope="col">Opponent</th>
-                            <th scope="col">Opponent</th>
-                            <th scope="col">Opponent</th>
-                            <th scope="col">Opponent</th>
-                            <th scope="col">Opponent</th>
-                            <th scope="col">Opponent</th>
-                            <th scope="col">Opponent</th>
-                            <th scope="col">Opponent</th>
-                            <th scope="col-2">Actions</th>
-
+                            <th scope="col"></th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Surname</th>
+                            {totalMatchRatings[0].matches.map((player, index) => (
+                                <th scope="col">Match{index + 1}</th>
+                            ))}
                         </tr>
                     </thead>
                     <tbody>
-                        {arrayMatch.map((player, index) => (
+                        {totalMatchRatings.map((player, index) => (
+
                             <tr>
+                                <td>
+                                    {index + 1}
+                                </td>
+                                <td style={{
+                                        color: "#004d00",
+                                    }}>
+                                    {player.name}
+                                </td>
+                                <td style={{
+                                        color: "#004d00",
+                                    }}>
+                                    {player.surname}
+                                </td >
+                                {player.matches.map((player1) => (
+                                    <td >
+                                        {player1.Rating}
+                                    </td>
+                                ))}
+
 
                             </tr>
+
+
                         ))}
 
                     </tbody>

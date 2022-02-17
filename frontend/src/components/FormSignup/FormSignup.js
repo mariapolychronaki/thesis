@@ -12,8 +12,7 @@ const FormSignup = ({ submitForm }) => {
     const [errors, setErrors] = useState({});
     const [isSubmiting, setIsSubmiting] = useState(false);
     const [values, setValues] = useState({
-        user: 'player',
-        username: '',
+        user: 'coach',
         email: '',
         password: '',
         password2: '',
@@ -32,10 +31,7 @@ const FormSignup = ({ submitForm }) => {
         let errors = {}
 
 
-        if (!values.username.trim()) {
-            errors.username = "Username required"
-        }
-
+       
         if (!values.email) {
             errors.email = "Email required"
         } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
@@ -109,29 +105,15 @@ const FormSignup = ({ submitForm }) => {
                         placeholder='Enter your name'
                         value={values.user}
                         onChange={hadleChange}>
-                        <option value="player">Player</option>
                         <option value="coach">Coach</option>
+                        <option value="player">Player</option>
+
 
                     </select>
 
                     {errors.user && <p>{errors.user}</p>}
                 </div>
-                <div className='form-inputs'>
-                    <label htmlFor='username'
-                        className='form-label'>
-                        *Username
-                    </label>
-                    <input
-                        id='username'
-                        type='text'
-                        name='username'
-                        className='form-input'
-                        placeholder='Enter your name'
-                        value={values.username}
-                        onChange={hadleChange}
-                    />
-                    {errors.username && <p>{errors.username}</p>}
-                </div>
+               
                 <div className='form-inputs'>
                     <label htmlFor='email' className='form-label'>
                         *E-mail

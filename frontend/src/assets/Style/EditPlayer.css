@@ -1,5 +1,5 @@
 .modalBackgroundPositionPlayerRating{
-    min-height: 180vh;
+    min-height: 120vh;
     width: 100%;
     background-color: rgb(200, 200, 200);
     top:21%;
@@ -18,7 +18,7 @@
 }
 
 .modalBackgroundPlayerEdit{
-    min-height: 180vh;
+    min-height: 120vh;
     width: 100%;
     background-color: rgb(200, 200, 200);
     top:21%;

@@ -4,39 +4,84 @@
     background-color: rgb(90, 90, 91);
 }
 
-.Sign_UP_messages{
-    align-items: center;
-    justify-content: space-around;
+.userNameAdmin{
+  color:rgb(0, 77, 0);
+  font-weight: bolder;
+}
+
+.Active_players{
+  min-height:2rem;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 8px;
+  background-color: rgb(192, 155, 86);
+  color:white;
+}
+
+.coach_messagesTitle{
+  font-weight: bolder;
+  margin-top: 1%;
+}
+
+.Active_coaches{
+  min-height:2rem;
+  width: fit-content;
+  min-height:2rem;
+  height: fit-content;
+  border-radius: 8px;
+  background-color: rgb(192, 155, 86);
+  color:white;
+  margin-left: 5%;
 }
 
 
-
 .User_Mes{
-    margin-top: 6%;
-    width: fit-content;  
+
+  width: 100rem;  
     min-height:2rem;
     height: fit-content;
     border-radius: 8px; 
     background-color: rgb(84, 110, 133);
     color:white;
 }
+.marginBtns{
+  margin-left: 5%;
+}
 .Coach_en{
-    margin-top: 6%;
-    width: fit-content;
+
+  width: fit-content;
     min-height:2rem;
     height: fit-content;
     border-radius: 8px;
     background-color: rgb(192, 155, 86);
     color:white;
 }
+.Sign_UP_messages{
+  display: flex;
+}
 
 .user_sign_up_messages{
     display: flex;
 }
 
+
+.buttonsAdmin{
+  background-color: rgb(104, 168, 104);
+  color:white;
+}
 .CE{
     border:solid black;
     text-align: center;
+}
+.tableCoaches{
+  width: 80%;
+  margin-left: 10%;
+  border:solid black;
+}
+.tablePlayers{
+  width: 80%;
+  margin-left: 10%;
+  border:solid black;
 }
 .SM{
     border:solid black;
@@ -130,6 +175,20 @@
     .User_Mes{
         height: 3rem;
         font-size: 80%;
+    }
+    .Active_playersCol{
+      width: 30%;
+    }
+    .Active_players{
+      height: 3rem;
+      font-size: 80%;
+    }
 
+    .Active_coaches{
+      height: 3rem;
+      font-size: 80%;
+    }
+    .buttonsAdmin{
+      width: 5rem;
     }
 }

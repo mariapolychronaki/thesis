@@ -9,6 +9,7 @@ import { SignIn } from './Pages/SignIn/SignIn';
 import Admin from './Pages/Admin/Admin';
 import { SignUpMessage } from './components/SignUpMessage/SignUpMessage';
 import { AllPlayers } from './Pages/AllPlayers';
+import { TeamName } from './components/TeamName/TeamName';
 
 const authroutes = [{ path: "/players", component: <Players /> },
 { path: "/training", component: <Training /> },
@@ -20,13 +21,15 @@ const authroutes = [{ path: "/players", component: <Players /> },
 
 const authroutesPl = [
     { path: "/playerUser", component: <PlayerUser /> },
-    { path: "/Admin", component: <Admin /> }
+    { path: "/Admin", component: <Admin /> },
+
 ]
 
 const routes = [
     { path: "/", component: <SignUp /> },
     { path: "/signIn", component: <SignIn /> },
-    { path: "/signUpMessage", component: <SignUpMessage /> }
+    { path: "/signUpMessage", component: <SignUpMessage /> },
+    { path: "/teamName", component: <TeamName /> }
 
 ];
 

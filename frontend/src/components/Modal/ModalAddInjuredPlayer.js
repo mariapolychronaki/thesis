@@ -4,7 +4,7 @@ import 'react-bootstrap'
 import { useState } from 'react'
  
 
-const ModalAddInjuredPlayer = ({ closeModalAddInjuredPlayer }) => {
+const ModalAddInjuredPlayer = ({ closeModalAddInjuredPlayer,closeModalInjured }) => {
 
     const arrayPlayers =
         [
