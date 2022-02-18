@@ -2261,7 +2261,38 @@ export const Lineup = () => {
     }
 
 
+    const clear = () => {
+        setBest_Goalkeeper1("None");
+        setBest_Goalkeeper2("None");
 
+        setBest_Central_Defender1("None");
+        setBest_Central_Defender2("None");
+        setBest_Central_Defender3("None");
+
+        setBest_Right_Defender1("None");
+        setBest_Right_Defender2("None");
+
+        setBest_Left_Defender1("None");
+        setBest_Left_Defender2("None");
+
+        setBest_Midfielder1("None");
+        setBest_Midfielder2("None");
+        setBest_Midfielder3("None");
+
+        setBest_Att_Mid_Center1("None")
+        setBest_Att_Mid_Center2("None")
+
+        setBest_Att_Mid_Right1("None")
+        setBest_Att_Mid_Right2("None")
+
+        setBest_Att_Mid_Left1("None")
+        setBest_Att_Mid_Left2("None")
+
+
+        setBest_for1("None")
+        setBest_for2("None")
+
+    }
 
     const [openModalInjured, setOpenModalInjured] = useState(false);
 
@@ -2368,6 +2399,7 @@ export const Lineup = () => {
                                 <button className='Injuries' onClick={() => setOpenModalInjured(true)}>Injuries</button>
                             </div>
 
+
                         </div>
                         <div className='row'>
                             <div className='col-3 sub2'>
@@ -2375,6 +2407,9 @@ export const Lineup = () => {
                             </div>
                             <div className='col-3 sub2'>
                                 <Player player={best_Left_Defender2} />
+                            </div>
+                            <div className=' col-3 button_sub'>
+                                <button className='Injuries clear' onClick={clear}>Clear</button>
                             </div>
 
                         </div>
@@ -2385,6 +2420,7 @@ export const Lineup = () => {
                             <div className='col-3 sub2'>
                                 <Player player={best_Midfielder3} />
                             </div>
+
 
                         </div>
                         <div className='row'>

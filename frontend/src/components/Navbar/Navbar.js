@@ -166,8 +166,9 @@ const Navbar = () => {
 
                 </div>
                 <div className='col-1 lg '>
-                    <button className='LogOut'>Log Out</button>
-                    <img className='Exit' onClick={console.log("giorgos")} src={LogOut}></img>
+                    <button className='LogOut'><NavLink className="nav-links1" exact to="/">Log Out</NavLink></button>
+                    <NavLink className="nav-links1" exact to="/"><img className='Exit' onClick={console.log("giorgos")} src={LogOut}></img>
+                    </NavLink>
 
                 </div>
 

@@ -86,7 +86,7 @@ const NavPlayer = () => {
         setErrors(validate(values));
         setIsSubmiting(true);
         setValues("")
-        e.preventDefault();
+        // e.preventDefault();
     };
 
     useEffect(() => {
@@ -161,8 +161,9 @@ const NavPlayer = () => {
 
                 </div>
                 <div className='col-1 lg '>
-                    <button className='LogOut'>Log Out</button>
-                    <img className='Exit' src={LogOut}></img>
+                <button className='LogOut'><NavLink className="nav-links1" exact to="/">Log Out</NavLink></button>
+                    <NavLink className="nav-links1" exact to="/"><img className='Exit' onClick={console.log("giorgos")} src={LogOut}></img>
+                    </NavLink>
 
                 </div>
 
@@ -235,7 +236,7 @@ const NavPlayer = () => {
                                 className='form-label'>
                                 *Password
                             </label>
-                            <input type='password_settings'
+                            <input type='password'
                                 name='password'
                                 className='form-input'
                                 placeholder='Enter your password'
@@ -249,7 +250,7 @@ const NavPlayer = () => {
                                 className='form-label'>
                                 *New Password
                             </label>
-                            <input type='password_settings'
+                            <input type='password'
                                 name='new_password'
                                 className='form-input'
                                 placeholder='Enter your newpassword'
@@ -263,7 +264,7 @@ const NavPlayer = () => {
                                 className='form-label'>
                                 *Password Verification
                             </label>
-                            <input type='password_settings'
+                            <input type='password'
                                 name='password2'
                                 className='form-input'
                                 placeholder='Verify your new password'

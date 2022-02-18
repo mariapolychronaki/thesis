@@ -3,7 +3,7 @@ import React from 'react';
 
 
 export const usersPlayers = [{
-    email: 'stragergo@gmail.com', name: 'Giorgos', surname: 'Stratakis', user_type: 'Player', team:'Aoan'
+     name: 'Giorgos', surname: 'Stratakis', user_type: 'Player',email: 'stragergo@gmail.com', team:'Aoan'
 },
 {
     email: 'konsa@gmail.com', name: 'Konstantinos', surname: 'Sakas', user_type: 'Player', team:'Ane'
