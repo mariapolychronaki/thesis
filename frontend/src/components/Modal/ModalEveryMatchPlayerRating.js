@@ -2,9 +2,23 @@ import React from 'react';
 import Dropdown_rating from '../Dropdowns/Dropdown_rating';
 import '../../assets/Style/EveryPlayerRating.css'
 import 'react-bootstrap'
+import { useState } from 'react';
 
 
 const ModalEveryMatchPlayerRating = (closeModalMatchEachPlayer) => {
+    const [data, setdata] = useState({});
+    const [attributes, setAttributes] = useState({});
+
+    const handleChangeParent = (data, name, playerId) => {
+        setAttributes({
+            ...attributes, [`${playerId}`]: playerId
+        })
+        attributes[`${playerId}`] = { ...attributes[`${playerId}`], [`${name}`]: data }
+        setAttributes(attributes)
+        console.log([`${playerId}`])
+        console.log([`${name}`])
+    }
+    console.log(attributes)
 
     const arrayPlayers = [
 
@@ -127,7 +141,7 @@ const ModalEveryMatchPlayerRating = (closeModalMatchEachPlayer) => {
                             Rating
                         </label>
                         <div>
-                            <Dropdown_rating />
+                            <Dropdown_rating name="Rating" playerId={player.surname} handleChangeCallback={handleChangeParent}/>
 
                         </div>
 

@@ -5,7 +5,7 @@ import '../../assets/Style/ModalPositions.css'
 import Dropdown_rating from '../Dropdowns/Dropdown_rating'
 import ModalEveryTrainingPlayerRating from './ModalEveryTrainingPlayerRating'
 
-const ModalTrainingEachPlayer = ({ closeModalTrainingEachPlayer }) => {
+const ModalTrainingEachPlayer = ({ closeModalTrainingEachPlayer,closeModalTraining }) => {
     return (
         <div className='modalBackgroundPosition Training1'>
             <div className='col-12 x-btn'>
@@ -21,7 +21,7 @@ const ModalTrainingEachPlayer = ({ closeModalTrainingEachPlayer }) => {
 
                     </div>
                     <div className='col-2 '>
-                        <button className='next-button Tr2Confirm' > Confirm </button>
+                        <button className='next-button Tr2Confirm'  onClick={() => closeModalTrainingEachPlayer(false),()=>closeModalTraining(false)}> Confirm </button>
                     </div>
                 </div>
             </div>

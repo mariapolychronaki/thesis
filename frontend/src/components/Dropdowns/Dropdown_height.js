@@ -1,13 +1,13 @@
 import React from 'react'
 
-const Dropdown_height = ({handleChangeCallback}) => {
+const Dropdown_height = ({ handleChangeCallback, height }) => {
 
     const handleChange = (e) => {
         handleChangeCallback(e.target.value);
     }
     return (
         <div>
-            <select onChange={handleChange} className='height_op'>
+            <select onChange={handleChange} className='height_op' defaultValue={height}>
 
                 <option value="150">1,50</option>
                 <option value="151">1,51</option>

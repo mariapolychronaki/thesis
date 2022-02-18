@@ -136,7 +136,9 @@
 .Tr{
     margin-top: 30%;
 }
-
+.trainingInModalTraining{
+    margin-left: 10%;
+}
 
 
 @media screen and (max-width:1300px) {

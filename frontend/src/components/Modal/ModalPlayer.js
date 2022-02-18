@@ -62,7 +62,7 @@ const ModalPlayer = ({ closeModalPlayer,isOpen }) => {
 
    
     const chooseModal = () => {
-
+        
         setdata({
             ...data, [`position`]: position, [`height`]: height, [`nationality`]: nationality,
             [`weight`]: weight

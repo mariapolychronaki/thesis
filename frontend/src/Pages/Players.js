@@ -33,17 +33,89 @@ export const Players = () => {
         setSearchField(e.target.value);
     };
 
-    const handleChangeParent =()=>{
+    const handleChangeParent = () => {
         console.log("khjvjagdfsuagvh")
     }
 
 
+    const [OpenModalGoalkeeper, setOpenModalGoalkeeper] = useState(false);
+    const [OpenModalCentralDefender, setOpenModalCentralDefender] = useState(false);
+    const [OpenModalWideDefender, setOpenModalWideDefender] = useState(false);
+    const [OpenModalMidfielder, setOpenModalMidfielder] = useState(false);
+    const [OpenModalAttackingMidfielderWide, setOpenModalAttackingMidfielderWide] = useState(false);
+    const [OpenModalAttackingMidfielderCenter, setOpenModalAttackingMidfielderCenter] = useState(false);
+    const [OpenModalForward, setOpenModalForward] = useState(false);
+
+
     const chooseModal = (player) => {
+        console.log(player)
+        if (player.position === "Goalkeeper") {
+
+            setOpenModalGoalkeeper(true);
+            setOpenModalCentralDefender(false);
+            setOpenModalWideDefender(false);
+            setOpenModalMidfielder(false);
+            setOpenModalAttackingMidfielderWide(false);
+            setOpenModalAttackingMidfielderCenter(false);
+            setOpenModalForward(false);
+        } else if (player.position === "Central Defender") {
+
+            setOpenModalGoalkeeper(false);
+            setOpenModalCentralDefender(true);
+            setOpenModalWideDefender(false);
+            setOpenModalMidfielder(false);
+            setOpenModalAttackingMidfielderWide(false);
+            setOpenModalAttackingMidfielderCenter(false);
+            setOpenModalForward(false);
+        } else if (player.position === "Right Defender" || player.position === "Left Defender") {
+            console.log("mpika edw")
+            setOpenModalGoalkeeper(false);
+            setOpenModalCentralDefender(false);
+            setOpenModalWideDefender(true);
+            setOpenModalMidfielder(false);
+            setOpenModalAttackingMidfielderWide(false);
+            setOpenModalAttackingMidfielderCenter(false);
+            setOpenModalForward(false);
+        } else if (player.position === "Midfielder") {
+            setOpenModalGoalkeeper(false);
+            setOpenModalCentralDefender(false);
+            setOpenModalWideDefender(false);
+            setOpenModalMidfielder(true);
+            setOpenModalAttackingMidfielderWide(false);
+            setOpenModalAttackingMidfielderCenter(false);
+            setOpenModalForward(false);
+        } else if (player.position === "Attacking Midfielder Right" || player.position === "Attacking Midfielder Left") {
+            setOpenModalGoalkeeper(false);
+            setOpenModalCentralDefender(false);
+            setOpenModalWideDefender(false);
+            setOpenModalMidfielder(false);
+            setOpenModalAttackingMidfielderWide(true);
+            setOpenModalAttackingMidfielderCenter(false);
+            setOpenModalForward(false);
+        } else if (player.position === "Attacking Midfielder Center") {
+            setOpenModalGoalkeeper(false);
+            setOpenModalCentralDefender(false);
+            setOpenModalWideDefender(false);
+            setOpenModalMidfielder(false);
+            setOpenModalAttackingMidfielderWide(false);
+            setOpenModalAttackingMidfielderCenter(true);
+            setOpenModalForward(false);
+        } else if (player.position === "Forward") {
+            setOpenModalGoalkeeper(false);
+            setOpenModalCentralDefender(false);
+            setOpenModalWideDefender(false);
+            setOpenModalMidfielder(false);
+            setOpenModalAttackingMidfielderWide(false);
+            setOpenModalAttackingMidfielderCenter(false);
+            setOpenModalForward(true);
+        }
         setOpenModalPlayerRating(true);
         setPlayer(player);
     }
 
     const dispatch = useDispatch();
+
+    const [removePlayerBtn, setRemovePlayerBtn] = useState(false);
 
     useEffect(() => {
         setfilteredPersons(playersArray.filter(
@@ -163,6 +235,11 @@ export const Players = () => {
         console.log(Player)
     }
 
+    const playerToBeRemoved = (Player) => {
+        setPlayer(Player)
+        setRemovePlayerBtn(true)
+    }
+
     const ProductTable = (props) => {
         console.log(props);
         const { arrayPlayers, requestSort, sortConfig } = useSortableData(filteredPersons);
@@ -224,12 +301,20 @@ export const Players = () => {
                             <td className='action_buttons'>
                                 <button className='edit_btn' onClick={() => functionEdit(player)}> Edit </button>
                                 <button className='rating_btn' onClick={() => chooseModal(player)}> Rating </button>
-                                <button className='delete_btn'> Remove </button>
+                                <button className='delete_btn' onClick={() => playerToBeRemoved(player)}> Remove </button>
+                                {removePlayerBtn && <CustomPopup
+                                    onClose={popupCloseHandler, () => setRemovePlayerBtn(!removePlayerBtn)}
+                                    show={removePlayerBtn}
+                                >
+                                    <div>Are you sure you want to remove {Player.surname} from your team</div>
+                                </CustomPopup>}
                             </td>
                         </tr>
                     ))}
                 </tbody>
+
             </table>
+
         );
     };
 
@@ -286,9 +371,31 @@ export const Players = () => {
                     </div>
                 </div>
 
+                {removePlayerBtn && <CustomPopup
+                    onClose={popupCloseHandler, () => setRemovePlayerBtn(!removePlayerBtn)}
+                    show={removePlayerBtn}
+                >
+                    <div>Do you want to remove <span className='RemovePlayerSurname'>{Player.name} {Player.surname} </span>from your team ?</div>
+                    <div className='offset-5 col-3'>
+                        <button onClick={popupCloseHandler, () => setRemovePlayerBtn(!removePlayerBtn)} className='YesBtnPopUp' >Yes</button>
+                        <button className='NoBtnPopUp' onClick={popupCloseHandler, () => setRemovePlayerBtn(!removePlayerBtn)}>No</button>
+                    </div>
+                </CustomPopup>}
+
+
                 {(isOpen || openModalPlayer) && < ModalPlayer isOpen={isOpen} closeModalPlayer={setOpenModalPlayer} />}
                 {openModalInjured && < ModalInjured closeModalInjured={setOpenModalInjured} />}
-                {openModalPlayerRating && < ModalPlayerRating closeModalPlayerRating={setOpenModalPlayerRating} player={Player} handeChangeCallback={handleChangeParent} />}
+                {openModalPlayerRating && < ModalPlayerRating
+                    OpenModalGoalkeeper={OpenModalGoalkeeper}
+                    OpenModalCentralDefender={OpenModalCentralDefender}
+                    OpenModalWideDefender={OpenModalWideDefender}
+                    OpenModalMidfielder={OpenModalMidfielder}
+                    OpenModalAttackingMidfielderWide={OpenModalAttackingMidfielderWide}
+                    OpenModalAttackingMidfielderCenter={OpenModalAttackingMidfielderCenter}
+                    OpenModalForward={OpenModalForward}
+                    closeModalPlayerRating={setOpenModalPlayerRating} player={Player} handeChangeCallback={handleChangeParent} />}
+
+                    
                 {openModalEditPlayer && < ModalEditPlayer player={Player}
                     closeModalEditPlayer={setOpenModalEditPlayer} />}
 
@@ -306,7 +413,7 @@ export const Players = () => {
                 </section>
 
 
-                {(!openModalPlayer && !openModalInjured && !openModalPlayerRating && !openModalEditPlayer) && <ProductTable props={filteredPersons} />}
+                {(!openModalPlayer && !openModalInjured && !openModalPlayerRating && !openModalEditPlayer && !removePlayerBtn) && <ProductTable props={filteredPersons} />}
 
 
 

@@ -45,15 +45,8 @@ const ModalTraining = ({ closeModalTraining }) => {
 
                             </div>
                         </div>
-                        <div className='col-12 name'>
-                            <div className='offset-1 col-4 text'>
-                                <label>Short Description</label>
-                            </div>
-                            <div className='col-4 '>
-
-                                <input className="inputs">
-                                </input>
-                            </div>
+                        <div className='col-12 space'>
+                        
                         </div>
 
 
@@ -74,9 +67,9 @@ const ModalTraining = ({ closeModalTraining }) => {
                             <button className='cancel-button' onClick={() => closeModalTraining(false)}>Cancel</button>
                         </div>
                         <div className=' col-2'>
-                            <button className='next-button' onClick={() => setOpenModalTrainingEachPlayer(true)}> Next </button>
+                            <button className='next-button trainingInModalTraining' onClick={() => setOpenModalTrainingEachPlayer(true)}> Next </button>
 
-                            {OpenModalTrainingEachPlayer && < ModalTrainingEachPlayer closeModalTrainingEachPlayer={setOpenModalTrainingEachPlayer} />}
+                            {OpenModalTrainingEachPlayer && < ModalTrainingEachPlayer closeModalTrainingEachPlayer={setOpenModalTrainingEachPlayer} closeModalTraining={closeModalTraining}/>}
 
                         </div>
                     </div>

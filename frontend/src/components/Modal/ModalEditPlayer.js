@@ -17,7 +17,7 @@ import ModalForward from './ModalForward'
 import ModalInjured from './ModalInjured'
 
 
-const ModalEditPlayer = ({ closeModalEditPlayer ,player}) => {
+const ModalEditPlayer = ({ closeModalEditPlayer, player }) => {
 
     const [OpenModalGoalkeeper, setOpenModalGoalkeeper] = useState(false);
     const [OpenModalCentralDefender, setOpenModalCentralDefender] = useState(false);
@@ -106,7 +106,7 @@ const ModalEditPlayer = ({ closeModalEditPlayer ,player}) => {
                     <button className='x' onClick={() => closeModalEditPlayer(false)}>X</button>
                 </div>
                 <div className='col-12 title'>
-                   {player.name}  {player.surname} 
+                    {player.name}  {player.surname}
                 </div>
                 <div className='modalbodyPlayerEdit'>
 
@@ -132,7 +132,7 @@ const ModalEditPlayer = ({ closeModalEditPlayer ,player}) => {
                                 <label>Position</label>
                             </div>
                             <div className='col-4 '>
-                                <Dropdown_position handleChangeCallback={handleChangeParent} />
+                                <Dropdown_position handleChangeCallback={handleChangeParent} position={player.position} />
                             </div>
                         </div>
 
@@ -143,10 +143,10 @@ const ModalEditPlayer = ({ closeModalEditPlayer ,player}) => {
                             </div>
                             <div className='col-4'>
 
-                                <select className='positions'>
-                                    <option value="right">Right</option>
-                                    <option value="left">Left</option>
-                                    <option value="both">Both</option>
+                                <select className='positions' defaultValue={player.preferred_foot}>
+                                    <option value="Right">Right</option>
+                                    <option value="Left">Left</option>
+                                    <option value="Both">Both</option>
                                 </select>
                             </div>
                         </div>
@@ -160,7 +160,7 @@ const ModalEditPlayer = ({ closeModalEditPlayer ,player}) => {
                             </div>
                             <div className='col-4 '>
 
-                                <Dropdown_height className="height_op" />
+                                <Dropdown_height className="height_op" height={player.height} />
                             </div>
                         </div>
 
@@ -170,7 +170,7 @@ const ModalEditPlayer = ({ closeModalEditPlayer ,player}) => {
                             </div>
                             <div className='col-4'>
 
-                                <Dropdown_weight className="weight_op" />
+                                <Dropdown_weight className="weight_op" weight={player.weight}/>
                             </div>
                         </div>
 
@@ -182,7 +182,7 @@ const ModalEditPlayer = ({ closeModalEditPlayer ,player}) => {
                             <button className='cancel-button PL_cancel' onClick={() => closeModalEditPlayer(false)}>Cancel</button>
                         </div>
                         <div className='col-2'>
-                            <button className='next-button PL_next'onClick={() => closeModalEditPlayer(false)}> Confirm </button>
+                            <button className='next-button PL_next' onClick={() => closeModalEditPlayer(false)}> Confirm </button>
 
 
 

@@ -6,80 +6,86 @@ import Dropdown_rating from '../Dropdowns/Dropdown_rating'
 import Dropdown_nationality from '../Dropdowns/Dropdown_nationality'
 import { arrayplayersRating } from '../../Constants/Constants'
 
-const ModalPlayerRating = ({ closeModalPlayerRating, player }) => {
+const ModalPlayerRating = ({ closeModalPlayerRating, player, OpenModalGoalkeeper,
+    OpenModalCentralDefender,OpenModalWideDefender,OpenModalMidfielder,
+    OpenModalAttackingMidfielderCenter,OpenModalAttackingMidfielderWide,
+    OpenModalForward
+ }) => {
+    console.log(player)
 
     const handleChangeParent = () => {
-        console.log("giorgos")
+        console.log()
     }
-    const [OpenModalGoalkeeper, setOpenModalGoalkeeper] = useState(false);
-    const [OpenModalCentralDefender, setOpenModalCentralDefender] = useState(false);
-    const [OpenModalWideDefender, setOpenModalWideDefender] = useState(false);
-    const [OpenModalMidfielder, setOpenModalMidfielder] = useState(false);
-    const [OpenModalAttackingMidfielderWide, setOpenModalAttackingMidfielderWide] = useState(false);
-    const [OpenModalAttackingMidfielderCenter, setOpenModalAttackingMidfielderCenter] = useState(false);
-    const [OpenModalForward, setOpenModalForward] = useState(false);
+    // const [OpenModalGoalkeeper, setOpenModalGoalkeeper] = useState(false);
+    // const [OpenModalCentralDefender, setOpenModalCentralDefender] = useState(false);
+    // const [OpenModalWideDefender, setOpenModalWideDefender] = useState(false);
+    // const [OpenModalMidfielder, setOpenModalMidfielder] = useState(false);
+    // const [OpenModalAttackingMidfielderWide, setOpenModalAttackingMidfielderWide] = useState(false);
+    // const [OpenModalAttackingMidfielderCenter, setOpenModalAttackingMidfielderCenter] = useState(false);
+    // const [OpenModalForward, setOpenModalForward] = useState(false);
 
-    const chooseModal = (player) => {
+    // const chooseModal = (player) => {
 
-        if (player.position === "goalkeeper") {
+    //     if (player.position === "goalkeeper") {
 
-            setOpenModalGoalkeeper(true);
-            setOpenModalCentralDefender(false);
-            setOpenModalWideDefender(false);
-            setOpenModalMidfielder(false);
-            setOpenModalAttackingMidfielderWide(false);
-            setOpenModalAttackingMidfielderCenter(false);
-            setOpenModalForward(false);
-        } else if (player.position === "central_defender") {
-            setOpenModalGoalkeeper(false);
-            setOpenModalCentralDefender(true);
-            setOpenModalWideDefender(false);
-            setOpenModalMidfielder(false);
-            setOpenModalAttackingMidfielderWide(false);
-            setOpenModalAttackingMidfielderCenter(false);
-            setOpenModalForward(false);
-        } else if (player.position === "right_defender" || player.position === "left_defender") {
-            setOpenModalGoalkeeper(false);
-            setOpenModalCentralDefender(false);
-            setOpenModalWideDefender(true);
-            setOpenModalMidfielder(false);
-            setOpenModalAttackingMidfielderWide(false);
-            setOpenModalAttackingMidfielderCenter(false);
-            setOpenModalForward(false);
-        } else if (player.position === "midfielder") {
-            setOpenModalGoalkeeper(false);
-            setOpenModalCentralDefender(false);
-            setOpenModalWideDefender(false);
-            setOpenModalMidfielder(true);
-            setOpenModalAttackingMidfielderWide(false);
-            setOpenModalAttackingMidfielderCenter(false);
-            setOpenModalForward(false);
-        } else if (player.position === "Att_mid_right" || player.position === "Att_mid_left") {
-            setOpenModalGoalkeeper(false);
-            setOpenModalCentralDefender(false);
-            setOpenModalWideDefender(false);
-            setOpenModalMidfielder(false);
-            setOpenModalAttackingMidfielderWide(true);
-            setOpenModalAttackingMidfielderCenter(false);
-            setOpenModalForward(false);
-        } else if (player.position === "Att_mid_center") {
-            setOpenModalGoalkeeper(false);
-            setOpenModalCentralDefender(false);
-            setOpenModalWideDefender(false);
-            setOpenModalMidfielder(false);
-            setOpenModalAttackingMidfielderWide(false);
-            setOpenModalAttackingMidfielderCenter(true);
-            setOpenModalForward(false);
-        } else if (player.position === "forward") {
-            setOpenModalGoalkeeper(false);
-            setOpenModalCentralDefender(false);
-            setOpenModalWideDefender(false);
-            setOpenModalMidfielder(false);
-            setOpenModalAttackingMidfielderWide(false);
-            setOpenModalAttackingMidfielderCenter(false);
-            setOpenModalForward(true);
-        }
-    }
+    //         setOpenModalGoalkeeper(true);
+    //         setOpenModalCentralDefender(false);
+    //         setOpenModalWideDefender(false);
+    //         setOpenModalMidfielder(false);
+    //         setOpenModalAttackingMidfielderWide(false);
+    //         setOpenModalAttackingMidfielderCenter(false);
+    //         setOpenModalForward(false);
+    //     } else if (player.position === "central_defender") {
+    //         setOpenModalGoalkeeper(false);
+    //         setOpenModalCentralDefender(true);
+    //         setOpenModalWideDefender(false);
+    //         setOpenModalMidfielder(false);
+    //         setOpenModalAttackingMidfielderWide(false);
+    //         setOpenModalAttackingMidfielderCenter(false);
+    //         setOpenModalForward(false);
+    //     } else if (player.position === "right_defender" || player.position === "left_defender") {
+    //         setOpenModalGoalkeeper(false);
+    //         setOpenModalCentralDefender(false);
+    //         setOpenModalWideDefender(true);
+    //         setOpenModalMidfielder(false);
+    //         setOpenModalAttackingMidfielderWide(false);
+    //         setOpenModalAttackingMidfielderCenter(false);
+    //         setOpenModalForward(false);
+    //     } else if (player.position === "midfielder") {
+    //         setOpenModalGoalkeeper(false);
+    //         setOpenModalCentralDefender(false);
+    //         setOpenModalWideDefender(false);
+    //         setOpenModalMidfielder(true);
+    //         setOpenModalAttackingMidfielderWide(false);
+    //         setOpenModalAttackingMidfielderCenter(false);
+    //         setOpenModalForward(false);
+    //     } else if (player.position === "Att_mid_right" || player.position === "Att_mid_left") {
+    //         setOpenModalGoalkeeper(false);
+    //         setOpenModalCentralDefender(false);
+    //         setOpenModalWideDefender(false);
+    //         setOpenModalMidfielder(false);
+    //         setOpenModalAttackingMidfielderWide(true);
+    //         setOpenModalAttackingMidfielderCenter(false);
+    //         setOpenModalForward(false);
+    //     } else if (player.position === "Att_mid_center") {
+    //         setOpenModalGoalkeeper(false);
+    //         setOpenModalCentralDefender(false);
+    //         setOpenModalWideDefender(false);
+    //         setOpenModalMidfielder(false);
+    //         setOpenModalAttackingMidfielderWide(false);
+    //         setOpenModalAttackingMidfielderCenter(true);
+    //         setOpenModalForward(false);
+    //     } else if (player.position === "forward") {
+    //         setOpenModalGoalkeeper(false);
+    //         setOpenModalCentralDefender(false);
+    //         setOpenModalWideDefender(false);
+    //         setOpenModalMidfielder(false);
+    //         setOpenModalAttackingMidfielderWide(false);
+    //         setOpenModalAttackingMidfielderCenter(false);
+    //         setOpenModalForward(true);
+    //     }
+        
+    // }
 
     // console.log(arrayplayersRating[0])
     var temp = useState({});
@@ -98,7 +104,7 @@ const ModalPlayerRating = ({ closeModalPlayerRating, player }) => {
     return (
         <>
            
-            {chooseModal(player)}
+            {/* {chooseModal(player)} */}
 
             {OpenModalGoalkeeper &&
                 < div className='modalBackgroundPositionPlayerRating' >

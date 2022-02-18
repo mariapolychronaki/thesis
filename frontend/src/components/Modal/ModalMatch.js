@@ -42,28 +42,22 @@ const ModalMatch = ({ closeModalMatch }) => {
                     <form>
                         <div className='col-12 name'>
                             <div className='offset-1 col-4 text'>
-                                <label>Fixture</label>
-                            </div>
-                            <div className='col-4 '>
-
-                                <input className="inputs">
-                                </input>
-                            </div>
-                        </div>
-
-
-
-
-
-
-                        <div className='col-12 name'>
-                            <div className='offset-1 col-4 text'>
                                 <label>Date</label>
                             </div>
                             <div className='col-4'>
                                 <DatePicker className='date' selected={startDate} onChange={(date) => setStartDate(date)} format='yyyy-MM-dd' />
                             </div>
                         </div>
+                        <div className='col-12 space'>
+
+                        </div>
+
+
+
+
+
+
+
 
 
 

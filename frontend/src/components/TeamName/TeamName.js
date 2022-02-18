@@ -49,17 +49,19 @@ export const TeamName = () => {
             errors.TeamName = "Team name is required"
         } else if (values.TeamName.length < 3) {
             errors.TeamName = 'Team name must be more than 3 characters'
+        } else if (isNaN(values.TeamName) === false) {
+            errors.TeamName = 'Team name cannot contain numbers'
         }
-
-        return errors;
+       
     }
 
     return (
         <div className='TeamNameForm'>
             <form onSubmit={hadleSubmit}>
-                <div className='col-12 '>
+                <div className='row '>
+                    <div className='spac'></div>
                     <div className='col-12 LabelTeam'>
-                        <label>Please enter your team's name</label>
+                        Please enter your team's name
                     </div>
                     <input className="teamNameInput"
                         placeholder='Team Name'
