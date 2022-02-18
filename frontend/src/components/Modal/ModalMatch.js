@@ -70,7 +70,7 @@ const ModalMatch = ({ closeModalMatch }) => {
                         </div>
                         <div className='col-2'>
                             <button className='next-button Next_match' onClick={() => setOpenModalMatchEachPlayer(true)}> Next </button>
-                            {OpenModalMatchEachPlayer && < ModalMatchEachPlayer closeModalMatchEachPlayer={setOpenModalMatchEachPlayer} />}
+                            {OpenModalMatchEachPlayer && < ModalMatchEachPlayer closeModalMatchEachPlayer={setOpenModalMatchEachPlayer} closeModalMatch={closeModalMatch}/>}
 
                         </div>
                     </div>

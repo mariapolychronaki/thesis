@@ -274,7 +274,6 @@
     }
     .next-button{
         margin-left: 10%;
-       
     }
   
     .PL_next{
@@ -321,6 +320,9 @@
         margin-left: 27.5%;
         border-radius: 10px;
         border: solid black;
+    }
+    .next-button{
+        margin-left: 0;;
     }
 }
 

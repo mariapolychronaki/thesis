@@ -8,7 +8,8 @@ import Dropdown_height from '../Dropdowns/Dropdown_height'
 import Dropdown_weight from '../Dropdowns/Dropdown_weight'
 import Dropdown_nationality from '../Dropdowns/Dropdown_nationality'
 import Dropdown_position from '../Dropdowns/Dropdown_position'
-
+import ModalPlayer from './ModalPlayer'
+import ModalPlayerUserInit from '../../components/Modal/ModalPlayerUserInit'
 
 
 const ModalPlayerUser = ({ }) => {
@@ -20,7 +21,9 @@ const ModalPlayerUser = ({ }) => {
 
     return (
 
+
         <>
+            {/* <ModalPlayerUserInit/> */}
             {!edit && <div className='modalBackgroundUser'>
                 <div className='col-12 space'></div>
                 <div className='modalContainerUser'>
@@ -147,14 +150,14 @@ const ModalPlayerUser = ({ }) => {
                     <div className='col-12 x-button'>
                     </div>
                     <div className='col-12 titleUser'>
-                        New Player
+                        Stratakis Georgios
                     </div>
                     <div className='modalbody'>
 
                         <form>
-                           
 
-                            
+
+
 
 
                             <div className='col-12 name'>
@@ -194,7 +197,7 @@ const ModalPlayerUser = ({ }) => {
                             </div>
 
 
-                           
+
 
                             <div className='col-12 name'>
                                 <div className='offset-1 col-4 text'>
