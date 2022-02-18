@@ -1,7 +1,14 @@
 .form_settings{
     width: 50%;
     margin-left:25%;
-    height: 30rem;
+    height: 25rem;
+    padding-top: 2%;
+}
+
+.InputsEdit{
+    width: 50%;
+    margin-left:25%;
+    height: 35rem;
     padding-top: 2%;
 }
 

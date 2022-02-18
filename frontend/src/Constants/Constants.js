@@ -1,5 +1,249 @@
 import React from 'react';
 
+
+
+export const usersPlayers = [{
+    email: 'stragergo@gmail.com', name: 'Giorgos', surname: 'Stratakis', user_type: 'Player', team:'Aoan'
+},
+{
+    email: 'konsa@gmail.com', name: 'Konstantinos', surname: 'Sakas', user_type: 'Player', team:'Ane'
+},
+{
+    email: 'kostas@gmail.com', name: 'Kostas', surname: 'Xristakis', user_type: 'Player', team:'OFH'
+},
+{
+    email: 'Stratakis@gmail.com', name: 'Nikos', surname: 'Stratakis', user_type: 'Player', team:'Giouxtas'
+},
+{
+    email: 'mhnas@gmail.com', name: 'Giannis', surname: 'Mhnas', user_type: 'Player', team:'Paok'
+},
+{
+    email: 'john@gmail.com', name: 'Manos', surname: 'Niakakis', user_type: 'Player', team:'Romas'
+},
+{
+    email: 'stragergo@gmail.com', name: 'Giorgos', surname: 'Stratakis', user_type: 'Player', team:'Aoan'
+},
+{
+    email: 'konsa@gmail.com', name: 'Konstantinos', surname: 'Sakas', user_type: 'Player', team:'Ane'
+},
+{
+    email: 'kostas@gmail.com', name: 'Kostas', surname: 'Xristakis', user_type: 'Player', team:'OFH'
+},
+{
+    email: 'Stratakis@gmail.com', name: 'Nikos', surname: 'Stratakis', user_type: 'Player', team:'Giouxtas'
+},
+{
+    email: 'mhnas@gmail.com', name: 'Giannis', surname: 'Mhnas', user_type: 'Player', team:'Paok'
+},
+{
+    email: 'john@gmail.com', name: 'Manos', surname: 'Niakakis', user_type: 'Player', team:'Romas'
+},{
+    email: 'stragergo@gmail.com', name: 'Giorgos', surname: 'Stratakis', user_type: 'Player', team:'Aoan'
+},
+{
+    email: 'konsa@gmail.com', name: 'Konstantinos', surname: 'Sakas', user_type: 'Player', team:'Ane'
+},
+{
+    email: 'kostas@gmail.com', name: 'Kostas', surname: 'Xristakis', user_type: 'Player', team:'OFH'
+},
+{
+    email: 'Stratakis@gmail.com', name: 'Nikos', surname: 'Stratakis', user_type: 'Player', team:'Giouxtas'
+},
+{
+    email: 'mhnas@gmail.com', name: 'Giannis', surname: 'Mhnas', user_type: 'Player', team:'Paok'
+},
+{
+    email: 'john@gmail.com', name: 'Manos', surname: 'Niakakis', user_type: 'Player', team:'Romas'
+},
+{
+    email: 'stragergo@gmail.com', name: 'Giorgos', surname: 'Stratakis', user_type: 'Player', team:'Aoan'
+},
+{
+    email: 'konsa@gmail.com', name: 'Konstantinos', surname: 'Sakas', user_type: 'Player', team:'Ane'
+},
+{
+    email: 'kostas@gmail.com', name: 'Kostas', surname: 'Xristakis', user_type: 'Player', team:'OFH'
+},
+{
+    email: 'Stratakis@gmail.com', name: 'Nikos', surname: 'Stratakis', user_type: 'Player', team:'Giouxtas'
+},
+{
+    email: 'mhnas@gmail.com', name: 'Giannis', surname: 'Mhnas', user_type: 'Player', team:'Paok'
+},
+{
+    email: 'john@gmail.com', name: 'Manos', surname: 'Niakakis', user_type: 'Player', team:'Romas'
+},
+]
+
+export const usersCoaches = [{
+    email: 'go1234@gmail.com', name: 'Manos', surname: 'Stratos', user_type: 'Coach', team:'Romas'
+},
+{
+    email: 'koufis@gmail.com', name: 'Nikandros', surname: 'Koufas', user_type: 'Coach', team:'Paok'
+},
+{
+    email: 'kostas@gmail.com', name: 'Manolis', surname: 'Xristos', user_type: 'Coach', team:'Ofi'
+},
+{
+    email: 'strat@gmail.com', name: 'Aggelos', surname: 'Kitsos', user_type: 'Coach', team:'Aoan'
+},
+{
+    email: 'sotiris@yahoo.gr', name: 'Sotiris', surname: 'Mikos', user_type: 'Coach', team:'Aek'
+},
+{
+    email: 'panos@gmail.com', name: 'Panos', surname: 'Pero', user_type: 'Coach', team:'Aok'
+},
+{
+    email: 'go1234@gmail.com', name: 'Manos', surname: 'Stratos', user_type: 'Coach', team:'Romas'
+},
+{
+    email: 'koufis@gmail.com', name: 'Nikandros', surname: 'Koufas', user_type: 'Coach', team:'Paok'
+},
+{
+    email: 'kostas@gmail.com', name: 'Manolis', surname: 'Xristos', user_type: 'Coach', team:'Ofi'
+},
+{
+    email: 'strat@gmail.com', name: 'Aggelos', surname: 'Kitsos', user_type: 'Coach', team:'Aoan'
+},
+{
+    email: 'sotiris@yahoo.gr', name: 'Sotiris', surname: 'Mikos', user_type: 'Coach', team:'Aek'
+},
+{
+    email: 'panos@gmail.com', name: 'Panos', surname: 'Pero', user_type: 'Coach', team:'Aok'
+},
+{
+    email: 'go1234@gmail.com', name: 'Manos', surname: 'Stratos', user_type: 'Coach', team:'Romas'
+},
+{
+    email: 'koufis@gmail.com', name: 'Nikandros', surname: 'Koufas', user_type: 'Coach', team:'Paok'
+},
+{
+    email: 'kostas@gmail.com', name: 'Manolis', surname: 'Xristos', user_type: 'Coach', team:'Ofi'
+},
+{
+    email: 'strat@gmail.com', name: 'Aggelos', surname: 'Kitsos', user_type: 'Coach', team:'Aoan'
+},
+{
+    email: 'sotiris@yahoo.gr', name: 'Sotiris', surname: 'Mikos', user_type: 'Coach', team:'Aek'
+},
+{
+    email: 'panos@gmail.com', name: 'Panos', surname: 'Pero', user_type: 'Coach', team:'Aok'
+},
+]
+
+export const Enquiries = [{
+    coach: 'Stratakis', name: 'Nikolaos', surname: 'Drakos' , team:'Anthe'
+},
+{
+    coach: 'Plesis', name: 'Manos', surname: 'Drikas', team:'Pao'
+},
+{
+    coach: 'Pasxas', name: 'Panagiotis', surname: 'Mikas', team:'Free Agent'
+},
+{
+    coach: 'Terzis', name: 'Manthos', surname: 'Makos', team:'AEK'
+},
+{
+    coach: 'Tito', name: 'Orfeas', surname: 'Kafes', team:'Moires'
+},
+{
+    coach: 'Fino', name: 'Andreas', surname: 'Mpoyxas', team:'Faistos'
+},
+{
+    coach: 'Stratakis', name: 'Nikolaos', surname: 'Drakos' , team:'Anthe'
+},
+{
+    coach: 'Plesis', name: 'Manos', surname: 'Drikas', team:'Pao'
+},
+{
+    coach: 'Pasxas', name: 'Panagiotis', surname: 'Mikas', team:'Free Agent'
+},
+{
+    coach: 'Terzis', name: 'Manthos', surname: 'Makos', team:'AEK'
+},
+{
+    coach: 'Tito', name: 'Orfeas', surname: 'Kafes', team:'Moires'
+},
+{
+    coach: 'Fino', name: 'Andreas', surname: 'Mpoyxas', team:'Faistos'
+},
+{
+    coach: 'Stratakis', name: 'Nikolaos', surname: 'Drakos' , team:'Anthe'
+},
+{
+    coach: 'Plesis', name: 'Manos', surname: 'Drikas', team:'Pao'
+},
+{
+    coach: 'Pasxas', name: 'Panagiotis', surname: 'Mikas', team:'Free Agent'
+},
+{
+    coach: 'Terzis', name: 'Manthos', surname: 'Makos', team:'AEK'
+},
+{
+    coach: 'Tito', name: 'Orfeas', surname: 'Kafes', team:'Moires'
+},
+{
+    coach: 'Fino', name: 'Andreas', surname: 'Mpoyxas', team:'Faistos'
+},
+{
+    coach: 'Stratakis', name: 'Nikolaos', surname: 'Drakos' , team:'Anthe'
+},
+{
+    coach: 'Plesis', name: 'Manos', surname: 'Drikas', team:'Pao'
+},
+{
+    coach: 'Pasxas', name: 'Panagiotis', surname: 'Mikas', team:'Free Agent'
+},
+{
+    coach: 'Terzis', name: 'Manthos', surname: 'Makos', team:'AEK'
+},
+{
+    coach: 'Tito', name: 'Orfeas', surname: 'Kafes', team:'Moires'
+},
+{
+    coach: 'Fino', name: 'Andreas', surname: 'Mpoyxas', team:'Faistos'
+},
+]
+
+
+export const SignUpMessages = [{
+    email: 'stragergo@gmail.com', name: 'Giorgos', surname: 'Stratakis', user_type: 'Player', email:'stratfsh@gmail.com'
+},
+{
+    email: 'konsa@gmail.com', name: 'Konstantinos', surname: 'Sakas', user_type: 'Player', email:'stra1@gmail.com'
+},
+{
+    email: 'kostas@gmail.com', name: 'Kostas', surname: 'Xristakis', user_type: 'Coach', email:'stra12@gmail.com'
+},
+{
+    email: 'Stratakis@gmail.com', name: 'Nikos', surname: 'Stratakis', user_type: 'Player', email:'khdbai@gmail.com'
+},
+{
+    email: 'mhnas@gmail.com', name: 'Giannis', surname: 'Mhnas', user_type: 'Coach', email:'oqdjbfiha@gmail.com'
+},
+{
+    email: 'john@gmail.com', name: 'Manos', surname: 'Niakakis', user_type: 'Coach' , email:'ksfihavb@gmail.com'
+},
+{
+    email: 'stragergo@gmail.com', name: 'Giorgos', surname: 'Stratakis', user_type: 'Player', email:'stratfsh@gmail.com'
+},
+{
+    email: 'konsa@gmail.com', name: 'Konstantinos', surname: 'Sakas', user_type: 'Player', email:'stra1@gmail.com'
+},
+{
+    email: 'kostas@gmail.com', name: 'Kostas', surname: 'Xristakis', user_type: 'Coach', email:'stra12@gmail.com'
+},
+{
+    email: 'Stratakis@gmail.com', name: 'Nikos', surname: 'Stratakis', user_type: 'Player', email:'khdbai@gmail.com'
+},
+{
+    email: 'mhnas@gmail.com', name: 'Giannis', surname: 'Mhnas', user_type: 'Coach', email:'oqdjbfiha@gmail.com'
+},
+{
+    email: 'john@gmail.com', name: 'Manos', surname: 'Niakakis', user_type: 'Coach' , email:'ksfihavb@gmail.com'
+},
+]
+
 export const arrayPlayers = [
     {
         ssn: "170813175417", name: "Nikolaos", surname: "Chronakis", nationality: "Greek",

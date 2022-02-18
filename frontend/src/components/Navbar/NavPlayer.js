@@ -22,6 +22,7 @@ const NavPlayer = () => {
     const [values, setValues] = useState({
         email: '',
         password: '',
+        newpassword: '',
         password2: '',
     });
 
@@ -41,20 +42,21 @@ const NavPlayer = () => {
         let errors = {}
 
 
-        if (!values.username.trim()) {
-            errors.username = "Username required"
-        }
+       
 
         if (!values.email) {
             errors.email = "Email required"
         } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
             errors.email = "Email address is invalid"
         }
-
         if (!values.password) {
             errors.password = "Password is required"
+        } 
+
+        if (!values.newpassword) {
+            errors.newpassword = "New Password is required"
         } else if (values.password.length < 6) {
-            errors.password = 'Password must be more than 6 characters'
+            errors.newpassword = 'Password must be more than 6 characters'
         }
 
         if (!values.password2) {
@@ -64,13 +66,7 @@ const NavPlayer = () => {
 
         }
 
-        if (!values.name) {
-            errors.name = "Name is required"
-        }
 
-        if (!values.surname) {
-            errors.surname = "Surname is required"
-        }
 
         return errors;
     }
@@ -86,9 +82,11 @@ const NavPlayer = () => {
         console.log(values)
     };
     const hadleSubmit = e => {
-        e.preventDefault();
+
         setErrors(validate(values));
         setIsSubmiting(true);
+        setValues("")
+        e.preventDefault();
     };
 
     useEffect(() => {
@@ -111,6 +109,7 @@ const NavPlayer = () => {
         setShow(true)
     }
     const confirm_f = () => {
+        hadleSubmit();
         setShow(false);
         setEdit(!edit);
     }
@@ -120,7 +119,7 @@ const NavPlayer = () => {
         setEdit(!edit);
     }
 
-    
+
     const [visibility, setVisibility] = useState(false);
 
     const popupCloseHandler = (e) => {
@@ -163,7 +162,7 @@ const NavPlayer = () => {
                 </div>
                 <div className='col-1 lg '>
                     <button className='LogOut'>Log Out</button>
-                    <img className='Exit' onClick={console.log("giorgos")} src={LogOut}></img>
+                    <img className='Exit' src={LogOut}></img>
 
                 </div>
 
@@ -183,7 +182,7 @@ const NavPlayer = () => {
                     <Modal.Title>Account</Modal.Title>
                 </Modal.Header>
 
-                {!edit && <div className=' container_settings' >
+                {!edit && <div className='container_settings' >
                     <form className='form_settings'>
 
                         <div className='form-inputs_settings'>
@@ -205,18 +204,18 @@ const NavPlayer = () => {
                         </div>
                         <button className='Btn_settings' type='submit' onClick={() => setEdit(!edit)}>Edit</button>
                         <div className='col-12'>
-                           
+
                         </div>
                     </form>
 
-                
+
                 </div>
                 }
 
                 {edit && <div className=' container_settings 2' >
-                    <form className='form_settings' onSubmit={hadleSubmit} >
+                    <form className='form_settings InputsEdit' onSubmit={hadleSubmit} >
 
-                        <div className='form-inputs_settings'>
+                        <div className='form-inputs_settings '>
                             <label htmlFor='email' className='form-label'>
                                 *New E-mail
                             </label>
@@ -251,10 +250,10 @@ const NavPlayer = () => {
                                 *New Password
                             </label>
                             <input type='password_settings'
-                                name='password'
+                                name='new_password'
                                 className='form-input'
                                 placeholder='Enter your newpassword'
-                                value={values.password}
+                                value={values.newpassword}
                                 onChange={hadleChange}
                             />
                             {errors.password && <p>{errors.password}</p>}

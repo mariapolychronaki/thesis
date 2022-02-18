@@ -34,6 +34,9 @@ export const TeamName = () => {
         return !/[a-z]/.test(str) && /[A-Z]/.test(str);
     }
 
+    function isNumeric(num) {
+        return !isNaN(num)
+    }
     const validate = (values) => {
 
         let errors = {}
@@ -49,10 +52,7 @@ export const TeamName = () => {
             errors.TeamName = "Team name is required"
         } else if (values.TeamName.length < 3) {
             errors.TeamName = 'Team name must be more than 3 characters'
-        } else if (isNaN(values.TeamName) === false) {
-            errors.TeamName = 'Team name cannot contain numbers'
-        }
-       
+        } 
     }
 
     return (

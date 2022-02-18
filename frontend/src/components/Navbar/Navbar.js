@@ -22,6 +22,7 @@ const Navbar = () => {
     const [values, setValues] = useState({
         email: '',
         password: '',
+        newpassword: '',
         password2: '',
     });
 
@@ -41,18 +42,19 @@ const Navbar = () => {
         let errors = {}
 
 
-
-
         if (!values.email) {
             errors.email = "Email required"
         } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
             errors.email = "Email address is invalid"
         }
-
         if (!values.password) {
-            errors.password = "Password is required!"
+            errors.password = "Password is required"
+        }
+
+        if (!values.newpassword) {
+            errors.newpassword = "New Password is required"
         } else if (values.password.length < 6) {
-            errors.password = 'Password must be more than 6 characters'
+            errors.newpassword = 'Password must be more than 6 characters'
         }
 
         if (!values.password2) {
@@ -186,7 +188,7 @@ const Navbar = () => {
                 </Modal.Header>
 
                 {!edit && <div className=' container_settings' >
-                    <form className='form_settings'>
+                    <form className='form_settings '>
 
                         <div className='form-inputs_settings'>
                             <label htmlFor='email' className='form-label'>
@@ -229,7 +231,7 @@ const Navbar = () => {
                 }
 
                 {edit && <div className=' container_settings 2' >
-                    <form className='form_settings' onSubmit={hadleSubmit}>
+                    <form className='form_settings InputsEdit' onSubmit={hadleSubmit}>
 
                         <div className='form-inputs_settings'>
                             <label htmlFor='email' className='form-label'>

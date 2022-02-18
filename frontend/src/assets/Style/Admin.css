@@ -8,7 +8,11 @@
   color:rgb(0, 77, 0);
   font-weight: bolder;
 }
-
+.YesBtnAccept{
+    border-radius: 8px;
+    background-color: rgb(69, 126, 69);
+    color: rgb(255, 255, 255);
+}
 .Active_players{
   min-height:2rem;
   width: fit-content;
@@ -60,6 +64,8 @@
   display: flex;
 }
 
+
+
 .user_sign_up_messages{
     display: flex;
 }
@@ -69,8 +75,26 @@
   background-color: rgb(104, 168, 104);
   color:white;
 }
+.font_bold{
+  color:rgb(46, 70, 19);
+  font-weight: 900;
+  text-decoration:wavy;
+}
+
+.font_Dec{
+  color:rgb(46, 70, 19);
+  font-weight: 900;
+
+  text-decoration: underline;
+}
+
+.span1{
+  margin-left: 5%;
+}
 .CE{
     border:solid black;
+    width: 80%;
+    margin-left: 10%;
     text-align: center;
 }
 .tableCoaches{
@@ -84,9 +108,16 @@
   border:solid black;
 }
 .SM{
-    border:solid black;
-    text-align: center;
+  border:solid black;
+  width: 80%;
+  margin-left: 10%;
+  text-align: center;
 
+}
+
+.AddUserToBase{
+  color:rgb(0, 77, 0);
+  font-weight: bolder;
 }
 
 .BTN_Approve{
