@@ -2297,13 +2297,42 @@ export const Lineup = () => {
     const [openModalInjured, setOpenModalInjured] = useState(false);
 
 
+
+    const [formation_4231, setformation_4231] = useState(true)
+    const [formation_433, setformation_433] = useState(false)
+    const [formation_424, setformation_424] = useState(false)
+
+
+    const bring4231 = () => {
+        clear();
+        setformation_4231(true)
+        setformation_433(false)
+        setformation_424(false)
+        clear();
+        console.log(formation_4231)
+    }
+    const bring433 = () => {
+        clear();
+        setformation_4231(false)
+        setformation_433(true)
+        setformation_424(false)
+        console.log(formation_4231)
+    }
+    const bring424 = () => {
+        clear();
+        setformation_4231(false)
+        setformation_433(false)
+        setformation_424(true)
+        console.log(formation_4231)
+    }
+
     return (
         <>
 
-            {!openModalInjured &&
+            {!openModalInjured && formation_4231 &&
                 <div className='container-fluid'>
                     <div className='col-12 space2'>
-
+                        <div className='formation_title'>4-2-3-1</div>
                     </div>
 
 
@@ -2408,9 +2437,7 @@ export const Lineup = () => {
                             <div className='col-3 sub2'>
                                 <Player player={best_Left_Defender2} />
                             </div>
-                            <div className=' col-3 button_sub'>
-                                <button className='Injuries clear' onClick={clear}>Clear</button>
-                            </div>
+
 
                         </div>
                         <div className='row'>
@@ -2420,16 +2447,203 @@ export const Lineup = () => {
                             <div className='col-3 sub2'>
                                 <Player player={best_Midfielder3} />
                             </div>
+                            <div className=' col-3 button_sub'>
+                                <button className='Injuries clear' onClick={clear}>Clear</button>
+                            </div>
+
+                        </div>
+
+                        <div className='row'>
+                            <div className='col-3 sub2'>
+                                <Player player={best_Central_Defender3} />
+                            </div>
+                            <div className='offset-5 col-2 lineups'>
+                                <div>
+                                    <button className='formation' onClick={bring4231}>4-2-3-1</button>
+                                </div>
+                                <div>
+
+                                    <button className='formation' onClick={bring433}>4-3-3</button>
+                                </div>
+                                <div>
+
+                                    <button className='formation' onClick={bring424}>4-2-4</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+
+                </div >
+            }
+
+
+
+
+
+
+
+            {!openModalInjured && formation_433 &&
+                <div className='container-fluid'>
+                    <div className='col-12 space2'>
+
+                        <div className='formation_title'>4-3-3</div>
+
+                    </div>
+
+
+                    <div class="col-6 pitch">
+
+
+                        <div class="top-box"></div>
+                        <div class="centre-circle"></div>
+                        <div class="centre-line"></div>
+                        <div class="bottom-box"></div>
+                        <div className='forward4_3_3'>
+                            <Player player={best_for1} />
+                        </div>
+
+
+
+                        <div className='Att_mid4_3_3'>
+                            <div className='col-3 Att_mid4_3_3Left'>
+                                <Player player={best_Att_Mid_Left1} />
+                            </div>
+                            <div className='offset-6 col-3 Att_mid4_3_3Right'>
+                                <Player player={best_Att_Mid_Right1} />
+                            </div>
+                        </div>
+
+
+                        <div className='midfielders4_3_3'>
+                            <div className='offset-3 col-3 '>
+                                <Player player={best_Midfielder2} />
+                            </div>
+                            <div className='col-3'>
+                                <Player player={best_Midfielder1} />
+                            </div>
+                        </div>
+
+                        <div className='defensive_Mid_4_3_3'>
+                            <Player player={best_Midfielder3} />
+                        </div>
+
+                        <div className='defenders4_3_3'>
+                            <Player player={best_Left_Defender1} />
+                            <Player player={best_Central_Defender1} />
+                            <Player player={best_Central_Defender2} />
+                            <Player player={best_Right_Defender1} />
+                        </div>
+
+
+
+                        <div className='goalkeeper4_3_3'>
+                            <Player player={best_Goalkeeper1} />
+                        </div>
+
+
+
+
+
+
+
+
+
+                    </div>
+
+
+
+                    <div class="col-6 bench">
+
+                        <div className='row sub2'>
+                            <div className='col-1'>
+
+                            </div>
+                            <div className='col-4 subs'>
+                                <div>
+                                    Subs
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+
+                        <div className='row sub2'>
+                            <div className='col-3 sub2'>
+                                <Player player={best_Goalkeeper2} />
+                            </div>
+                            <div className='col-3 sub2'>
+                                <Player player={best_Att_Mid_Center2} />
+                            </div>
+                            <div className='col-3 button_sub'>
+                                <button className='Suggested' onClick={suggested_lineup}>Suggested Lineup</button>
+                            </div>
+
+                        </div>
+                        <div className='row'>
+                            <div className='col-3 sub2'>
+                                <Player player={best_Att_Mid_Left2} />
+                            </div>
+                            <div className='col-3 sub2'>
+                                <Player player={best_Att_Mid_Right2} />
+                            </div>
+                            <div className='col-3 button_sub'>
+                                <button className='Injuries' onClick={() => setOpenModalInjured(true)}>Injuries</button>
+                            </div>
 
 
                         </div>
                         <div className='row'>
                             <div className='col-3 sub2'>
-                                <Player player={best_Central_Defender3} />
+                                <Player player={best_for2} />
+                            </div>
+                            <div className='col-3 sub2'>
+                                <Player player={best_Left_Defender2} />
+                            </div>
+
+
+                        </div>
+                        <div className='row'>
+                            <div className='col-3 sub2'>
+                                <Player player={best_Right_Defender2} />
+                            </div>
+                            <div className='col-3 sub2'>
+                                <Player player={best_Att_Mid_Center1} />
+                            </div>
+                            <div className=' col-3 button_sub'>
+                                <button className='Injuries clear' onClick={clear}>Clear</button>
                             </div>
 
                         </div>
 
+                        <div className='row'>
+                            <div className='col-3 sub2'>
+                                <Player player={best_Central_Defender3} />
+                            </div>
+
+                            <div className='offset-5 col-2 lineups'>
+                                <div>
+                                    <button className='formation' onClick={bring4231}>4-2-3-1</button>
+                                </div>
+                                <div>
+
+                                    <button className='formation' onClick={bring433}>4-3-3</button>
+                                </div>
+                                <div>
+
+                                    <button className='formation' onClick={bring424}>4-2-4</button>
+                                </div>
+                            </div>
+                        </div>
 
 
 
@@ -2448,7 +2662,212 @@ export const Lineup = () => {
 
                 </div >
             }
+
+
+
+
+
+
+
+
+
+
+            {!openModalInjured && formation_424 &&
+                <div className='container-fluid'>
+                    <div className='col-12 space2'>
+
+                        <div className='formation_title'>4-2-4</div>
+
+                    </div>
+
+
+                    <div class="col-6 pitch">
+
+
+                        <div class="top-box"></div>
+                        <div class="centre-circle"></div>
+                        <div class="centre-line"></div>
+                        <div class="bottom-box"></div>
+                        <div className='forward4_2_4'>
+                            <div className='offset-4 col-2'>
+                                <Player player={best_for1} />
+                            </div>
+                            <div className=' col-2'>
+                                <Player player={best_for2} />
+                            </div>
+                        </div>
+
+
+
+                        <div className='Att_mid4_2_4'>
+                            <div className='col-3 Att_mid4_2_4Left'>
+                                <Player player={best_Att_Mid_Left1} />
+                            </div>
+                            <div className='offset-6 col-3 Att_mid4_2_4Right'>
+                                <Player player={best_Att_Mid_Right1} />
+                            </div>
+                        </div>
+
+
+                        <div className='midfielders4_2_4'>
+                            <div className='offset-3 col-3 '>
+                                <Player player={best_Midfielder2} />
+                            </div>
+                            <div className='col-3'>
+                                <Player player={best_Midfielder1} />
+                            </div>
+                        </div>
+
+
+
+                        <div className='defenders4_2_4'>
+                            <Player player={best_Left_Defender1} />
+                            <Player player={best_Central_Defender1} />
+                            <Player player={best_Central_Defender2} />
+                            <Player player={best_Right_Defender1} />
+                        </div>
+
+
+
+                        <div className='goalkeeper4_2_4'>
+                            <Player player={best_Goalkeeper1} />
+                        </div>
+
+
+
+
+
+
+
+
+
+                    </div>
+
+
+
+                    <div class="col-6 bench">
+
+                        <div className='row sub2'>
+                            <div className='col-1'>
+
+                            </div>
+                            <div className='col-4 subs'>
+                                <div>
+                                    Subs
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+
+                        <div className='row sub2'>
+                            <div className='col-3 sub2'>
+                                <Player player={best_Goalkeeper2} />
+                            </div>
+                            <div className='col-3 sub2'>
+                                <Player player={best_Att_Mid_Center2} />
+                            </div>
+                            <div className='col-3 button_sub'>
+                                <button className='Suggested' onClick={suggested_lineup}>Suggested Lineup</button>
+                            </div>
+
+                        </div>
+                        <div className='row'>
+                            <div className='col-3 sub2'>
+                                <Player player={best_Att_Mid_Left2} />
+                            </div>
+                            <div className='col-3 sub2'>
+                                <Player player={best_Att_Mid_Right2} />
+                            </div>
+                            <div className='col-3 button_sub'>
+                                <button className='Injuries' onClick={() => setOpenModalInjured(true)}>Injuries</button>
+                            </div>
+
+
+                        </div>
+                        <div className='row'>
+                            <div className='col-3 sub2'>
+                                <Player player={best_for2} />
+                            </div>
+                            <div className='col-3 sub2'>
+                                <Player player={best_Left_Defender2} />
+                            </div>
+
+
+                        </div>
+                        <div className='row'>
+                            <div className='col-3 sub2'>
+                                <Player player={best_Right_Defender2} />
+                            </div>
+                            <div className='col-3 sub2'>
+                                <Player player={best_Att_Mid_Center1} />
+                            </div>
+                            <div className=' col-3 button_sub'>
+                                <button className='Injuries clear' onClick={clear}>Clear</button>
+                            </div>
+
+                        </div>
+
+                        <div className='row'>
+                            <div className='col-3 sub2'>
+                                <Player player={best_Central_Defender3} />
+                            </div>
+
+                            <div className='offset-5 col-2 lineups'>
+                                <div>
+                                    <button className='formation' onClick={bring4231}>4-2-3-1</button>
+                                </div>
+                                <div>
+
+                                    <button className='formation' onClick={bring433}>4-3-3</button>
+                                </div>
+                                <div>
+
+                                    <button className='formation' onClick={bring424}>4-2-4</button>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+                </div >
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             {openModalInjured && < ModalInjured closeModalInjured={setOpenModalInjured} />}
+
 
         </>
     );

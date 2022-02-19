@@ -30,29 +30,32 @@ export const TeamName = () => {
         }
     }, [errors])
 
-    const isUpper = (str) => {
-        return !/[a-z]/.test(str) && /[A-Z]/.test(str);
-    }
+    // const isUpper = (str) => {
+    //     return !/[a-z]/.test(str) && /[A-Z]/.test(str);
+    // }
 
-    function isNumeric(num) {
-        return !isNaN(num)
-    }
+    // function isNumeric(num) {
+    //     return !isNaN(num)
+    // }
     const validate = (values) => {
 
         let errors = {}
 
 
-        console.log(values.TeamName[0].toUpperCase())
-
-        if (isUpper(values.TeamName[0]) === false) {
-
-            errors.TeamName = "The first letter must be capital"
-        }
-        else if (!values.TeamName) {
+        // console.log(values.TeamName[0].toUpperCase())
+        if (!values.TeamName) {
             errors.TeamName = "Team name is required"
-        } else if (values.TeamName.length < 3) {
+        }
+        else if (values.TeamName.length < 3) {
             errors.TeamName = 'Team name must be more than 3 characters'
         } 
+        // if (values.TeamName.length > 0) {
+        //     if (isUpper(values.TeamName[0]) === false) {
+        //         errors.TeamName = "The first letter must be capital"
+        //     }
+        // }
+
+        return errors;
     }
 
     return (

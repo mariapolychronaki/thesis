@@ -209,7 +209,10 @@ const Navbar = () => {
                             </div>
                         </div>
                         <button className='Btn_settings' type='submit' onClick={() => setEdit(!edit)}>Edit</button>
-                        <div className='col-12'>
+                       
+                    </form>
+                    
+                    <div className='col-12'>
                             <button className='Btn_settings_Delete' onClick={() => setVisibility(!visibility)}>Delete Account</button>
                             {console.log(visibility)}
                             <CustomPopup
@@ -225,7 +228,6 @@ const Navbar = () => {
                                 </div>
                             </CustomPopup>
                         </div>
-                    </form>
 
 
                 </div>
