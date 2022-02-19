@@ -39,4 +39,6 @@ CustomPopup.propTypes = {
     show: PropTypes.bool.isRequired,
     onClose: PropTypes.func.isRequired
 };
+
+
 export default CustomPopup;
