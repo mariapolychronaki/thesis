@@ -42,7 +42,7 @@ const NavPlayer = () => {
         let errors = {}
 
 
-       
+
 
         if (!values.email) {
             errors.email = "Email required"
@@ -51,7 +51,7 @@ const NavPlayer = () => {
         }
         if (!values.password) {
             errors.password = "Password is required"
-        } 
+        }
 
         if (!values.newpassword) {
             errors.newpassword = "New Password is required"
@@ -161,7 +161,7 @@ const NavPlayer = () => {
 
                 </div>
                 <div className='col-1 lg '>
-                <button className='LogOut'><NavLink className="nav-links1" exact to="/">Log Out</NavLink></button>
+                    <button className='LogOut'><NavLink className="nav-links1" exact to="/">Log Out</NavLink></button>
                     <NavLink className="nav-links1" exact to="/"><img className='Exit' onClick={console.log("giorgos")} src={LogOut}></img>
                     </NavLink>
 
@@ -194,15 +194,9 @@ const NavPlayer = () => {
                                 strgiorgos@gmail.com
                             </div>
                         </div>
-                        <div className='form-inputs_settings'>
-                            <label htmlFor='password_settings'
-                                className='form-label'>
-                                Username
-                            </label>
-                            <div className='user_password'>
-                                stratos123
-                            </div>
-                        </div>
+                        <div className='space'></div>
+                        <div className='space'></div>
+                        <div className='space'></div>
                         <button className='Btn_settings' type='submit' onClick={() => setEdit(!edit)}>Edit</button>
                         <div className='col-12'>
 

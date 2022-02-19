@@ -2789,7 +2789,7 @@ export const Lineup = () => {
                         </div>
                         <div className='row'>
                             <div className='col-3 sub2'>
-                                <Player player={best_for2} />
+                                <Player player={best_Midfielder3} />
                             </div>
                             <div className='col-3 sub2'>
                                 <Player player={best_Left_Defender2} />

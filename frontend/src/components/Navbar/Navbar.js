@@ -120,6 +120,10 @@ const Navbar = () => {
         setVisibility(e);
     };
 
+
+
+    const [view,setView] = useState(false);
+
     return (
         <>
 
@@ -199,35 +203,32 @@ const Navbar = () => {
                                 strgiorgos@gmail.com
                             </div>
                         </div>
-                        <div className='form-inputs_settings'>
-                            <label htmlFor='password_settings'
-                                className='form-label'>
-                                Username
-                            </label>
-                            <div className='user_password'>
-                                stratos123
-                            </div>
-                        </div>
+                       <div className='space'></div>
+                       <div className='space'></div>
+                       <div className='space'></div>
+
                         <button className='Btn_settings' type='submit' onClick={() => setEdit(!edit)}>Edit</button>
-                       
+
                     </form>
-                    
+
                     <div className='col-12'>
-                            <button className='Btn_settings_Delete' onClick={() => setVisibility(!visibility)}>Delete Account</button>
-                            {console.log(visibility)}
-                            <CustomPopup
-                                onClose={popupCloseHandler, () => setVisibility(!visibility)}
-                                show={visibility}
-                            >
-                                <div className='popUpMessage'>
-                                    Are you sure you want to delete your account?
-                                    <div className='YES_NO_BTNS'>
+                        <button className='Btn_settings_Delete' onClick={() => setVisibility(!visibility)}>Delete Account</button>
+                        {console.log(visibility)}
+                        <CustomPopup
+                            onClose={popupCloseHandler, () => setVisibility(!visibility)}
+                            show={visibility}
+                        >
+                            <div className='popUpMessage'>
+                                Are you sure you want to delete your account?
+                                <div className='YES_NO_BTNS'>
+                                    <NavLink className="nav-links1" exact to="/">
                                         <button className='Yesbtn' onClick={() => setVisibility(!visibility)}>Yes</button>
-                                        <button className='NoBtn' onClick={() => setVisibility(!visibility)}>No</button>
-                                    </div>
+                                    </NavLink>
+                                    <button className='NoBtn' onClick={() => setVisibility(!visibility)}>No</button>
                                 </div>
-                            </CustomPopup>
-                        </div>
+                            </div>
+                        </CustomPopup>
+                    </div>
 
 
                 </div>
