@@ -53,6 +53,12 @@
 }
 
 
+.surnameInjured{
+    font-weight:bold;
+    color:rgb(117, 0, 0);
+
+}
+
 .everyPlayerRating{
     width: 90%;
     margin-left: 5%;

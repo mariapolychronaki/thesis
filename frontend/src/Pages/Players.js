@@ -233,9 +233,11 @@ export const Players = () => {
     const [openModalEditPlayer, setOpenModalEditPlayer] = useState(false);
 
     const functionEdit = (Player) => {
+
         setPlayer(Player);
         setOpenModalEditPlayer(true);
         console.log(Player)
+
     }
 
     const playerToBeRemoved = (Player) => {
@@ -286,6 +288,7 @@ export const Players = () => {
 
                 <tbody>
                     {arrayPlayers.map((player, index) => (
+
                         <tr key={player.id}>
                             <td>{index + 1}</td>
                             <td style={{
@@ -330,13 +333,31 @@ export const Players = () => {
 
 
     const maxPlayers = () => {
-        if (arrayPlayers.length > 25) {
-            setmaxLimit(true)
-        } else {
-            setOpenModalPlayer(true)
-            console.log(maxLimit)
+        if (
+
+            !openModalInjured &&
+            !openModalPlayerRating &&
+            !openModalEditPlayer
+        ) {
+            if (arrayPlayers.length > 25) {
+                setmaxLimit(true)
+            } else {
+                setOpenModalPlayer(true)
+                console.log(maxLimit)
+            }
         }
 
+
+    }
+
+    const openInjuries = () => {
+        if (
+            !openModalPlayer &&
+            !openModalPlayerRating &&
+            !openModalEditPlayer
+        ) {
+            setOpenModalInjured(true)
+        }
     }
 
 
@@ -381,7 +402,7 @@ export const Players = () => {
 
                     </div>
                     <div className=' col-2 INJ'>
-                        <button className='btn_Inj' onClick={() => setOpenModalInjured(true)}>Injuries</button>
+                        <button className='btn_Inj' onClick={openInjuries}>Injuries</button>
 
 
                     </div>

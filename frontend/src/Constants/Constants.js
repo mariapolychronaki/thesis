@@ -366,6 +366,33 @@ export const arrayPlayers = [
 
 
 
+
+
+
+
+
+export const arrayInjured =
+[
+    
+
+    {
+        ssn: "170813175417", name: "Emmanouil", surname: "Kornilakis", nationality: "Greek",
+        position: "Goalkeeper", preferred_foot: "Right", birthdate: "01/01/1998", height: "177", weight: "70"
+    },
+
+
+    {
+        ssn: "170813175417", name: "Konstantinos", surname: "Nodarakis", nationality: "Greek",
+        position: "Forward", preferred_foot: "Right", birthdate: "07/01/1997", height: "183", weight: "72"
+    }
+]
+
+
+
+
+
+
+
 export const arrayplayersRating = [
     {
         name: "Nikolaos",

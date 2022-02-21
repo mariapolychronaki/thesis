@@ -31,8 +31,11 @@ const ModalInjured = ({ closeModalInjured }) => {
 
     const [startDate, setStartDate] = useState(new Date());
     const [openModalAddInjuredPlayer, setOpenModalAddInjuredPlayer] = useState(false);
-
-
+    const [player, setplayer] = useState();
+    const removePlayer = (player) => {
+        setplayer(player)
+        console.log(player)
+    }
     return (
 
 
@@ -73,7 +76,7 @@ const ModalInjured = ({ closeModalInjured }) => {
                                     <td className='tr_injured'>{player.surname}</td>
 
                                     <td className='action_buttons tr_injured'>
-                                        <button className='edit_btn'> Cured </button>
+                                        <button className='edit_btn' onClick={() => removePlayer(player)}> Cured </button>
 
                                     </td>
                                 </tr>
