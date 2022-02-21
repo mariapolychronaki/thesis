@@ -5,11 +5,28 @@ import '../../assets/Style/ModalPositions.css'
 import Dropdown_rating from '../Dropdowns/Dropdown_rating'
 import { useState } from 'react'
 
-const ModalWideDefender = ({ closeModalWideDefender,closeModalPlayer }) => {
+const ModalWideDefender = ({ closeModalWideDefender, closeModalPlayer }) => {
     const [data, setdata] = useState({});
 
 
-    const [attributes, setAttributes] = useState({});
+    const [attributes, setAttributes] = useState({
+        Agility:"0",
+        Communication:"0",
+        Crossing:"0",
+        Experience:"0",
+        Going_forward:"0",
+        Leadership:"0",
+        Marking:"0",
+        Pace:"0",
+        Passing:"0",
+        Personality:"0",
+        Positioning:"0",
+        Stamina:"0",
+        Strength:"0",
+        Tactics:"0",
+        Team_work:"0",
+        Technique:"0"
+    });
 
     const handleChangeParent = (data, name) => {
         setAttributes({
@@ -64,7 +81,7 @@ const ModalWideDefender = ({ closeModalWideDefender,closeModalPlayer }) => {
                                 </div>
                                 <div className='col-4 rating'>
 
-                                    <Dropdown_rating className="rating" name="Team work" handleChangeCallback={handleChangeParent} />
+                                    <Dropdown_rating className="rating" name="Team_work" handleChangeCallback={handleChangeParent} />
                                 </div>
 
 
@@ -187,14 +204,14 @@ const ModalWideDefender = ({ closeModalWideDefender,closeModalPlayer }) => {
                                 </div>
                                 <div className='col-4 rating'>
 
-                                    <Dropdown_rating className="rating" name="Going forward" handleChangeCallback={handleChangeParent} />
+                                    <Dropdown_rating className="rating" name="Going_forward" handleChangeCallback={handleChangeParent} />
                                 </div>
-                              
+
 
                             </div>
 
 
-                           
+
                         </div>
 
 

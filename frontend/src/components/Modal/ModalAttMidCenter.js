@@ -7,7 +7,26 @@ import { useState } from 'react'
 
 
 const ModalAttackingMidfielderCenter = ({ closeModalAttackingMidfielderCenter, closeModalPlayer }) => {
-    const [data, setdata] = useState({});
+    const [data, setdata] = useState({
+        Agility:"0",
+        Communication:"0",
+        Composure:"0",
+        Crossing:"0",
+        Dribbling:"0",
+        Experience:"0",
+        Finishing:"0",
+        Leadership:"0",
+        Pace:"0",
+        Passing:"0",
+        Personality:"0",
+        Shots:"0",
+        Stamina:"0",
+        Strength:"0",
+        Tactics:"0",
+        Team_work:"0",
+        Technique:"0",
+        Through_balls:"0",
+    });
 
 
     const [attributes, setAttributes] = useState({});
@@ -65,7 +84,7 @@ const ModalAttackingMidfielderCenter = ({ closeModalAttackingMidfielderCenter, c
                                 </div>
                                 <div className='col-4 rating'>
 
-                                    <Dropdown_rating className="rating" name="Team work" handleChangeCallback={handleChangeParent} />
+                                    <Dropdown_rating className="rating" name="Team_work" handleChangeCallback={handleChangeParent} />
                                 </div>
 
 
@@ -146,7 +165,7 @@ const ModalAttackingMidfielderCenter = ({ closeModalAttackingMidfielderCenter, c
                                 </div>
                                 <div className='col-4 rating'>
 
-                                    <Dropdown_rating className="rating" name="Through balls" handleChangeCallback={handleChangeParent} />
+                                    <Dropdown_rating className="rating" name="Through_balls" handleChangeCallback={handleChangeParent} />
                                 </div>
 
                             </div>

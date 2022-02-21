@@ -6,11 +6,30 @@ import Dropdown_rating from '../Dropdowns/Dropdown_rating'
 import { useState } from 'react'
 
 
-const ModalForward = ({ closeModalForward,closeModalPlayer }) => {
+const ModalForward = ({ closeModalForward, closeModalPlayer }) => {
     const [data, setdata] = useState({});
 
 
-    const [attributes, setAttributes] = useState({});
+    const [attributes, setAttributes] = useState({
+        Aerial_ability: "0",
+        Agility: "0",
+        Communication: "0",
+        Composure: "0",
+        Dribbling: "0",
+        Experience: "0",
+        Finishing: "0",
+        Leadership: "0",
+        Pace: "0",
+        Passing: "0",
+        Personality: "0",
+        Positioning: "0",
+        Shots: "0",
+        Stamina: "0",
+        Strength: "0",
+        Tactics: "0",
+        Team_work: "0",
+        Technique: "0",
+    });
 
     const handleChangeParent = (data, name) => {
         setAttributes({
@@ -18,7 +37,8 @@ const ModalForward = ({ closeModalForward,closeModalPlayer }) => {
         })
         console.log("data")
 
-    }    
+    }
+    console.log(attributes)
     return (
         <div className='modalBackgroundPosition'>
             <div className='col-12 space'></div>
@@ -215,7 +235,7 @@ const ModalForward = ({ closeModalForward,closeModalPlayer }) => {
                             </div>
 
 
-                           
+
 
 
 
@@ -230,7 +250,7 @@ const ModalForward = ({ closeModalForward,closeModalPlayer }) => {
                             <button className='cancel-button' onClick={() => closeModalForward(false)}>Cancel</button>
                         </div>
                         <div className='col-2'>
-                            <button className='next-button' onClick={() => closeModalForward(false),()=>{closeModalPlayer(false)}}> Confirm </button>
+                            <button className='next-button' onClick={() => closeModalForward(false), () => { closeModalPlayer(false) }}> Confirm </button>
                         </div>
                     </div>
                 </div>

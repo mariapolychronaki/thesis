@@ -7,7 +7,26 @@ import { useState } from 'react'
 
 const ModalMidfielder = ({ closeModalMidfielder, closeModalPlayer }) => {
 
-    const [data, setdata] = useState({});
+    const [data, setdata] = useState({
+        Aerial_ability: "0",
+        Agility: "0",
+        Communication: "0",
+        Composure: "0",
+        Creativity: "0",
+        Experience: "0",
+        Leadership: "0",
+        Marking: "0",
+        Pace: "0",
+        Passing: "0",
+        Personality: "0",
+        Positioning: "0",
+        Shots: "0",
+        Stamina: "0",
+        Strength: "0",
+        Tactics: "0",
+        Team_work: "0",
+        Technique: "0"
+    });
 
 
     const [attributes, setAttributes] = useState({});
@@ -66,7 +85,7 @@ const ModalMidfielder = ({ closeModalMidfielder, closeModalPlayer }) => {
                                 </div>
                                 <div className='col-4 rating'>
 
-                                    <Dropdown_rating className="rating" name="Team work" handleChangeCallback={handleChangeParent} />
+                                    <Dropdown_rating className="rating" name="Team_work" handleChangeCallback={handleChangeParent} />
                                 </div>
 
 
@@ -121,7 +140,7 @@ const ModalMidfielder = ({ closeModalMidfielder, closeModalPlayer }) => {
                                 </div>
                                 <div className='col-4 rating'>
 
-                                    <Dropdown_rating className="rating" name="Aerial ability" handleChangeCallback={handleChangeParent} />
+                                    <Dropdown_rating className="rating" name="Aerial_ability" handleChangeCallback={handleChangeParent} />
                                 </div>
                                 <div className='offset-1 col-2 evaluation'>
                                     <label>Pace</label>

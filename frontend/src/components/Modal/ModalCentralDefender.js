@@ -10,13 +10,30 @@ const ModalCentralDefender = ({ closeModalCentralDefender, closeModalPlayer }) =
     const [data, setdata] = useState({});
 
 
-    const [attributes, setAttributes] = useState({});
+    const [attributes, setAttributes] = useState({
+        Aerial_Ability:"0",
+        Agility:"0",
+        Communication:"0",
+        Experience:"0",
+        Leadership:"0",
+        Marking:"0",
+        Pace:"0",
+        Passing:"0",
+        Personality:"0",
+        Positioning:"0",
+        Stamina:"0",
+        Strength:"0",
+        Tackling:"0",
+        Tactics:"0",
+        Team_work:"0",
+        Technique:"0",
+    });
 
     const handleChangeParent = (data, name) => {
         setAttributes({
             ...attributes, [`${name}`]: data
         })
-       
+
 
     }
 
@@ -42,13 +59,13 @@ const ModalCentralDefender = ({ closeModalCentralDefender, closeModalPlayer }) =
                                     <label>Personality</label>
                                 </div>
                                 <div className='col-4 rating'>
-                                    <Dropdown_rating className="rating" name="Personality" handleChangeCallback={handleChangeParent}/>
+                                    <Dropdown_rating className="rating" name="Personality" handleChangeCallback={handleChangeParent} />
                                 </div>
                                 <div className='offset-1 col-2 evaluation'>
                                     <label>Experience</label>
                                 </div>
                                 <div className='col-4 rating'>
-                                    <Dropdown_rating className="rating" name="Experience" handleChangeCallback={handleChangeParent}/>
+                                    <Dropdown_rating className="rating" name="Experience" handleChangeCallback={handleChangeParent} />
                                 </div>
 
                             </div>
@@ -61,14 +78,14 @@ const ModalCentralDefender = ({ closeModalCentralDefender, closeModalPlayer }) =
                                 </div>
                                 <div className='col-4 rating'>
 
-                                    <Dropdown_rating className="rating" name="Agility" handleChangeCallback={handleChangeParent}/>
+                                    <Dropdown_rating className="rating" name="Agility" handleChangeCallback={handleChangeParent} />
                                 </div>
                                 <div className='offset-1 col-2 evaluation'>
                                     <label>Team work</label>
                                 </div>
                                 <div className='col-4 rating'>
 
-                                    <Dropdown_rating className="rating" name="Team work" handleChangeCallback={handleChangeParent}/>
+                                    <Dropdown_rating className="rating" name="Team_work" handleChangeCallback={handleChangeParent} />
                                 </div>
 
 
@@ -184,7 +201,7 @@ const ModalCentralDefender = ({ closeModalCentralDefender, closeModalPlayer }) =
                                 </div>
                                 <div className='col-4 rating'>
 
-                                    <Dropdown_rating className="rating" name="Aerial Ability" handleChangeCallback={handleChangeParent} />
+                                    <Dropdown_rating className="rating" name="Aerial_Ability" handleChangeCallback={handleChangeParent} />
                                 </div>
                                 <div className='offset-1 col-2 evaluation'>
                                     <label>Tackling </label>
