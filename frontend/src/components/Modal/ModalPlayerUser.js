@@ -23,7 +23,7 @@ const ModalPlayerUser = ({ }) => {
 
 
         <>
-            {/* <ModalPlayerUserInit/> */}
+            <ModalPlayerUserInit/>
             {!edit && <div className='modalBackgroundUser'>
                 <div className='col-12 space'></div>
                 <div className='modalContainerUser'>

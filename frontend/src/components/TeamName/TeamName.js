@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import '../../assets/Style/TeamName.css'
 import { useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 
 export const TeamName = () => {
     const [values, setValues] = useState({
@@ -8,6 +9,7 @@ export const TeamName = () => {
     });
     const [errors, setErrors] = useState({});
     const [isSubmiting, setIsSubmiting] = useState(false);
+    let navigate = useNavigate();
 
     const hadleChange = e => {
         const { name, value } = e.target;
@@ -27,6 +29,8 @@ export const TeamName = () => {
 
     useEffect(() => {
         if (Object.keys(errors).length === 0 && isSubmiting) {
+            navigate('/players')
+
         }
     }, [errors])
 
@@ -48,7 +52,7 @@ export const TeamName = () => {
         }
         else if (values.TeamName.length < 3) {
             errors.TeamName = 'Team name must be more than 3 characters'
-        } 
+        }
         // if (values.TeamName.length > 0) {
         //     if (isUpper(values.TeamName[0]) === false) {
         //         errors.TeamName = "The first letter must be capital"

@@ -170,8 +170,8 @@ const Navbar = () => {
 
                 </div>
                 <div className='col-1 lg '>
-                    <button className='LogOut'><NavLink className="nav-links1" exact to="/">Log Out</NavLink></button>
-                    <NavLink className="nav-links1" exact to="/"><img className='Exit' onClick={console.log("giorgos")} src={LogOut}></img>
+                    <button className='LogOut'><NavLink className="nav-links1" exact to="/signIn">Log Out</NavLink></button>
+                    <NavLink className="nav-links1" exact to="/signIn"><img className='Exit' onClick={console.log("giorgos")} src={LogOut}></img>
                     </NavLink>
 
                 </div>
@@ -237,21 +237,7 @@ const Navbar = () => {
                 {edit && <div className=' container_settings 2' >
                     <form className='form_settings InputsEdit' onSubmit={hadleSubmit}>
 
-                        <div className='form-inputs_settings'>
-                            <label htmlFor='email' className='form-label'>
-                                *New E-mail
-                            </label>
-                            <input
-                                id='email'
-                                type='email'
-                                name='email'
-                                className='form-input'
-                                placeholder='Enter your email'
-                                value={values.email}
-                                onChange={hadleChange}
-                            />
-                            {errors.email && <p>{errors.email}</p>}
-                        </div>
+                       
                         <div className='form-inputs_settings'>
                             <label htmlFor='password_settings'
                                 className='form-label'>

@@ -85,7 +85,6 @@ const ModalInjured = ({ closeModalInjured }) => {
                 <div className='footer'>
                     <div className='col-12 btns'>
                         <div className='offset-9 col-2'>
-                            <button className='confirm_button_injured' onClick={() => closeModalInjured(false)}> Confirm </button>
 
                         </div>
 

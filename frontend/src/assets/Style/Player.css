@@ -5,16 +5,20 @@
 .player{
     text-align: center;
     justify-content: center;
-    z-index: 100;
     position: relative;
+    align-items: center;
 }
+
 
 .player_name{
     height: fit-content;
-    min-height: 1.5rem;
     background-color: rgb(0, 253, 106);
     border-radius: 10px;
-    width:fit-content;
-    min-width: 5rem;
-    max-width: 10rem;   
+    min-width: 80%;
+    margin-left: 10%;
+    width: fit-content;
+    font-size: 100%;
+    justify-content:right;
 }
+
+

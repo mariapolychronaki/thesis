@@ -6,7 +6,9 @@
 
 
 
-
+.Lineup{
+    height: 10vh;
+}
 
 ::-webkit-scrollbar {
     display: none;
@@ -217,7 +219,6 @@
     position:absolute;
     width:40%;
     margin-left: 10%;
-    z-index: index 2;
 }
 
 
@@ -304,40 +305,6 @@
 
 
 
-.forward{
-    margin-top: 4%;
-    margin-left: 40%;
-    width: 20%;
-
-}
-.Att_mid{
-    width: 33%;
-    display: flex;
-    margin-top: 10%;
-}
-
-
-.midfielders{
-    display: flex;
-    width: 35%;
-    margin-left: 15%;
-    margin-top:10%
-}
-
-.defenders{
-    display: flex;
-    width: 25%;
-    margin-top:10%
-}
-
-
-.goalkeeper{
-    display: flex;
-    width: 20%;
-    margin-left: 40%;
-    margin-top : 8%;
-}
-
 
 
 
@@ -351,55 +318,57 @@
     border-radius: 10px;
 }
 
-.sub2{
-    display: flex;
-    margin-top: 3%;
-    align-items: center;
+.sub2{  
+        margin-top: 1%;
+        align-items: center;
+        text-align: center;
 }
 
 .Suggested{
     border-radius: 8px;
+    margin-top: 10%;
     height: 4rem;
-    width: 8rem;
+    width: 60%;
     background-color: rgb(0, 153, 224);
     color: white;
-    font-size: 2vh;
+    font-size: 100%;
     font-weight: 500;
     text-align: center;
-    margin-left: 50%;
-    margin-top: 10%;
-
+  
 }
 
 .Injuries{
     border-radius: 8px;
-    height: 3rem;
-    width: 8rem;
+    margin-top: 10%;
+    height: 50%;
+    height: 4rem;
+    width: 60%;
     background-color: rgb(136, 4, 15);
     color: white;
-    font-size: 2vh;
+    font-size: 100%;
     font-weight: 500;
     text-align: center;
-    margin-left: 50%;
-    margin-top: 10%;
 }
+
 .clear{
     background-color: rgb(211, 200, 200);
     color:black;
+    margin-top: 10%;
+    border-radius: 8px;
+    height: 3rem;
+    width: 60%;
+    font-size: 100%;
+    font-weight: 500;
+    text-align: center; 
 }
 
-.button_sub{
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-}
 
 
 
 
 .subs{
     text-align: center;
-    font-size: 2rem;
+    font-size: 200%;
     height: 8vh;
     background-color: rgb(62, 139, 81);
     border-radius: 10px;
@@ -412,34 +381,54 @@
 
 
 
+.forward{
+  
+}
+.spacelineup{
+   height: 7%;
+}
+.Att_mid{
+   display: flex;
+}
+
+
+.midfielders{
+   display: flex;
+}
+
+.defenders{
+   display: flex;
+  
+}
+
+
+.goalkeeper{
+   display: flex;
+}
+
 
 
 .defenders4_3_3{
     display: flex;
-    width: 25%;
-    margin-top: 2%;
-
+    margin-top: 3%;
 }
+
 .defensive_Mid_4_3_3{
-    margin-top: 5%;
+   
 }
-
+.spacelineup1{
+    height: 1.3%;
+}
 .midfielders4_3_3{
+    
     display: flex;
 
 }
 .Att_mid4_3_3{
     display: flex;
-    margin-top: 8%;
 }
 
 
-.forward4_3_3{
-    margin-top: 8%;
-}
-.goalkeeper4_3_3{
-    margin-top: 8%;
-}
 
 
 
@@ -447,180 +436,35 @@
 
 
 .goalkeeper4_2_4{
-    margin-top: 8%;
 
 }
 .defenders4_2_4{
-    width: 25%;
     display: flex;
-    margin-top: 8%;
 
 }
 .midfielders4_2_4{
     display: flex;
-    margin-top: 10%;
 
 }
 .Att_mid4_2_4{
     display: flex;
-    margin-top: 8%;
 
 }
 
 .forward4_2_4{
     display: flex;
-    margin-top: 8%;
-}
-
-
-
-@media screen and (max-width:1300px) {
-    .goalkeeper4_2_4{
-        margin-top: 10%;
-    
-    }
-    .defenders4_2_4{
-        width: 25%;
-        display: flex;
-        margin-top: 10%;
-    
-    }
-    .midfielders4_2_4{
-        display: flex;
-        margin-top: 10%;
-    
-    }
-    .Att_mid4_2_4{
-        display: flex;
-        margin-top: 10%;
-    
-    }
-    
-    .forward4_2_4{
-        display: flex;
-        margin-top: 10%;
-    }
-
-}
-
-@media screen and (max-width:1200px) {
-    .goalkeeper4_2_4{
-        margin-top: 10%;
-    
-    }
-    .defenders4_2_4{
-        width: 25%;
-        display: flex;
-        margin-top: 11%;
-    
-    }
-    .midfielders4_2_4{
-        display: flex;
-        margin-top: 11%;
-    
-    }
-    .Att_mid4_2_4{
-        display: flex;
-        margin-top: 11%;
-    
-    }
-    
-    .forward4_2_4{
-        display: flex;
-        margin-top: 11%;
-    }
+ 
 }
 
 
 
 
 
-@media screen and (max-width:1100px) {
-    .goalkeeper4_2_4{
-        margin-top: 12%;
-    
-    }
-    .defenders4_2_4{
-        width: 25%;
-        display: flex;
-        margin-top: 12%;
-    
-    }
-    .midfielders4_2_4{
-        display: flex;
-        margin-top: 12%;
-    
-    }
-    .Att_mid4_2_4{
-        display: flex;
-        margin-top: 12%;
-    
-    }
-    
-    .forward4_2_4{
-        display: flex;
-        margin-top: 12%;
-    }
-}
 
 
 
 
-@media screen and (max-width:1000px) {
-    .goalkeeper4_2_4{
-        margin-top: 13%;
-    
-    }
-    .defenders4_2_4{
-        width: 25%;
-        display: flex;
-        margin-top: 13%;
-    
-    }
-    .midfielders4_2_4{
-        display: flex;
-        margin-top: 13%;
-    
-    }
-    .Att_mid4_2_4{
-        display: flex;
-        margin-top: 13%;
-    
-    }
-    
-    .forward4_2_4{
-        display: flex;
-        margin-top: 13%;
-    }
-}
 
-@media screen and (max-width:900px) {
-    .goalkeeper4_2_4{
-        margin-top: 14%;
-    
-    }
-    .defenders4_2_4{
-        width: 25%;
-        display: flex;
-        margin-top: 14%;
-    
-    }
-    .midfielders4_2_4{
-        display: flex;
-        margin-top: 14%;
-    
-    }
-    .Att_mid4_2_4{
-        display: flex;
-        margin-top: 14%;
-    
-    }
-    
-    .forward4_2_4{
-        display: flex;
-        margin-top: 14%;
-    }
-}
 
 
 
@@ -638,7 +482,8 @@
 }
 .formation{
     width:4rem;
-    font-size: 75%;
+    margin-top: 10%;
+    font-size: 70%;
     border-radius: 8px;
     background-color: #538c2b;
     color:white;
@@ -647,209 +492,28 @@
 .formation_title{
     text-decoration: underline;
     font-weight: bolder;
+    color:rgb(49, 0, 0);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 @media screen and (max-width:1300px) {
-    .defenders4_3_3{
-        display: flex;
-        width: 25%;
-        margin-top: 8%;
     
-    }
-    .defensive_Mid_4_3_3{
-        margin-top: 5%;
-    }
-    
-    .midfielders4_3_3{
-        display: flex;
-        margin-top: 3%;
-    
-    }
-    .Att_mid4_3_3{
-        display: flex;
-        margin-top: 8%;
-    }
-    
-    
-    .forward4_3_3{
-        margin-top: 8%;
-    }
-    .goalkeeper4_3_3{
-        margin-top: 5%;
-    }
-    
-}
-
-
-@media screen and (max-width:1150px) {
-    .defenders4_3_3{
-        display: flex;
-        width: 25%;
-        margin-top: 5%;
-    
-    }
-    .defensive_Mid_4_3_3{
-        margin-top: 5%;
-    }
-    
-    .midfielders4_3_3{
-        display: flex;
-        margin-top: 5%;
-    
-    }
-    .Att_mid4_3_3{
-        display: flex;
-        margin-top: 8%;
-    }
-    
-    
-    .forward4_3_3{
-        margin-top: 11%;
-    }
-    .goalkeeper4_3_3{
-        margin-top: 5%;
-    }
-}
-
-@media screen and (max-width:1050px) {
-
- .defenders4_3_3{
-        display: flex;
-        width: 25%;
-        margin-top: 8%;
-    
-    }
-    .defensive_Mid_4_3_3{
-        margin-top: 6%;
-    }
-    
-    .midfielders4_3_3{
-        display: flex;
-        margin-top: 7%;
-    
-    }
-    .Att_mid4_3_3{
-        display: flex;
-        margin-top: 10%;
-    }
-    
-    
-    .forward4_3_3{
-        margin-top: 10%;
-    }
-    .goalkeeper4_3_3{
-        margin-top: 5%;
-    }
-}
-
-
-@media screen and (max-width:950px) {
-
-        .defenders4_3_3{
-               display: flex;
-               width: 25%;
-               margin-top: 8%;
-           
-           }
-           .defensive_Mid_4_3_3{
-               margin-top: 6%;
-           }
-           
-           .midfielders4_3_3{
-               display: flex;
-               margin-top: 10%;
-           
-           }
-           .Att_mid4_3_3{
-               display: flex;
-               margin-top: 10%;
-           }
-           
-           
-           .forward4_3_3{
-               margin-top: 10%;
-           }
-           .goalkeeper4_3_3{
-               margin-top: 7%;
-           }
-       }
-
-
-
-
-@media screen and (max-width:880px) {
-    .defenders4_3_3{
-        display: flex;
-        width: 25%;
-        margin-top: 8%;
-    
-    }
-    .defensive_Mid_4_3_3{
-        margin-top: 6%;
-    }
-    
-    .midfielders4_3_3{
-        display: flex;
-        margin-top: 13%;
-    
-    }
-    .Att_mid4_3_3{
-        display: flex;
-        margin-top: 10%;
-    }
-    
-    
-    .forward4_3_3{
-        margin-top: 13%;
-    }
-    .goalkeeper4_3_3{
-        margin-top: 7%;
-    }
-
-}
-
-
-
-
-
-
-@media screen and (max-width:1450px) {
-    .forward{
-        margin-top:10%;
-    }
-    .Att_mid{
-        margin-top: 13%;
-    }
-    .midfielders{
-        margin-top: 13%;
-    }
-    .defenders{
-        margin-top: 13%;
-    }
-    .goalkeeper{
-        margin-top: 7%;
-    }
-
-}
-@media screen and (max-width:1300px) {
-    .forward{
-        margin-top:10%;
-    }
-    .Att_mid{
-        margin-top: 10%;
-    }
-    .midfielders{
-        margin-top: 12%;
-    }
-    .defenders{
-        margin-top: 12%;
-    }
-    .goalkeeper{
-        margin-top: 8%;
-    }
     .list_pl{
         margin-left: 45%;
     }
@@ -859,22 +523,7 @@
 
 
 @media screen and (max-width:1200px) {
-    .forward{
-        margin-top:10%;
-    }
-    .Att_mid{
-        margin-top: 12%;
-    }
-    .midfielders{
-        margin-top: 12%;
-    }
-    .defenders{
-        margin-top: 12%;
-    }
-    .goalkeeper{
-        margin-top: 10%;
-    }
-
+    
     .top-box:before {
         left:10vmin;
         right:10vmin;
@@ -887,26 +536,15 @@
       .list_pl{
           margin-left: 42%;
       }
+      .Suggested{
+        width: 6rem;
+        font-size: 80%;
+    }
      
 }
 
 
 @media screen and (max-width:1100px) {
-    .forward{
-        margin-top:10%;
-    }
-    .Att_mid{
-        margin-top: 13%;
-    }
-    .midfielders{
-        margin-top: 12%;
-    }
-    .defenders{
-        margin-top: 13%;
-    }
-    .goalkeeper{
-        margin-top: 12%;
-    }
     .list_pl{
         margin-left: 30%;
     }
@@ -930,32 +568,16 @@
     .Myteam{
         width: 7rem;
     }
+    
 }
 
 
 
 @media screen and (max-width:1000px) {
-    .forward{
-        margin-top:10%;
-    }
-    .Att_mid{
-        margin-top: 15%;
-    }
-    .midfielders{
-        margin-top: 15%;
-    }
-    .defenders{
-        margin-top: 15%;
-    }
-    .goalkeeper{
-        margin-top: 14%;
-    }
     .Injuries{
         width: 6rem;
     }
-    .Suggested{
-        width: 6rem;
-    }
+  
     .table{
         font-size: 80%;
         margin-top: 3%;
@@ -990,21 +612,7 @@
 
 
 @media screen and (max-width:880px) {
-    .forward{
-        margin-top:16%;
-    }
-    .Att_mid{
-        margin-top: 16%;
-    }
-    .midfielders{
-        margin-top: 16%;
-    }
-    .defenders{
-        margin-top: 16%;
-    }
-    .goalkeeper{
-        margin-top: 12%;
-    }
+   
 
 
     .top-box:before {
@@ -1025,23 +633,7 @@
 
 
 @media screen and (max-width:780px) {
-    .forward{
-        margin-top:18%;
-    }
-    .Att_mid{
-        margin-top: 17%;
-    }
-    .midfielders{
-        margin-top: 17%;
-    }
-    .defenders{
-        margin-top: 17%;
-    }
-    .goalkeeper{
-        margin-top: 17%;
-    }
-
-
+    
     .top-box:before {
         left:8vmin;
         right:8vmin;
@@ -1068,21 +660,7 @@
 }
 
 @media screen and (max-width:700px) {
-    .forward{
-        margin-top:18%;
-    }
-    .Att_mid{
-        margin-top: 19%;
-    }
-    .midfielders{
-        margin-top: 28%;
-    }
-    .defenders{
-        margin-top: 30%;
-    }
-    .goalkeeper{
-        margin-top: 18%;
-    }
+    
 
 
     .top-box:before {

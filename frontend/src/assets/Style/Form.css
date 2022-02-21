@@ -1,6 +1,6 @@
 .form-container1 {
     margin:10px auto;
-    height:auto;
+    height:fit-content;
     min-height: 130vh;
     width:40%;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);

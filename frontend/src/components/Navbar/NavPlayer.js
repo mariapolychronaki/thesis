@@ -55,8 +55,8 @@ const NavPlayer = () => {
 
         if (!values.newpassword) {
             errors.newpassword = "New Password is required"
-        } else if (values.password.length < 6) {
-            errors.newpassword = 'Password must be more than 6 characters'
+        } else if (values.newpassword.length < 6) {
+            errors.newpassword = 'New password must be more than 6 characters'
         }
 
         if (!values.password2) {
@@ -81,12 +81,11 @@ const NavPlayer = () => {
         });
         console.log(values)
     };
-    const hadleSubmit = e => {
-
+    const handleSubmit = e => {
+        e.preventDefault();
         setErrors(validate(values));
         setIsSubmiting(true);
         setValues("")
-        // e.preventDefault();
     };
 
     useEffect(() => {
@@ -109,7 +108,7 @@ const NavPlayer = () => {
         setShow(true)
     }
     const confirm_f = () => {
-        hadleSubmit();
+        handleSubmit();
         setShow(false);
         setEdit(!edit);
     }
@@ -161,8 +160,8 @@ const NavPlayer = () => {
 
                 </div>
                 <div className='col-1 lg '>
-                    <button className='LogOut'><NavLink className="nav-links1" exact to="/">Log Out</NavLink></button>
-                    <NavLink className="nav-links1" exact to="/"><img className='Exit' onClick={console.log("giorgos")} src={LogOut}></img>
+                    <button className='LogOut'><NavLink className="nav-links1" exact to="/signIn">Log Out</NavLink></button>
+                    <NavLink className="nav-links1" exact to="/signIn"><img className='Exit' onClick={console.log("giorgos")} src={LogOut}></img>
                     </NavLink>
 
                 </div>
@@ -208,23 +207,9 @@ const NavPlayer = () => {
                 }
 
                 {edit && <div className=' container_settings 2' >
-                    <form className='form_settings InputsEdit' onSubmit={hadleSubmit} >
+                    <form className='form_settings InputsEdit' onSubmit={handleSubmit} >
 
-                        <div className='form-inputs_settings '>
-                            <label htmlFor='email' className='form-label'>
-                                *New E-mail
-                            </label>
-                            <input
-                                id='email'
-                                type='email'
-                                name='email'
-                                className='form-input'
-                                placeholder='Enter your email'
-                                value={values.email}
-                                onChange={hadleChange}
-                            />
-                            {errors.email && <p>{errors.email}</p>}
-                        </div>
+                       
                         <div className='form-inputs_settings'>
                             <label htmlFor='password_settings'
                                 className='form-label'>
@@ -245,7 +230,7 @@ const NavPlayer = () => {
                                 *New Password
                             </label>
                             <input type='password'
-                                name='new_password'
+                                name='newpassword'
                                 className='form-input'
                                 placeholder='Enter your newpassword'
                                 value={values.newpassword}

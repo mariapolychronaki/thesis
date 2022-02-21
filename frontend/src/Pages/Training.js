@@ -57,14 +57,14 @@ export const Training = () => {
 
             <div className='table_container1' ref={ref}>
 
-                {!openModalTraining && <div className='row Scroll'>
+                {/* {!openModalTraining && <div className='row Scroll'>
                     <button className='offset-1 col-1 scrollBtnLeft' onClick={() => scroll(-20)}> <ArrowLeft /> </button>
 
                     <button className='offset-10 col-1 scrollBtnRight' onClick={() => scroll(+20)}>
                         <ArrowRight />
                     </button>
 
-                </div>}
+                </div>} */}
                 <table className="table">
 
                     <thead>

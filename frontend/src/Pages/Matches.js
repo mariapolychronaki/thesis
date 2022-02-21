@@ -6,13 +6,13 @@ import { ArrowRight } from 'react-bootstrap-icons';
 import { ArrowLeft } from 'react-bootstrap-icons';
 import { totalMatchRatings } from '../Constants/Constants';
 
+
 export const Matches = () => {
 
     const [openModalMatch, setOpenModalMatch] = useState(false);
 
 
-    const arrayMatch = [{ match: "8" }]
-
+    
     const ref = useRef(null);
 
     const scroll = (scrollOffset) => {
@@ -41,14 +41,14 @@ export const Matches = () => {
 
             <div className='table_container1' ref={ref}>
 
-                {!openModalMatch && <div className='row Scroll'>
+                {/* {!openModalMatch && <div className='row Scroll'>
                     <button className='offset-1 col-1 scrollBtnLeft' onClick={() => scroll(-20)}> <ArrowLeft /> </button>
 
                     <button className='offset-10 col-1 scrollBtnRight' onClick={() => scroll(+20)}>
                         <ArrowRight />
                     </button>
 
-                </div>}
+                </div>} */}
                 <table class="table">
                     <thead>
                         <tr>

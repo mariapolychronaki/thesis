@@ -30,7 +30,9 @@ const ModalEveryTrainingPlayerRating = (closeModalTrainingEachPlayer) => {
 
 
 
-    const [attributes, setAttributes] = useState({});
+    const [attributes, setAttributes] = useState({
+        
+    });
 
     const handleChangeParent = (data, name, playerId) => {
         setAttributes({

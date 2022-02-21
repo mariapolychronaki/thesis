@@ -164,7 +164,7 @@ export const AllPlayers = () => {
             return sortConfig.key === name ? sortConfig.direction : undefined;
         };
         return (
-            <table className='table'>
+            <table className='table allPlayers'>
                 <thead>
                     <tr>
                         {/* <th scope="col">#</th> */}
@@ -185,7 +185,9 @@ export const AllPlayers = () => {
                         <th scope="col" onClick={() => requestSort('height')}
                             className={getClassNamesFor('height')}>Height(cm)</th>
                         <th scope="col" onClick={() => requestSort('weight')}
-                            className={getClassNamesFor('weight')}>Weight(Kg)</th>
+                            className={getClassNamesFor('weight')} className="weight">Weight(Kg)</th>
+                            <th scope="col" onClick={() => requestSort('team')}
+                            className={getClassNamesFor('team')}>Team</th>
                         <th scope="col">Actions</th>
 
                     </tr>
@@ -203,7 +205,8 @@ export const AllPlayers = () => {
                             <td>{player.preferred_foot}</td>
                             <td>{player.birthdate}</td>
                             <td>{player.height}</td>
-                            <td>{player.weight}</td>
+                            <td className='weight'>{player.weight}</td>
+                            <td>{player.team}</td>
                             <td className='action_buttons'>
                                 <button className='enquiry_btn' name={player.ssn} value="Enquiry" onClick={Pending_Btn}> Claim </button>
                             </td>

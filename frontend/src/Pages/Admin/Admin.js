@@ -7,7 +7,6 @@ import { useState, useEffect } from 'react';
 import 'reactjs-popup/dist/index.css';
 import CustomPopup from './PopUp';
 import { Enquiries, usersCoaches, usersPlayers, SignUpMessages } from '../../Constants/Constants';
-import { Dice1 } from 'react-bootstrap-icons';
 
 const Admin = () => {
     const [removePlayerBtn, setRemovePlayerBtn] = useState(false);
@@ -21,9 +20,13 @@ const Admin = () => {
     const [filteredPersons, setfilteredPersons] = useState(usersPlayers);
 
     const [filteredPersonsCoaches, setfilteredPersonsCoaches] = useState(usersCoaches);
+    console.log(usersCoaches)
 
-    const usersPlayers1 = usersPlayers;
-    const usersCoaches1 = usersCoaches;
+    const [Sign_UP_messages, setSign_UP_messages] = useState(true);
+    const [Coach_Enquries, setCoach_Enquries] = useState(false);
+    const [players, setPlayers] = useState(false);
+    const [coaches, setCoaches] = useState(false);
+
 
 
     const acceptEnquiry = (Player) => {
@@ -50,35 +53,35 @@ const Admin = () => {
         setRemovePlayerBtn(true)
     }
 
-    const [Sign_UP_messages, setSign_UP_messages] = useState(true);
-    const [Coach_Enquries, setCoach_Enquries] = useState(false);
-    const [players, setPlayers] = useState(false);
-    const [coaches, setCoaches] = useState(false);
-
+   
     const Function_SignUpMessages = () => {
         setSign_UP_messages(true);
         setCoach_Enquries(false);
         setPlayers(false);
+        setfilteredPersons(usersPlayers)
         setCoaches(false);
+        setfilteredPersonsCoaches(usersCoaches) 
     }
     const Function_CoachEnquiries = () => {
         setSign_UP_messages(false);
         setCoach_Enquries(true);
         setPlayers(false);
+        setfilteredPersons(usersPlayers)
         setCoaches(false);
-        // setVisibility(!visibility)
+        setfilteredPersonsCoaches(usersCoaches)         // setVisibility(!visibility)
     }
     const Function_Players = () => {
         setSign_UP_messages(false);
         setCoach_Enquries(false);
         setPlayers(true);
         setCoaches(false);
-        // setVisibility(!visibility)
+        setfilteredPersonsCoaches(usersCoaches)        // setVisibility(!visibility)
     }
     const Function_Coaches = () => {
         setSign_UP_messages(false);
         setCoach_Enquries(false);
         setPlayers(false);
+        setfilteredPersons(usersPlayers)
         setCoaches(true);
         // setVisibility(!visibility)
     }
@@ -87,10 +90,7 @@ const Admin = () => {
         setSearchField(e.target.value);
     };
 
-    const handleChangeCoach = e => {
-        setSearchFieldCoach(e.target.value);
-    };
-
+   
 
 
 
@@ -141,7 +141,9 @@ const Admin = () => {
 
 
 
-    const useSortableDataCoaches = (usersCoaches1, config = null) => {
+    
+
+    const useSortableData = (usersPlayers1, config = null) => {
         const [sortConfig, setSortConfig] = React.useState(config);
 
         const sortedarrayPlayers = React.useMemo(() => {
@@ -180,11 +182,15 @@ const Admin = () => {
     };
 
 
-    const useSortableData = (usersPlayers1, config = null) => {
+
+
+
+
+    const useSortableDataCoaches = (usersCoaches1, config = null) => {
         const [sortConfig, setSortConfig] = React.useState(config);
 
         const sortedarrayPlayers = React.useMemo(() => {
-            let sortablearrayPlayers = [...usersPlayers1];
+            let sortablearrayPlayers = [...usersCoaches1];
             if (sortConfig !== null) {
                 sortablearrayPlayers.sort((a, b) => {
 
@@ -201,7 +207,7 @@ const Admin = () => {
                 });
             }
             return sortablearrayPlayers;
-        }, [usersPlayers, sortConfig]);
+        }, [usersCoaches, sortConfig]);
 
         const requestSort = (key) => {
             let direction = 'ascending';
@@ -215,7 +221,7 @@ const Admin = () => {
             setSortConfig({ key, direction });
         };
 
-        return { usersPlayers: sortedarrayPlayers, requestSort, sortConfig };
+        return { usersCoaches: sortedarrayPlayers, requestSort, sortConfig };
     };
 
 
@@ -305,6 +311,82 @@ const Admin = () => {
         );
     };
 
+    console.log(filteredPersonsCoaches)
+
+
+    const ProductTableCoach = (props) => {
+        console.log(props);
+        const { usersCoaches, requestSort, sortConfig } = useSortableDataCoaches(filteredPersonsCoaches);
+        console.log(usersCoaches)
+        const getClassNamesFor = (name) => {
+            if (!sortConfig) {
+                return;
+            }
+            return sortConfig.key === name ? sortConfig.direction : undefined;
+        };
+        return (
+            <>
+                <div className='offset-4 col-4 TitleInAdminSignUp'>All Active Users Coaches</div>
+                <table className='table'>
+
+                    <thead>
+                        <tr>
+                            {/* <th scope="col">#</th> */}
+                            <th>#</th>
+
+                            <th scope="col" onClick={() => requestSort('name')}
+                                className={getClassNamesFor('name')}>Name</th>
+                            <th scope="col" onClick={() => requestSort('surname')}
+                                className={getClassNamesFor('surname')} >Surname</th>
+                            <th>Email</th>
+                            <th>Team</th>
+                            <th>Actions</th>
+
+
+                        </tr>
+                    </thead>
+
+
+                    <tbody>
+                        {usersCoaches.map((user, index) =>
+                            <tr>
+
+                                <td >
+                                    {index + 1}
+                                </td>
+                                <td className='font_bold'>
+                                    {user.name}
+                                </td>
+                                <td className='font_bold'>
+                                    {user.surname}
+                                </td>
+                                <td className='font_bold'>
+                                    {user.email}
+                                </td>
+
+                                <td className='font_bold'>
+                                    {user.team}
+                                </td>
+
+                                <td>
+
+                                    <button className='BTN_Decline' onClick={() => playerToBeRemoved(user)}>Delete</button>
+
+
+                                </td>
+
+
+                            </tr>
+
+                        )}
+                    </tbody>
+
+                </table>
+            </>
+
+        );
+    };
+
 
 
 
@@ -328,11 +410,12 @@ const Admin = () => {
 
                     <div className='col-2 Sign_UP_messages'>
                         <div className='marginBtns'>
-                            <button class="btn buttonsAdmin" onClick={Function_CoachEnquiries}> Coaches' enquiries</button>
-                        </div>
-                        <div className='marginBtns'>
                             <button class="btn buttonsAdmin" onClick={Function_SignUpMessages}> Sign up Messages</button>
                         </div>
+                        <div className='marginBtns'>
+                            <button class="btn buttonsAdmin" onClick={Function_CoachEnquiries}> Coaches' enquiries</button>
+                        </div>
+
                         <div className='marginBtns'>
                             <button class="btn buttonsAdmin" onClick={Function_Players}>Players</button>
                         </div>
@@ -501,6 +584,8 @@ const Admin = () => {
 
 
                 {!removePlayerBtn && !acceptEn && Coach_Enquries &&
+
+
                     <div className='row'>
                         <div className='col-12 TitleInAdminSignUp'>Coaches' Enquiries</div>
                         <div className='coach_messages'>
@@ -570,12 +655,11 @@ const Admin = () => {
 
 
 
-
                 {coaches && <CustomPopup
                     onClose={popupCloseHandler, () => setRemovePlayerBtn(!removePlayerBtn)}
                     show={removePlayerBtn}
                 >
-                    <div>Are you sure you want to delete <span className='RemovePlayerSurname'>{Player.name} {Player.surname} </span> from database?</div>
+                    <div>Are you sure you want to delete user <span className='RemovePlayerSurname'>{Player.name} {Player.surname} </span> from database?</div>
                     <div className='space'></div>
                     <div className='offset-5 col-3'>
                         <button onClick={popupCloseHandler, () => setRemovePlayerBtn(!removePlayerBtn)} className='YesBtnPopUp' >Yes</button>
@@ -612,62 +696,20 @@ const Admin = () => {
 
 
 
+                {!removePlayerBtn && coaches && <section className="">
+                    <div className="">
+                        <input
+                            className="pa3 bb br3 grow b--none bg-lightest-blue ma3"
+                            type="search"
+                            placeholder="Search Player"
+                            onChange={handleChange}
+                        />
+                    </div>
+                </section>}
 
+                {!removePlayerBtn && coaches &&
+                    <ProductTableCoach props={filteredPersonsCoaches} />}
 
-                {!removePlayerBtn && coaches && <div className='coach_messages'>
-                    <div className='offset-4 col-4 TitleInAdminSignUp'>All Active Users Coaches</div>
-
-                    <table className="table tableCoaches">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Surname</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Team</th>
-                                <th scope="col">Actions</th>
-
-                            </tr>
-
-                        </thead>
-
-                        <tbody>
-                            {usersCoaches.map((user, index) =>
-                                <tr>
-
-                                    <td >
-                                        {index + 1}
-                                    </td>
-                                    <td className='font_bold'>
-                                        {user.name}
-                                    </td>
-                                    <td className='font_bold'>
-                                        {user.surname}
-                                    </td>
-                                    <td className='font_bold'>
-                                        {user.email}
-                                    </td>
-
-                                    <td className='font_bold'>
-                                        {user.team}
-                                    </td>
-
-                                    <td>
-
-                                        <button className='BTN_Decline' onClick={() => playerToBeRemoved(user)}>Delete</button>
-
-
-                                    </td>
-
-
-                                </tr>
-
-                            )}
-
-                        </tbody>
-
-                    </table>
-                </div>}
 
 
 
@@ -678,7 +720,7 @@ const Admin = () => {
                     onClose={popupCloseHandler, () => setRemovePlayerBtn(!removePlayerBtn)}
                     show={removePlayerBtn}
                 >
-                    <div>Are you sure you want to delete <span className='RemovePlayerSurname'>{Player.name} {Player.surname} </span> from database?</div>
+                    <div>Are you sure you want to delete user <span className='RemovePlayerSurname'>{Player.name} {Player.surname} </span> from database?</div>
                     <div className='space'></div>
                     <div className='offset-5 col-3'>
                         <button onClick={popupCloseHandler, () => setRemovePlayerBtn(!removePlayerBtn)} className='YesBtnPopUp' >Yes</button>

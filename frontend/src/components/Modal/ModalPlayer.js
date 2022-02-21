@@ -28,7 +28,7 @@ const ModalPlayer = ({ closeModalPlayer,isOpen }) => {
     const [OpenModalAttackingMidfielderCenter, setOpenModalAttackingMidfielderCenter] = useState(false);
     const [OpenModalForward, setOpenModalForward] = useState(false);
 
-    const [position, setPosition] = useState("goalkeeper");
+    const [position, setPosition] = useState("Goalkeeper");
     const [height, setHeight] = useState("150");
     const [nationality, setNationality] = useState("Afghan");
     const [weight, setWeight] = useState("50");
@@ -68,9 +68,9 @@ const ModalPlayer = ({ closeModalPlayer,isOpen }) => {
             [`weight`]: weight
         })
 
+        console.log(data)
 
-
-        if (position === "goalkeeper") {
+        if (position === "Goalkeeper") {
             
             setOpenModalGoalkeeper(true);
             setOpenModalCentralDefender(false);
@@ -79,7 +79,8 @@ const ModalPlayer = ({ closeModalPlayer,isOpen }) => {
             setOpenModalAttackingMidfielderWide(false);
             setOpenModalAttackingMidfielderCenter(false);
             setOpenModalForward(false);
-        } else if (position === "central_defender") {
+        } else if (position === "Central Defender") {
+            console.log("mpika")
             setOpenModalGoalkeeper(false);
             setOpenModalCentralDefender(true);
             setOpenModalWideDefender(false);
@@ -87,7 +88,7 @@ const ModalPlayer = ({ closeModalPlayer,isOpen }) => {
             setOpenModalAttackingMidfielderWide(false);
             setOpenModalAttackingMidfielderCenter(false);
             setOpenModalForward(false);
-        } else if (position === "right_defender" || position === "left_defender") {
+        } else if (position === "Right Defender" || position === "Left Defender") {
             setOpenModalGoalkeeper(false);
             setOpenModalCentralDefender(false);
             setOpenModalWideDefender(true);
@@ -95,7 +96,7 @@ const ModalPlayer = ({ closeModalPlayer,isOpen }) => {
             setOpenModalAttackingMidfielderWide(false);
             setOpenModalAttackingMidfielderCenter(false);
             setOpenModalForward(false);
-        } else if (position === "midfielder") {
+        } else if (position === "Midfielder") {
             setOpenModalGoalkeeper(false);
             setOpenModalCentralDefender(false);
             setOpenModalWideDefender(false);
@@ -103,7 +104,7 @@ const ModalPlayer = ({ closeModalPlayer,isOpen }) => {
             setOpenModalAttackingMidfielderWide(false);
             setOpenModalAttackingMidfielderCenter(false);
             setOpenModalForward(false);
-        } else if (position === "Att_mid_right" || position === "Att_mid_left") {
+        } else if (position === "Attacking Midfielder Right" || position === "Attacking Midfielder Right") {
             setOpenModalGoalkeeper(false);
             setOpenModalCentralDefender(false);
             setOpenModalWideDefender(false);
@@ -111,7 +112,7 @@ const ModalPlayer = ({ closeModalPlayer,isOpen }) => {
             setOpenModalAttackingMidfielderWide(true);
             setOpenModalAttackingMidfielderCenter(false);
             setOpenModalForward(false);
-        } else if (position === "Att_mid_center") {
+        } else if (position === "Attacking Midfielder Center") {
             setOpenModalGoalkeeper(false);
             setOpenModalCentralDefender(false);
             setOpenModalWideDefender(false);
@@ -119,7 +120,7 @@ const ModalPlayer = ({ closeModalPlayer,isOpen }) => {
             setOpenModalAttackingMidfielderWide(false);
             setOpenModalAttackingMidfielderCenter(true);
             setOpenModalForward(false);
-        } else if (position === "forward") {
+        } else if (position === "Forward") {
             setOpenModalGoalkeeper(false);
             setOpenModalCentralDefender(false);
             setOpenModalWideDefender(false);
@@ -307,7 +308,7 @@ const ModalPlayer = ({ closeModalPlayer,isOpen }) => {
                             <button className='next-button PL_next' onClick={chooseModal}> Next </button>
 
 
-                            {OpenModalGoalkeeper && < ModalGoalkeeper closeModalGoalkeeper={setOpenModalGoalkeeper} closeModalPlayer ={closeModalPlayer} />}
+                            {OpenModalGoalkeeper && < ModalGoalkeeper player={data} closeModalGoalkeeper={setOpenModalGoalkeeper} closeModalPlayer ={closeModalPlayer} />}
                             {OpenModalCentralDefender && < ModalCentralDefender closeModalCentralDefender={setOpenModalCentralDefender} closeModalPlayer ={closeModalPlayer}/>}
                             {OpenModalWideDefender && < ModalWideDefender closeModalWideDefender={setOpenModalWideDefender} closeModalPlayer ={closeModalPlayer}/>}
                             {OpenModalMidfielder && < ModalMidfielder closeModalMidfielder={setOpenModalMidfielder} closeModalPlayer ={closeModalPlayer}/>}

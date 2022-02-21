@@ -6,10 +6,9 @@ import "react-bootstrap"
 import { arrayPlayers } from '../../Constants/Constants';
 
 
-
 const Player = ({ player }) => {
 
-
+   
 
 
     console.log(arrayPlayers)
@@ -27,30 +26,15 @@ const Player = ({ player }) => {
 
 
 
+            <div className='player'>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <div className='col-12 player'>
                 <div>
                     <img className='Icon' src={PlayerIcon} />
                 </div>
 
-
-                <button className="player_name">{player}</button>
-
+                <div className='col-12'>
+                    <div className="player_name">{player}</div>
+                </div>
 
 
                 {/* <select className="player_name" >
