@@ -115,6 +115,7 @@ const NavPlayer = () => {
 
     const cancel_f = () => {
         setShow(true);
+        setErrors("")
         setEdit(!edit);
     }
 

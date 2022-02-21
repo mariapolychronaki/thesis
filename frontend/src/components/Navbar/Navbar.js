@@ -83,7 +83,7 @@ const Navbar = () => {
         setErrors(validate(values));
         setIsSubmiting(true);
         setValues("")
-        // e.preventDefault();
+        e.preventDefault();
 
     };
 
@@ -120,9 +120,15 @@ const Navbar = () => {
         setVisibility(e);
     };
 
+   
 
+    const cancel_f = () => {
+        setShow(true);
+        setErrors("")
+        setEdit(!edit);
+    }
 
-    const [view,setView] = useState(false);
+    const [view, setView] = useState(false);
 
     return (
         <>
@@ -203,9 +209,9 @@ const Navbar = () => {
                                 strgiorgos@gmail.com
                             </div>
                         </div>
-                       <div className='space'></div>
-                       <div className='space'></div>
-                       <div className='space'></div>
+                        <div className='space'></div>
+                        <div className='space'></div>
+                        <div className='space'></div>
 
                         <button className='Btn_settings' type='submit' onClick={() => setEdit(!edit)}>Edit</button>
 
@@ -235,15 +241,15 @@ const Navbar = () => {
                 }
 
                 {edit && <div className=' container_settings 2' >
-                    <form className='form_settings InputsEdit' onSubmit={hadleSubmit}>
+                    <form className='form_settings InputsEdit' onSubmit={hadleSubmit} >
 
-                       
+
                         <div className='form-inputs_settings'>
                             <label htmlFor='password_settings'
                                 className='form-label'>
                                 *Password
                             </label>
-                            <input type='password_settings'
+                            <input type='password'
                                 name='password'
                                 className='form-input'
                                 placeholder='Enter your password'
@@ -257,11 +263,11 @@ const Navbar = () => {
                                 className='form-label'>
                                 *New Password
                             </label>
-                            <input type='password_settings'
-                                name='password'
+                            <input type='password'
+                                name='newpassword'
                                 className='form-input'
                                 placeholder='Enter your newpassword'
-                                value={values.password}
+                                value={values.newpassword}
                                 onChange={hadleChange}
                             />
                             {errors.password && <p>{errors.password}</p>}
@@ -271,7 +277,7 @@ const Navbar = () => {
                                 className='form-label'>
                                 *Password Verification
                             </label>
-                            <input type='password_settings'
+                            <input type='password'
                                 name='password2'
                                 className='form-input'
                                 placeholder='Verify your new password'
@@ -281,7 +287,7 @@ const Navbar = () => {
                             {errors.password2 && <p>{errors.password2}</p>}
                         </div>
                         <button className='Btn_settings' type='submit' onClick={confirm_f}>Confirm</button>
-                        <button className='Btn_settingsCancel' >Cancel</button>
+                        <button className='Btn_settingsCancel' onClick={cancel_f}>Cancel</button>
 
                     </form>
 
