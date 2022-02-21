@@ -2,7 +2,7 @@ import React from 'react'
 import '../../assets/Style/FormSignIn.css'
 import { useState, useEffect, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
-
+import { usersCoaches, usersPlayers } from '../../Constants/Constants';
 
 const FormSignIn = ({ submitForm }) => {
 
@@ -18,21 +18,33 @@ const FormSignIn = ({ submitForm }) => {
 
 
     const validate = (values) => {
-
+        let flag= false;
         let errors = {}
+        usersCoaches.map((user)=>{
+            if(user.email===values.email){
+                flag=true;
+            }
+        })
+        usersPlayers.map((user)=>{
+            if(user.email===values.email){
+                flag=true;
+            }
+        })
 
+        if (!values.email.trim()) {
+            errors.email = "Email required"
+        }else if(flag===false){
+            errors.email = "Invalid email"
 
-        if (!values.username.trim()) {
-            errors.email = "Username required"
         }
-
+        console.log()
 
         if (!values.password) {
             errors.password = "Password is required"
         } else if (values.password.length < 6) {
             errors.password = 'Password must be more than 6 characters'
         }
-
+       
 
 
         return errors;
@@ -76,13 +88,13 @@ const FormSignIn = ({ submitForm }) => {
                     <input
                         id='username'
                         type='text'
-                        name='username'
+                        name='email'
                         className='form-input '
                         placeholder='Enter your name'
                         value={values.email}
                         onChange={hadleChange}
                     />
-                    {errors.username && <p>{errors.username}</p>}
+                    {errors.email && <p>{errors.email}</p>}
                 </div>
 
                 <div className='form1-inputs'>
