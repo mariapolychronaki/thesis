@@ -50,6 +50,8 @@
 
 .table_container1{
     overflow-x: scroll;
+    min-height: 140vh;
+    height: fit-content;
 }
 
 

@@ -10,6 +10,8 @@ import ModalGoalkeeper from '../components/Modal/ModalGoalkeeper';
 import ModalPlayerRating from '../components/Modal/ModalPlayerRating';
 import { arrayAllPlayers } from '../Constants/Constants';
 import ModalEditPlayer from '../components/Modal/ModalEditPlayer';
+import CustomPopup from './Admin/PopUp';
+import { arrayPlayers } from '../Constants/Constants';
 
 
 export const AllPlayers = () => {
@@ -22,6 +24,7 @@ export const AllPlayers = () => {
 
     const [enquiry, setEnquiry] = useState("Enquiry");
 
+    const [maxLimit, setmaxLimit] = useState(false);
 
 
     const coach = useSelector((state) => state.coach);
@@ -51,7 +54,7 @@ export const AllPlayers = () => {
             }
 
         ))
-       
+
 
     }, [searchField])
 
@@ -186,7 +189,7 @@ export const AllPlayers = () => {
                             className={getClassNamesFor('height')}>Height(cm)</th>
                         <th scope="col" onClick={() => requestSort('weight')}
                             className={getClassNamesFor('weight')} className="weight">Weight(Kg)</th>
-                            <th scope="col" onClick={() => requestSort('team')}
+                        <th scope="col" onClick={() => requestSort('team')}
                             className={getClassNamesFor('team')}>Team</th>
                         <th scope="col">Actions</th>
 
@@ -208,7 +211,7 @@ export const AllPlayers = () => {
                             <td className='weight'>{player.weight}</td>
                             <td>{player.team}</td>
                             <td className='action_buttons'>
-                                <button className='enquiry_btn' name={player.ssn} value="Enquiry" onClick={Pending_Btn}> Claim </button>
+                                <button className='enquiry_btn' name={player.ssn} value="Enquiry" onClick={maxPlayers}> Claim </button>
                             </td>
                         </tr>
                     ))}
@@ -216,16 +219,36 @@ export const AllPlayers = () => {
             </table>
         );
     };
+    const popupCloseHandler = (e) => {
+        setmaxLimit(e);
+    };
 
+    const maxPlayers = () => {
+        if (arrayPlayers.length > 10) {
+            setmaxLimit(true)
+        } else {
+            Pending_Btn()
+            console.log(maxLimit)
+        }
 
-
+    }
 
 
 
     return (
         <>
 
-            <div class="container-fluid">
+
+
+            {maxLimit && <CustomPopup
+                onClose={popupCloseHandler, () => setmaxLimit(!maxLimit)}
+                show={maxLimit}
+            >
+                <div className='MaxPlayerLimit'>You can't have more than 25 players on your team!</div>
+            </CustomPopup>}
+
+
+            {!maxLimit && <div class="container-fluid">
 
 
                 <div className='col-12 space'>
@@ -270,7 +293,7 @@ export const AllPlayers = () => {
 
 
 
-            </div >
+            </div >}
 
 
 

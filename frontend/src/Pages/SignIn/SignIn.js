@@ -26,7 +26,7 @@ export const SignIn = () => {
 
                 {!isSubmitted ? (<FormSignIn submitForm={submitForm} />) :
 
-                    (form !== undefined) ? <Navigate to='/Lineup' /> : <Navigate to='/Admin' />}
+                    (form !== undefined) ? <Navigate to='/players' /> : <Navigate to='/Admin' />}
 
             </div>
             )

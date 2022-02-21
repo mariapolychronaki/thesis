@@ -47,6 +47,9 @@ export const Players = () => {
     const [OpenModalForward, setOpenModalForward] = useState(false);
 
 
+
+    const [maxLimit, setmaxLimit] = useState(false);
+
     const chooseModal = (player) => {
         console.log(player)
         if (player.position === "Goalkeeper") {
@@ -326,14 +329,30 @@ export const Players = () => {
 
 
 
+    const maxPlayers = () => {
+        if (arrayPlayers.length > 25) {
+            setmaxLimit(true)
+        } else {
+            setOpenModalPlayer(true)
+            console.log(maxLimit)
+        }
 
+    }
 
 
     return (
         <>
 
+            {maxLimit && <CustomPopup
+                onClose={popupCloseHandler, () => setmaxLimit(!maxLimit)}
+                show={maxLimit}
+            >
+                <div className='MaxPlayerLimit'>You can't have more than 25 players on your team!</div>
 
-            <div class="container-fluid">
+            </CustomPopup>}
+
+            {!maxLimit && <div class="container-fluid">
+
 
                 {/* <CustomPopup
                     onClose={popupCloseHandler, () => setVisibility(!visibility)}
@@ -367,7 +386,7 @@ export const Players = () => {
 
                     </div>
                     <div className=' col-2 Add'>
-                        <button className='btn' onClick={() => dispatch(setisOpen()), () => setOpenModalPlayer(true)}>Add Player</button>
+                        <button className='btn' onClick={maxPlayers}>Add Player</button>
                     </div>
                 </div>
 
@@ -395,7 +414,7 @@ export const Players = () => {
                     OpenModalForward={OpenModalForward}
                     closeModalPlayerRating={setOpenModalPlayerRating} player={Player} handeChangeCallback={handleChangeParent} />}
 
-                    
+
                 {openModalEditPlayer && < ModalEditPlayer player={Player}
                     closeModalEditPlayer={setOpenModalEditPlayer} />}
 
@@ -419,7 +438,7 @@ export const Players = () => {
 
 
             </div >
-
+            }
 
 
 

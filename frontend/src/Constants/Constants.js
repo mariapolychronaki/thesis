@@ -387,26 +387,7 @@ export const arrayplayersRating = [
 
 
     },
-      {
-        name: "Nikolaos",
-        surname: "Chronakis",
-        Personality: "6",
-        Experience: "8",
-        Agility: "7",
-        Team_work: "7",
-        Leadership: "8",
-        Reflexes: "6",
-        Communication: "5",
-        Shot_stopping: "9.5",
-        Kicking: "6",
-        Tactics: "6",
-        Penalty_saving: "10",
-        One_on_ones: "10",
-        Rushing_out: "5",
-        Positioning: "7"
-
-
-    },
+     
     {
         name: "Emmanouil",
         surname: "Kornilakis",

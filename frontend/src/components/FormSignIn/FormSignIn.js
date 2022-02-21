@@ -9,7 +9,7 @@ const FormSignIn = ({ submitForm }) => {
     const [errors, setErrors] = useState({});
     const [isSubmiting, setIsSubmiting] = useState(false);
     const [values, setValues] = useState({
-        username: '',
+        email: '',
         password: '',
     });
     function onChange(value) {
@@ -23,7 +23,7 @@ const FormSignIn = ({ submitForm }) => {
 
 
         if (!values.username.trim()) {
-            errors.username = "Username required"
+            errors.email = "Username required"
         }
 
 
@@ -71,7 +71,7 @@ const FormSignIn = ({ submitForm }) => {
                 <div className='form1-inputs '>
                     <label htmlFor='username'
                         className='form-label'>
-                        *Username
+                        *Email
                     </label>
                     <input
                         id='username'
@@ -79,7 +79,7 @@ const FormSignIn = ({ submitForm }) => {
                         name='username'
                         className='form-input '
                         placeholder='Enter your name'
-                        value={values.username}
+                        value={values.email}
                         onChange={hadleChange}
                     />
                     {errors.username && <p>{errors.username}</p>}
