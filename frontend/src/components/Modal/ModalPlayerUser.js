@@ -14,6 +14,46 @@ import ModalPlayerUserInit from '../../components/Modal/ModalPlayerUserInit'
 
 const ModalPlayerUser = ({ }) => {
 
+    const [data, setdata] = useState({});
+    const [position, setPosition] = useState("Goalkeeper");
+    const [height, setHeight] = useState("150");
+    const [nationality, setNationality] = useState("Afghan");
+    const [weight, setWeight] = useState("50");
+    const [closeModalPlayer, setcloseModalPlayer] = useState(true);
+
+    const handleChange = (e) => {
+        setdata({ ...data, [e.target.name]: e.target.value })
+    }
+    console.log(data)
+
+    const handleChangeParent = (data) => {
+        console.log(data);
+        setPosition(data);
+    }
+    const handleChangeParent1 = (data) => {
+        console.log(data);
+        setHeight(data);
+    }
+    const handleChangeParent2 = (data) => {
+        console.log(data);
+        console.log(nationality)
+
+        setNationality(data);
+    }
+
+    const handleChangeParent3 = (data) => {
+        console.log(data);
+        setWeight(data);
+    }
+
+    const confirm = () => {
+        setdata({
+            ...data, [`position`]: position, [`height`]: height, [`nationality`]: nationality,
+            [`weight`]: weight
+        })
+
+    }
+    console.log(data)
 
     const [edit, setEdit] = useState(false);
 
@@ -23,7 +63,9 @@ const ModalPlayerUser = ({ }) => {
 
 
         <>
-            <ModalPlayerUserInit/>
+            {closeModalPlayer && <  ModalPlayerUserInit closeModalPlayer={setcloseModalPlayer} />}
+
+
             {!edit && <div className='modalBackgroundUser'>
                 <div className='col-12 space'></div>
                 <div className='modalContainerUser'>
@@ -40,7 +82,7 @@ const ModalPlayerUser = ({ }) => {
                                     <label>SSN</label>
                                 </div>
                                 <div className='col-4 BackendInputs'>
-                                    1218215218
+                                12345678900
                                 </div>
                             </div>
 
@@ -50,7 +92,7 @@ const ModalPlayerUser = ({ }) => {
                                 </div>
                                 <div className='col-4 '>
                                     <div className='col-4 BackendInputs'>
-                                        Giorgos
+                                        Georgios
                                     </div>
                                 </div>
                             </div>
@@ -155,7 +197,30 @@ const ModalPlayerUser = ({ }) => {
                     <div className='modalbody'>
 
                         <form>
+                            <div className='col-12 name'>
+                                <div className='offset-1 col-4 text'>
+                                    <label>Name</label>
+                                </div>
+                                <div className='col-4 '>
 
+                                    <input className="inputs" name="name" onChange={handleChange}>
+
+                                    </input>
+                                </div>
+                            </div>
+
+
+                            <div className='col-12 name'>
+                                <div className='offset-1 col-4 text'>
+                                    <label>Surname</label>
+                                </div>
+                                <div className='col-4 '>
+
+                                    <input className="inputs" name="surname" onChange={handleChange}>
+
+                                    </input>
+                                </div>
+                            </div>
 
 
 
@@ -164,9 +229,8 @@ const ModalPlayerUser = ({ }) => {
                                 <div className='offset-1 col-4 text'>
                                     <label>Nationality</label>
                                 </div>
-                                <div className='col-4 '>
-
-                                    <Dropdown_nationality />
+                                <div className='col-4 ' name="nationality" >
+                                    <Dropdown_nationality handleChangeCallback={handleChangeParent2} onChange={handleChange} />
                                 </div>
                             </div>
 
@@ -176,8 +240,8 @@ const ModalPlayerUser = ({ }) => {
                                 <div className='offset-1 col-4 text'>
                                     <label>Position</label>
                                 </div>
-                                <div className='col-4 '>
-                                    <Dropdown_position />
+                                <div className='col-4 ' >
+                                    <Dropdown_position handleChangeCallback={handleChangeParent} onChange={handleChange} />
                                 </div>
                             </div>
 
@@ -186,9 +250,9 @@ const ModalPlayerUser = ({ }) => {
                                 <div className='offset-1 col-4 text'>
                                     <label>Preferred Foot</label>
                                 </div>
-                                <div className='col-4'>
+                                <div className='col-4 ' >
 
-                                    <select className='positions'>
+                                    <select className='positions' name="Preferred Foot" onChange={handleChange}>
                                         <option value="right">Right</option>
                                         <option value="left">Left</option>
                                         <option value="both">Both</option>
@@ -203,9 +267,8 @@ const ModalPlayerUser = ({ }) => {
                                 <div className='offset-1 col-4 text'>
                                     <label>Height(m)</label>
                                 </div>
-                                <div className='col-4 '>
-
-                                    <Dropdown_height className="height_op" />
+                                <div className='col-4 '  >
+                                    <Dropdown_height className="height_op" name="height" handleChangeCallback={handleChangeParent1} />
                                 </div>
                             </div>
 
@@ -215,7 +278,7 @@ const ModalPlayerUser = ({ }) => {
                                 </div>
                                 <div className='col-4'>
 
-                                    <Dropdown_weight className="weight_op" />
+                                    <Dropdown_weight className="weight_op" handleChangeCallback={handleChangeParent3} onChange={handleChange} />
                                 </div>
                             </div>
 
@@ -224,7 +287,7 @@ const ModalPlayerUser = ({ }) => {
                     <div className='footer'>
                         <div className='col-12 btns'>
                             <div className='offset-9 col-2'>
-                                <button className='confirm_button' onClick={() => setEdit(!edit)}>Confirm</button>
+                                <button className='confirm_button' onClick={confirm, () => setEdit(!edit)}>Confirm</button>
                             </div>
                         </div>
                     </div>

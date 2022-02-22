@@ -6,7 +6,7 @@ import ModalAddInjuredPlayer from '../../components/Modal/ModalAddInjuredPlayer'
 import { useState, useEffect } from 'react';
 import 'reactjs-popup/dist/index.css';
 import CustomPopup from './PopUp';
-import { Enquiries, usersCoaches, usersPlayers, SignUpMessages } from '../../Constants/Constants';
+import { Enquiries, usersCoaches, usersPlayers, SignUpMessages, users } from '../../Constants/Constants';
 
 const Admin = () => {
     const [removePlayerBtn, setRemovePlayerBtn] = useState(false);
@@ -230,10 +230,21 @@ const Admin = () => {
 
 
 
+    var usersPlayers = []
+    var usersCoaches = []
 
 
-
-
+    const findUsers = ()=>{
+        users.map((user)=>{
+            if(user.user_type==="Player"){
+                usersPlayers.push(user)
+            }else{
+                usersCoaches.push(user)
+            }
+        })
+    }
+    console.log(usersPlayers)
+    console.log(usersCoaches)
 
 
 
@@ -250,7 +261,7 @@ const Admin = () => {
         };
         return (
             <>
-                <div className='offset-4 col-4 TitleInAdminSignUp'>All Active Users Players</div>
+                <div className='offset-4 col-4 TitleInAdminSignUp'>Players Users</div>
                 <table className='table'>
 
                     <thead>
@@ -326,7 +337,7 @@ const Admin = () => {
         };
         return (
             <>
-                <div className='offset-4 col-4 TitleInAdminSignUp'>All Active Users Coaches</div>
+                <div className='offset-4 col-4 TitleInAdminSignUp'>Coaches Users</div>
                 <table className='table'>
 
                     <thead>
@@ -400,7 +411,7 @@ const Admin = () => {
     return <div>
         <NavPlayer />
 
-
+        {findUsers()}
 
         <div>
             <div className='container-fluid'>
@@ -417,10 +428,10 @@ const Admin = () => {
                         </div>
 
                         <div className='marginBtns'>
-                            <button class="btn buttonsAdmin" onClick={Function_Players}>Players</button>
+                            <button class="btn buttonsAdmin" onClick={Function_Players}>Player Users</button>
                         </div>
                         <div className='marginBtns'>
-                            <button class="btn buttonsAdmin" onClick={Function_Coaches}>Coaches</button>
+                            <button class="btn buttonsAdmin" onClick={Function_Coaches}>Coach Users</button>
                         </div>
 
                     </div>
@@ -483,7 +494,7 @@ const Admin = () => {
 
                                 </thead>
                                 <tbody>
-                                    {SignUpMessages.map((message, index) =>
+                                    {users.map((message, index) =>
                                         <tr>
                                             <td>
                                                 {index + 1}
@@ -499,11 +510,8 @@ const Admin = () => {
                                             </td>
                                             <td>
                                                 has
-
                                                 asked
-
                                                 to
-
                                                 sign
 
                                                 up
@@ -619,7 +627,7 @@ const Admin = () => {
                                                 {enquiry.coach}
                                             </td>
                                             <td>
-                                                has asked to claim
+                                                has claimed
                                             </td>
                                             <td className='font_bold'>
                                                 {enquiry.name}<span className='span1'>

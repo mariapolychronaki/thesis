@@ -324,6 +324,20 @@
     
 }
 
+.showErrors{
+    color:rgb(187, 2, 2);
+    font-weight: 800;
+    height: 2rem;
+    text-align: left;
+}
+
+
+.ShowConfirmMessage{
+    color:rgb(19, 102, 26);
+    font-weight: 800;
+    height: 2rem;
+    text-align: left;
+}
 
 
 @media screen and (max-width:850px) {

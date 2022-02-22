@@ -1,7 +1,10 @@
-import React from 'react'
-import '../../assets/Style/Form.css'
+import React from 'react';
+import '../../assets/Style/Form.css';
+import { users, usersCoaches,usersPlayers } from '../../Constants/Constants';
 import { useState, useEffect, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
+
+
 
 <script src="https://www.google.com/recaptcha/api.js"></script>
 
@@ -20,7 +23,6 @@ const FormSignup = ({ submitForm }) => {
         surname: ''
     });
 
-
     function onChange(value) {
         console.log('Captcha value:', value);
     }
@@ -29,6 +31,13 @@ const FormSignup = ({ submitForm }) => {
     const validate = (values) => {
 
         let errors = {}
+        var flag= false;
+        users.map((user)=>{
+            if(values.email===user.email){
+                flag =true;
+            }
+        })
+       
 
 
        
@@ -36,6 +45,8 @@ const FormSignup = ({ submitForm }) => {
             errors.email = "Email required"
         } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
             errors.email = "Email address is invalid"
+        }else if(flag===true){
+            errors.email="Email already has an account"
         }
 
         if (!values.password) {

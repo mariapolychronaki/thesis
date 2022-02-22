@@ -58,6 +58,12 @@ export const Matches = () => {
                             {totalMatchRatings[0].matches.map((player, index) => (
                                 <th scope="col">Match{index + 1}</th>
                             ))}
+                             <th scope="col">Match</th>
+                             <th scope="col">Match</th>
+                             <th scope="col">Match</th>
+                             <th scope="col">Match</th>
+                             <th scope="col">Match</th>
+
                         </tr>
                     </thead>
                     <tbody>

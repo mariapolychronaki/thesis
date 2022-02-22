@@ -2,7 +2,7 @@ import React from 'react'
 import '../../assets/Style/FormSignIn.css'
 import { useState, useEffect, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
-import { usersCoaches, usersPlayers } from '../../Constants/Constants';
+import { users } from '../../Constants/Constants';
 
 const FormSignIn = ({ submitForm }) => {
 
@@ -20,12 +20,8 @@ const FormSignIn = ({ submitForm }) => {
     const validate = (values) => {
         let flag= false;
         let errors = {}
-        usersCoaches.map((user)=>{
-            if(user.email===values.email){
-                flag=true;
-            }
-        })
-        usersPlayers.map((user)=>{
+       
+        users.map((user)=>{
             if(user.email===values.email){
                 flag=true;
             }

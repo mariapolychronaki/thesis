@@ -2,7 +2,7 @@ import React from 'react'
 import '../../assets/Style/Modal.css'
 import 'react-bootstrap'
 import ModalGoalkeeper from './ModalGoalkeeper'
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import Dropdown_height from '../Dropdowns/Dropdown_height'
@@ -16,9 +16,11 @@ import ModalAttackingMidfielderCenter from './ModalAttMidCenter'
 import ModalAttackingMidfielderWide from './ModalAttMidWide'
 import ModalForward from './ModalForward'
 import ModalInjured from './ModalInjured'
+import { arrayPlayers } from '../../Constants/Constants'
+import { Modal } from 'react-bootstrap'
 
 
-const ModalPlayer = ({ closeModalPlayer,isOpen }) => {
+const ModalPlayer = ({ closeModalPlayer, isOpen }) => {
 
     const [OpenModalGoalkeeper, setOpenModalGoalkeeper] = useState(false);
     const [OpenModalCentralDefender, setOpenModalCentralDefender] = useState(false);
@@ -34,7 +36,10 @@ const ModalPlayer = ({ closeModalPlayer,isOpen }) => {
     const [weight, setWeight] = useState("50");
 
 
-    
+    const [show, setShow] = useState(false);
+
+
+    const [errors, setErrors] = useState({});
 
 
     const [data, setdata] = useState({});
@@ -60,76 +65,115 @@ const ModalPlayer = ({ closeModalPlayer,isOpen }) => {
         setWeight(data);
     }
 
-   
+
+
+
+
+
+    const validate = (values) => {
+
+        let errors = {}
+
+
+        if (!values.name) {
+            errors.name = "Name required!"
+            setShow(true)
+        }
+        if (!values.surname) {
+            errors.surname = "Surname required!"
+            setShow(true)
+
+        }
+
+        if (!values.ssn) {
+            errors.ssn = "Ssn is required!"
+            setShow(true)
+
+        } else if (values.ssn.length !== 11) {
+            errors.ssn = "Snn must be 11 numbers!"
+        }
+        console.log(errors)
+        setErrors(errors)
+        return errors;
+    }
+
+
+
+
+
+
+
+
+
     const chooseModal = () => {
-        
+        validate(data)
         setdata({
             ...data, [`position`]: position, [`height`]: height, [`nationality`]: nationality,
             [`weight`]: weight
         })
 
         console.log(data)
+        if (!errors) {
+            if (position === "Goalkeeper") {
 
-        if (position === "Goalkeeper") {
-            
-            setOpenModalGoalkeeper(true);
-            setOpenModalCentralDefender(false);
-            setOpenModalWideDefender(false);
-            setOpenModalMidfielder(false);
-            setOpenModalAttackingMidfielderWide(false);
-            setOpenModalAttackingMidfielderCenter(false);
-            setOpenModalForward(false);
-        } else if (position === "Central Defender") {
-            console.log("mpika")
-            setOpenModalGoalkeeper(false);
-            setOpenModalCentralDefender(true);
-            setOpenModalWideDefender(false);
-            setOpenModalMidfielder(false);
-            setOpenModalAttackingMidfielderWide(false);
-            setOpenModalAttackingMidfielderCenter(false);
-            setOpenModalForward(false);
-        } else if (position === "Right Defender" || position === "Left Defender") {
-            setOpenModalGoalkeeper(false);
-            setOpenModalCentralDefender(false);
-            setOpenModalWideDefender(true);
-            setOpenModalMidfielder(false);
-            setOpenModalAttackingMidfielderWide(false);
-            setOpenModalAttackingMidfielderCenter(false);
-            setOpenModalForward(false);
-        } else if (position === "Midfielder") {
-            setOpenModalGoalkeeper(false);
-            setOpenModalCentralDefender(false);
-            setOpenModalWideDefender(false);
-            setOpenModalMidfielder(true);
-            setOpenModalAttackingMidfielderWide(false);
-            setOpenModalAttackingMidfielderCenter(false);
-            setOpenModalForward(false);
-        } else if (position === "Attacking Midfielder Right" || position === "Attacking Midfielder Right") {
-            setOpenModalGoalkeeper(false);
-            setOpenModalCentralDefender(false);
-            setOpenModalWideDefender(false);
-            setOpenModalMidfielder(false);
-            setOpenModalAttackingMidfielderWide(true);
-            setOpenModalAttackingMidfielderCenter(false);
-            setOpenModalForward(false);
-        } else if (position === "Attacking Midfielder Center") {
-            setOpenModalGoalkeeper(false);
-            setOpenModalCentralDefender(false);
-            setOpenModalWideDefender(false);
-            setOpenModalMidfielder(false);
-            setOpenModalAttackingMidfielderWide(false);
-            setOpenModalAttackingMidfielderCenter(true);
-            setOpenModalForward(false);
-        } else if (position === "Forward") {
-            setOpenModalGoalkeeper(false);
-            setOpenModalCentralDefender(false);
-            setOpenModalWideDefender(false);
-            setOpenModalMidfielder(false);
-            setOpenModalAttackingMidfielderWide(false);
-            setOpenModalAttackingMidfielderCenter(false);
-            setOpenModalForward(true);
+                setOpenModalGoalkeeper(true);
+                setOpenModalCentralDefender(false);
+                setOpenModalWideDefender(false);
+                setOpenModalMidfielder(false);
+                setOpenModalAttackingMidfielderWide(false);
+                setOpenModalAttackingMidfielderCenter(false);
+                setOpenModalForward(false);
+            } else if (position === "Central Defender") {
+                console.log("mpika")
+                setOpenModalGoalkeeper(false);
+                setOpenModalCentralDefender(true);
+                setOpenModalWideDefender(false);
+                setOpenModalMidfielder(false);
+                setOpenModalAttackingMidfielderWide(false);
+                setOpenModalAttackingMidfielderCenter(false);
+                setOpenModalForward(false);
+            } else if (position === "Right Defender" || position === "Left Defender") {
+                setOpenModalGoalkeeper(false);
+                setOpenModalCentralDefender(false);
+                setOpenModalWideDefender(true);
+                setOpenModalMidfielder(false);
+                setOpenModalAttackingMidfielderWide(false);
+                setOpenModalAttackingMidfielderCenter(false);
+                setOpenModalForward(false);
+            } else if (position === "Midfielder") {
+                setOpenModalGoalkeeper(false);
+                setOpenModalCentralDefender(false);
+                setOpenModalWideDefender(false);
+                setOpenModalMidfielder(true);
+                setOpenModalAttackingMidfielderWide(false);
+                setOpenModalAttackingMidfielderCenter(false);
+                setOpenModalForward(false);
+            } else if (position === "Attacking Midfielder Right" || position === "Attacking Midfielder Right") {
+                setOpenModalGoalkeeper(false);
+                setOpenModalCentralDefender(false);
+                setOpenModalWideDefender(false);
+                setOpenModalMidfielder(false);
+                setOpenModalAttackingMidfielderWide(true);
+                setOpenModalAttackingMidfielderCenter(false);
+                setOpenModalForward(false);
+            } else if (position === "Attacking Midfielder Center") {
+                setOpenModalGoalkeeper(false);
+                setOpenModalCentralDefender(false);
+                setOpenModalWideDefender(false);
+                setOpenModalMidfielder(false);
+                setOpenModalAttackingMidfielderWide(false);
+                setOpenModalAttackingMidfielderCenter(true);
+                setOpenModalForward(false);
+            } else if (position === "Forward") {
+                setOpenModalGoalkeeper(false);
+                setOpenModalCentralDefender(false);
+                setOpenModalWideDefender(false);
+                setOpenModalMidfielder(false);
+                setOpenModalAttackingMidfielderWide(false);
+                setOpenModalAttackingMidfielderCenter(false);
+                setOpenModalForward(true);
+            }
         }
-
     }
 
     const handleChange = (e) => {
@@ -141,36 +185,17 @@ const ModalPlayer = ({ closeModalPlayer,isOpen }) => {
         ssn: '',
         name: '',
         surname: '',
-       
+
     });
 
 
-    const validate = (values) => {
-
-        let errors = {}
 
 
-        if (!values.name.trim()) {
-            errors.name = "name required"
-        }
 
-        if (!values.surname) {
-            errors.surname = "surname required"
-        }
 
-        if (!values.ssn) {
-            errors.ssn = "ssn is required"
-        } 
-     
-        
-
-        return errors;
+    const handleClose = () => {
+        setShow(false)
     }
-
-
-
-
-
 
 
 
@@ -248,7 +273,7 @@ const ModalPlayer = ({ closeModalPlayer,isOpen }) => {
                                 <label>Position</label>
                             </div>
                             <div className='col-4 ' >
-                                <Dropdown_position handleChangeCallback={handleChangeParent} onChange={handleChange} />
+                                <Dropdown_position name="position" handleChangeCallback={handleChangeParent} onChange={handleChange} />
                             </div>
                         </div>
 
@@ -308,18 +333,66 @@ const ModalPlayer = ({ closeModalPlayer,isOpen }) => {
                             <button className='next-button PL_next' onClick={chooseModal}> Next </button>
 
 
-                            {OpenModalGoalkeeper && < ModalGoalkeeper player={data} closeModalGoalkeeper={setOpenModalGoalkeeper} closeModalPlayer ={closeModalPlayer} />}
-                            {OpenModalCentralDefender && < ModalCentralDefender closeModalCentralDefender={setOpenModalCentralDefender} closeModalPlayer ={closeModalPlayer}/>}
-                            {OpenModalWideDefender && < ModalWideDefender closeModalWideDefender={setOpenModalWideDefender} closeModalPlayer ={closeModalPlayer}/>}
-                            {OpenModalMidfielder && < ModalMidfielder closeModalMidfielder={setOpenModalMidfielder} closeModalPlayer ={closeModalPlayer}/>}
-                            {OpenModalAttackingMidfielderWide && < ModalAttackingMidfielderWide closeModalAttackingMidfielderWide={setOpenModalAttackingMidfielderWide} closeModalPlayer ={closeModalPlayer}/>}
-                            {OpenModalAttackingMidfielderCenter && < ModalAttackingMidfielderCenter closeModalAttackingMidfielderCenter={setOpenModalAttackingMidfielderCenter} closeModalPlayer ={closeModalPlayer}/>}
-                            {OpenModalForward && < ModalForward closeModalForward={setOpenModalForward} closeModalPlayer ={closeModalPlayer}/>}
+                            {OpenModalGoalkeeper && < ModalGoalkeeper player={data} closeModalGoalkeeper={setOpenModalGoalkeeper} closeModalPlayer={closeModalPlayer} />}
+                            {OpenModalCentralDefender && < ModalCentralDefender closeModalCentralDefender={setOpenModalCentralDefender} closeModalPlayer={closeModalPlayer} />}
+                            {OpenModalWideDefender && < ModalWideDefender closeModalWideDefender={setOpenModalWideDefender} closeModalPlayer={closeModalPlayer} />}
+                            {OpenModalMidfielder && < ModalMidfielder closeModalMidfielder={setOpenModalMidfielder} closeModalPlayer={closeModalPlayer} />}
+                            {OpenModalAttackingMidfielderWide && < ModalAttackingMidfielderWide closeModalAttackingMidfielderWide={setOpenModalAttackingMidfielderWide} closeModalPlayer={closeModalPlayer} />}
+                            {OpenModalAttackingMidfielderCenter && < ModalAttackingMidfielderCenter closeModalAttackingMidfielderCenter={setOpenModalAttackingMidfielderCenter} closeModalPlayer={closeModalPlayer} />}
+                            {OpenModalForward && < ModalForward closeModalForward={setOpenModalForward} closeModalPlayer={closeModalPlayer} />}
 
                         </div>
                     </div>
                 </div>
             </div>
+
+
+
+
+
+
+
+            <Modal show={show} onHide={handleClose} className="modal">
+                <Modal.Header closeButton>
+                    <Modal.Title></Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <div className='showErrors'>
+                        {errors.name}
+                    </div>
+                    <div className='showErrors'>
+                        {errors.surname}
+                    </div>
+                    <div className='showErrors'>
+                        {errors.ssn}
+                    </div></Modal.Body>
+
+                <Modal.Footer>
+
+                </Modal.Footer>
+            </Modal>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </div >
     )
 }

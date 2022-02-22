@@ -1,34 +1,40 @@
 import React from 'react'
-import '../../assets/Style/ModalUser.css'
+import '../../assets/Style/Modal.css'
 import 'react-bootstrap'
-import { useState } from 'react'
+import ModalGoalkeeper from './ModalGoalkeeper'
+import { useState, useEffect } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import Dropdown_height from '../Dropdowns/Dropdown_height'
 import Dropdown_weight from '../Dropdowns/Dropdown_weight'
 import Dropdown_nationality from '../Dropdowns/Dropdown_nationality'
 import Dropdown_position from '../Dropdowns/Dropdown_position'
-import ModalPlayer from './ModalPlayer'
+import ModalCentralDefender from './ModalCentralDefender'
+import ModalWideDefender from './ModalWideDefender'
+import ModalMidfielder from './ModalMidFielder'
+import ModalAttackingMidfielderCenter from './ModalAttMidCenter'
+import ModalAttackingMidfielderWide from './ModalAttMidWide'
+import ModalForward from './ModalForward'
+import ModalInjured from './ModalInjured'
+import { arrayPlayers } from '../../Constants/Constants'
+import { Modal } from 'react-bootstrap'
+
+
+const ModalPlayerPlayerUserInit = ({ closeModalPlayer, isOpen }) => {
 
 
 
-const ModalPlayerUser = ({ }) => {
-
-    const [OpenModalGoalkeeper, setOpenModalGoalkeeper] = useState(false);
-    const [OpenModalCentralDefender, setOpenModalCentralDefender] = useState(false);
-    const [OpenModalWideDefender, setOpenModalWideDefender] = useState(false);
-    const [OpenModalMidfielder, setOpenModalMidfielder] = useState(false);
-    const [OpenModalAttackingMidfielderWide, setOpenModalAttackingMidfielderWide] = useState(false);
-    const [OpenModalAttackingMidfielderCenter, setOpenModalAttackingMidfielderCenter] = useState(false);
-    const [OpenModalForward, setOpenModalForward] = useState(false);
-
-    const [position, setPosition] = useState("goalkeeper");
+    const [position, setPosition] = useState("Goalkeeper");
     const [height, setHeight] = useState("150");
     const [nationality, setNationality] = useState("Afghan");
     const [weight, setWeight] = useState("50");
 
 
+    const [show, setShow] = useState(false);
 
+    const [showConfirm, setshowConfirm] = useState(false);
+
+    const [errors, setErrors] = useState({});
 
 
     const [data, setdata] = useState({});
@@ -55,15 +61,47 @@ const ModalPlayerUser = ({ }) => {
     }
 
 
-    const chooseModal = () => {
 
+
+
+
+    const validate = (values) => {
+
+        let errors = {}
+
+
+
+        if (!values.ssn) {
+            errors.ssn = "SSN is required!"
+            setShow(true)
+
+        } else if (values.ssn.length !== 11) {
+            errors.ssn = "SNN must be 11 numbers!"
+        } else {
+            setshowConfirm(true)
+
+        }
+        console.log(errors)
+        setErrors(errors)
+
+        return errors;
+    }
+
+
+
+
+
+
+
+
+
+    const chooseModal = () => {
+        validate(data)
         setdata({
             ...data, [`position`]: position, [`height`]: height, [`nationality`]: nationality,
             [`weight`]: weight
         })
-
-
-
+        console.log(data)
 
     }
 
@@ -80,26 +118,17 @@ const ModalPlayerUser = ({ }) => {
     });
 
 
-    const validate = (values) => {
-
-        let errors = {}
-
-
-        if (!values.name.trim()) {
-            errors.name = "name required"
-        }
-
-        if (!values.surname) {
-            errors.surname = "surname required"
-        }
-
-        if (!values.ssn) {
-            errors.ssn = "ssn is required"
-        }
 
 
 
-        return errors;
+
+    const handleClose = () => {
+        setShow(false)
+    }
+
+    const handleClose1 = () => {
+        setshowConfirm(false)
+        closeModalPlayer(false)
     }
 
 
@@ -107,155 +136,189 @@ const ModalPlayerUser = ({ }) => {
 
 
 
-
-
-
-
-
-
-    const [edit, setEdit] = useState(false);
-
     const [startDate, setStartDate] = useState(new Date());
 
     return (
 
 
-        <>
+        <div className='modalBackground'>
+            <div className='col-12 space'></div>
+            <div className='modalContainerPlayer '>
+                <div className='col-12 x-button'>
+                </div>
+                <div className='col-12 space'>
+                           
+                           </div>
+                <div className='col-12 title'>
+                   Stratakis Georgios 
+                </div>
+                <div className='modalbody'>
 
+                    <form>
 
-            <div className='modalBackground'>
-                <div className='col-12 space'></div>
-                <div className='modalContainerPlayer '>
-                    <div className='col-12 space'>
-                    </div>
-                    
-                    <div className='col-12 title'>
-                        Please fill in the form
-                    </div>
-                    <div className='modalbody'>
+                        <div className='col-12 space'>
 
-                        <form>
-                            <div className='col-12 name'>
-                                <div className='offset-1 col-4 text'>
-                                    <label>SSN</label>
-                                </div>
-                                <div className='col-4 '>
-
-                                    <input className="inputs" name="ssn" onChange={handleChange}>
-
-                                    </input>
-                                </div>
+                        </div>
+                        <div className='col-12 name'>
+                            <div className='offset-1 col-4 text'>
+                                <label>SSN</label>
                             </div>
+                            <div className='col-4 '>
 
-                            <div className='col-12 name'>
-                                <div className='offset-1 col-4 text'>
-                                    <label>Name</label>
-                                </div>
-                                <div className='col-4 '>
+                                <input className="inputs" name="ssn" onChange={handleChange}>
 
-                                    <input className="inputs" name="name" onChange={handleChange}>
-
-                                    </input>
-                                </div>
+                                </input>
                             </div>
+                        </div>
 
 
-                            <div className='col-12 name'>
-                                <div className='offset-1 col-4 text'>
-                                    <label>Surname</label>
-                                </div>
-                                <div className='col-4 '>
 
-                                    <input className="inputs" name="surname" onChange={handleChange}>
 
-                                    </input>
-                                </div>
+
+
+
+
+                        <div className='col-12 name'>
+                            <div className='offset-1 col-4 text'>
+                                <label>Nationality</label>
                             </div>
-
-
-                            <div className='col-12 name'>
-                                <div className='offset-1 col-4 text'>
-                                    <label>Nationality</label>
-                                </div>
-                                <div className='col-4 ' name="nationality" >
-                                    <Dropdown_nationality handleChangeCallback={handleChangeParent2} onChange={handleChange} />
-                                </div>
+                            <div className='col-4 ' name="nationality" >
+                                <Dropdown_nationality handleChangeCallback={handleChangeParent2} onChange={handleChange} />
                             </div>
+                        </div>
 
 
 
-                            <div className='col-12 name'>
-                                <div className='offset-1 col-4 text'>
-                                    <label>Position</label>
-                                </div>
-                                <div className='col-4 ' >
-                                    <Dropdown_position handleChangeCallback={handleChangeParent} onChange={handleChange} />
-                                </div>
+                        <div className='col-12 name'>
+                            <div className='offset-1 col-4 text'>
+                                <label>Position</label>
                             </div>
-
-
-                            <div className='col-12 name'>
-                                <div className='offset-1 col-4 text'>
-                                    <label>Preferred Foot</label>
-                                </div>
-                                <div className='col-4 ' >
-
-                                    <select className='positions' name="Preferred Foot" onChange={handleChange}>
-                                        <option value="right">Right</option>
-                                        <option value="left">Left</option>
-                                        <option value="both">Both</option>
-                                    </select>
-                                </div>
+                            <div className='col-4 ' >
+                                <Dropdown_position name="position" handleChangeCallback={handleChangeParent} onChange={handleChange} />
                             </div>
+                        </div>
 
 
-                            <div className='col-12 name'>
-                                <div className='offset-1 col-4 text'>
-                                    <label>Birth Date</label>
-                                </div>
-                                <div className='col-4'>
-                                    <DatePicker className='date' selected={startDate} onChange={(date) => setStartDate(date)} format='yyyy-MM-dd' />
-                                </div>
+                        <div className='col-12 name'>
+                            <div className='offset-1 col-4 text'>
+                                <label>Preferred Foot</label>
                             </div>
+                            <div className='col-4 ' >
 
-
-                            <div className='col-12 name'>
-                                <div className='offset-1 col-4 text'>
-                                    <label>Height(m)</label>
-                                </div>
-                                <div className='col-4 ' name="Height" >
-                                    <Dropdown_height className="height_op" handleChangeCallback={handleChangeParent1} />
-                                </div>
+                                <select className='positions' name="Preferred Foot" onChange={handleChange}>
+                                    <option value="right">Right</option>
+                                    <option value="left">Left</option>
+                                    <option value="both">Both</option>
+                                </select>
                             </div>
+                        </div>
 
-                            <div className='col-12 name'>
-                                <div className='offset-1 col-4 text'>
-                                    <label>Weight(kg)</label>
-                                </div>
-                                <div className='col-4'>
 
-                                    <Dropdown_weight className="weight_op" handleChangeCallback={handleChangeParent3} onChange={handleChange} />
-                                </div>
+                        <div className='col-12 name'>
+                            <div className='offset-1 col-4 text'>
+                                <label>Birth Date</label>
                             </div>
-
-                        </form>
-                    </div>
-                    <div className='footer'>
-                        <div className='col-12 btns'>
-                            <div className='offset-7 col-2'>
+                            <div className='col-4'>
+                                <DatePicker className='date' selected={startDate} onChange={(date) => setStartDate(date)} format='yyyy-MM-dd' />
                             </div>
-                            <div className='col-2'>
-                                <button className='next-button confirmUserInit' onClick={chooseModal}> Confirm </button>
+                        </div>
 
 
-
+                        <div className='col-12 name'>
+                            <div className='offset-1 col-4 text'>
+                                <label>Height(m)</label>
                             </div>
+                            <div className='col-4 ' name="Height" >
+                                <Dropdown_height className="height_op" handleChangeCallback={handleChangeParent1} />
+                            </div>
+                        </div>
+
+                        <div className='col-12 name'>
+                            <div className='offset-1 col-4 text'>
+                                <label>Weight(kg)</label>
+                            </div>
+                            <div className='col-4'>
+
+                                <Dropdown_weight className="weight_op" handleChangeCallback={handleChangeParent3} onChange={handleChange} />
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div className='footer'>
+                    <div className='col-12 btns'>
+                        <div className='offset-7 col-2'>
+                        </div>
+                        <div className='col-2'>
+                            <button className='next-button PL_next' onClick={chooseModal}> Confirm </button>
+
+
+
+
                         </div>
                     </div>
                 </div>
-            </div >
-        </>
+            </div>
+
+
+            <Modal show={showConfirm} onHide={handleClose1} className="modal">
+                <Modal.Header closeButton>
+                    <Modal.Title></Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+
+                    <div className='ShowConfirmMessage'>
+                        You have succesfully created your player!
+                    </div>
+
+                </Modal.Body>
+
+                <Modal.Footer>
+
+                </Modal.Footer>
+            </Modal>
+
+
+
+
+            <Modal show={show} onHide={handleClose} className="modal">
+                <Modal.Header closeButton>
+                    <Modal.Title></Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+
+                    <div className='showErrors'>
+                        {errors.ssn}
+                    </div></Modal.Body>
+
+                <Modal.Footer>
+
+                </Modal.Footer>
+            </Modal>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div >
     )
 }
 
-export default ModalPlayerUser
+export default ModalPlayerPlayerUserInit

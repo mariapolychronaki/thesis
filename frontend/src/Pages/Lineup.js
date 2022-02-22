@@ -2690,7 +2690,7 @@ export const Lineup = () => {
 
                         <div className='row sub2'>
                             <div className='col-4 sub2'>
-                                <Player player={best_for2} />
+                                <Player player={best_Att_Mid_Center1} />
                             </div>
                             <div className='col-4 sub2'>
                                 <Player player={best_Left_Defender2} />
@@ -2900,7 +2900,7 @@ export const Lineup = () => {
 
                         <div className='row sub2'>
                             <div className='col-4 sub2'>
-                                <Player player={best_for2} />
+                                <Player player={best_Att_Mid_Center1} />
                             </div>
                             <div className='col-4 sub2'>
                                 <Player player={best_Left_Defender2} />

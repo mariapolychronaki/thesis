@@ -145,6 +145,7 @@ export const AllPlayers = () => {
     };
 
     const Pending_Btn = (e) => {
+        maxPlayers();
         if (e.target.value === "Enquiry") {
             // console.log(e.target);
             e.target.innerHTML = "Pending";
@@ -211,7 +212,7 @@ export const AllPlayers = () => {
                             <td className='weight'>{player.weight}</td>
                             <td>{player.team}</td>
                             <td className='action_buttons'>
-                                <button className='enquiry_btn' name={player.ssn} value="Enquiry" onClick={maxPlayers}> Claim </button>
+                                <button className='enquiry_btn' name={player.ssn} value="Enquiry" onClick={Pending_Btn}> Claim </button>
                             </td>
                         </tr>
                     ))}
@@ -223,16 +224,20 @@ export const AllPlayers = () => {
         setmaxLimit(e);
     };
 
-    const maxPlayers = () => {
-        if (arrayPlayers.length > 10) {
+    const [player,setplayer] = useState();
+    
+    const maxPlayers = (player) => {
+        if (arrayPlayers.length > 25) {
             setmaxLimit(true)
         } else {
-            Pending_Btn()
+            setplayer(player)
+            console.log(player)
             console.log(maxLimit)
         }
 
     }
 
+    
 
 
     return (

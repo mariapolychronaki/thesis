@@ -368,7 +368,7 @@ export const Players = () => {
                 onClose={popupCloseHandler, () => setmaxLimit(!maxLimit)}
                 show={maxLimit}
             >
-                <div className='MaxPlayerLimit'>You can't have more than 25 players on your team!</div>
+                <div className='MaxPlayerLimit'>You can't have more than 25 players in your team!</div>
 
             </CustomPopup>}
 
