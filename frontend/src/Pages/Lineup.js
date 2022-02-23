@@ -9,11 +9,12 @@ import { arrayPlayerTrainingRating3, arrayPlayerTrainingRating4, arrayPlayerTrai
 import { arrayPlayerMatchRating1, arrayPlayerMatchRating2 } from '../Constants/Constants';
 import ModalInjured from '../components/Modal/ModalInjured';
 import { useState } from 'react';
-
+import { Document, Page } from 'react-pdf';
 
 
 export const Lineup = () => {
 
+    
     const [best_for1, setBest_for1] = useState("None");
     const [best_for2, setBest_for2] = useState("None");
 
@@ -2272,6 +2273,7 @@ export const Lineup = () => {
     const [openModalInjured, setOpenModalInjured] = useState(false);
 
     const clear = () => {
+
         setBest_Goalkeeper1("None");
         setBest_Goalkeeper2("None");
 
@@ -2297,7 +2299,6 @@ export const Lineup = () => {
 
         setBest_Att_Mid_Left1("None")
         setBest_Att_Mid_Left2("None")
-
 
         setBest_for1("None")
         setBest_for2("None")
@@ -2385,7 +2386,7 @@ export const Lineup = () => {
                         </div>
 
                         <div className='spacelineup'></div>
-                       
+
 
                         <div className='col-12 defenders'>
                             <div className='col-3'>
@@ -2762,6 +2763,7 @@ export const Lineup = () => {
 
                     </div>
 
+                   
 
                     <div class="col-6 pitch">
 
@@ -2914,7 +2916,7 @@ export const Lineup = () => {
 
                         <div className='row sub2'>
                             <div className='col-4 sub2'>
-                                <Player player={best_Right_Defender2} />
+                                <Player player={best_Right_Defender2}  />
                             </div>
                             <div className='col-4 sub2'>
                                 <Player player={best_Midfielder3} />

@@ -29,7 +29,9 @@ export const AllPlayers = () => {
 
     const coach = useSelector((state) => state.coach);
 
-    const positions = ["Goalkeeper", "Central Defender", "Right Defender"];
+    const positions = ["Goalkeeper", "Central Defender", "Right Defender", "Left Defender", "Midfielder",
+        "Attacking Midfielder center", "Attacking Midfielder Right", "Attacking Midfielder Left", "Forward",
+    ];
     const playersArray = arrayAllPlayers;
 
     const [filteredPersons, setfilteredPersons] = useState(arrayAllPlayers);
@@ -95,22 +97,13 @@ export const AllPlayers = () => {
 
                     } else if (sortConfig.key === "position") {
 
-                        var result = []
+                        if (positions.indexOf(a.position) > positions.indexOf(b.position)) {
+                            console.log("ascending")
+                            return sortConfig.direction === 'ascending' ? 1 : -1;
+                        } else {
+                            return sortConfig.direction === 'ascending' ? -1 : 1;
 
-                        positions.forEach(function (key) {
-                            var found = false;
-                            sortablearrayPlayers = sortablearrayPlayers.filter(function (item) {
-                                if (!found && item[sortConfig.key] == key) {
-                                    result.push(item);
-                                    found = true;
-                                    return false;
-                                } else
-                                    return true;
-                            })
-
-                        })
-                        console.log(result);
-
+                        }
 
                     }
                     else {
@@ -146,6 +139,7 @@ export const AllPlayers = () => {
 
     const Pending_Btn = (e) => {
         maxPlayers();
+        
         if (e.target.value === "Enquiry") {
             // console.log(e.target);
             e.target.innerHTML = "Pending";
@@ -224,8 +218,8 @@ export const AllPlayers = () => {
         setmaxLimit(e);
     };
 
-    const [player,setplayer] = useState();
-    
+    const [player, setplayer] = useState();
+
     const maxPlayers = (player) => {
         if (arrayPlayers.length > 25) {
             setmaxLimit(true)
@@ -237,7 +231,7 @@ export const AllPlayers = () => {
 
     }
 
-    
+
 
 
     return (

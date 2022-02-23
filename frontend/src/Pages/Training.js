@@ -76,11 +76,7 @@ export const Training = () => {
                                 <th scope="col">Tr{index + 1}</th>
                             ))}
 
-                            <th scope="col"> Tr6</th>
-                            <th scope="col"> Tr7</th>
-                            <th scope="col"> Tr8</th>
-                            <th scope="col"> Tr9</th>
-                            <th scope="col"> Tr10</th>
+                          
 
 
 

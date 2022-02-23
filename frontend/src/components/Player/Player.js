@@ -6,21 +6,30 @@ import "react-bootstrap"
 import { arrayPlayers } from '../../Constants/Constants';
 
 
-const Player = ({ player }) => {
+const Player = ({ handleChangeCallback, player }) => {
+    const handleChange = (e) => {
+        handleChangeCallback(e.target.value);
+    }
 
-   
+    const [check, setcheck] = useState(true);
+    const [player1, setplayer1] = useState();
 
+    const checkplayer = () => {
+        if (player === "None") {
+            setcheck(false)
+            console.log("nonennojdnoifjaiabduafhvuhvyg")
+        }
+    }
+    const [show, setShow] = useState(false);
 
     console.log(arrayPlayers)
 
-
+    const setchoosePlayer = () => {
+        setShow(true)
+        checkplayer()
+    }
 
     return (
-
-
-
-
-
 
         <>
 
@@ -33,17 +42,22 @@ const Player = ({ player }) => {
                 </div>
 
                 <div className='col-12'>
-                    <div className="player_name">{player}</div>
+                <div className="player_name" >{player}</div>
+                    {/* {!show && <div className="player_name" onClick={setchoosePlayer}>{player}</div>}
+                    {show &&
+                        <select onChange={handleChange} className="player_name_select" defaultValue={player}>
+                            <option value="None">None</option>
+                            {arrayPlayers.map((player) =>
+                                <>
+                                    <option value={player.surname} >{player.surname}</option>
+                                </>
+                            )}
+                        </select>
+                    } */}
                 </div>
 
 
-                {/* <select className="player_name" >
-                {arrayPlayers.map((player)=>
-                <>
-                    <option >{player.surname}</option>
-                </>
-                )}
-            </select> */}
+
 
             </div >
         </>

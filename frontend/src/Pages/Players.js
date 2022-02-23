@@ -20,11 +20,14 @@ export const Players = () => {
     const [Player, setPlayer] = useState({});
 
     const isOpen = useSelector((state) => state.modal.isOpen)
+    const [havePlayers, setHavePlayers] = useState(true);
 
 
     const coach = useSelector((state) => state.coach);
 
-    const positions = ["Goalkeeper", "Central Defender", "Right Defender"];
+    const positions = ["Goalkeeper", "Central Defender", "Right Defender", "Left Defender", "Midfielder",
+        "Attacking Midfielder center", "Attacking Midfielder Right", "Attacking Midfielder Left", "Forward",
+    ];
     const playersArray = arrayPlayers;
 
     const [filteredPersons, setfilteredPersons] = useState(arrayPlayers);
@@ -169,6 +172,7 @@ export const Players = () => {
 
                         if (newDate_a < newDate_b) {
                             console.log(a[sortConfig.key], b);
+
                             return sortConfig.direction === 'ascending' ? -1 : 1;
                         }
                         if (newDate_a > newDate_b) {
@@ -178,21 +182,14 @@ export const Players = () => {
 
                     } else if (sortConfig.key === "position") {
 
-                        var result = []
+                        if (positions.indexOf(a.position) > positions.indexOf(b.position)) {
+                            console.log("ascending")
+                            return sortConfig.direction === 'ascending' ? 1 : -1;
+                        } else {
+                            return sortConfig.direction === 'ascending' ? -1 : 1;
 
-                        positions.forEach(function (key) {
-                            var found = false;
-                            sortablearrayPlayers = sortablearrayPlayers.filter(function (item) {
-                                if (!found && item[sortConfig.key] == key) {
-                                    result.push(item);
-                                    found = true;
-                                    return false;
-                                } else
-                                    return true;
-                            })
+                        }
 
-                        })
-                        console.log(result);
 
 
                     }
@@ -231,6 +228,34 @@ export const Players = () => {
     const [openModalInjured, setOpenModalInjured] = useState(false);
     const [openModalPlayerRating, setOpenModalPlayerRating] = useState(false);
     const [openModalEditPlayer, setOpenModalEditPlayer] = useState(false);
+
+
+
+
+
+    const checkArrayLength = () => {
+        if (arrayPlayers.length === 0) {
+            setHavePlayers(false);
+            console.log(havePlayers)
+            console.log(arrayPlayers.length)
+            return (<>
+                <div className='row'>
+                    <div className='offset-3 col-6 notplayers'>
+                        You don't have any players yet!
+                    </div>
+
+                </div>
+            </>)
+
+        }
+    }
+
+
+
+
+
+
+
 
     const functionEdit = (Player) => {
 
@@ -375,20 +400,7 @@ export const Players = () => {
             {!maxLimit && <div class="container-fluid">
 
 
-                {/* <CustomPopup
-                    onClose={popupCloseHandler, () => setVisibility(!visibility)}
-                    show={!visibility}
-                >
-                    <div className='popUpMessage'>Your request to sign <span className='PlayerName'>player</span> ### has been <span className='MessAprroved'>approved</span></div>
-                </CustomPopup> */}
-
-                {/* <CustomPopup
-                    onClose={popupCloseHandler, () => setVisibility(!visibility)}
-                    show={!visibility}
-                >
-                    <div className='popUpMessage'>Your request to sign <span className='PlayerName'>player</span> ### has been <span className='MessDeclined'>declined</span></div>
-                </CustomPopup> */}
-
+                {checkArrayLength}
 
                 <div className='col-12 space'>
 
@@ -410,6 +422,18 @@ export const Players = () => {
                         <button className='btn' onClick={maxPlayers}>Add Player</button>
                     </div>
                 </div>
+
+
+                {!havePlayers &&
+                    <div className='row'>
+                        <div className='offset-3 col-6 notplayers'>
+                            You don't have any players yet!
+                        </div>
+
+                    </div>
+                }
+
+
 
                 {removePlayerBtn && <CustomPopup
                     onClose={popupCloseHandler, () => setRemovePlayerBtn(!removePlayerBtn)}
@@ -441,7 +465,7 @@ export const Players = () => {
 
 
 
-                <section className="garamond">
+                {havePlayers && <section className="garamond">
                     <div className="pa2">
                         <input
                             className="pa3 bb br3 grow b--none bg-lightest-blue ma3"
@@ -450,10 +474,10 @@ export const Players = () => {
                             onChange={handleChange}
                         />
                     </div>
-                </section>
+                </section>}
 
 
-                {(!openModalPlayer && !openModalInjured && !openModalPlayerRating && !openModalEditPlayer && !removePlayerBtn) && <ProductTable props={filteredPersons} />}
+                {(!openModalPlayer && !openModalInjured && !openModalPlayerRating && !openModalEditPlayer && !removePlayerBtn) && havePlayers && <ProductTable props={filteredPersons} />}
 
 
 

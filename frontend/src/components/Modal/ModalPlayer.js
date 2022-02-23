@@ -18,7 +18,7 @@ import ModalForward from './ModalForward'
 import ModalInjured from './ModalInjured'
 import { arrayPlayers } from '../../Constants/Constants'
 import { Modal } from 'react-bootstrap'
-
+import moment from 'moment';
 
 const ModalPlayer = ({ closeModalPlayer, isOpen }) => {
 
@@ -34,6 +34,8 @@ const ModalPlayer = ({ closeModalPlayer, isOpen }) => {
     const [height, setHeight] = useState("150");
     const [nationality, setNationality] = useState("Afghan");
     const [weight, setWeight] = useState("50");
+
+    const [date, setDate] = useState(new Date());
 
 
     const [show, setShow] = useState(false);
@@ -74,46 +76,57 @@ const ModalPlayer = ({ closeModalPlayer, isOpen }) => {
 
         let errors = {}
 
-
+        if (!values.ssn) {
+            errors.ssn = "Ssn is required!"
+            setErrors(errors)
+            setShow(true)
+            return false;
+        } else if (values.ssn.length !== 11) {
+            errors.ssn = "Snn must be 11 numbers!"
+            setShow(true)
+            setErrors(errors)
+            return false;
+        }
         if (!values.name) {
             errors.name = "Name required!"
             setShow(true)
+            setErrors(errors)
+            return false;
         }
         if (!values.surname) {
             errors.surname = "Surname required!"
             setShow(true)
-
+            setErrors(errors)
+            return false;
         }
 
-        if (!values.ssn) {
-            errors.ssn = "Ssn is required!"
-            setShow(true)
 
-        } else if (values.ssn.length !== 11) {
-            errors.ssn = "Snn must be 11 numbers!"
-        }
-        console.log(errors)
-        setErrors(errors)
-        return errors;
+
+
+
+        return true;
     }
 
 
 
 
-
+    console.log(errors)
 
 
 
 
     const chooseModal = () => {
-        validate(data)
+        var flag = validate(data)
         setdata({
             ...data, [`position`]: position, [`height`]: height, [`nationality`]: nationality,
-            [`weight`]: weight
+            [`weight`]: weight, ['birthdate']: (date.getFullYear() + "/" + (date.getMonth()+1) + "/" + date.getDate())
         })
 
         console.log(data)
-        if (!errors) {
+        console.log(errors)
+        console.log(errors.length)
+
+        if (flag === true) {
             if (position === "Goalkeeper") {
 
                 setOpenModalGoalkeeper(true);
@@ -148,7 +161,7 @@ const ModalPlayer = ({ closeModalPlayer, isOpen }) => {
                 setOpenModalAttackingMidfielderWide(false);
                 setOpenModalAttackingMidfielderCenter(false);
                 setOpenModalForward(false);
-            } else if (position === "Attacking Midfielder Right" || position === "Attacking Midfielder Right") {
+            } else if (position === "Attacking Midfielder Left" || position === "Attacking Midfielder Right") {
                 setOpenModalGoalkeeper(false);
                 setOpenModalCentralDefender(false);
                 setOpenModalWideDefender(false);
@@ -202,7 +215,11 @@ const ModalPlayer = ({ closeModalPlayer, isOpen }) => {
 
 
 
+
     const [startDate, setStartDate] = useState(new Date());
+
+
+    console.log(startDate)
 
     return (
 
@@ -298,7 +315,9 @@ const ModalPlayer = ({ closeModalPlayer, isOpen }) => {
                                 <label>Birth Date</label>
                             </div>
                             <div className='col-4'>
-                                <DatePicker className='date' selected={startDate} onChange={(date) => setStartDate(date)} format='yyyy-MM-dd' />
+                                <DatePicker className='date' dateFormat="yyyy/MM/dd"
+                                    selected={date}
+                                    onChange={(date) => setDate(date)} />
                             </div>
                         </div>
 
@@ -359,13 +378,10 @@ const ModalPlayer = ({ closeModalPlayer, isOpen }) => {
                 <Modal.Body>
                     <div className='showErrors'>
                         {errors.name}
-                    </div>
-                    <div className='showErrors'>
+                        {errors.ssn}
                         {errors.surname}
                     </div>
-                    <div className='showErrors'>
-                        {errors.ssn}
-                    </div></Modal.Body>
+                </Modal.Body>
 
                 <Modal.Footer>
 

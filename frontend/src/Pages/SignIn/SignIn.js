@@ -1,24 +1,42 @@
-import React from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { useState } from 'react';
 import { Players } from '../Players';
 import { Navigate, Redirect } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { setName } from '../../Store/Slices/coachSlice';
 import FormSignIn from '../../components/FormSignIn/FormSignIn';
+import { users } from '../../Constants/Constants';
 
 export const SignIn = () => {
 
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [form, setForm] = useState("");
     const dispatch = useDispatch();
-
+    const [userType, setUserType] = useState({})
 
     function submitForm(e) {
         setIsSubmitted(true);
         console.log(e);
+        setUserType(users.find((user) => (
+            user.email === e.email
+        )))
         setForm(e)
+        console.log(e.email)
         dispatch(setName(e.username));
+
     }
+
+    // const findPlayer = useCallback(() => {
+    //     setUserType()
+    // }, [form])
+
+
+    // useEffect(() => {
+    //     findPlayer()
+    // }, [findPlayer])
+
+    console.log(userType)
+
 
     return (
         <div>
@@ -26,7 +44,7 @@ export const SignIn = () => {
 
                 {!isSubmitted ? (<FormSignIn submitForm={submitForm} />) :
 
-                    (form !== undefined) ? <Navigate to='/players' /> : <Navigate to='/Admin' />}
+                    (userType !== undefined && userType.user_type === "Coach") ? <Navigate to='/players' /> : <Navigate to='/PlayerUser' />}
 
             </div>
             )

@@ -197,30 +197,7 @@ const ModalPlayerUser = ({ }) => {
                     <div className='modalbody'>
 
                         <form>
-                            <div className='col-12 name'>
-                                <div className='offset-1 col-4 text'>
-                                    <label>Name</label>
-                                </div>
-                                <div className='col-4 '>
-
-                                    <input className="inputs" name="name" onChange={handleChange}>
-
-                                    </input>
-                                </div>
-                            </div>
-
-
-                            <div className='col-12 name'>
-                                <div className='offset-1 col-4 text'>
-                                    <label>Surname</label>
-                                </div>
-                                <div className='col-4 '>
-
-                                    <input className="inputs" name="surname" onChange={handleChange}>
-
-                                    </input>
-                                </div>
-                            </div>
+                            <div className='space'></div>
 
 
 
@@ -288,6 +265,7 @@ const ModalPlayerUser = ({ }) => {
                         <div className='col-12 btns'>
                             <div className='offset-9 col-2'>
                                 <button className='confirm_button' onClick={confirm, () => setEdit(!edit)}>Confirm</button>
+                                
                             </div>
                         </div>
                     </div>

@@ -20,5 +20,14 @@
     font-size: 100%;
     justify-content:right;
 }
+.player_name_select{
+    height: fit-content;
+    background-color: rgb(0, 253, 106);
+    border-radius: 10px;
+    width: 90%;
+    margin-left: 10%;
+    font-size: 90%;
+    
+}
 
 

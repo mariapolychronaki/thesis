@@ -412,12 +412,16 @@
 
 .defenders4_3_3{
     display: flex;
-    margin-top: 3%;
+    margin-top: 2.5%;
 }
 
-.defensive_Mid_4_3_3{
-   
+.notplayers{
+    font-size: 200%;
+    border: solid black;
+    text-align: center;
+    margin-top: 10%;
 }
+
 .spacelineup1{
     height: 1.3%;
 }
