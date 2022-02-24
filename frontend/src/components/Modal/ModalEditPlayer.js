@@ -32,7 +32,7 @@ const ModalEditPlayer = ({ closeModalEditPlayer, player }) => {
     const [nationality, setNationality] = useState("Afghan");
     const [weight, setWeight] = useState("50");
     const [date, setDate] = useState(new Date());
-    const [preferred_foot, setPreferredFoot] = useState("Right")
+    const [preferred_foot, setPreferredFoot] = useState("right")
 
     const [data, setdata] = useState({});
     const chooseModal = () => {
@@ -41,7 +41,7 @@ const ModalEditPlayer = ({ closeModalEditPlayer, player }) => {
             [`weight`]: weight, ['birthdate']: (date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate())
         })
         console.log(data)
-
+        closeModalEditPlayer(false)
     }
 
     // const chooseModal = () =>{
@@ -113,7 +113,6 @@ const ModalEditPlayer = ({ closeModalEditPlayer, player }) => {
     const handleChangeParent2 = (data) => {
         console.log(data);
         console.log(nationality)
-
         setNationality(data);
     }
 
@@ -123,6 +122,9 @@ const ModalEditPlayer = ({ closeModalEditPlayer, player }) => {
     }
     const handleChange = (e) => {
         setdata({ ...data, [e.target.name]: e.target.value })
+        if (e.target.name === "Preferred Foot") {
+            setPreferredFoot(e.target.value)
+        }
     }
     const [startDate, setStartDate] = useState(new Date());
 
@@ -174,7 +176,7 @@ const ModalEditPlayer = ({ closeModalEditPlayer, player }) => {
                             <div className='col-4'>
 
                                 <select className='positions' defaultValue={player.preferred_foot} name="Preferred Foot" onChange={handleChange}
-                                   >
+                                >
                                     <option value="Right">Right</option>
                                     <option value="Left">Left</option>
                                     <option value="Both">Both</option>
@@ -213,7 +215,7 @@ const ModalEditPlayer = ({ closeModalEditPlayer, player }) => {
                             <button className='cancel-button PL_cancel' onClick={() => closeModalEditPlayer(false)}>Cancel</button>
                         </div>
                         <div className='col-2'>
-                            <button className='next-button PL_next' onClick={() => closeModalEditPlayer(false)}> Confirm </button>
+                            <button className='next-button PL_next' onClick={chooseModal}> Confirm </button>
 
 
 

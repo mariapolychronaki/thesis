@@ -28,6 +28,7 @@ const ModalPlayerPlayerUserInit = ({ closeModalPlayer, isOpen }) => {
     const [height, setHeight] = useState("150");
     const [nationality, setNationality] = useState("Afghan");
     const [weight, setWeight] = useState("50");
+    const [preferred_foot, setPreferredFoot] = useState("right")
 
 
     const [show, setShow] = useState(false);
@@ -98,7 +99,7 @@ const ModalPlayerPlayerUserInit = ({ closeModalPlayer, isOpen }) => {
     const chooseModal = () => {
         validate(data)
         setdata({
-            ...data, [`position`]: position, [`height`]: height, [`nationality`]: nationality,
+            ...data, [`position`]: position, [`height`]: height, [`nationality`]: nationality, [`Preferred Foot`]: preferred_foot,
             [`weight`]: weight, ['birthdate']: (date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate())
         })
         console.log(data)
@@ -107,6 +108,9 @@ const ModalPlayerPlayerUserInit = ({ closeModalPlayer, isOpen }) => {
 
     const handleChange = (e) => {
         setdata({ ...data, [e.target.name]: e.target.value })
+        if(e.target.name==="Preferred Foot"){
+            setPreferredFoot(e.target.value)
+        }
     }
     console.log(data)
 

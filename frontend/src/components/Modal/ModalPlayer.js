@@ -34,7 +34,7 @@ const ModalPlayer = ({ closeModalPlayer, isOpen }) => {
     const [height, setHeight] = useState("150");
     const [nationality, setNationality] = useState("Afghan");
     const [weight, setWeight] = useState("50");
-
+    const [preferredFoot, setPreferredFoot] = useState("right")
     const [date, setDate] = useState(new Date());
 
 
@@ -118,8 +118,8 @@ const ModalPlayer = ({ closeModalPlayer, isOpen }) => {
     const chooseModal = () => {
         var flag = validate(data)
         setdata({
-            ...data, [`position`]: position, [`height`]: height, [`nationality`]: nationality, 
-            [`weight`]: weight, ['birthdate']: (date.getFullYear() + "/" + (date.getMonth()+1) + "/" + date.getDate())
+            ...data, [`position`]: position, [`height`]: height, [`nationality`]: nationality, [`Preferred Foot`]: preferredFoot,
+            [`weight`]: weight, ['birthdate']: (date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate())
         })
 
         console.log(data)
@@ -191,6 +191,9 @@ const ModalPlayer = ({ closeModalPlayer, isOpen }) => {
 
     const handleChange = (e) => {
         setdata({ ...data, [e.target.name]: e.target.value })
+        if(e.target.name==="Preferred Foot"){
+            setPreferredFoot(e.target.value)
+        }
     }
     console.log(data)
 
@@ -301,7 +304,8 @@ const ModalPlayer = ({ closeModalPlayer, isOpen }) => {
                             </div>
                             <div className='col-4 ' >
 
-                                <select className='positions' name="Preferred Foot" onChange={handleChange}>
+                                <select className='positions' name="Preferred Foot" onChange={handleChange}
+                                    defaultValue={preferredFoot}>
                                     <option value="right">Right</option>
                                     <option value="left">Left</option>
                                     <option value="both">Both</option>
