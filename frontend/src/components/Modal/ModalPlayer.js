@@ -118,7 +118,7 @@ const ModalPlayer = ({ closeModalPlayer, isOpen }) => {
     const chooseModal = () => {
         var flag = validate(data)
         setdata({
-            ...data, [`position`]: position, [`height`]: height, [`nationality`]: nationality,
+            ...data, [`position`]: position, [`height`]: height, [`nationality`]: nationality, 
             [`weight`]: weight, ['birthdate']: (date.getFullYear() + "/" + (date.getMonth()+1) + "/" + date.getDate())
         })
 

@@ -35,7 +35,7 @@ const ModalPlayerPlayerUserInit = ({ closeModalPlayer, isOpen }) => {
     const [showConfirm, setshowConfirm] = useState(false);
 
     const [errors, setErrors] = useState({});
-
+    const [date, setDate] = useState(new Date());
 
     const [data, setdata] = useState({});
 
@@ -99,7 +99,7 @@ const ModalPlayerPlayerUserInit = ({ closeModalPlayer, isOpen }) => {
         validate(data)
         setdata({
             ...data, [`position`]: position, [`height`]: height, [`nationality`]: nationality,
-            [`weight`]: weight
+            [`weight`]: weight, ['birthdate']: (date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate())
         })
         console.log(data)
 
@@ -147,10 +147,10 @@ const ModalPlayerPlayerUserInit = ({ closeModalPlayer, isOpen }) => {
                 <div className='col-12 x-button'>
                 </div>
                 <div className='col-12 space'>
-                           
-                           </div>
+
+                </div>
                 <div className='col-12 title'>
-                   Stratakis Georgios 
+                    Stratakis Georgios
                 </div>
                 <div className='modalbody'>
 
@@ -219,7 +219,9 @@ const ModalPlayerPlayerUserInit = ({ closeModalPlayer, isOpen }) => {
                                 <label>Birth Date</label>
                             </div>
                             <div className='col-4'>
-                                <DatePicker className='date' selected={startDate} onChange={(date) => setStartDate(date)} format='yyyy-MM-dd' />
+                                <DatePicker className='date' dateFormat="yyyy/MM/dd"
+                                    selected={date}
+                                    onChange={(date) => setDate(date)} />
                             </div>
                         </div>
 
@@ -250,7 +252,7 @@ const ModalPlayerPlayerUserInit = ({ closeModalPlayer, isOpen }) => {
                         <div className='offset-7 col-2'>
                         </div>
                         <div className='col-2'>
-                            <button className='next-button PL_next' onClick={chooseModal}> Confirm </button>
+                            <button className='next-button confirmStoEdit' onClick={chooseModal}> Confirm </button>
 
 
 

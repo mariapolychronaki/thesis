@@ -139,7 +139,7 @@ export const AllPlayers = () => {
 
     const Pending_Btn = (e) => {
         maxPlayers();
-        
+
         if (e.target.value === "Enquiry") {
             // console.log(e.target);
             e.target.innerHTML = "Pending";
@@ -196,15 +196,21 @@ export const AllPlayers = () => {
                     {arrayPlayers.map((player, index) => (
                         <tr key={player.ssn}>
                             <td>{index + 1}</td>
-                            <td>{player.name}</td>
-                            <td>{player.surname}</td>
-                            <td>{player.nationality}</td>
+                            <td style={{
+                                color: "#004d00",
+                            }}>{player.name}</td>
+                            <td style={{
+                                color: "#004d00",
+                            }}>{player.surname}</td>
+                            <td >{player.nationality}</td>
                             <td>{player.position}</td>
                             <td>{player.preferred_foot}</td>
                             <td>{player.birthdate}</td>
                             <td>{player.height}</td>
                             <td className='weight'>{player.weight}</td>
-                            <td>{player.team}</td>
+                            <td style={{
+                                color: "#739900",
+                            }}>{player.team}</td>
                             <td className='action_buttons'>
                                 <button className='enquiry_btn' name={player.ssn} value="Enquiry" onClick={Pending_Btn}> Claim </button>
                             </td>
@@ -221,7 +227,7 @@ export const AllPlayers = () => {
     const [player, setplayer] = useState();
 
     const maxPlayers = (player) => {
-        if (arrayPlayers.length > 25) {
+        if (arrayPlayers.length > 19) {
             setmaxLimit(true)
         } else {
             setplayer(player)
@@ -243,7 +249,7 @@ export const AllPlayers = () => {
                 onClose={popupCloseHandler, () => setmaxLimit(!maxLimit)}
                 show={maxLimit}
             >
-                <div className='MaxPlayerLimit'>You can't have more than 25 players on your team!</div>
+                <div className='MaxPlayerLimit'>You can't have more than 25 players in your team!</div>
             </CustomPopup>}
 
 

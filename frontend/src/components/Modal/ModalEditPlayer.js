@@ -19,18 +19,29 @@ import ModalInjured from './ModalInjured'
 
 const ModalEditPlayer = ({ closeModalEditPlayer, player }) => {
 
-    const [OpenModalGoalkeeper, setOpenModalGoalkeeper] = useState(false);
-    const [OpenModalCentralDefender, setOpenModalCentralDefender] = useState(false);
-    const [OpenModalWideDefender, setOpenModalWideDefender] = useState(false);
-    const [OpenModalMidfielder, setOpenModalMidfielder] = useState(false);
-    const [OpenModalAttackingMidfielderWide, setOpenModalAttackingMidfielderWide] = useState(false);
-    const [OpenModalAttackingMidfielderCenter, setOpenModalAttackingMidfielderCenter] = useState(false);
-    const [OpenModalForward, setOpenModalForward] = useState(false);
-    const [position, setPosition] = useState("goalkeeper");
+
 
     const handleChangeParent = (data) => {
         console.log(data);
         setPosition(data);
+    }
+
+
+    const [position, setPosition] = useState("Goalkeeper");
+    const [height, setHeight] = useState("150");
+    const [nationality, setNationality] = useState("Afghan");
+    const [weight, setWeight] = useState("50");
+    const [date, setDate] = useState(new Date());
+    const [preferred_foot, setPreferredFoot] = useState("Right")
+
+    const [data, setdata] = useState({});
+    const chooseModal = () => {
+        setdata({
+            ...data, [`position`]: position, [`height`]: height, [`nationality`]: nationality, [`Preferred Foot`]: preferred_foot,
+            [`weight`]: weight, ['birthdate']: (date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate())
+        })
+        console.log(data)
+
     }
 
     // const chooseModal = () =>{
@@ -94,6 +105,25 @@ const ModalEditPlayer = ({ closeModalEditPlayer, player }) => {
 
     // }
 
+
+    const handleChangeParent1 = (data) => {
+        console.log(data);
+        setHeight(data);
+    }
+    const handleChangeParent2 = (data) => {
+        console.log(data);
+        console.log(nationality)
+
+        setNationality(data);
+    }
+
+    const handleChangeParent3 = (data) => {
+        console.log(data);
+        setWeight(data);
+    }
+    const handleChange = (e) => {
+        setdata({ ...data, [e.target.name]: e.target.value })
+    }
     const [startDate, setStartDate] = useState(new Date());
 
     return (
@@ -121,7 +151,7 @@ const ModalEditPlayer = ({ closeModalEditPlayer, player }) => {
                             </div>
                             <div className='col-4 '>
 
-                                <Dropdown_nationality nationality={player.nationality} />
+                                <Dropdown_nationality nationality={player.nationality} handleChangeCallback={handleChangeParent2} onChange={handleChange} />
                             </div>
                         </div>
 
@@ -143,7 +173,8 @@ const ModalEditPlayer = ({ closeModalEditPlayer, player }) => {
                             </div>
                             <div className='col-4'>
 
-                                <select className='positions' defaultValue={player.preferred_foot}>
+                                <select className='positions' defaultValue={player.preferred_foot} name="Preferred Foot" onChange={handleChange}
+                                   >
                                     <option value="Right">Right</option>
                                     <option value="Left">Left</option>
                                     <option value="Both">Both</option>
@@ -160,7 +191,7 @@ const ModalEditPlayer = ({ closeModalEditPlayer, player }) => {
                             </div>
                             <div className='col-4 '>
 
-                                <Dropdown_height className="height_op" height={player.height} />
+                                <Dropdown_height className="height_op" height={player.height} handleChangeCallback={handleChangeParent1} />
                             </div>
                         </div>
 
@@ -170,7 +201,7 @@ const ModalEditPlayer = ({ closeModalEditPlayer, player }) => {
                             </div>
                             <div className='col-4'>
 
-                                <Dropdown_weight className="weight_op" weight={player.weight}/>
+                                <Dropdown_weight className="weight_op" weight={player.weight} handleChangeCallback={handleChangeParent3} onChange={handleChange} />
                             </div>
                         </div>
 
