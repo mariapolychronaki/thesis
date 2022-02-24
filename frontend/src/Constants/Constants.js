@@ -4,6 +4,8 @@ import React from 'react';
 export const users = [
     {
         name: 'Giorgos', surname: 'Stratakis', user_type: 'Player', email: 'stratakisgiorgos1234@gmail.com', team: 'Aoan'
+    }, {
+        email: 'admin@gmail.com', name: 'Konstantinos', surname: 'Sakas', user_type: 'Admin', team: 'Ane'
     },
     {
         email: 'konsa@gmail.com', name: 'Konstantinos', surname: 'Sakas', user_type: 'Player', team: 'Ane'

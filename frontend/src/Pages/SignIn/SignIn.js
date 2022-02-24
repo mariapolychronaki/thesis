@@ -42,9 +42,18 @@ export const SignIn = () => {
         <div>
             <div className='form-container'>
 
+                {/* {!isSubmitted ? (<FormSignIn submitForm={submitForm} />) :
+
+                    (userType !== undefined && userType.user_type === "Coach") ? <Navigate to='/players' /> : <Navigate to='/PlayerUser' />} */}
+
+
                 {!isSubmitted ? (<FormSignIn submitForm={submitForm} />) :
 
-                    (userType !== undefined && userType.user_type === "Coach") ? <Navigate to='/players' /> : <Navigate to='/PlayerUser' />}
+                    (userType !== undefined && userType.user_type === "Coach") ? <Navigate to='/players' /> :
+                        ((userType !== undefined && userType.user_type === "Player")) ?
+                            <Navigate to='/PlayerUser' /> : <Navigate to='/Admin' />}
+
+
 
             </div>
             )
