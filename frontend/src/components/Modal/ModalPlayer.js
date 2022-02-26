@@ -76,17 +76,25 @@ const ModalPlayer = ({ closeModalPlayer, isOpen }) => {
 
         let errors = {}
 
+
         if (!values.ssn) {
             errors.ssn = "Ssn is required!"
             setErrors(errors)
             setShow(true)
             return false;
-        } else if (values.ssn.length !== 11) {
+        }else if (!(/^\d+$/.test(values.ssn))) {
+            errors.ssn = "Snn must be only numbers!"
+            setShow(true)
+            setErrors(errors)
+            console.log(errors)
+            return false;
+        }
+         else if (values.ssn.length !== 11) {
             errors.ssn = "Snn must be 11 numbers!"
             setShow(true)
             setErrors(errors)
             return false;
-        }
+        }  
         if (!values.name) {
             errors.name = "Name required!"
             setShow(true)

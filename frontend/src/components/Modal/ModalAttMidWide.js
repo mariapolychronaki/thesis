@@ -4,10 +4,12 @@ import 'react-bootstrap'
 import '../../assets/Style/ModalPositions.css'
 import Dropdown_rating from '../Dropdowns/Dropdown_rating'
 import { useState } from 'react'
+import { Modal } from 'react-bootstrap'
 
 
 const ModalAttackingMidfielderWide = ({ closeModalAttackingMidfielderWide, closeModalPlayer }) => {
     const [data, setdata] = useState({});
+    const [showConfirm, setshowConfirm] = useState(false);
 
 
     const [attributes, setAttributes] = useState({
@@ -38,223 +40,256 @@ const ModalAttackingMidfielderWide = ({ closeModalAttackingMidfielderWide, close
 
     }
     console.log(attributes)
+
+
+
+
+    const handleSubmit = () => {
+        setshowConfirm(true)
+        //edw tha ginontai oi eisagwges toy paixth kai twn attributes
+
+    }
+
+    const handleClose1 = () => {
+        setshowConfirm(false)
+        closeModalAttackingMidfielderWide(false)
+        closeModalPlayer(false)
+    }
     return (
-        <div className='modalBackgroundPosition'>
-            <div className='col-12 space'></div>
-            <div className='modalContainerPosition'>
-                <div className='col-12 x-button'>
-                    <button className='x' onClick={() => closeModalAttackingMidfielderWide(false)}>X</button>
-                </div>
-                <div className='col-12 title'>
-                    Attacking Midfielder Wide
-                </div>
-                <div className='modalbodyPosition'>
-                    <form>
-                        <div className='row goalie'>
+        <>
+            <div className='modalBackgroundPosition'>
+                <div className='col-12 space'></div>
+                <div className='modalContainerPosition'>
+                    <div className='col-12 x-button'>
+                        <button className='x' onClick={() => closeModalAttackingMidfielderWide(false)}>X</button>
+                    </div>
+                    <div className='col-12 title'>
+                        Attacking Midfielder Wide
+                    </div>
+                    <div className='modalbodyPosition'>
+                        <form>
+                            <div className='row goalie'>
 
-                            <div className='aligns'>
-                                <div className='offset-1 col-2 evaluation'>
-                                    <label>Personality</label>
+                                <div className='aligns'>
+                                    <div className='offset-1 col-2 evaluation'>
+                                        <label>Personality</label>
+                                    </div>
+                                    <div className='col-4 rating'>
+                                        <Dropdown_rating className="rating" name="Personality" handleChangeCallback={handleChangeParent} />
+                                    </div>
+                                    <div className='offset-1 col-2 evaluation'>
+                                        <label>Experience</label>
+                                    </div>
+                                    <div className='col-4 rating'>
+                                        <Dropdown_rating className="rating" name="Experience" handleChangeCallback={handleChangeParent} />
+                                    </div>
+
                                 </div>
-                                <div className='col-4 rating'>
-                                    <Dropdown_rating className="rating" name="Personality" handleChangeCallback={handleChangeParent} />
+
+
+                                <div className='aligns'>
+
+                                    <div className='offset-1 col-2 evaluation '>
+                                        <label>Agility</label>
+                                    </div>
+                                    <div className='col-4 rating'>
+
+                                        <Dropdown_rating className="rating" name="Agility" handleChangeCallback={handleChangeParent} />
+                                    </div>
+                                    <div className='offset-1 col-2 evaluation'>
+                                        <label>Team work</label>
+                                    </div>
+                                    <div className='col-4 rating'>
+
+                                        <Dropdown_rating className="rating" name="Team work" handleChangeCallback={handleChangeParent} />
+                                    </div>
+
+
                                 </div>
-                                <div className='offset-1 col-2 evaluation'>
-                                    <label>Experience</label>
+
+
+                                <div className='aligns'>
+
+                                    <div className='offset-1 col-2 evaluation'>
+                                        <label>Leadership</label>
+                                    </div>
+                                    <div className='col-4 rating'>
+
+                                        <Dropdown_rating className="rating" name="Leadership" handleChangeCallback={handleChangeParent} />
+                                    </div>
+                                    <div className='offset-1 col-2 evaluation'>
+                                        <label>Tactics</label>
+                                    </div>
+                                    <div className='col-4 rating'>
+
+                                        <Dropdown_rating className="rating" name="Tactics" handleChangeCallback={handleChangeParent} />
+                                    </div>
                                 </div>
-                                <div className='col-4 rating'>
-                                    <Dropdown_rating className="rating" name="Experience" handleChangeCallback={handleChangeParent} />
+
+
+
+                                <div className='aligns'>
+
+                                    <div className='offset-1 col-2 evaluation'>
+                                        <label>Communication</label>
+                                    </div>
+                                    <div className='col-4 rating'>
+
+                                        <Dropdown_rating className="rating" name="Communication" handleChangeCallback={handleChangeParent} />
+                                    </div>
+                                    <div className='offset-1 col-2 evaluation'>
+                                        <label>Pace</label>
+                                    </div>
+                                    <div className='col-4 rating'>
+
+                                        <Dropdown_rating className="rating" name="Pace" handleChangeCallback={handleChangeParent} />
+                                    </div>
+
                                 </div>
+
+
+
+                                <div className='aligns'>
+
+                                    <div className='offset-1 col-2 evaluation'>
+                                        <label>Strength</label>
+                                    </div>
+                                    <div className='col-4 rating'>
+
+                                        <Dropdown_rating className="rating" name="Strength" handleChangeCallback={handleChangeParent} />
+                                    </div>
+                                    <div className='offset-1 col-2 evaluation'>
+                                        <label>Technique</label>
+                                    </div>
+                                    <div className='col-4 rating'>
+
+                                        <Dropdown_rating className="rating" name="Technique" handleChangeCallback={handleChangeParent} />
+                                    </div>
+                                </div>
+
+
+                                <div className='aligns'>
+
+                                    <div className='offset-1 col-2 evaluation'>
+                                        <label>One on Ones</label>
+                                    </div>
+                                    <div className='col-4 rating'>
+
+                                        <Dropdown_rating className="rating" name="One on Ones" handleChangeCallback={handleChangeParent} />
+                                    </div>
+                                    <div className='offset-1 col-2 evaluation'>
+                                        <label>Dribbling</label>
+                                    </div>
+                                    <div className='col-4 rating'>
+
+                                        <Dropdown_rating className="rating" name="Dribbling" handleChangeCallback={handleChangeParent} />
+                                    </div>
+
+                                </div>
+
+
+
+                                <div className='aligns'>
+
+                                    <div className='offset-1 col-2 evaluation'>
+                                        <label>Crossing </label>
+                                    </div>
+                                    <div className='col-4 rating'>
+
+                                        <Dropdown_rating className="rating" name="Crossing" handleChangeCallback={handleChangeParent} />
+                                    </div>
+                                    <div className='offset-1 col-2 evaluation'>
+                                        <label>Aerial ability</label>
+                                    </div>
+                                    <div className='col-4 rating'>
+
+                                        <Dropdown_rating className="rating" name="Aerial ability" handleChangeCallback={handleChangeParent} />
+                                    </div>
+
+                                </div>
+
+
+
+                                <div className='aligns'>
+
+                                    <div className='offset-1 col-2 evaluation'>
+                                        <label>Stamina </label>
+                                    </div>
+                                    <div className='col-4 rating'>
+
+                                        <Dropdown_rating className="rating" name="Stamina" handleChangeCallback={handleChangeParent} />
+                                    </div>
+                                    <div className='offset-1 col-2 evaluation'>
+                                        <label>Composure</label>
+                                    </div>
+                                    <div className='col-4 rating'>
+
+                                        <Dropdown_rating className="rating" name="Composure" handleChangeCallback={handleChangeParent} />
+                                    </div>
+
+
+                                </div>
+
+
+                                <div className='aligns'>
+
+                                    <div className='offset-1 col-2 evaluation'>
+                                        <label>Shots </label>
+                                    </div>
+                                    <div className='col-4 rating'>
+
+                                        <Dropdown_rating className="rating" name="Shots" handleChangeCallback={handleChangeParent} />
+                                    </div>
+                                    <div className='offset-1 col-2 evaluation'>
+                                        <label>Finishing</label>
+                                    </div>
+                                    <div className='col-4 rating'>
+
+                                        <Dropdown_rating className="rating" name="Finishing" handleChangeCallback={handleChangeParent} />
+                                    </div>
+
+
+                                </div>
+
+
+
+
+
 
                             </div>
 
 
-                            <div className='aligns'>
-
-                                <div className='offset-1 col-2 evaluation '>
-                                    <label>Agility</label>
-                                </div>
-                                <div className='col-4 rating'>
-
-                                    <Dropdown_rating className="rating" name="Agility" handleChangeCallback={handleChangeParent} />
-                                </div>
-                                <div className='offset-1 col-2 evaluation'>
-                                    <label>Team work</label>
-                                </div>
-                                <div className='col-4 rating'>
-
-                                    <Dropdown_rating className="rating" name="Team work" handleChangeCallback={handleChangeParent} />
-                                </div>
-
-
+                        </form>
+                    </div>
+                    <div className='footer'>
+                        <div className='col-12 Buttons'>
+                            <div className='offset-7 col-2'>
+                                <button className='cancel-button' onClick={() => closeModalAttackingMidfielderWide(false)}>Cancel</button>
                             </div>
-
-
-                            <div className='aligns'>
-
-                                <div className='offset-1 col-2 evaluation'>
-                                    <label>Leadership</label>
-                                </div>
-                                <div className='col-4 rating'>
-
-                                    <Dropdown_rating className="rating" name="Leadership" handleChangeCallback={handleChangeParent} />
-                                </div>
-                                <div className='offset-1 col-2 evaluation'>
-                                    <label>Tactics</label>
-                                </div>
-                                <div className='col-4 rating'>
-
-                                    <Dropdown_rating className="rating" name="Tactics" handleChangeCallback={handleChangeParent} />
-                                </div>
+                            <div className='col-2'>
+                                <button className='next-button' onClick={handleSubmit}> Confirm </button>
                             </div>
-
-
-
-                            <div className='aligns'>
-
-                                <div className='offset-1 col-2 evaluation'>
-                                    <label>Communication</label>
-                                </div>
-                                <div className='col-4 rating'>
-
-                                    <Dropdown_rating className="rating" name="Communication" handleChangeCallback={handleChangeParent} />
-                                </div>
-                                <div className='offset-1 col-2 evaluation'>
-                                    <label>Pace</label>
-                                </div>
-                                <div className='col-4 rating'>
-
-                                    <Dropdown_rating className="rating" name="Pace" handleChangeCallback={handleChangeParent} />
-                                </div>
-
-                            </div>
-
-
-
-                            <div className='aligns'>
-
-                                <div className='offset-1 col-2 evaluation'>
-                                    <label>Strength</label>
-                                </div>
-                                <div className='col-4 rating'>
-
-                                    <Dropdown_rating className="rating" name="Strength" handleChangeCallback={handleChangeParent} />
-                                </div>
-                                <div className='offset-1 col-2 evaluation'>
-                                    <label>Technique</label>
-                                </div>
-                                <div className='col-4 rating'>
-
-                                    <Dropdown_rating className="rating" name="Technique" handleChangeCallback={handleChangeParent} />
-                                </div>
-                            </div>
-
-
-                            <div className='aligns'>
-
-                                <div className='offset-1 col-2 evaluation'>
-                                    <label>One on Ones</label>
-                                </div>
-                                <div className='col-4 rating'>
-
-                                    <Dropdown_rating className="rating" name="One on Ones" handleChangeCallback={handleChangeParent} />
-                                </div>
-                                <div className='offset-1 col-2 evaluation'>
-                                    <label>Dribbling</label>
-                                </div>
-                                <div className='col-4 rating'>
-
-                                    <Dropdown_rating className="rating" name="Dribbling" handleChangeCallback={handleChangeParent} />
-                                </div>
-
-                            </div>
-
-
-
-                            <div className='aligns'>
-
-                                <div className='offset-1 col-2 evaluation'>
-                                    <label>Crossing </label>
-                                </div>
-                                <div className='col-4 rating'>
-
-                                    <Dropdown_rating className="rating" name="Crossing" handleChangeCallback={handleChangeParent} />
-                                </div>
-                                <div className='offset-1 col-2 evaluation'>
-                                    <label>Aerial ability</label>
-                                </div>
-                                <div className='col-4 rating'>
-
-                                    <Dropdown_rating className="rating" name="Aerial ability" handleChangeCallback={handleChangeParent} />
-                                </div>
-
-                            </div>
-
-
-
-                            <div className='aligns'>
-
-                                <div className='offset-1 col-2 evaluation'>
-                                    <label>Stamina </label>
-                                </div>
-                                <div className='col-4 rating'>
-
-                                    <Dropdown_rating className="rating" name="Stamina" handleChangeCallback={handleChangeParent} />
-                                </div>
-                                <div className='offset-1 col-2 evaluation'>
-                                    <label>Composure</label>
-                                </div>
-                                <div className='col-4 rating'>
-
-                                    <Dropdown_rating className="rating" name="Composure" handleChangeCallback={handleChangeParent} />
-                                </div>
-
-
-                            </div>
-
-
-                            <div className='aligns'>
-
-                                <div className='offset-1 col-2 evaluation'>
-                                    <label>Shots </label>
-                                </div>
-                                <div className='col-4 rating'>
-
-                                    <Dropdown_rating className="rating" name="Shots" handleChangeCallback={handleChangeParent} />
-                                </div>
-                                <div className='offset-1 col-2 evaluation'>
-                                    <label>Finishing</label>
-                                </div>
-                                <div className='col-4 rating'>
-
-                                    <Dropdown_rating className="rating" name="Finishing" handleChangeCallback={handleChangeParent} />
-                                </div>
-
-
-                            </div>
-
-
-
-
-
-
-                        </div>
-
-
-                    </form>
-                </div>
-                <div className='footer'>
-                    <div className='col-12 Buttons'>
-                        <div className='offset-7 col-2'>
-                            <button className='cancel-button' onClick={() => closeModalAttackingMidfielderWide(false)}>Cancel</button>
-                        </div>
-                        <div className='col-2'>
-                            <button className='next-button' onClick={() => closeModalAttackingMidfielderWide(false), () => { closeModalPlayer(false) }}> Confirm </button>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div >
+            </div >
+            <Modal show={showConfirm} onHide={handleClose1} className="modal">
+                <Modal.Header closeButton>
+                    <Modal.Title></Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+
+                    <div className='ShowConfirmMessage'>
+                        You have succesfully created your player!
+                    </div>
+
+                </Modal.Body>
+
+                <Modal.Footer>
+
+                </Modal.Footer>
+            </Modal>
+        </>
     )
 }
 

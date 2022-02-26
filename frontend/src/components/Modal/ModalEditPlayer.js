@@ -212,7 +212,7 @@ const ModalEditPlayer = ({ closeModalEditPlayer, player }) => {
                 <div className='footer'>
                     <div className='col-12 btns'>
                         <div className='offset-7 col-2'>
-                            <button className='cancel-button PL_cancel' onClick={() => closeModalEditPlayer(false)}>Cancel</button>
+                            {/* <button className='cancel-button PL_cancel' onClick={() => closeModalEditPlayer(false)}>Cancel</button> */}
                         </div>
                         <div className='col-2'>
                             <button className='next-button PL_next' onClick={chooseModal}> Confirm </button>

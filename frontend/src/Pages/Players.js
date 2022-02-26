@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ModalInjured from '../components/Modal/ModalInjured';
 import ModalGoalkeeper from '../components/Modal/ModalGoalkeeper';
 import ModalPlayerRating from '../components/Modal/ModalPlayerRating';
-import { arrayPlayers } from '../Constants/Constants';
+import { arrayPlayers, arrayplayersRating } from '../Constants/Constants';
 import ModalEditPlayer from '../components/Modal/ModalEditPlayer';
 import { NavLink } from 'react-bootstrap';
 import CustomPopup from './Admin/PopUp';
@@ -22,6 +22,7 @@ export const Players = () => {
     const isOpen = useSelector((state) => state.modal.isOpen)
     const [havePlayers, setHavePlayers] = useState(true);
 
+    const [ratings, setRatings] = useState({});
 
     const coach = useSelector((state) => state.coach);
 
@@ -142,7 +143,9 @@ export const Players = () => {
         console.log(searchField);
         console.log(filteredPersons);
 
-    }, [searchField])
+        findAllRatings()
+
+    }, [searchField], [arrayplayersRating])
 
 
     const useSortableData = (arrayPlayers, config = null) => {
@@ -252,244 +255,245 @@ export const Players = () => {
 
 
 
+    var AVG_All = [];
+    const findAllRatings = () => {
+        arrayPlayers.map((player) => {
+            const temp = arrayplayersRating.find((player1) => {
+                var temp_for = [];
 
-    // const findAllRatings = () => {
-    //     arrayPlayers.map((player) => {
-    //         const temp = arrayplayersRating.find((player1) => {
-    //             var temp_for = [];
+                if (player.name === player1.name && player.surname === player1.surname && player.position === "Goalkeeper") {
 
-    //             if (player.name === player1.name && player.surname === player1.surname && player.position === "Goalkeeper") {
+                    temp_for = (0.05 * (parseFloat(player1.Agility)) +
+                        (0.05 * parseFloat(player1.Communication)) +
+                        (0.05 * parseFloat(player1.Experience)) +
+                        (0.05 * parseFloat(player1.Leadership)) +
+                        (0.05 * parseFloat(player1.Kicking)) +
+                        (0.1 * parseFloat(player1.One_on_ones)) +
+                        (0.1 * parseFloat(player1.Penalty_saving)) +
+                        (0.05 * parseFloat(player1.Personality)) +
+                        (0.1 * parseFloat(player1.Positioning)) +
+                        (0.1 * parseFloat(player1.Rushing_out)) +
+                        (0.1 * parseFloat(player1.Shot_stopping)) +
+                        (0.1 * parseFloat(player1.Reflexes)) +
+                        (0.05 * parseFloat(player1.Tactics)) +
+                        (0.05 * parseFloat(player1.Team_work))
+                    )
+                    // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
+                    AVG_All.push({
+                        name: player.name, surname: player.surname, nationality: player.nationality, birthdate: player.birthdate,
+                        weight: player.weight, height: player.height, rating: temp_for
+                    })
 
-    //                 temp_for = (0.05 * (parseFloat(player1.Agility)) +
-    //                     (0.05 * parseFloat(player1.Communication)) +
-    //                     (0.05 * parseFloat(player1.Experience)) +
-    //                     (0.05 * parseFloat(player1.Leadership)) +
-    //                     (0.05 * parseFloat(player1.Kicking)) +
-    //                     (0.1 * parseFloat(player1.One_on_ones)) +
-    //                     (0.1 * parseFloat(player1.Penalty_saving)) +
-    //                     (0.05 * parseFloat(player1.Personality)) +
-    //                     (0.1 * parseFloat(player1.Positioning)) +
-    //                     (0.1 * parseFloat(player1.Rushing_out)) +
-    //                     (0.1 * parseFloat(player1.Shot_stopping)) +
-    //                     (0.1 * parseFloat(player1.Reflexes)) +
-    //                     (0.05 * parseFloat(player1.Tactics)) +
-    //                     (0.05 * parseFloat(player1.Team_work))
-    //                 )
-    //                 // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
-    //                 AVG_All.push({
-    //                     name: player.name, surname: player.surname, nationality: player.nationality, birthdate: player.birthdate,
-    //                     weight: player.weight, height: player.height, rating: temp_for
-    //                 })
+                    return player;
+                } else if (player.name === player1.name && player.surname === player1.surname && player.position === "Central Defender") {
 
-    //                 return player;
-    //             } else if (player.name === player1.name && player.surname === player1.surname && player.position === "Central Defender") {
+                    temp_for = (
+                        ((0.1 * parseFloat(player1.Aerial_ability)) +
+                            (0.05 * parseFloat(player1.Agility)) +
+                            (0.05 * parseFloat(player1.Communication)) +
+                            (0.05 * parseFloat(player1.Experience)) +
+                            (0.1 * parseFloat(player1.Leadership)) +
+                            (0.1 * parseFloat(player1.Marking)) +
+                            (0.025 * parseFloat(player1.Pace)) +
+                            (0.025 * parseFloat(player1.Passing)) +
+                            (0.05 * parseFloat(player1.Personality)) +
+                            (0.1 * parseFloat(player1.Positioning)) +
+                            (0.025 * parseFloat(player1.Stamina)) +
+                            (0.1 * parseFloat(player1.Strength)) +
+                            (0.05 * parseFloat(player1.Tactics)) +
+                            (0.1 * parseFloat(player1.Tackling)) +
+                            (0.05 * parseFloat(player1.Team_work)) +
+                            (0.025 * parseFloat(player1.Technique))))
+                    // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
+                    AVG_All.push({
+                        name: player.name, surname: player.surname, nationality: player.nationality,
+                        preferred_foot: player.preferred_foot, birthdate: player.birthdate,
+                        weight: player.weight, height: player.height, rating: temp_for
+                    })
 
-    //                 temp_for = (
-    //                     ((0.1 * parseFloat(player1.Aerial_ability)) +
-    //                         (0.05 * parseFloat(player1.Agility)) +
-    //                         (0.05 * parseFloat(player1.Communication)) +
-    //                         (0.05 * parseFloat(player1.Experience)) +
-    //                         (0.1 * parseFloat(player1.Leadership)) +
-    //                         (0.1 * parseFloat(player1.Marking)) +
-    //                         (0.025 * parseFloat(player1.Pace)) +
-    //                         (0.025 * parseFloat(player1.Passing)) +
-    //                         (0.05 * parseFloat(player1.Personality)) +
-    //                         (0.1 * parseFloat(player1.Positioning)) +
-    //                         (0.025 * parseFloat(player1.Stamina)) +
-    //                         (0.1 * parseFloat(player1.Strength)) +
-    //                         (0.05 * parseFloat(player1.Tactics)) +
-    //                         (0.1 * parseFloat(player1.Tackling)) +
-    //                         (0.05 * parseFloat(player1.Team_work)) +
-    //                         (0.025 * parseFloat(player1.Technique))))
-    //                 // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
-    //                 AVG_All.push({
-    //                     name: player.name, surname: player.surname, nationality: player.nationality,
-    //                     preferred_foot: player.preferred_foot, birthdate: player.birthdate,
-    //                     weight: player.weight, height: player.height, rating: temp_for
-    //                 })
+                    return player;
+                }
+                else if (player.name === player1.name && player.surname === player1.surname &&
+                    (player.position === "Right Defender")) {
 
-    //                 return player;
-    //             }
-    //             else if (player.name === player1.name && player.surname === player1.surname &&
-    //                 (player.position === "Right Defender")) {
+                    temp_for = ((0.05 * parseFloat(player1.Agility)) +
+                        (0.05 * parseFloat(player1.Communication)) +
+                        (0.1 * parseFloat(player1.Crossing)) +
+                        (0.05 * parseFloat(player1.Experience)) +
+                        (0.1 * parseFloat(player1.Going_forward)) +
+                        (0.05 * parseFloat(player1.Leadership)) +
+                        (0.1 * parseFloat(player1.Marking)) +
+                        (0.1 * parseFloat(player1.Pace)) +
+                        (0.05 * parseFloat(player1.Passing)) +
+                        (0.05 * parseFloat(player1.Personality)) +
+                        (0.05 * parseFloat(player1.Positioning)) +
+                        (0.05 * parseFloat(player1.Stamina)) +
+                        (0.05 * parseFloat(player1.Strength)) +
+                        (0.05 * parseFloat(player1.Tactics)) +
+                        (0.05 * parseFloat(player1.Team_work)) +
+                        (0.05 * parseFloat(player1.Technique)))
+                    // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
+                    AVG_All.push({
+                        name: player.name, surname: player.surname, nationality: player.nationality, birthdate: player.birthdate,
+                        weight: player.weight, height: player.height, rating: temp_for
+                    })
 
-    //                 temp_for = ((0.05 * parseFloat(player1.Agility)) +
-    //                     (0.05 * parseFloat(player1.Communication)) +
-    //                     (0.1 * parseFloat(player1.Crossing)) +
-    //                     (0.05 * parseFloat(player1.Experience)) +
-    //                     (0.1 * parseFloat(player1.Going_forward)) +
-    //                     (0.05 * parseFloat(player1.Leadership)) +
-    //                     (0.1 * parseFloat(player1.Marking)) +
-    //                     (0.1 * parseFloat(player1.Pace)) +
-    //                     (0.05 * parseFloat(player1.Passing)) +
-    //                     (0.05 * parseFloat(player1.Personality)) +
-    //                     (0.05 * parseFloat(player1.Positioning)) +
-    //                     (0.05 * parseFloat(player1.Stamina)) +
-    //                     (0.05 * parseFloat(player1.Strength)) +
-    //                     (0.05 * parseFloat(player1.Tactics)) +
-    //                     (0.05 * parseFloat(player1.Team_work)) +
-    //                     (0.05 * parseFloat(player1.Technique)))
-    //                 // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
-    //                 AVG_All.push({
-    //                     name: player.name, surname: player.surname, nationality: player.nationality, birthdate: player.birthdate,
-    //                     weight: player.weight, height: player.height, rating: temp_for
-    //                 })
+                    return player;
+                } else if (player.name === player1.name && player.surname === player1.surname &&
+                    (player.position === "Left Defender")) {
 
-    //                 return player;
-    //             } else if (player.name === player1.name && player.surname === player1.surname &&
-    //                 (player.position === "Left Defender")) {
+                    temp_for = (0.05 * parseFloat(player1.Agility)) +
+                        (0.05 * parseFloat(player1.Communication)) +
+                        (0.1 * parseFloat(player1.Crossing)) +
+                        (0.05 * parseFloat(player1.Experience)) +
+                        (0.1 * parseFloat(player1.Going_forward)) +
+                        (0.05 * parseFloat(player1.Leadership)) +
+                        (0.1 * parseFloat(player1.Marking)) +
+                        (0.1 * parseFloat(player1.Pace)) +
+                        (0.05 * parseFloat(player1.Passing)) +
+                        (0.05 * parseFloat(player1.Personality)) +
+                        (0.05 * parseFloat(player1.Positioning)) +
+                        (0.05 * parseFloat(player1.Stamina)) +
+                        (0.05 * parseFloat(player1.Strength)) +
+                        (0.05 * parseFloat(player1.Tactics)) +
+                        (0.05 * parseFloat(player1.Team_work)) +
+                        (0.05 * parseFloat(player1.Technique))
+                    console.log(temp_for)
+                    // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
+                    AVG_All.push({
+                        name: player.name, surname: player.surname, nationality: player.nationality, birthdate: player.birthdate,
+                        weight: player.weight, height: player.height, rating: temp_for
+                    })
 
-    //                 temp_for = (0.05 * parseFloat(player1.Agility)) +
-    //                     (0.05 * parseFloat(player1.Communication)) +
-    //                     (0.1 * parseFloat(player1.Crossing)) +
-    //                     (0.05 * parseFloat(player1.Experience)) +
-    //                     (0.1 * parseFloat(player1.Going_forward)) +
-    //                     (0.05 * parseFloat(player1.Leadership)) +
-    //                     (0.1 * parseFloat(player1.Marking)) +
-    //                     (0.1 * parseFloat(player1.Pace)) +
-    //                     (0.05 * parseFloat(player1.Passing)) +
-    //                     (0.05 * parseFloat(player1.Personality)) +
-    //                     (0.05 * parseFloat(player1.Positioning)) +
-    //                     (0.05 * parseFloat(player1.Stamina)) +
-    //                     (0.05 * parseFloat(player1.Strength)) +
-    //                     (0.05 * parseFloat(player1.Tactics)) +
-    //                     (0.05 * parseFloat(player1.Team_work)) +
-    //                     (0.05 * parseFloat(player1.Technique))
-    //                     console.log(temp_for)
-    //                 // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
-    //                 AVG_All.push({
-    //                     name: player.name, surname: player.surname, nationality: player.nationality, birthdate: player.birthdate,
-    //                     weight: player.weight, height: player.height, rating: temp_for
-    //                 })
+                    return player;
+                }
+                else if (player.name === player1.name && player.surname === player1.surname &&
+                    player.position === "Midfielder") {
 
-    //                 return player;
-    //             }
-    //             else if (player.name === player1.name && player.surname === player1.surname &&
-    //                 player.position === "Midfielder") {
+                    temp_for = ((
+                        0.05 * parseFloat(player1.Aerial_ability) +
+                        0.05 * parseFloat(player1.Agility) +
+                        0.05 * parseFloat(player1.Communication) +
+                        0.05 * parseFloat(player1.Composure) +
+                        0.05 * parseFloat(player1.Creativity) +
+                        0.05 * parseFloat(player1.Experience) +
+                        0.1 * parseFloat(player1.Leadership) +
+                        0.05 * parseFloat(player1.Marking) +
+                        0.05 * parseFloat(player1.Pace) +
+                        0.05 * parseFloat(player1.Passing) +
+                        0.05 * parseFloat(player1.Personality) +
+                        0.05 * parseFloat(player1.Positioning) +
+                        0.05 * parseFloat(player1.Shots) +
+                        0.1 * parseFloat(player1.Stamina) +
+                        0.05 * parseFloat(player1.Strength) +
+                        0.05 * parseFloat(player1.Tactics) +
+                        0.05 * parseFloat(player1.Team_work) +
+                        0.05 * parseFloat(player1.Technique)))
+                    // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
+                    AVG_All.push({
+                        name: player.name, surname: player.surname, nationality: player.nationality, birthdate: player.birthdate,
+                        weight: player.weight, height: player.height, rating: temp_for
+                    })
 
-    //                 temp_for = ((
-    //                     0.05 * parseFloat(player1.Aerial_ability) +
-    //                     0.05 * parseFloat(player1.Agility) +
-    //                     0.05 * parseFloat(player1.Communication) +
-    //                     0.05 * parseFloat(player1.Composure) +
-    //                     0.05 * parseFloat(player1.Creativity) +
-    //                     0.05 * parseFloat(player1.Experience) +
-    //                     0.1 * parseFloat(player1.Leadership) +
-    //                     0.05 * parseFloat(player1.Marking) +
-    //                     0.05 * parseFloat(player1.Pace) +
-    //                     0.05 * parseFloat(player1.Passing) +
-    //                     0.05 * parseFloat(player1.Personality) +
-    //                     0.05 * parseFloat(player1.Positioning) +
-    //                     0.05 * parseFloat(player1.Shots) +
-    //                     0.1 * parseFloat(player1.Stamina) +
-    //                     0.05 * parseFloat(player1.Strength) +
-    //                     0.05 * parseFloat(player1.Tactics) +
-    //                     0.05 * parseFloat(player1.Team_work) +
-    //                     0.05 * parseFloat(player1.Technique)))
-    //                 // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
-    //                 AVG_All.push({
-    //                     name: player.name, surname: player.surname, nationality: player.nationality, birthdate: player.birthdate,
-    //                     weight: player.weight, height: player.height, rating: temp_for
-    //                 })
+                    return player;
+                }
 
-    //                 return player;
-    //             }
+                else if (player.name === player1.name && player.surname === player1.surname &&
+                    player.position === "Attacking Midfielder center") {
 
-    //             else if (player.name === player1.name && player.surname === player1.surname &&
-    //                 player.position === "Attacking Midfielder center") {
+                    temp_for = ((
+                        0.1 * parseFloat(player1.Through_balls) +
+                        0.05 * parseFloat(player1.Agility) +
+                        0.05 * parseFloat(player1.Communication) +
+                        0.05 * parseFloat(player1.Composure) +
+                        0.1 * parseFloat(player1.Dribbling) +
+                        0.05 * parseFloat(player1.Experience) +
+                        0.05 * parseFloat(player1.Finishing) +
+                        0.05 * parseFloat(player1.Leadership) +
+                        0.05 * parseFloat(player1.Pace) +
+                        0.05 * parseFloat(player1.Passing) +
+                        0.05 * parseFloat(player1.Personality) +
+                        0.05 * parseFloat(player1.Crossing) +
+                        0.05 * parseFloat(player1.Shots) +
+                        0.05 * parseFloat(player1.Stamina) +
+                        0.05 * parseFloat(player1.Strength) +
+                        0.05 * parseFloat(player1.Tactics) +
+                        0.05 * parseFloat(player1.Team_work) +
+                        0.05 * parseFloat(player1.Technique)))
+                    // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
+                    AVG_All.push({
+                        name: player.name, surname: player.surname, nationality: player.nationality, birthdate: player.birthdate,
+                        weight: player.weight, height: player.height, rating: temp_for
+                    })
 
-    //                 temp_for = ((
-    //                     0.1 * parseFloat(player1.Through_balls) +
-    //                     0.05 * parseFloat(player1.Agility) +
-    //                     0.05 * parseFloat(player1.Communication) +
-    //                     0.05 * parseFloat(player1.Composure) +
-    //                     0.1 * parseFloat(player1.Dribbling) +
-    //                     0.05 * parseFloat(player1.Experience) +
-    //                     0.05 * parseFloat(player1.Finishing) +
-    //                     0.05 * parseFloat(player1.Leadership) +
-    //                     0.05 * parseFloat(player1.Pace) +
-    //                     0.05 * parseFloat(player1.Passing) +
-    //                     0.05 * parseFloat(player1.Personality) +
-    //                     0.05 * parseFloat(player1.Crossing) +
-    //                     0.05 * parseFloat(player1.Shots) +
-    //                     0.05 * parseFloat(player1.Stamina) +
-    //                     0.05 * parseFloat(player1.Strength) +
-    //                     0.05 * parseFloat(player1.Tactics) +
-    //                     0.05 * parseFloat(player1.Team_work) +
-    //                     0.05 * parseFloat(player1.Technique)))
-    //                 // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
-    //                 AVG_All.push({
-    //                     name: player.name, surname: player.surname, nationality: player.nationality, birthdate: player.birthdate,
-    //                     weight: player.weight, height: player.height, rating: temp_for
-    //                 })
+                    return player;
+                }
+                else if (player.name === player1.name && player.surname === player1.surname &&
+                    (player.position === "Attacking Midfielder Right" || player.position === "Attacking Midfielder Left")) {
 
-    //                 return player;
-    //             }
-    //             else if (player.name === player1.name && player.surname === player1.surname &&
-    //                 (player.position === "Attacking Midfielder Right" || player.position === "Attacking Midfielder Left")) {
+                    temp_for = ((
+                        0.1 * parseFloat(player1.One_on_ones) +
+                        0.05 * parseFloat(player1.Agility) +
+                        0.05 * parseFloat(player1.Communication) +
+                        0.05 * parseFloat(player1.Composure) +
+                        0.1 * parseFloat(player1.Dribbling) +
+                        0.05 * parseFloat(player1.Experience) +
+                        0.05 * parseFloat(player1.Finishing) +
+                        0.05 * parseFloat(player1.Leadership) +
+                        0.05 * parseFloat(player1.Pace) +
+                        0.05 * parseFloat(player1.Aerial_ability) +
+                        0.05 * parseFloat(player1.Personality) +
+                        0.05 * parseFloat(player1.Crossing) +
+                        0.05 * parseFloat(player1.Shots) +
+                        0.05 * parseFloat(player1.Stamina) +
+                        0.05 * parseFloat(player1.Strength) +
+                        0.05 * parseFloat(player1.Tactics) +
+                        0.05 * parseFloat(player1.Team_work) +
+                        0.05 * parseFloat(player1.Technique)))
+                    // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
+                    AVG_All.push({
+                        name: player.name, surname: player.surname, nationality: player.nationality, birthdate: player.birthdate,
+                        weight: player.weight, height: player.height, rating: temp_for
+                    })
 
-    //                 temp_for = ((
-    //                     0.1 * parseFloat(player1.One_on_ones) +
-    //                     0.05 * parseFloat(player1.Agility) +
-    //                     0.05 * parseFloat(player1.Communication) +
-    //                     0.05 * parseFloat(player1.Composure) +
-    //                     0.1 * parseFloat(player1.Dribbling) +
-    //                     0.05 * parseFloat(player1.Experience) +
-    //                     0.05 * parseFloat(player1.Finishing) +
-    //                     0.05 * parseFloat(player1.Leadership) +
-    //                     0.05 * parseFloat(player1.Pace) +
-    //                     0.05 * parseFloat(player1.Aerial_ability) +
-    //                     0.05 * parseFloat(player1.Personality) +
-    //                     0.05 * parseFloat(player1.Crossing) +
-    //                     0.05 * parseFloat(player1.Shots) +
-    //                     0.05 * parseFloat(player1.Stamina) +
-    //                     0.05 * parseFloat(player1.Strength) +
-    //                     0.05 * parseFloat(player1.Tactics) +
-    //                     0.05 * parseFloat(player1.Team_work) +
-    //                     0.05 * parseFloat(player1.Technique)))
-    //                 // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
-    //                 AVG_All.push({
-    //                     name: player.name, surname: player.surname, nationality: player.nationality, birthdate: player.birthdate,
-    //                     weight: player.weight, height: player.height, rating: temp_for
-    //                 })
+                    return player;
+                }
+                else if (player.name === player1.name && player.surname === player1.surname &&
+                    player.position === "Forward") {
 
-    //                 return player;
-    //             }
-    //             else if (player.name === player1.name && player.surname === player1.surname &&
-    //                 player.position === "Forward") {
+                    temp_for = ((
+                        0.1 * parseFloat(player1.Through_balls) +
+                        0.05 * parseFloat(player1.Agility) +
+                        0.05 * parseFloat(player1.Communication) +
+                        0.05 * parseFloat(player1.Composure) +
+                        0.1 * parseFloat(player1.Dribbling) +
+                        0.05 * parseFloat(player1.Experience) +
+                        0.05 * parseFloat(player1.Finishing) +
+                        0.05 * parseFloat(player1.Leadership) +
+                        0.05 * parseFloat(player1.Pace) +
+                        0.05 * parseFloat(player1.Passing) +
+                        0.05 * parseFloat(player1.Personality) +
+                        0.05 * parseFloat(player1.Crossing) +
+                        0.05 * parseFloat(player1.Shots) +
+                        0.05 * parseFloat(player1.Stamina) +
+                        0.05 * parseFloat(player1.Strength) +
+                        0.05 * parseFloat(player1.Tactics) +
+                        0.05 * parseFloat(player1.Team_work) +
+                        0.05 * parseFloat(player1.Technique)))
+                    // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
+                    AVG_All.push({
+                        name: player.name, surname: player.surname, nationality: player.nationality, birthdate: player.birthdate,
+                        weight: player.weight, height: player.height, rating: temp_for
+                    })
 
-    //                 temp_for = ((
-    //                     0.1 * parseFloat(player1.Through_balls) +
-    //                     0.05 * parseFloat(player1.Agility) +
-    //                     0.05 * parseFloat(player1.Communication) +
-    //                     0.05 * parseFloat(player1.Composure) +
-    //                     0.1 * parseFloat(player1.Dribbling) +
-    //                     0.05 * parseFloat(player1.Experience) +
-    //                     0.05 * parseFloat(player1.Finishing) +
-    //                     0.05 * parseFloat(player1.Leadership) +
-    //                     0.05 * parseFloat(player1.Pace) +
-    //                     0.05 * parseFloat(player1.Passing) +
-    //                     0.05 * parseFloat(player1.Personality) +
-    //                     0.05 * parseFloat(player1.Crossing) +
-    //                     0.05 * parseFloat(player1.Shots) +
-    //                     0.05 * parseFloat(player1.Stamina) +
-    //                     0.05 * parseFloat(player1.Strength) +
-    //                     0.05 * parseFloat(player1.Tactics) +
-    //                     0.05 * parseFloat(player1.Team_work) +
-    //                     0.05 * parseFloat(player1.Technique)))
-    //                 // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
-    //                 AVG_All.push({
-    //                     name: player.name, surname: player.surname, nationality: player.nationality, birthdate: player.birthdate,
-    //                     weight: player.weight, height: player.height, rating: temp_for
-    //                 })
+                    return player;
+                }
+            })
+            setRatings(AVG_All)
 
-    //                 return player;
-    //             }
-    //         })
-    //         setRatings(AVG_All)
-
-    //     })
-    // }
+        })
+        console.log(AVG_All)
+    }
 
 
 

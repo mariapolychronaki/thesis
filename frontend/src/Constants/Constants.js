@@ -726,9 +726,7 @@ export const arrayplayersRating = [
         Stamina: "5",
         Composure: "7",
         Shots: "7",
-        Finishing: "5x"
-
-
+        Finishing: "5"
 
     },
     {

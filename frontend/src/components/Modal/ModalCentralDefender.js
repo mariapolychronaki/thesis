@@ -4,29 +4,31 @@ import 'react-bootstrap'
 import '../../assets/Style/ModalPositions.css'
 import Dropdown_rating from '../Dropdowns/Dropdown_rating'
 import { useState } from 'react'
+import { Modal } from 'react-bootstrap'
 
 const ModalCentralDefender = ({ closeModalCentralDefender, closeModalPlayer }) => {
 
     const [data, setdata] = useState({});
+    const [showConfirm, setshowConfirm] = useState(false);
 
 
     const [attributes, setAttributes] = useState({
-        Aerial_Ability:"0",
-        Agility:"0",
-        Communication:"0",
-        Experience:"0",
-        Leadership:"0",
-        Marking:"0",
-        Pace:"0",
-        Passing:"0",
-        Personality:"0",
-        Positioning:"0",
-        Stamina:"0",
-        Strength:"0",
-        Tackling:"0",
-        Tactics:"0",
-        Team_work:"0",
-        Technique:"0",
+        Aerial_Ability: "0",
+        Agility: "0",
+        Communication: "0",
+        Experience: "0",
+        Leadership: "0",
+        Marking: "0",
+        Pace: "0",
+        Passing: "0",
+        Personality: "0",
+        Positioning: "0",
+        Stamina: "0",
+        Strength: "0",
+        Tackling: "0",
+        Tactics: "0",
+        Team_work: "0",
+        Technique: "0",
     });
 
     const handleChangeParent = (data, name) => {
@@ -37,10 +39,23 @@ const ModalCentralDefender = ({ closeModalCentralDefender, closeModalPlayer }) =
 
     }
 
+
+    const handleSubmit = () => {
+        setshowConfirm(true)
+        //edw tha ginontai oi eisagwges toy paixth kai twn attributes
+
+    }
+
+    const handleClose1 = () => {
+        setshowConfirm(false)
+        closeModalCentralDefender(false)
+        closeModalPlayer(false)
+    }
+
     console.log(attributes)
 
 
-    return (
+    return (<>
         <div className='modalBackgroundPosition'>
             <div className='col-12 space'></div>
             <div className='modalContainerPosition'>
@@ -227,12 +242,29 @@ const ModalCentralDefender = ({ closeModalCentralDefender, closeModalPlayer }) =
                             <button className='cancel-button' onClick={() => closeModalCentralDefender(false)}>Cancel</button>
                         </div>
                         <div className='col-2'>
-                            <button className='next-button' onClick={() => closeModalCentralDefender(false), () => { closeModalPlayer(false) }}> Confirm </button>
+                            <button className='next-button' onClick={handleSubmit}> Confirm </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div >
+        <Modal show={showConfirm} onHide={handleClose1} className="modal">
+            <Modal.Header closeButton>
+                <Modal.Title></Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+
+                <div className='ShowConfirmMessage'>
+                    You have succesfully created your player!
+                </div>
+
+            </Modal.Body>
+
+            <Modal.Footer>
+
+            </Modal.Footer>
+        </Modal>
+    </>
     )
 }
 

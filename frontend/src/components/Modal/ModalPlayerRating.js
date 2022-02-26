@@ -98,6 +98,7 @@ const ModalPlayerRating = ({ closeModalPlayerRating, player, OpenModalGoalkeeper
     console.log(temp)
     console.log(player)
 
+        
 
     console.log(attributes)
 
@@ -264,7 +265,7 @@ const ModalPlayerRating = ({ closeModalPlayerRating, player, OpenModalGoalkeeper
                         <div className='footer'>
                             <div className='col-12 Buttons'>
                                 <div className='offset-7 col-2'>
-                                    <button className='cancel-button' onClick={() => closeModalPlayerRating(false)}>Cancel</button>
+                                    {/* <button className='cancel-button' onClick={() => closeModalPlayerRating(false)}>Cancel</button> */}
                                 </div>
                                 <div className='col-2'>
                                     <button className='next-button' onClick={() => closeModalPlayerRating(false)}> Confirm </button>
@@ -477,7 +478,7 @@ const ModalPlayerRating = ({ closeModalPlayerRating, player, OpenModalGoalkeeper
                     <div className='footer'>
                         <div className='col-12 Buttons'>
                             <div className='offset-7 col-2'>
-                                <button className='cancel-button' onClick={() => closeModalPlayerRating(false)}>Cancel</button>
+                                {/* <button className='cancel-button' onClick={() => closeModalPlayerRating(false)}>Cancel</button> */}
                             </div>
                             <div className='col-2'>
                                 <button className='next-button' onClick={() => closeModalPlayerRating(false)}> Confirm </button>
@@ -687,7 +688,7 @@ const ModalPlayerRating = ({ closeModalPlayerRating, player, OpenModalGoalkeeper
                         <div className='footer'>
                             <div className='col-12 Buttons'>
                                 <div className='offset-7 col-2'>
-                                    <button className='cancel-button' onClick={() => closeModalPlayerRating(false)}>Cancel</button>
+                                    {/* <button className='cancel-button' onClick={() => closeModalPlayerRating(false)}>Cancel</button> */}
                                 </div>
                                 <div className='col-2'>
                                     <button className='next-button' onClick={() => closeModalPlayerRating(false)}> Confirm </button>
@@ -932,7 +933,7 @@ const ModalPlayerRating = ({ closeModalPlayerRating, player, OpenModalGoalkeeper
                         <div className='footer'>
                             <div className='col-12 Buttons'>
                                 <div className='offset-7 col-2'>
-                                    <button className='cancel-button' onClick={() => closeModalPlayerRating(false)}>Cancel</button>
+                                    {/* <button className='cancel-button' onClick={() => closeModalPlayerRating(false)}>Cancel</button> */}
                                 </div>
                                 <div className='col-2'>
                                     <button className='next-button' onClick={() => closeModalPlayerRating(false)}> Confirm </button>
@@ -1175,7 +1176,7 @@ const ModalPlayerRating = ({ closeModalPlayerRating, player, OpenModalGoalkeeper
                         <div className='footer'>
                             <div className='col-12 Buttons'>
                                 <div className='offset-7 col-2'>
-                                    <button className='cancel-button' onClick={() => closeModalPlayerRating(false)}>Cancel</button>
+                                    {/* <button className='cancel-button' onClick={() => closeModalPlayerRating(false)}>Cancel</button> */}
                                 </div>
                                 <div className='col-2'>
                                     <button className='next-button' onClick={() => closeModalPlayerRating(false)}> Confirm </button>
@@ -1418,7 +1419,7 @@ const ModalPlayerRating = ({ closeModalPlayerRating, player, OpenModalGoalkeeper
                         <div className='footer'>
                             <div className='col-12 Buttons'>
                                 <div className='offset-7 col-2'>
-                                    <button className='cancel-button' onClick={() => closeModalPlayerRating(false)}>Cancel</button>
+                                    {/* <button className='cancel-button' onClick={() => closeModalPlayerRating(false)}>Cancel</button> */}
                                 </div>
                                 <div className='col-2'>
                                     <button className='next-button' onClick={() => closeModalPlayerRating(false)}> Confirm </button>
@@ -1646,7 +1647,7 @@ const ModalPlayerRating = ({ closeModalPlayerRating, player, OpenModalGoalkeeper
                         <div className='footer'>
                             <div className='col-12 Buttons'>
                                 <div className='offset-7 col-2'>
-                                    <button className='cancel-button' onClick={() => closeModalPlayerRating(false)}>Cancel</button>
+                                    {/* <button className='cancel-button' onClick={() => closeModalPlayerRating(false)}>Cancel</button> */}
                                 </div>
                                 <div className='col-2'>
                                     <button className='next-button' onClick={() => closeModalPlayerRating(false)}> Confirm </button>

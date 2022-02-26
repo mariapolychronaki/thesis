@@ -76,7 +76,14 @@ const ModalPlayerPlayerUserInit = ({ closeModalPlayer, isOpen }) => {
             errors.ssn = "SSN is required!"
             setShow(true)
 
-        } else if (values.ssn.length !== 11) {
+        } else if (!(/^\d+$/.test(values.ssn))) {
+            errors.ssn = "Snn must be only numbers!"
+            setShow(true)
+            setErrors(errors)
+            console.log(errors)
+            return false;
+        }
+        else if (values.ssn.length !== 11) {
             errors.ssn = "SNN must be 11 numbers!"
         } else {
             setshowConfirm(true)
@@ -108,7 +115,7 @@ const ModalPlayerPlayerUserInit = ({ closeModalPlayer, isOpen }) => {
 
     const handleChange = (e) => {
         setdata({ ...data, [e.target.name]: e.target.value })
-        if(e.target.name==="Preferred Foot"){
+        if (e.target.name === "Preferred Foot") {
             setPreferredFoot(e.target.value)
         }
     }
