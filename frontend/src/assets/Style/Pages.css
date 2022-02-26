@@ -527,6 +527,12 @@
     color:rgb(145, 33, 33);
 }
 
+.ratingColor{
+    color: rgb(0, 77, 0);
+    font-weight: 300;
+    
+}
+
 @media screen and (max-width:1300px) {
     
     .list_pl{

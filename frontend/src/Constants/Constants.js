@@ -241,83 +241,83 @@ export const arrayPlayers = [
 
     {
         ssn: "170813175417", name: "Georgios", surname: "Makrogiannakis", nationality: "Greek",
-        position: "Right Defender", preferred_foot: "Right", birthdate: "07/01/1989", height: "183", weight: "84", rating: "6.6"
+        position: "Right Defender", preferred_foot: "Right", birthdate: "07/01/1989", height: "183", weight: "84", rating: "6.3"
     },
 
     {
         ssn: "170813175417", name: "Emmanouil", surname: "Dorgiomanolakis", nationality: "Greek",
-        position: "Right Defender", preferred_foot: "Right", birthdate: "07/01/2005", height: "165", weight: "55", rating: "6.6"
+        position: "Right Defender", preferred_foot: "Right", birthdate: "07/01/2005", height: "165", weight: "55", rating: "4.2"
     },
 
 
     {
         ssn: "170813175417", name: "Marios", surname: "Xotza", nationality: "Albanian",
-        position: "Right Defender", preferred_foot: "Right", birthdate: "01/01/2002", height: "175", weight: "68", rating: "6.6"
+        position: "Right Defender", preferred_foot: "Right", birthdate: "01/01/2002", height: "175", weight: "68", rating: "6.0"
     },
 
     {
         ssn: "170813175417", name: "Vasilios", surname: "Vardis", nationality: "Greek",
-        position: "Left Defender", preferred_foot: "Left", birthdate: "07/01/1998", height: "177", weight: "73", rating: "6.6"
+        position: "Left Defender", preferred_foot: "Left", birthdate: "07/01/1998", height: "177", weight: "73", rating: "7.1"
     },
 
     {
         ssn: "170813175417", name: "Michail", surname: "Fournarakis", nationality: "Greek",
-        position: "Left Defender", preferred_foot: "Left", birthdate: "07/01/2006", height: "170", weight: "60", rating: "6.6"
+        position: "Left Defender", preferred_foot: "Left", birthdate: "07/01/2006", height: "170", weight: "60", rating: "5.2"
     },
 
     {
         ssn: "170813175417", name: "Georgios", surname: "Stratakis", nationality: "Greek",
-        position: "Midfielder", preferred_foot: "Right", birthdate: "17/06/1997", height: "178", weight: "83", rating: "6.6"
+        position: "Midfielder", preferred_foot: "Right", birthdate: "17/06/1997", height: "178", weight: "83", rating: "8.2"
     },
 
     {
         ssn: "170813175417", name: "Michail", surname: "Kefakis", nationality: "Greek",
-        position: "Midfielder", preferred_foot: "Left", birthdate: "07/01/1993", height: "185", weight: "80", rating: "6.6"
+        position: "Midfielder", preferred_foot: "Left", birthdate: "07/01/1993", height: "185", weight: "80", rating: "7.7"
     },
 
     {
         ssn: "170813175417", name: "Ioannis", surname: "Anifantakis", nationality: "Greek",
-        position: "Midfielder", preferred_foot: "Right", birthdate: "07/01/1990", height: "175", weight: "82", rating: "6.6"
+        position: "Midfielder", preferred_foot: "Right", birthdate: "07/01/1990", height: "175", weight: "82", rating: "7.0"
     },
 
     {
         ssn: "170813175417", name: "Nikolaos", surname: "Troulakis", nationality: "Greek",
-        position: "Attacking Midfielder center", preferred_foot: "Right", birthdate: "07/01/1987", height: "173", weight: "73", rating: "6.6"
+        position: "Attacking Midfielder center", preferred_foot: "Right", birthdate: "07/01/1987", height: "173", weight: "75", rating: "7.6"
     },
 
     {
         ssn: "170813175417", name: "Nikolaos", surname: "Kousidis", nationality: "Greek",
-        position: "Attacking Midfielder center", preferred_foot: "Right", birthdate: "07/01/1993", height: "173", weight: "78", rating: "6.6"
+        position: "Attacking Midfielder center", preferred_foot: "Right", birthdate: "07/01/1993", height: "173", weight: "78", rating: "7.0"
     },
 
     {
         ssn: "170813175417", name: "Ioannis", surname: "Xristoforakis", nationality: "Greek",
-        position: "Attacking Midfielder Right", preferred_foot: "Right", birthdate: "07/01/1997", height: "180", weight: "70", rating: "6.6"
+        position: "Attacking Midfielder Right", preferred_foot: "Right", birthdate: "07/01/1997", height: "180", weight: "70", rating: "7.1"
     },
 
     {
         ssn: "170813175417", name: "Konstantinos", surname: "Nodarakis", nationality: "Greek",
-        position: "Attacking Midfielder Right", preferred_foot: "Right", birthdate: "07/01/1997", height: "183", weight: "72", rating: "6.6"
+        position: "Attacking Midfielder Right", preferred_foot: "Right", birthdate: "07/01/1997", height: "183", weight: "72", rating: "6.0"
     },
 
     {
         ssn: "170813175417", name: "Alexandros", surname: "Bernikou", nationality: "Greek",
-        position: "Attacking Midfielder Left", preferred_foot: "Right", birthdate: "07/01/2000", height: "187", weight: "77", rating: "6.6"
+        position: "Attacking Midfielder Left", preferred_foot: "Right", birthdate: "07/01/2000", height: "187", weight: "77", rating: "6.9"
     },
 
     {
         ssn: "170813175417", name: "Konstantinos", surname: "Kafousis", nationality: "Greek",
-        position: "Attacking Midfielder Left", preferred_foot: "Right", birthdate: "07/01/2003", height: "170", weight: "65", rating: "6.6"
+        position: "Attacking Midfielder Left", preferred_foot: "Right", birthdate: "07/01/2003", height: "170", weight: "65", rating: "5.6"
     },
 
     {
         ssn: "170813175417", name: "Nikolaos", surname: "Drakoulis", nationality: "Greek",
-        position: "Forward", preferred_foot: "Left", birthdate: "07/01/1989", height: "183", weight: "72", rating: "6.6"
+        position: "Forward", preferred_foot: "Left", birthdate: "07/01/1989", height: "183", weight: "72", rating: "7.1"
     },
 
     {
         ssn: "170813175417", name: "Emmanouil", surname: "Pexynakis", nationality: "Greek",
-        position: "Forward", preferred_foot: "Right", birthdate: "07/01/1989", height: "181", weight: "90", rating: "6.6"
+        position: "Forward", preferred_foot: "Right", birthdate: "07/01/1989", height: "181", weight: "90", rating: "4.8"
     }
 ]
 
