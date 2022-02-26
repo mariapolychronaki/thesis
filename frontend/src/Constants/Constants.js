@@ -3,9 +3,14 @@ import React from 'react';
 
 export const users = [
     {
-        name: 'Giorgos', surname: 'Stratakis', user_type: 'Player', email: 'stratakisgiorgos1234@gmail.com', team: 'Aoan'
+        name: 'Giorgos', surname: 'Stratakis', user_type: 'Player', email: 'stratakisgiorgos1234@gmail.com', team: 'Aoan',
+        password: "123456"
     }, {
-        email: 'admin@gmail.com', name: 'Konstantinos', surname: 'Sakas', user_type: 'Admin', team: 'Ane'
+        email: 'admin@gmail.com', name: 'Konstantinos', surname: 'Sakas', user_type: 'Admin', team: 'Ane',
+        password: "123456"
+    },
+    {
+        email: 'coach@gmail.com', name: 'Nikandros', surname: 'Koufas', user_type: 'Coach', team: 'Paok', password: "123456"
     },
     {
         email: 'konsa@gmail.com', name: 'Konstantinos', surname: 'Sakas', user_type: 'Player', team: 'Ane'
@@ -77,9 +82,7 @@ export const users = [
     }, {
         email: 'go1234@gmail.com', name: 'Manos', surname: 'Stratos', user_type: 'Coach', team: 'Romas'
     },
-    {
-        email: 'koufis@gmail.com', name: 'Nikandros', surname: 'Koufas', user_type: 'Coach', team: 'Paok'
-    },
+
     {
         email: 'kostas@gmail.com', name: 'Manolis', surname: 'Xristos', user_type: 'Coach', team: 'Ofi'
     },

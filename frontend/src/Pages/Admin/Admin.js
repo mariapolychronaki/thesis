@@ -238,7 +238,7 @@ const Admin = () => {
         users.map((user)=>{
             if(user.user_type==="Player"){
                 usersPlayers.push(user)
-            }else{
+            }else  if(user.user_type==="Coach"){
                 usersCoaches.push(user)
             }
         })
@@ -302,6 +302,7 @@ const Admin = () => {
                                 <td className='font_bold'>
                                     {user.team}
                                 </td>
+                               
 
                                 <td>
 
@@ -378,7 +379,7 @@ const Admin = () => {
                                 <td className='font_bold'>
                                     {user.team}
                                 </td>
-
+                               
                                 <td>
 
                                     <button className='BTN_Decline' onClick={() => playerToBeRemoved(user)}>Delete</button>

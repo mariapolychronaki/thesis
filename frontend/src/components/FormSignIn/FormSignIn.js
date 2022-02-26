@@ -18,20 +18,32 @@ const FormSignIn = ({ submitForm }) => {
 
 
     const validate = (values) => {
-        let flag= false;
+        let flag = false;
+        let flagPassword = false;
         let errors = {}
-       
-        users.map((user)=>{
-            if(user.email===values.email){
-                flag=true;
+
+        users.map((user) => {
+            if (user.email === values.email) {
+                console.log(values.password)
+                console.log(user.password)
+                if (user.password === values.password) {
+                    flagPassword = true;
+                }
+
+                flag = true;
+
+
             }
+
         })
 
         if (!values.email.trim()) {
             errors.email = "Email required"
-        }else if(flag===false){
+        } else if (flag === false) {
             errors.email = "Invalid email"
-
+        } else if (flagPassword === false) {
+            console.log(flagPassword)
+            errors.password = "Invalid password"
         }
         console.log()
 
@@ -40,7 +52,7 @@ const FormSignIn = ({ submitForm }) => {
         } else if (values.password.length < 6) {
             errors.password = 'Password must be more than 6 characters'
         }
-       
+
 
 
         return errors;
