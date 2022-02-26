@@ -512,11 +512,20 @@
 
 
 
+.playerAccept{
+    color: rgb(0, 77, 0);
+}
+.playerReject{
+    color:rgb(117, 0, 0)
+}
 
 
 
-
-
+.PDF{
+    background-color: rgb(211, 197, 197);
+    border-radius: 8px;
+    color:rgb(145, 33, 33);
+}
 
 @media screen and (max-width:1300px) {
     

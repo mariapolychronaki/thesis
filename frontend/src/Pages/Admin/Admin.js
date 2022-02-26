@@ -7,6 +7,8 @@ import { useState, useEffect } from 'react';
 import 'reactjs-popup/dist/index.css';
 import CustomPopup from './PopUp';
 import { Enquiries, usersCoaches, usersPlayers, SignUpMessages, users } from '../../Constants/Constants';
+import { useDispatch } from 'react-redux';
+import { setApproved, setRejected } from '../../Store/Slices/coachSlice';
 
 const Admin = () => {
     const [removePlayerBtn, setRemovePlayerBtn] = useState(false);
@@ -27,6 +29,8 @@ const Admin = () => {
     const [players, setPlayers] = useState(false);
     const [coaches, setCoaches] = useState(false);
 
+
+    const dispatch = useDispatch();
 
 
     const acceptEnquiry = (Player) => {
@@ -53,14 +57,14 @@ const Admin = () => {
         setRemovePlayerBtn(true)
     }
 
-   
+
     const Function_SignUpMessages = () => {
         setSign_UP_messages(true);
         setCoach_Enquries(false);
         setPlayers(false);
         setfilteredPersons(usersPlayers)
         setCoaches(false);
-        setfilteredPersonsCoaches(usersCoaches) 
+        setfilteredPersonsCoaches(usersCoaches)
     }
     const Function_CoachEnquiries = () => {
         setSign_UP_messages(false);
@@ -90,7 +94,7 @@ const Admin = () => {
         setSearchField(e.target.value);
     };
 
-   
+
 
 
 
@@ -138,10 +142,14 @@ const Admin = () => {
 
 
 
+    const rejectFunction =()=>{
+        popupCloseHandler()
+        setRemovePlayerBtn(!removePlayerBtn)
+        dispatch(setApproved(true))
+    }
 
 
 
-    
 
     const useSortableData = (usersPlayers1, config = null) => {
         const [sortConfig, setSortConfig] = React.useState(config);
@@ -234,11 +242,11 @@ const Admin = () => {
     var usersCoaches = []
 
 
-    const findUsers = ()=>{
-        users.map((user)=>{
-            if(user.user_type==="Player"){
+    const findUsers = () => {
+        users.map((user) => {
+            if (user.user_type === "Player") {
                 usersPlayers.push(user)
-            }else  if(user.user_type==="Coach"){
+            } else if (user.user_type === "Coach") {
                 usersCoaches.push(user)
             }
         })
@@ -302,7 +310,7 @@ const Admin = () => {
                                 <td className='font_bold'>
                                     {user.team}
                                 </td>
-                               
+
 
                                 <td>
 
@@ -379,7 +387,7 @@ const Admin = () => {
                                 <td className='font_bold'>
                                     {user.team}
                                 </td>
-                               
+
                                 <td>
 
                                     <button className='BTN_Decline' onClick={() => playerToBeRemoved(user)}>Delete</button>
@@ -422,17 +430,17 @@ const Admin = () => {
 
                     <div className='col-2 Sign_UP_messages'>
                         <div className='marginBtns'>
-                            <button class="btn buttonsAdmin" onClick={Function_SignUpMessages}> Sign up Messages</button>
+                            <button className={!Sign_UP_messages ? "btn buttonsAdmin" : "btn buttonsAdmin ActiveButton"} onClick={Function_SignUpMessages}> Sign up Messages</button>
                         </div>
                         <div className='marginBtns'>
-                            <button class="btn buttonsAdmin" onClick={Function_CoachEnquiries}> Coaches' enquiries</button>
+                            <button className={!Coach_Enquries ? "btn buttonsAdmin" : "btn buttonsAdmin ActiveButton"} onClick={Function_CoachEnquiries}> Coaches' enquiries</button>
                         </div>
 
                         <div className='marginBtns'>
-                            <button class="btn buttonsAdmin" onClick={Function_Players}>Player Users</button>
+                            <button className={!players ? "btn buttonsAdmin" : "btn buttonsAdmin ActiveButton"} onClick={Function_Players}>Player Users</button>
                         </div>
                         <div className='marginBtns'>
-                            <button class="btn buttonsAdmin" onClick={Function_Coaches}>Coach Users</button>
+                            <button className={!coaches ? "btn buttonsAdmin" : "btn buttonsAdmin ActiveButton"} onClick={Function_Coaches}>Coach Users</button>
                         </div>
 
                     </div>
@@ -514,7 +522,6 @@ const Admin = () => {
                                                 asked
                                                 to
                                                 sign
-
                                                 up
                                             </td>
                                             <td>
@@ -567,11 +574,11 @@ const Admin = () => {
                     onClose={popupCloseHandler, () => setRemovePlayerBtn(!removePlayerBtn)}
                     show={removePlayerBtn}
                 >
-                    <div>Are you sure you want to accept <span className='RemovePlayerSurname'>{Player.coach}'s</span> request
+                    <div>Are you sure you want to reject <span className='RemovePlayerSurname'>{Player.coach}'s</span> request
                         to sign  <span className='RemovePlayerSurname'>{Player.name} {Player.surname}'s</span>?</div>
                     <div className='space'></div>
                     <div className='offset-5 col-3'>
-                        <button onClick={popupCloseHandler, () => setRemovePlayerBtn(!removePlayerBtn)} className='YesBtnPopUp' >Yes</button>
+                        <button onClick={rejectFunction} className='YesBtnPopUp' >Yes</button>
                         <button className='NoBtnPopUp' onClick={popupCloseHandler, () => setRemovePlayerBtn(!removePlayerBtn)}>No</button>
                     </div>
                 </CustomPopup>}
@@ -586,7 +593,7 @@ const Admin = () => {
                         to sign  <span className='AddUserToBase'>{Player.name} {Player.surname}</span>?</div>
                     <div className='space'></div>
                     <div className='offset-5 col-3'>
-                        <button onClick={popupCloseHandler, () => setAcceptEn(!acceptEn)} className='YesBtnAccept' >Yes</button>
+                        <button onClick={popupCloseHandler, () => setAcceptEn(!acceptEn), () => dispatch(setRejected())} className='YesBtnAccept' >Yes</button>
                         <button className='NoBtnPopUp' onClick={popupCloseHandler, () => setAcceptEn(!acceptEn)}>No</button>
                     </div>
                 </CustomPopup>}

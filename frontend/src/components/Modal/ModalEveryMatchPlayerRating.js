@@ -8,9 +8,28 @@ import { arrayPlayers, arrayInjured } from '../../Constants/Constants';
 
 const ModalEveryMatchPlayerRating = (closeModalMatchEachPlayer) => {
     const [data, setdata] = useState({});
-    const [attributes, setAttributes] = useState({});
+
+
+
+
+    const initializePlayers = () => {
+
+        var temp = {};
+        arrayPlayers.map((player) => {
+            console.log(player)
+            temp[`${player.surname}`] = { ['Rating']: "0", };
+            console.log(temp)
+        })
+        return temp;
+
+    }
+    const [attributes, setAttributes] = useState(initializePlayers());
     const injuredPlayers = [];
     const healthyplayers = [];
+
+
+
+
 
     const handleChangeParent = (data, name, playerId) => {
         setAttributes({
@@ -95,7 +114,7 @@ const ModalEveryMatchPlayerRating = (closeModalMatchEachPlayer) => {
                         </form>
                     </div>))}
 
-                    {injuredPlayers.map((player, index) => (
+                {injuredPlayers.map((player, index) => (
                     <div className='col-3 IndividualPlayer'>
                         <div className='flex'>
 

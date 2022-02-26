@@ -82,29 +82,53 @@ const ModalPlayer = ({ closeModalPlayer, isOpen }) => {
             setErrors(errors)
             setShow(true)
             return false;
-        }else if (!(/^\d+$/.test(values.ssn))) {
-            errors.ssn = "Snn must be only numbers!"
+        } else if (!(/^\d+$/.test(values.ssn))) {
+            errors.ssn = "Snn must only contain numbers!"
             setShow(true)
             setErrors(errors)
             console.log(errors)
             return false;
         }
-         else if (values.ssn.length !== 11) {
+        else if (values.ssn.length !== 11) {
             errors.ssn = "Snn must be 11 numbers!"
             setShow(true)
             setErrors(errors)
             return false;
-        }  
+        }
         if (!values.name) {
             errors.name = "Name required!"
             setShow(true)
             setErrors(errors)
+            return false;
+        } else if (!(/^[A-Za-z\s]*$/.test(values.name))) {
+            errors.name = "Name must only contain letters!"
+            setShow(true)
+            setErrors(errors)
+            console.log(errors)
+            return false;
+        } else if (values.name.length > 25) {
+            errors.name = "Name can't be more than 25 characters!"
+            setShow(true)
+            setErrors(errors)
+            console.log(errors)
             return false;
         }
         if (!values.surname) {
             errors.surname = "Surname required!"
             setShow(true)
             setErrors(errors)
+            return false;
+        } else if (!(/^[A-Za-z\s]*$/.test(values.surname))) {
+            errors.surname = "Surname must only contain letters!"
+            setShow(true)
+            setErrors(errors)
+            console.log(errors)
+            return false;
+        } else if (values.surname.length > 25) {
+            errors.name = "Surname can't be more than 25 characters!"
+            setShow(true)
+            setErrors(errors)
+            console.log(errors)
             return false;
         }
 
@@ -199,7 +223,7 @@ const ModalPlayer = ({ closeModalPlayer, isOpen }) => {
 
     const handleChange = (e) => {
         setdata({ ...data, [e.target.name]: e.target.value })
-        if(e.target.name==="Preferred Foot"){
+        if (e.target.name === "Preferred Foot") {
             setPreferredFoot(e.target.value)
         }
     }

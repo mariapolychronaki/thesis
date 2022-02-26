@@ -4,7 +4,9 @@ export const coachSlice = createSlice({
   name: 'coach',
   initialState: {
     value: 0,
-    name : "giorgos" 
+    name: "giorgos",
+    approved: false,
+    rejected: false
   },
   reducers: {
     increment: state => {
@@ -20,14 +22,22 @@ export const coachSlice = createSlice({
     incrementByAmount: (state, action) => {
       state.value += action.payload
     },
-    setName: (state,action) =>{
+    setName: (state, action) => {
       state.name = action.payload;
+    },
+    setApproved: (state, action) => {
+      state.approved = action.payload;
+      state.rejected = false;
+    }, 
+    setRejected: (state, action) => {
+      state.approved = false;
+      state.rejected = action.payload;
     }
 
   }
 })
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount,setName} = coachSlice.actions
+export const { increment, decrement, incrementByAmount, setName,setRejected,setApproved } = coachSlice.actions
 
 export default coachSlice.reducer

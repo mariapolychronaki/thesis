@@ -3,20 +3,34 @@ import Dropdown_rating from '../Dropdowns/Dropdown_rating';
 import '../../assets/Style/EveryPlayerRating.css'
 import 'react-bootstrap'
 import { useState } from 'react';
-import { arrayPlayers,arrayInjured } from '../../Constants/Constants';
+import { arrayPlayers, arrayInjured } from '../../Constants/Constants';
 
 const ModalEveryTrainingPlayerRating = (closeModalTrainingEachPlayer) => {
     const [data, setdata] = useState({});
     const injuredPlayers = [];
     const healthyplayers = [];
 
-   
+    const positions = ["Goalkeeper", "Central Defender", "Right Defender", "Left Defender", "Midfielder",
+        "Attacking Midfielder center", "Attacking Midfielder Right", "Attacking Midfielder Left", "Forward",
+    ];
+
+    const initializePlayers = () => {
+
+        var temp = {};
+        arrayPlayers.map((player) => {
+            console.log(player)
+            temp[`${player.surname}`] = { ['Behaviour']: "0", ['Rating']: "0" };
+            console.log(temp)
+        })
+        return temp;
+
+    }
+
+
+    const [attributes, setAttributes] = useState(initializePlayers());
 
 
 
-    const [attributes, setAttributes] = useState({
-
-    });
 
     const handleChangeParent = (data, name, playerId) => {
         setAttributes({
@@ -29,7 +43,7 @@ const ModalEveryTrainingPlayerRating = (closeModalTrainingEachPlayer) => {
     }
 
 
-   
+
 
     const findHealthyplayers = () => {
         arrayPlayers.find((player) => {
@@ -38,7 +52,7 @@ const ModalEveryTrainingPlayerRating = (closeModalTrainingEachPlayer) => {
                 if (player.name === player1.name && player.surname === player1.surname) {
                     console.log(player.name)
                     console.log(player.surname)
-                    flag=true;
+                    flag = true;
                 }
 
 
@@ -48,10 +62,9 @@ const ModalEveryTrainingPlayerRating = (closeModalTrainingEachPlayer) => {
                 // }
             })
             if (flag === true) {
-                injuredPlayers.push({ name: player.name, surname: player.surname })
-                console.log(player.name)
-                console.log(player.surname)
+                injuredPlayers.push({ name: player.name, surname: player.surname, position: player.position })
             }
+            console.log(injuredPlayers)
         })
 
 
@@ -59,9 +72,7 @@ const ModalEveryTrainingPlayerRating = (closeModalTrainingEachPlayer) => {
             var flag = false;
             const temp = arrayInjured.find((player1) => {
                 if (player.name === player1.name && player.surname === player1.surname) {
-                    console.log(player.name)
-                    console.log(player.surname)
-                    flag=true;
+                    flag = true;
                 }
 
 
@@ -71,24 +82,28 @@ const ModalEveryTrainingPlayerRating = (closeModalTrainingEachPlayer) => {
                 // }
             })
             if (flag === false) {
-                healthyplayers.push({ name: player.name, surname: player.surname })
+                healthyplayers.push({ name: player.name, surname: player.surname, position: player.position })
                 console.log(player.name)
                 console.log(player.surname)
             }
         })
+        healthyplayers.sort((a, b) => {
+            return (positions.indexOf(a.position) - positions.indexOf(b.position))
+        })
     }
 
     console.log(attributes)
-    console.log(arrayInjured)
+
     console.log(arrayPlayers)
     console.log(healthyplayers)
+
 
 
     return (
         <>
             {findHealthyplayers()}
             <div className='row everyPlayerRating'>
-            {
+                {
                     healthyplayers.map((player, index) => (
 
                         <div className='col-3 IndividualPlayer'>

@@ -200,16 +200,18 @@ export const AllPlayers = () => {
                                 color: "#004d00",
                             }}>{player.name}</td>
                             <td style={{
-                                color: "#004d00",
+                                color: "#004d00"
                             }}>{player.surname}</td>
                             <td >{player.nationality}</td>
-                            <td>{player.position}</td>
+                            <td style={{
+                                color: "rgb(0, 77, 0)"
+                            }}>{player.position}</td>
                             <td>{player.preferred_foot}</td>
                             <td>{player.birthdate}</td>
                             <td>{player.height}</td>
                             <td className='weight'>{player.weight}</td>
                             <td style={{
-                                color: "#739900",
+                                color: "rgb(0, 77, 0)"
                             }}>{player.team}</td>
                             <td className='action_buttons'>
                                 <button className='enquiry_btn' name={player.ssn} value="Enquiry" onClick={Pending_Btn}> Claim </button>
@@ -227,7 +229,7 @@ export const AllPlayers = () => {
     const [player, setplayer] = useState();
 
     const maxPlayers = (player) => {
-        if (arrayPlayers.length > 19) {
+        if (arrayPlayers.length > 25) {
             setmaxLimit(true)
         } else {
             setplayer(player)

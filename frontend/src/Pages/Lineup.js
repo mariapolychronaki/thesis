@@ -14,7 +14,7 @@ import { Document, Page } from 'react-pdf';
 
 export const Lineup = () => {
 
-    
+
     const [best_for1, setBest_for1] = useState("None");
     const [best_for2, setBest_for2] = useState("None");
 
@@ -2517,8 +2517,13 @@ export const Lineup = () => {
 
                                     <button className='formation' onClick={bring424}>4-2-4</button>
                                 </div>
-                            </div>
 
+
+                            </div>
+                            <div>
+                                <button className='PDF' >Export PDF</button>
+                                {/* na kanei export se pdf */}
+                            </div>
                         </div>
 
 
@@ -2731,7 +2736,10 @@ export const Lineup = () => {
                                     <button className='formation' onClick={bring424}>4-2-4</button>
                                 </div>
                             </div>
-
+                            <div>
+                                <button className='PDF' >Export PDF</button>
+                                {/* na kanei export se pdf */}
+                            </div>
                         </div>
 
 
@@ -2763,7 +2771,7 @@ export const Lineup = () => {
 
                     </div>
 
-                   
+
 
                     <div class="col-6 pitch">
 
@@ -2916,7 +2924,7 @@ export const Lineup = () => {
 
                         <div className='row sub2'>
                             <div className='col-4 sub2'>
-                                <Player player={best_Right_Defender2}  />
+                                <Player player={best_Right_Defender2} />
                             </div>
                             <div className='col-4 sub2'>
                                 <Player player={best_Midfielder3} />
@@ -2943,6 +2951,10 @@ export const Lineup = () => {
                                 </div>
                             </div>
 
+                            <div>
+                                <button className='PDF' >Export PDF</button>
+                                {/* na kanei export se pdf */}
+                            </div>
                         </div>
 
 

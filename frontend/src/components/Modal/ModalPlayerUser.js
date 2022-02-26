@@ -10,6 +10,7 @@ import Dropdown_nationality from '../Dropdowns/Dropdown_nationality'
 import Dropdown_position from '../Dropdowns/Dropdown_position'
 import ModalPlayer from './ModalPlayer'
 import ModalPlayerUserInit from '../../components/Modal/ModalPlayerUserInit'
+import { Modal } from 'react-bootstrap'
 
 
 const ModalPlayerUser = ({ }) => {
@@ -20,6 +21,12 @@ const ModalPlayerUser = ({ }) => {
     const [nationality, setNationality] = useState("Afghan");
     const [weight, setWeight] = useState("50");
     const [closeModalPlayer, setcloseModalPlayer] = useState(true);
+
+    const [show, setShow] = useState(true);
+
+    const handleClose = () => {
+        setShow(false)
+    }
 
     const handleChange = (e) => {
         setdata({ ...data, [e.target.name]: e.target.value })
@@ -271,6 +278,20 @@ const ModalPlayerUser = ({ }) => {
                     </div>
                 </div>
             </div >}
+            <Modal show={show} onHide={handleClose} className="modal">
+                <Modal.Header closeButton>
+                    <Modal.Title>Info</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <div className='playerAccept'>
+                        You have been tranferred to "TeamName"
+                    </div>
+                </Modal.Body>
+
+                <Modal.Footer>
+
+                </Modal.Footer>
+            </Modal>
         </>
     )
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../assets/Style/Form.css';
-import { users, usersCoaches,usersPlayers } from '../../Constants/Constants';
+import { users, usersCoaches, usersPlayers } from '../../Constants/Constants';
 import { useState, useEffect, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 
@@ -31,22 +31,22 @@ const FormSignup = ({ submitForm }) => {
     const validate = (values) => {
 
         let errors = {}
-        var flag= false;
-        users.map((user)=>{
-            if(values.email===user.email){
-                flag =true;
+        var flag = false;
+        users.map((user) => {
+            if (values.email === user.email) {
+                flag = true;
             }
         })
-       
 
 
-       
+
+
         if (!values.email) {
             errors.email = "Email required"
         } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
             errors.email = "Email address is invalid"
-        }else if(flag===true){
-            errors.email="Email already has an account"
+        } else if (flag === true) {
+            errors.email = "Email already has an account"
         }
 
         if (!values.password) {
@@ -64,10 +64,21 @@ const FormSignup = ({ submitForm }) => {
 
         if (!values.name) {
             errors.name = "Name is required"
+        } else if (!(/^[A-Za-z\s]*$/.test(values.name))) {
+            errors.name = "Name must only contain letters!"
+        } else if (values.name.length > 25) {
+            errors.name = "Name can't be more than 25 characters!"
+          
         }
 
         if (!values.surname) {
             errors.surname = "Surname is required"
+        }
+        else if (!(/^[A-Za-z\s]*$/.test(values.surname))) {
+            errors.surname = "Surname must only contain letters!"
+        } else if (values.surname.length > 25) {
+            errors.surname = "Surname can't be more than 25 characters!"
+          
         }
 
         return errors;
@@ -124,7 +135,7 @@ const FormSignup = ({ submitForm }) => {
 
                     {errors.user && <p>{errors.user}</p>}
                 </div>
-               
+
                 <div className='form-inputs'>
                     <label htmlFor='email' className='form-label'>
                         *E-mail

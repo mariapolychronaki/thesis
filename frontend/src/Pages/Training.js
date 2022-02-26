@@ -15,6 +15,9 @@ import { arrayPlayerMatchRating1, arrayPlayerMatchRating2 } from '../Constants/C
 
 export const Training = () => {
     const [openModalTraining, setOpenModalTraining] = useState(false);
+    const positions = ["Goalkeeper", "Central Defender", "Right Defender", "Left Defender", "Midfielder",
+        "Attacking Midfielder center", "Attacking Midfielder Right", "Attacking Midfielder Left", "Forward",
+    ];
 
 
     const ref = useRef(null);
@@ -76,7 +79,7 @@ export const Training = () => {
                                 <th scope="col">Tr{index + 1}</th>
                             ))}
 
-                          
+
 
 
 

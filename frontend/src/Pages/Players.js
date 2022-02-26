@@ -12,6 +12,8 @@ import ModalEditPlayer from '../components/Modal/ModalEditPlayer';
 import { NavLink } from 'react-bootstrap';
 import CustomPopup from './Admin/PopUp';
 import { setisOpen } from '../Store/Slices/ModalSlice';
+import { Modal } from 'react-bootstrap'
+
 
 export const Players = () => {
 
@@ -21,10 +23,12 @@ export const Players = () => {
 
     const isOpen = useSelector((state) => state.modal.isOpen)
     const [havePlayers, setHavePlayers] = useState(true);
+    const [show, setShow] = useState(false);
+    const [showDecline, setShowDecline] = useState(false);
 
     const [ratings, setRatings] = useState({});
 
-    const coach = useSelector((state) => state.coach);
+
 
     const positions = ["Goalkeeper", "Central Defender", "Right Defender", "Left Defender", "Midfielder",
         "Attacking Midfielder center", "Attacking Midfielder Right", "Attacking Midfielder Left", "Forward",
@@ -32,6 +36,11 @@ export const Players = () => {
     const playersArray = arrayPlayers;
 
     const [filteredPersons, setfilteredPersons] = useState(arrayPlayers);
+    console.log(filteredPersons)
+
+    const coach = useSelector((state) => (state.coach));
+    const approved = useSelector((state) => (state.coach.approved));
+    const rejected = useSelector((state) => (state.coach.rejected));
 
     const handleChange = e => {
         setSearchField(e.target.value);
@@ -40,7 +49,7 @@ export const Players = () => {
     const handleChangeParent = () => {
         console.log("khjvjagdfsuagvh")
     }
-
+    const [AVG_All, setAVG_All] = useState([]);
 
     const [OpenModalGoalkeeper, setOpenModalGoalkeeper] = useState(false);
     const [OpenModalCentralDefender, setOpenModalCentralDefender] = useState(false);
@@ -51,8 +60,24 @@ export const Players = () => {
     const [OpenModalForward, setOpenModalForward] = useState(false);
 
 
-
     const [maxLimit, setmaxLimit] = useState(false);
+
+
+
+
+    useEffect(() => {
+        if (approved === true) {
+            setShow(true);
+        } else if (rejected === true) {
+            setShowDecline(true);
+        }
+        console.log(approved)
+        console.log(rejected)
+    }, [approved,rejected])
+
+
+
+
 
     const chooseModal = (player) => {
         console.log(player)
@@ -142,15 +167,14 @@ export const Players = () => {
         ))
         console.log(searchField);
         console.log(filteredPersons);
+        console.log(AVG_All);
+        // findAllRatings()
 
-        findAllRatings()
-
-    }, [searchField], [arrayplayersRating])
+    }, [searchField, arrayplayersRating])
 
 
     const useSortableData = (arrayPlayers, config = null) => {
         const [sortConfig, setSortConfig] = React.useState(config);
-
         const sortedarrayPlayers = React.useMemo(() => {
             let sortablearrayPlayers = [...arrayPlayers];
             if (sortConfig !== null) {
@@ -255,245 +279,246 @@ export const Players = () => {
 
 
 
-    var AVG_All = [];
-    const findAllRatings = () => {
-        arrayPlayers.map((player) => {
-            const temp = arrayplayersRating.find((player1) => {
-                var temp_for = [];
 
-                if (player.name === player1.name && player.surname === player1.surname && player.position === "Goalkeeper") {
+    // const findAllRatings = () => {
+    //     setAVG_All([]);
+    //     arrayPlayers.map((player) => {
+    //         const temp = arrayplayersRating.find((player1) => {
+    //             var temp_for = [];
 
-                    temp_for = (0.05 * (parseFloat(player1.Agility)) +
-                        (0.05 * parseFloat(player1.Communication)) +
-                        (0.05 * parseFloat(player1.Experience)) +
-                        (0.05 * parseFloat(player1.Leadership)) +
-                        (0.05 * parseFloat(player1.Kicking)) +
-                        (0.1 * parseFloat(player1.One_on_ones)) +
-                        (0.1 * parseFloat(player1.Penalty_saving)) +
-                        (0.05 * parseFloat(player1.Personality)) +
-                        (0.1 * parseFloat(player1.Positioning)) +
-                        (0.1 * parseFloat(player1.Rushing_out)) +
-                        (0.1 * parseFloat(player1.Shot_stopping)) +
-                        (0.1 * parseFloat(player1.Reflexes)) +
-                        (0.05 * parseFloat(player1.Tactics)) +
-                        (0.05 * parseFloat(player1.Team_work))
-                    )
-                    // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
-                    AVG_All.push({
-                        name: player.name, surname: player.surname, nationality: player.nationality, birthdate: player.birthdate,
-                        weight: player.weight, height: player.height, rating: temp_for
-                    })
+    //             if (player.name === player1.name && player.surname === player1.surname && player.position === "Goalkeeper") {
 
-                    return player;
-                } else if (player.name === player1.name && player.surname === player1.surname && player.position === "Central Defender") {
+    //                 temp_for = (0.05 * (parseFloat(player1.Agility)) +
+    //                     (0.05 * parseFloat(player1.Communication)) +
+    //                     (0.05 * parseFloat(player1.Experience)) +
+    //                     (0.05 * parseFloat(player1.Leadership)) +
+    //                     (0.05 * parseFloat(player1.Kicking)) +
+    //                     (0.1 * parseFloat(player1.One_on_ones)) +
+    //                     (0.1 * parseFloat(player1.Penalty_saving)) +
+    //                     (0.05 * parseFloat(player1.Personality)) +
+    //                     (0.1 * parseFloat(player1.Positioning)) +
+    //                     (0.1 * parseFloat(player1.Rushing_out)) +
+    //                     (0.1 * parseFloat(player1.Shot_stopping)) +
+    //                     (0.1 * parseFloat(player1.Reflexes)) +
+    //                     (0.05 * parseFloat(player1.Tactics)) +
+    //                     (0.05 * parseFloat(player1.Team_work))
+    //                 )
+    //                 // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
+    //                 AVG_All.push({
+    //                     name: player.name, surname: player.surname, nationality: player.nationality, birthdate: player.birthdate,
+    //                     weight: player.weight, height: player.height, rating: temp_for
+    //                 })
 
-                    temp_for = (
-                        ((0.1 * parseFloat(player1.Aerial_ability)) +
-                            (0.05 * parseFloat(player1.Agility)) +
-                            (0.05 * parseFloat(player1.Communication)) +
-                            (0.05 * parseFloat(player1.Experience)) +
-                            (0.1 * parseFloat(player1.Leadership)) +
-                            (0.1 * parseFloat(player1.Marking)) +
-                            (0.025 * parseFloat(player1.Pace)) +
-                            (0.025 * parseFloat(player1.Passing)) +
-                            (0.05 * parseFloat(player1.Personality)) +
-                            (0.1 * parseFloat(player1.Positioning)) +
-                            (0.025 * parseFloat(player1.Stamina)) +
-                            (0.1 * parseFloat(player1.Strength)) +
-                            (0.05 * parseFloat(player1.Tactics)) +
-                            (0.1 * parseFloat(player1.Tackling)) +
-                            (0.05 * parseFloat(player1.Team_work)) +
-                            (0.025 * parseFloat(player1.Technique))))
-                    // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
-                    AVG_All.push({
-                        name: player.name, surname: player.surname, nationality: player.nationality,
-                        preferred_foot: player.preferred_foot, birthdate: player.birthdate,
-                        weight: player.weight, height: player.height, rating: temp_for
-                    })
+    //                 return player;
+    //             } else if (player.name === player1.name && player.surname === player1.surname && player.position === "Central Defender") {
 
-                    return player;
-                }
-                else if (player.name === player1.name && player.surname === player1.surname &&
-                    (player.position === "Right Defender")) {
+    //                 temp_for = (
+    //                     ((0.1 * parseFloat(player1.Aerial_ability)) +
+    //                         (0.05 * parseFloat(player1.Agility)) +
+    //                         (0.05 * parseFloat(player1.Communication)) +
+    //                         (0.05 * parseFloat(player1.Experience)) +
+    //                         (0.1 * parseFloat(player1.Leadership)) +
+    //                         (0.1 * parseFloat(player1.Marking)) +
+    //                         (0.025 * parseFloat(player1.Pace)) +
+    //                         (0.025 * parseFloat(player1.Passing)) +
+    //                         (0.05 * parseFloat(player1.Personality)) +
+    //                         (0.1 * parseFloat(player1.Positioning)) +
+    //                         (0.025 * parseFloat(player1.Stamina)) +
+    //                         (0.1 * parseFloat(player1.Strength)) +
+    //                         (0.05 * parseFloat(player1.Tactics)) +
+    //                         (0.1 * parseFloat(player1.Tackling)) +
+    //                         (0.05 * parseFloat(player1.Team_work)) +
+    //                         (0.025 * parseFloat(player1.Technique))))
+    //                 // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
+    //                 AVG_All.push({
+    //                     name: player.name, surname: player.surname, nationality: player.nationality,
+    //                     preferred_foot: player.preferred_foot, birthdate: player.birthdate,
+    //                     weight: player.weight, height: player.height, rating: temp_for
+    //                 })
 
-                    temp_for = ((0.05 * parseFloat(player1.Agility)) +
-                        (0.05 * parseFloat(player1.Communication)) +
-                        (0.1 * parseFloat(player1.Crossing)) +
-                        (0.05 * parseFloat(player1.Experience)) +
-                        (0.1 * parseFloat(player1.Going_forward)) +
-                        (0.05 * parseFloat(player1.Leadership)) +
-                        (0.1 * parseFloat(player1.Marking)) +
-                        (0.1 * parseFloat(player1.Pace)) +
-                        (0.05 * parseFloat(player1.Passing)) +
-                        (0.05 * parseFloat(player1.Personality)) +
-                        (0.05 * parseFloat(player1.Positioning)) +
-                        (0.05 * parseFloat(player1.Stamina)) +
-                        (0.05 * parseFloat(player1.Strength)) +
-                        (0.05 * parseFloat(player1.Tactics)) +
-                        (0.05 * parseFloat(player1.Team_work)) +
-                        (0.05 * parseFloat(player1.Technique)))
-                    // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
-                    AVG_All.push({
-                        name: player.name, surname: player.surname, nationality: player.nationality, birthdate: player.birthdate,
-                        weight: player.weight, height: player.height, rating: temp_for
-                    })
+    //                 return player;
+    //             }
+    //             else if (player.name === player1.name && player.surname === player1.surname &&
+    //                 (player.position === "Right Defender")) {
 
-                    return player;
-                } else if (player.name === player1.name && player.surname === player1.surname &&
-                    (player.position === "Left Defender")) {
+    //                 temp_for = ((0.05 * parseFloat(player1.Agility)) +
+    //                     (0.05 * parseFloat(player1.Communication)) +
+    //                     (0.1 * parseFloat(player1.Crossing)) +
+    //                     (0.05 * parseFloat(player1.Experience)) +
+    //                     (0.1 * parseFloat(player1.Going_forward)) +
+    //                     (0.05 * parseFloat(player1.Leadership)) +
+    //                     (0.1 * parseFloat(player1.Marking)) +
+    //                     (0.1 * parseFloat(player1.Pace)) +
+    //                     (0.05 * parseFloat(player1.Passing)) +
+    //                     (0.05 * parseFloat(player1.Personality)) +
+    //                     (0.05 * parseFloat(player1.Positioning)) +
+    //                     (0.05 * parseFloat(player1.Stamina)) +
+    //                     (0.05 * parseFloat(player1.Strength)) +
+    //                     (0.05 * parseFloat(player1.Tactics)) +
+    //                     (0.05 * parseFloat(player1.Team_work)) +
+    //                     (0.05 * parseFloat(player1.Technique)))
+    //                 // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
+    //                 AVG_All.push({
+    //                     name: player.name, surname: player.surname, nationality: player.nationality, birthdate: player.birthdate,
+    //                     weight: player.weight, height: player.height, rating: temp_for
+    //                 })
 
-                    temp_for = (0.05 * parseFloat(player1.Agility)) +
-                        (0.05 * parseFloat(player1.Communication)) +
-                        (0.1 * parseFloat(player1.Crossing)) +
-                        (0.05 * parseFloat(player1.Experience)) +
-                        (0.1 * parseFloat(player1.Going_forward)) +
-                        (0.05 * parseFloat(player1.Leadership)) +
-                        (0.1 * parseFloat(player1.Marking)) +
-                        (0.1 * parseFloat(player1.Pace)) +
-                        (0.05 * parseFloat(player1.Passing)) +
-                        (0.05 * parseFloat(player1.Personality)) +
-                        (0.05 * parseFloat(player1.Positioning)) +
-                        (0.05 * parseFloat(player1.Stamina)) +
-                        (0.05 * parseFloat(player1.Strength)) +
-                        (0.05 * parseFloat(player1.Tactics)) +
-                        (0.05 * parseFloat(player1.Team_work)) +
-                        (0.05 * parseFloat(player1.Technique))
-                    console.log(temp_for)
-                    // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
-                    AVG_All.push({
-                        name: player.name, surname: player.surname, nationality: player.nationality, birthdate: player.birthdate,
-                        weight: player.weight, height: player.height, rating: temp_for
-                    })
+    //                 return player;
+    //             } else if (player.name === player1.name && player.surname === player1.surname &&
+    //                 (player.position === "Left Defender")) {
 
-                    return player;
-                }
-                else if (player.name === player1.name && player.surname === player1.surname &&
-                    player.position === "Midfielder") {
+    //                 temp_for = (0.05 * parseFloat(player1.Agility)) +
+    //                     (0.05 * parseFloat(player1.Communication)) +
+    //                     (0.1 * parseFloat(player1.Crossing)) +
+    //                     (0.05 * parseFloat(player1.Experience)) +
+    //                     (0.1 * parseFloat(player1.Going_forward)) +
+    //                     (0.05 * parseFloat(player1.Leadership)) +
+    //                     (0.1 * parseFloat(player1.Marking)) +
+    //                     (0.1 * parseFloat(player1.Pace)) +
+    //                     (0.05 * parseFloat(player1.Passing)) +
+    //                     (0.05 * parseFloat(player1.Personality)) +
+    //                     (0.05 * parseFloat(player1.Positioning)) +
+    //                     (0.05 * parseFloat(player1.Stamina)) +
+    //                     (0.05 * parseFloat(player1.Strength)) +
+    //                     (0.05 * parseFloat(player1.Tactics)) +
+    //                     (0.05 * parseFloat(player1.Team_work)) +
+    //                     (0.05 * parseFloat(player1.Technique))
+    //                 console.log(temp_for)
+    //                 // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
+    //                 AVG_All.push({
+    //                     name: player.name, surname: player.surname, nationality: player.nationality, birthdate: player.birthdate,
+    //                     weight: player.weight, height: player.height, rating: temp_for
+    //                 })
 
-                    temp_for = ((
-                        0.05 * parseFloat(player1.Aerial_ability) +
-                        0.05 * parseFloat(player1.Agility) +
-                        0.05 * parseFloat(player1.Communication) +
-                        0.05 * parseFloat(player1.Composure) +
-                        0.05 * parseFloat(player1.Creativity) +
-                        0.05 * parseFloat(player1.Experience) +
-                        0.1 * parseFloat(player1.Leadership) +
-                        0.05 * parseFloat(player1.Marking) +
-                        0.05 * parseFloat(player1.Pace) +
-                        0.05 * parseFloat(player1.Passing) +
-                        0.05 * parseFloat(player1.Personality) +
-                        0.05 * parseFloat(player1.Positioning) +
-                        0.05 * parseFloat(player1.Shots) +
-                        0.1 * parseFloat(player1.Stamina) +
-                        0.05 * parseFloat(player1.Strength) +
-                        0.05 * parseFloat(player1.Tactics) +
-                        0.05 * parseFloat(player1.Team_work) +
-                        0.05 * parseFloat(player1.Technique)))
-                    // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
-                    AVG_All.push({
-                        name: player.name, surname: player.surname, nationality: player.nationality, birthdate: player.birthdate,
-                        weight: player.weight, height: player.height, rating: temp_for
-                    })
+    //                 return player;
+    //             }
+    //             else if (player.name === player1.name && player.surname === player1.surname &&
+    //                 player.position === "Midfielder") {
 
-                    return player;
-                }
+    //                 temp_for = ((
+    //                     0.05 * parseFloat(player1.Aerial_ability) +
+    //                     0.05 * parseFloat(player1.Agility) +
+    //                     0.05 * parseFloat(player1.Communication) +
+    //                     0.05 * parseFloat(player1.Composure) +
+    //                     0.05 * parseFloat(player1.Creativity) +
+    //                     0.05 * parseFloat(player1.Experience) +
+    //                     0.1 * parseFloat(player1.Leadership) +
+    //                     0.05 * parseFloat(player1.Marking) +
+    //                     0.05 * parseFloat(player1.Pace) +
+    //                     0.05 * parseFloat(player1.Passing) +
+    //                     0.05 * parseFloat(player1.Personality) +
+    //                     0.05 * parseFloat(player1.Positioning) +
+    //                     0.05 * parseFloat(player1.Shots) +
+    //                     0.1 * parseFloat(player1.Stamina) +
+    //                     0.05 * parseFloat(player1.Strength) +
+    //                     0.05 * parseFloat(player1.Tactics) +
+    //                     0.05 * parseFloat(player1.Team_work) +
+    //                     0.05 * parseFloat(player1.Technique)))
+    //                 // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
+    //                 AVG_All.push({
+    //                     name: player.name, surname: player.surname, nationality: player.nationality, birthdate: player.birthdate,
+    //                     weight: player.weight, height: player.height, rating: temp_for
+    //                 })
 
-                else if (player.name === player1.name && player.surname === player1.surname &&
-                    player.position === "Attacking Midfielder center") {
+    //                 return player;
+    //             }
 
-                    temp_for = ((
-                        0.1 * parseFloat(player1.Through_balls) +
-                        0.05 * parseFloat(player1.Agility) +
-                        0.05 * parseFloat(player1.Communication) +
-                        0.05 * parseFloat(player1.Composure) +
-                        0.1 * parseFloat(player1.Dribbling) +
-                        0.05 * parseFloat(player1.Experience) +
-                        0.05 * parseFloat(player1.Finishing) +
-                        0.05 * parseFloat(player1.Leadership) +
-                        0.05 * parseFloat(player1.Pace) +
-                        0.05 * parseFloat(player1.Passing) +
-                        0.05 * parseFloat(player1.Personality) +
-                        0.05 * parseFloat(player1.Crossing) +
-                        0.05 * parseFloat(player1.Shots) +
-                        0.05 * parseFloat(player1.Stamina) +
-                        0.05 * parseFloat(player1.Strength) +
-                        0.05 * parseFloat(player1.Tactics) +
-                        0.05 * parseFloat(player1.Team_work) +
-                        0.05 * parseFloat(player1.Technique)))
-                    // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
-                    AVG_All.push({
-                        name: player.name, surname: player.surname, nationality: player.nationality, birthdate: player.birthdate,
-                        weight: player.weight, height: player.height, rating: temp_for
-                    })
+    //             else if (player.name === player1.name && player.surname === player1.surname &&
+    //                 player.position === "Attacking Midfielder center") {
 
-                    return player;
-                }
-                else if (player.name === player1.name && player.surname === player1.surname &&
-                    (player.position === "Attacking Midfielder Right" || player.position === "Attacking Midfielder Left")) {
+    //                 temp_for = ((
+    //                     0.1 * parseFloat(player1.Through_balls) +
+    //                     0.05 * parseFloat(player1.Agility) +
+    //                     0.05 * parseFloat(player1.Communication) +
+    //                     0.05 * parseFloat(player1.Composure) +
+    //                     0.1 * parseFloat(player1.Dribbling) +
+    //                     0.05 * parseFloat(player1.Experience) +
+    //                     0.05 * parseFloat(player1.Finishing) +
+    //                     0.05 * parseFloat(player1.Leadership) +
+    //                     0.05 * parseFloat(player1.Pace) +
+    //                     0.05 * parseFloat(player1.Passing) +
+    //                     0.05 * parseFloat(player1.Personality) +
+    //                     0.05 * parseFloat(player1.Crossing) +
+    //                     0.05 * parseFloat(player1.Shots) +
+    //                     0.05 * parseFloat(player1.Stamina) +
+    //                     0.05 * parseFloat(player1.Strength) +
+    //                     0.05 * parseFloat(player1.Tactics) +
+    //                     0.05 * parseFloat(player1.Team_work) +
+    //                     0.05 * parseFloat(player1.Technique)))
+    //                 // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
+    //                 AVG_All.push({
+    //                     name: player.name, surname: player.surname, nationality: player.nationality, birthdate: player.birthdate,
+    //                     weight: player.weight, height: player.height, rating: temp_for
+    //                 })
 
-                    temp_for = ((
-                        0.1 * parseFloat(player1.One_on_ones) +
-                        0.05 * parseFloat(player1.Agility) +
-                        0.05 * parseFloat(player1.Communication) +
-                        0.05 * parseFloat(player1.Composure) +
-                        0.1 * parseFloat(player1.Dribbling) +
-                        0.05 * parseFloat(player1.Experience) +
-                        0.05 * parseFloat(player1.Finishing) +
-                        0.05 * parseFloat(player1.Leadership) +
-                        0.05 * parseFloat(player1.Pace) +
-                        0.05 * parseFloat(player1.Aerial_ability) +
-                        0.05 * parseFloat(player1.Personality) +
-                        0.05 * parseFloat(player1.Crossing) +
-                        0.05 * parseFloat(player1.Shots) +
-                        0.05 * parseFloat(player1.Stamina) +
-                        0.05 * parseFloat(player1.Strength) +
-                        0.05 * parseFloat(player1.Tactics) +
-                        0.05 * parseFloat(player1.Team_work) +
-                        0.05 * parseFloat(player1.Technique)))
-                    // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
-                    AVG_All.push({
-                        name: player.name, surname: player.surname, nationality: player.nationality, birthdate: player.birthdate,
-                        weight: player.weight, height: player.height, rating: temp_for
-                    })
+    //                 return player;
+    //             }
+    //             else if (player.name === player1.name && player.surname === player1.surname &&
+    //                 (player.position === "Attacking Midfielder Right" || player.position === "Attacking Midfielder Left")) {
 
-                    return player;
-                }
-                else if (player.name === player1.name && player.surname === player1.surname &&
-                    player.position === "Forward") {
+    //                 temp_for = ((
+    //                     0.1 * parseFloat(player1.One_on_ones) +
+    //                     0.05 * parseFloat(player1.Agility) +
+    //                     0.05 * parseFloat(player1.Communication) +
+    //                     0.05 * parseFloat(player1.Composure) +
+    //                     0.1 * parseFloat(player1.Dribbling) +
+    //                     0.05 * parseFloat(player1.Experience) +
+    //                     0.05 * parseFloat(player1.Finishing) +
+    //                     0.05 * parseFloat(player1.Leadership) +
+    //                     0.05 * parseFloat(player1.Pace) +
+    //                     0.05 * parseFloat(player1.Aerial_ability) +
+    //                     0.05 * parseFloat(player1.Personality) +
+    //                     0.05 * parseFloat(player1.Crossing) +
+    //                     0.05 * parseFloat(player1.Shots) +
+    //                     0.05 * parseFloat(player1.Stamina) +
+    //                     0.05 * parseFloat(player1.Strength) +
+    //                     0.05 * parseFloat(player1.Tactics) +
+    //                     0.05 * parseFloat(player1.Team_work) +
+    //                     0.05 * parseFloat(player1.Technique)))
+    //                 // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
+    //                 AVG_All.push({
+    //                     name: player.name, surname: player.surname, nationality: player.nationality, birthdate: player.birthdate,
+    //                     weight: player.weight, height: player.height, rating: temp_for
+    //                 })
 
-                    temp_for = ((
-                        0.1 * parseFloat(player1.Through_balls) +
-                        0.05 * parseFloat(player1.Agility) +
-                        0.05 * parseFloat(player1.Communication) +
-                        0.05 * parseFloat(player1.Composure) +
-                        0.1 * parseFloat(player1.Dribbling) +
-                        0.05 * parseFloat(player1.Experience) +
-                        0.05 * parseFloat(player1.Finishing) +
-                        0.05 * parseFloat(player1.Leadership) +
-                        0.05 * parseFloat(player1.Pace) +
-                        0.05 * parseFloat(player1.Passing) +
-                        0.05 * parseFloat(player1.Personality) +
-                        0.05 * parseFloat(player1.Crossing) +
-                        0.05 * parseFloat(player1.Shots) +
-                        0.05 * parseFloat(player1.Stamina) +
-                        0.05 * parseFloat(player1.Strength) +
-                        0.05 * parseFloat(player1.Tactics) +
-                        0.05 * parseFloat(player1.Team_work) +
-                        0.05 * parseFloat(player1.Technique)))
-                    // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
-                    AVG_All.push({
-                        name: player.name, surname: player.surname, nationality: player.nationality, birthdate: player.birthdate,
-                        weight: player.weight, height: player.height, rating: temp_for
-                    })
+    //                 return player;
+    //             }
+    //             else if (player.name === player1.name && player.surname === player1.surname &&
+    //                 player.position === "Forward") {
 
-                    return player;
-                }
-            })
-            setRatings(AVG_All)
+    //                 temp_for = ((
+    //                     0.05 * parseFloat(player1.Aerial_ability) +
+    //                     0.05 * parseFloat(player1.Agility) +
+    //                     0.05 * parseFloat(player1.Communication) +
+    //                     0.05 * parseFloat(player1.Composure) +
+    //                     0.05 * parseFloat(player1.Dribbling) +
+    //                     0.05 * parseFloat(player1.Experience) +
+    //                     0.1 * parseFloat(player1.Finishing) +
+    //                     0.05 * parseFloat(player1.Leadership) +
+    //                     0.05 * parseFloat(player1.Pace) +
+    //                     0.05 * parseFloat(player1.Passing) +
+    //                     0.05 * parseFloat(player1.Personality) +
+    //                     0.1 * parseFloat(player1.Positioning) +
+    //                     0.05 * parseFloat(player1.Shots) +
+    //                     0.05 * parseFloat(player1.Stamina) +
+    //                     0.05 * parseFloat(player1.Strength) +
+    //                     0.05 * parseFloat(player1.Tactics) +
+    //                     0.05 * parseFloat(player1.Team_work) +
+    //                     0.05 * parseFloat(player1.Technique)))
+    //                 // AVG_Forward.push(player_rating.surname, parseFloat(temp_FOR));
+    //                 AVG_All.push({
+    //                     name: player.name, surname: player.surname, nationality: player.nationality, birthdate: player.birthdate,
+    //                     weight: player.weight, height: player.height, rating: temp_for
+    //                 })
 
-        })
-        console.log(AVG_All)
-    }
+    //                 return player;
+    //             }
+    //         })
+    //         setRatings(AVG_All)
+
+    //     })
+    //     console.log(AVG_All)
+    // }
 
 
 
@@ -542,8 +567,8 @@ export const Players = () => {
                             className={getClassNamesFor('height')}>Height(cm)</th>
                         <th scope="col" onClick={() => requestSort('weight')}
                             className={getClassNamesFor('weight')}>Weight(Kg)</th>
-                        <th scope="col" onClick={() => requestSort('weight')}
-                            className={getClassNamesFor('weight')}>Rating</th>
+                        <th scope="col" onClick={() => requestSort('rating')}
+                            className={getClassNamesFor('rating')}>Rating</th>
                         <th scope="col">Actions</th>
 
                     </tr>
@@ -553,7 +578,6 @@ export const Players = () => {
 
                 <tbody>
                     {arrayPlayers.map((player, index) => (
-
                         <tr key={player.id}>
                             <td>{index + 1}</td>
                             <td style={{
@@ -568,7 +592,7 @@ export const Players = () => {
                             <td>{player.birthdate}</td>
                             <td>{player.height}</td>
                             <td>{player.weight}</td>
-                            <td>Rating</td>
+                            <td>{player.rating}</td>
                             <td className='action_buttons'>
                                 <button className='edit_btn' onClick={() => functionEdit(player)}> Edit </button>
                                 <button className='rating_btn' onClick={() => chooseModal(player)}> Rating </button>
@@ -626,6 +650,15 @@ export const Players = () => {
     }
 
 
+    const handleClose = () => {
+        setShow(false)
+    }
+
+    const handleClose1 = () => {
+        setShowDecline(false)
+    }
+
+
     return (
         <>
 
@@ -636,6 +669,9 @@ export const Players = () => {
                 <div className='MaxPlayerLimit'>You can't have more than 25 players in your team!</div>
 
             </CustomPopup>}
+
+
+
 
             {!maxLimit && <div class="container-fluid">
 
@@ -726,7 +762,34 @@ export const Players = () => {
             }
 
 
+            <Modal show={show} onHide={handleClose} className="modal">
+                <Modal.Header closeButton>
+                    <Modal.Title>Info</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <div className='playerAccept'>
+                        Your request to sign player has been accepted!
+                    </div>
+                </Modal.Body>
 
+                <Modal.Footer>
+
+                </Modal.Footer>
+            </Modal>
+            <Modal show={showDecline} onHide={handleClose1} className="modal">
+                <Modal.Header closeButton>
+                    <Modal.Title>Info</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <div className='playerReject'>
+                        Your request to sign player has been rejected!
+                    </div>
+                </Modal.Body>
+
+                <Modal.Footer>
+
+                </Modal.Footer>
+            </Modal>
         </>
 
     );
