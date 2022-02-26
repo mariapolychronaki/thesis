@@ -142,12 +142,16 @@ const Admin = () => {
 
 
 
-    const rejectFunction =()=>{
+    const rejectFunction = () => {
         popupCloseHandler()
         setRemovePlayerBtn(!removePlayerBtn)
         dispatch(setApproved(true))
     }
-
+    const acceptFunction = () => {
+        popupCloseHandler();
+        setAcceptEn(!acceptEn);
+        dispatch(setRejected());
+    }
 
 
 
@@ -593,7 +597,7 @@ const Admin = () => {
                         to sign  <span className='AddUserToBase'>{Player.name} {Player.surname}</span>?</div>
                     <div className='space'></div>
                     <div className='offset-5 col-3'>
-                        <button onClick={popupCloseHandler, () => setAcceptEn(!acceptEn), () => dispatch(setRejected())} className='YesBtnAccept' >Yes</button>
+                        <button onClick={acceptFunction} className='YesBtnAccept' >Yes</button>
                         <button className='NoBtnPopUp' onClick={popupCloseHandler, () => setAcceptEn(!acceptEn)}>No</button>
                     </div>
                 </CustomPopup>}
