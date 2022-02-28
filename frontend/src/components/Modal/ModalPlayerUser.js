@@ -262,7 +262,7 @@ const ModalPlayerUser = ({ }) => {
                                 </div>
                                 <div className='col-4'>
 
-                                    <Dropdown_weight className="weight_op" handleChangeCallback={handleChangeParent3} onChange={handleChange} />
+                                    <Dropdown_weight className="weight_op"  handleChangeCallback={handleChangeParent3} onChange={handleChange} />
                                 </div>
                             </div>
 
@@ -278,7 +278,7 @@ const ModalPlayerUser = ({ }) => {
                     </div>
                 </div>
             </div >}
-            <Modal show={show} onHide={handleClose} className="modal">
+            {/* <Modal show={show} onHide={handleClose} className="modal">
                 <Modal.Header closeButton>
                     <Modal.Title>Info</Modal.Title>
                 </Modal.Header>
@@ -291,7 +291,7 @@ const ModalPlayerUser = ({ }) => {
                 <Modal.Footer>
 
                 </Modal.Footer>
-            </Modal>
+            </Modal> */}
         </>
     )
 }

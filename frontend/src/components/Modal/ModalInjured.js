@@ -4,6 +4,7 @@ import 'react-bootstrap'
 import ModalGoalkeeper from './ModalGoalkeeper'
 import { useState } from 'react'
 import ModalAddInjuredPlayer from './ModalAddInjuredPlayer'
+import { arrayInjured } from '../../Constants/Constants'
 
 const ModalInjured = ({ closeModalInjured }) => {
 
@@ -69,7 +70,7 @@ const ModalInjured = ({ closeModalInjured }) => {
 
 
                         <tbody>
-                            {arrayPlayers.map((player, index) => (
+                            {arrayInjured.map((player, index) => (
                                 <tr key={player.id}>
                                     <td className='tr_injured'>{index + 1}</td>
                                     <td className='tr_injured'>{player.name}</td>

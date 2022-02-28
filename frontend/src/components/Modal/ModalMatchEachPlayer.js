@@ -38,7 +38,7 @@ const ModalMatchEachPlayer = ({ closeModalMatchEachPlayer, closeModalMatch }) =>
 
             <Modal show={confirm} onHide={handleClose} className="modal">
                 <Modal.Header closeButton>
-                    <Modal.Title>Session</Modal.Title>
+                    <Modal.Title>Match</Modal.Title>
                 </Modal.Header>
 
 

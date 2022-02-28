@@ -10,7 +10,9 @@ const ModalEveryMatchPlayerRating = (closeModalMatchEachPlayer) => {
     const [data, setdata] = useState({});
 
 
-
+    const positions = ["Goalkeeper", "Central Defender", "Right Defender", "Left Defender", "Midfielder",
+    "Attacking Midfielder center", "Attacking Midfielder Right", "Attacking Midfielder Left", "Forward",
+];
 
     const initializePlayers = () => {
 
@@ -85,7 +87,10 @@ const ModalEveryMatchPlayerRating = (closeModalMatchEachPlayer) => {
                 healthyplayers.push({ name: player.name, surname: player.surname })
                 console.log(player.name)
                 console.log(player.surname)
-            }
+            }  
+        })
+        healthyplayers.sort((a, b) => {
+            return (positions.indexOf(a.position) - positions.indexOf(b.position))
         })
     }
 

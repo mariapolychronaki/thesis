@@ -350,7 +350,7 @@ const Admin = () => {
         };
         return (
             <>
-                <div className='offset-4 col-4 TitleInAdminSignUp'>Coaches Users</div>
+                <div className='offset-4 col-4 TitleInAdminSignUp'>Coach Users</div>
                 <table className='table'>
 
                     <thead>
@@ -364,6 +364,7 @@ const Admin = () => {
                                 className={getClassNamesFor('surname')} >Surname</th>
                             <th>Email</th>
                             <th>Team</th>
+                            <th>Players</th>
                             <th>Actions</th>
 
 
@@ -390,6 +391,9 @@ const Admin = () => {
 
                                 <td className='font_bold'>
                                     {user.team}
+                                </td>
+                                <td className='font_bold'>
+                                    {user.numberOfPlayers}
                                 </td>
 
                                 <td>
@@ -614,12 +618,11 @@ const Admin = () => {
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col"></th>
                                         <th scope="col">Coach</th>
-                                        <th scope="col"></th>
-                                        <th scope="col" >Player Name</th>
-                                        <th scope="col" ></th>
-                                        <th scope="col" >Team</th>
+                                        <th scope="col">of team</th>
+                                        <th scope="col">with players</th>
+                                        <th scope="col" >claimed Player</th>
+                                        <th scope="col" >from Team</th>
                                         <th scope="col" >Actions</th>
 
 
@@ -632,22 +635,21 @@ const Admin = () => {
                                             <td >
                                                 {index + 1}
                                             </td>
-                                            <td >
-                                                Coach
-                                            </td>
+
                                             <td className='font_bold'>
                                                 {enquiry.coach}
                                             </td>
                                             <td>
-                                                has claimed
+                                                {enquiry.teamCoach}
+                                            </td>
+                                            <td>
+                                                {enquiry.numberOfPlayers}
                                             </td>
                                             <td className='font_bold'>
                                                 {enquiry.name}<span className='span1'>
                                                     {enquiry.surname}</span>
                                             </td>
-                                            <td >
-                                                from team
-                                            </td>
+                                            
                                             <td className='font_bold'>
                                                 {enquiry.team}
                                             </td>

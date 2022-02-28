@@ -2521,8 +2521,8 @@ export const Lineup = () => {
 
                             </div>
                             <div>
-                                <button className='PDF' >Export PDF</button>
-                                {/* na kanei export se pdf */}
+                                {/* <button className='PDF' >Export PDF</button>  */}
+                                 {/* na kanei export se pdf */}
                             </div>
                         </div>
 
@@ -2737,7 +2737,7 @@ export const Lineup = () => {
                                 </div>
                             </div>
                             <div>
-                                <button className='PDF' >Export PDF</button>
+                                {/* <button className='PDF' >Export PDF</button> */}
                                 {/* na kanei export se pdf */}
                             </div>
                         </div>
@@ -2952,7 +2952,7 @@ export const Lineup = () => {
                             </div>
 
                             <div>
-                                <button className='PDF' >Export PDF</button>
+                                {/* <button className='PDF' >Export PDF</button> */}
                                 {/* na kanei export se pdf */}
                             </div>
                         </div>
