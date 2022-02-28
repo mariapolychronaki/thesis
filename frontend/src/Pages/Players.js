@@ -768,7 +768,7 @@ export const Players = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <div className='playerAccept'>
-                        Your request to sign player has been accepted!
+                        Your request to sign Giorgos Stratakis has been accepted!
                     </div>
                 </Modal.Body>
 
@@ -782,7 +782,7 @@ export const Players = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <div className='playerReject'>
-                        Your request to sign player has been rejected!
+                        Your request to sign Giorgos Stratakis has been rejected!
                     </div>
                 </Modal.Body>
 

@@ -89,7 +89,7 @@ const ModalPlayerUser = ({ }) => {
                                     <label>SSN</label>
                                 </div>
                                 <div className='col-4 BackendInputs'>
-                                12345678900
+                                    12345678900
                                 </div>
                             </div>
 
@@ -262,7 +262,7 @@ const ModalPlayerUser = ({ }) => {
                                 </div>
                                 <div className='col-4'>
 
-                                    <Dropdown_weight className="weight_op"  handleChangeCallback={handleChangeParent3} onChange={handleChange} />
+                                    <Dropdown_weight className="weight_op" handleChangeCallback={handleChangeParent3} onChange={handleChange} />
                                 </div>
                             </div>
 
@@ -272,26 +272,29 @@ const ModalPlayerUser = ({ }) => {
                         <div className='col-12 btns'>
                             <div className='offset-9 col-2'>
                                 <button className='confirm_button' onClick={confirm, () => setEdit(!edit)}>Confirm</button>
-                                
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div >}
-            {/* <Modal show={show} onHide={handleClose} className="modal">
+            <Modal show={show} onHide={handleClose} className="modal">
                 <Modal.Header closeButton>
                     <Modal.Title>Info</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div className='playerAccept'>
-                        You have been tranferred to "TeamName"
-                    </div>
-                </Modal.Body>
+                        You have been tranferred to 
+                        <span style={{fontWeight:"bolder",marginLeft:"2%"}}>
+                         Anthestion
+                    </span>
+                </div>
+            </Modal.Body>
 
-                <Modal.Footer>
+            <Modal.Footer>
 
-                </Modal.Footer>
-            </Modal> */}
+            </Modal.Footer>
+        </Modal>
         </>
     )
 }

@@ -19,6 +19,7 @@ import ModalInjured from './ModalInjured'
 import { arrayPlayers } from '../../Constants/Constants'
 import { Modal } from 'react-bootstrap'
 import moment from 'moment';
+import { array } from 'prop-types'
 
 const ModalPlayer = ({ closeModalPlayer, isOpen }) => {
 
@@ -75,9 +76,26 @@ const ModalPlayer = ({ closeModalPlayer, isOpen }) => {
     const validate = (values) => {
 
         let errors = {}
+        // var flagSSN = false;
+        // arrayPlayers.map((player) => {
+        //     if (player.ssn === values.ssn) {
+        //         flagSSN = true;
+        //         console.log(player.ssn)
+        //         console.log(values.ssn)
+        //         console.log(flagSSN)
+        //     }
+        //     return flagSSN;
+        // })
 
-
-        if (!values.ssn) {
+        // if (flagSSN === true) {
+        //     errors.ssn = "Ssn already exists!"
+        //     setShow(true)
+        //     setErrors(errors)
+        //     console.log(errors)
+        //     return false;
+        // }
+        // else
+         if (!values.ssn) {
             errors.ssn = "Ssn is required!"
             setErrors(errors)
             setShow(true)

@@ -11,7 +11,7 @@ export const users = [
     },
     {
         email: 'coach@gmail.com', name: 'Nikandros', surname: 'Koufas', user_type: 'Coach', team: 'Paok', password: "123456",
-        numberOfPlayers:"22"
+        numberOfPlayers: "22"
     },
     {
         email: 'konsa@gmail.com', name: 'Konstantinos', surname: 'Sakas', user_type: 'Player', team: 'Ane'
@@ -82,76 +82,76 @@ export const users = [
         email: 'john@gmail.com', name: 'Manos', surname: 'Niakakis', user_type: 'Player', team: 'Romas'
     }, {
         email: 'go1234@gmail.com', name: 'Manos', surname: 'Stratos', user_type: 'Coach', team: 'Romaijb',
-        numberOfPlayers:"20"
+        numberOfPlayers: "20"
 
     },
 
     {
         email: 'kostas@gmil.com', name: 'Manolis', surname: 'Xristos', user_type: 'Coach', team: 'Ofi',
-        numberOfPlayers:"24"
+        numberOfPlayers: "24"
     },
     {
         email: 'strat@gmail.com', name: 'Aggelos', surname: 'Kitsos', user_type: 'Coach', team: 'Aoan'
         ,
-        numberOfPlayers:"17"
+        numberOfPlayers: "17"
     },
     {
         email: 'sotiris@yahoo.gr', name: 'Sotiris', surname: 'Mikos', user_type: 'Coach', team: 'Aek'
         ,
-        numberOfPlayers:"20"
+        numberOfPlayers: "20"
     },
     {
         email: 'panos@gmail.com', name: 'Panos', surname: 'Pero', user_type: 'Coach', team: 'Aok'
         ,
-        numberOfPlayers:"18"
+        numberOfPlayers: "18"
     },
     {
         email: 'goiadjbaihfvu1234@gmail.com', name: 'Manos', surname: 'Stratakis', user_type: 'Coach', team: 'Romas',
-        numberOfPlayers:"21"
+        numberOfPlayers: "21"
     },
     {
         email: 'koufis@gmail.com', name: 'Nikandros', surname: 'Koufas', user_type: 'Coach', team: 'Paok',
-        numberOfPlayers:"23"
+        numberOfPlayers: "23"
     },
     {
         email: 'kostas@gmail.com', name: 'Manolis', surname: 'Xristos', user_type: 'Coach', team: 'Ofi',
-        numberOfPlayers:"22"
+        numberOfPlayers: "22"
     },
     {
         email: 'strat@gmail.com', name: 'Aggelos', surname: 'Kitsos', user_type: 'Coach', team: 'Aoan',
-        numberOfPlayers:"19"
+        numberOfPlayers: "19"
     },
     {
         email: 'sotiris@yahoo.gr', name: 'Sotiris', surname: 'Mikos', user_type: 'Coach', team: 'Aek',
-        numberOfPlayers:"21"
+        numberOfPlayers: "21"
     },
     {
         email: 'panos@gmail.com', name: 'Panos', surname: 'Pero', user_type: 'Coach', team: 'Aok',
-        numberOfPlayers:"24"
+        numberOfPlayers: "24"
     },
     {
         email: 'go1234@gmail.com', name: 'Manos', surname: 'Stratos', user_type: 'Coach', team: 'Romas',
-        numberOfPlayers:"23"
+        numberOfPlayers: "23"
     },
     {
         email: 'koufis@gmail.com', name: 'Nikandros', surname: 'Koufas', user_type: 'Coach', team: 'Paok',
-        numberOfPlayers:"24"
+        numberOfPlayers: "24"
     },
     {
         email: 'kostas@gmail.com', name: 'Manolis', surname: 'Xristos', user_type: 'Coach', team: 'Ofi',
-        numberOfPlayers:"25"
+        numberOfPlayers: "25"
     },
     {
         email: 'strat@gmail.com', name: 'Aggelos', surname: 'Kitsos', user_type: 'Coach', team: 'Aoan',
-        numberOfPlayers:"22"
+        numberOfPlayers: "22"
     },
     {
         email: 'sotiris@yahoo.gr', name: 'Sotiris', surname: 'Mikos', user_type: 'Coach', team: 'Aek',
-        numberOfPlayers:"21"
+        numberOfPlayers: "21"
     },
     {
         email: 'panos@gmail.com', name: 'Panos', surname: 'Pero', user_type: 'Coach', team: 'Aok',
-        numberOfPlayers:"18"
+        numberOfPlayers: "18"
     },
 
 ]
@@ -169,25 +169,25 @@ export const users = [
 
 
 export const Enquiries = [{
-    coach: 'Stratakis',teamCoach:"Barcelona",numberOfPlayers:"20", name: 'Nikolaos', surname: 'Drakos', team: 'Anthe'
+    coach: 'Stratakis', teamCoach: "Barcelona", numberOfPlayers: "20", name: 'Nikolaos', surname: 'Drakos', team: 'Anthe'
 },
 {
-    coach: 'Stratakis',teamCoach:"Real",numberOfPlayers:"18", name: 'Emmanouil', surname: 'Kornilakis', team: 'Anthestion'
+    coach: 'Stratakis', teamCoach: "Real", numberOfPlayers: "18", name: 'Emmanouil', surname: 'Kornilakis', team: 'Anthestion'
 },
 {
-    coach: 'Pasxas',teamCoach:"Moires",numberOfPlayers:"23", name: 'Panagiotis', surname: 'Mikas', team: 'Free Agent'
+    coach: 'Pasxas', teamCoach: "Moires", numberOfPlayers: "23", name: 'Panagiotis', surname: 'Mikas', team: 'Free Agent'
 },
 {
-    coach: 'Terzis',teamCoach:"Anthestion",numberOfPlayers:"24", name: 'Manthos', surname: 'Makos', team: 'AEK'
+    coach: 'Terzis', teamCoach: "Anthestion", numberOfPlayers: "24", name: 'Manthos', surname: 'Makos', team: 'AEK'
 },
 {
-    coach: 'Tito',teamCoach:"OFI",numberOfPlayers:"21", name: 'Orfeas', surname: 'Kafes', team: 'Moires'
+    coach: 'Tito', teamCoach: "OFI", numberOfPlayers: "21", name: 'Orfeas', surname: 'Kafes', team: 'Moires'
 },
 {
-    coach: 'Fino',teamCoach:"OFA",numberOfPlayers:"22", name: 'Andreas', surname: 'Mpoyxas', team: 'Faistos'
+    coach: 'Fino', teamCoach: "OFA", numberOfPlayers: "22", name: 'Andreas', surname: 'Mpoyxas', team: 'Faistos'
 },
 {
-    coach: 'Stratakis',teamCoach:"Faistos",numberOfPlayers:"20", name: 'Nikolaos', surname: 'Drakos', team: 'Anthe'
+    coach: 'Stratakis', teamCoach: "Faistos", numberOfPlayers: "20", name: 'Nikolaos', surname: 'Drakos', team: 'Anthe'
 }
 ]
 
@@ -340,7 +340,7 @@ export const arrayPlayers = [
     {
         ssn: "170813175417", name: "Emmanouil", surname: "Pexynakis", nationality: "Greek",
         position: "Forward", preferred_foot: "Right", birthdate: "07/01/1989", height: "181", weight: "90", rating: "4.8"
-     }
+    }
     // ,  {
     //     ssn: "170813175417", name: "Mr", surname: "Perfect", nationality: "Greek",
     //     position: "Forward", preferred_foot: "Both", birthdate: "07/01/1989", height: "183", weight: "72", rating: "10"
@@ -364,7 +364,7 @@ export const arrayPlayers = [
 export const arrayInjured =
     [
 
-
+       
         {
             ssn: "170813175417", name: "Emmanouil", surname: "Kornilakis", nationality: "Greek",
             position: "Goalkeeper", preferred_foot: "Right", birthdate: "01/01/1998", height: "177", weight: "70"
@@ -2446,6 +2446,40 @@ export const totalMatchRatings = [
             Rating: "6",
         }]
     },
+    // {
+    //     name: "Mr",
+    //     surname: "Perfect",
+    //     matches: [{
+    //         Rating: "10",
+    //     },
+    //     {
+    //         Rating: "10",
+    //     },
+    //     {
+    //         Rating: "10",
+    //     },
+    //     {
+    //         Rating: "10",
+    //     },
+    //     {
+    //         Rating: "10",
+    //     },
+    //     {
+    //         Rating: "10",
+    //     },
+    //     {
+    //         Rating: "10",
+    //     },
+    //     {
+    //         Rating: "10",
+    //     },
+    //     {
+    //         Rating: "10",
+    //     },
+    //     {
+    //         Rating: "10",
+    //     }]
+    // }
 
 ]
 
@@ -3357,6 +3391,48 @@ export const totalTrainingRatings = [
             Rating: "6",
         }]
     },
+    
+    // {
+    //     name: "Mr",
+    //     surname: "Perfect",
+    //     trainings: [{
+    //         Behaviour: "10",
+    //         Rating: "10",
+    //     },
+    //     {
+    //         Behaviour: "10",
+    //         Rating: "10",
+    //     },
+    //     {
+    //         Behaviour: "10",
+    //         Rating: "10",
+    //     },
+    //     {
+    //         Behaviour: "10",
+    //         Rating: "10",
+    //     },
+    //     {
+    //         Behaviour: "10",
+    //         Rating: "10",
+    //     },
+    //     {
+    //         Behaviour: "10",
+    //         Rating: "10",
+    //     },
+    //     {
+    //         Behaviour: "10",
+    //         Rating: "10",
+    //     }, {
+    //         Behaviour: "10",
+    //         Rating: "10",
+    //     }, {
+    //         Behaviour: "10",
+    //         Rating: "10",
+    //     }, {
+    //         Behaviour: "10",
+    //         Rating: "10",
+    //     }]
+    // },
 
 ]
 
