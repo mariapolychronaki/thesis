@@ -341,10 +341,10 @@ export const arrayPlayers = [
         ssn: "170813175417", name: "Emmanouil", surname: "Pexynakis", nationality: "Greek",
         position: "Forward", preferred_foot: "Right", birthdate: "07/01/1989", height: "181", weight: "90", rating: "4.8"
     }
-    // ,  {
-    //     ssn: "170813175417", name: "Mr", surname: "Perfect", nationality: "Greek",
-    //     position: "Forward", preferred_foot: "Both", birthdate: "07/01/1989", height: "183", weight: "72", rating: "10"
-    // }
+    ,  {
+        ssn: "170813175417", name: "Mr", surname: "Perfect", nationality: "Greek",
+        position: "Forward", preferred_foot: "Both", birthdate: "07/01/1989", height: "183", weight: "72", rating: "10"
+    }
 ]
 
 
@@ -373,6 +373,12 @@ export const arrayInjured =
 
         {
             ssn: "170813175417", name: "Konstantinos", surname: "Nodarakis", nationality: "Greek",
+            position: "Forward", preferred_foot: "Right", birthdate: "07/01/1997", height: "183", weight: "72"
+        },
+
+
+        {
+            ssn: "170813175417", name: "Georgios", surname: "Stratakis", nationality: "Greek",
             position: "Forward", preferred_foot: "Right", birthdate: "07/01/1997", height: "183", weight: "72"
         }
     ]
@@ -873,29 +879,29 @@ export const arrayplayersRating = [
         Stamina: "2"
 
     },
-    // {
-    //     name: "Mr",
-    //     surname: "Perfect",
-    //     Personality: "10",
-    //     Experience: "10",
-    //     Agility: "10",
-    //     Team_work: "10",
-    //     Leadership: "10",
-    //     Tactics: "10",
-    //     Communication: "10",
-    //     Pace: "10",
-    //     Strength: "10",
-    //     Technique: "10",
-    //     Passing: "10",
-    //     Composure: "10",
-    //     Dribbling: "10",
-    //     Finishing: "10",
-    //     Positioning: "10",
-    //     Aerial_ability: "10",
-    //     Shots: "10",
-    //     Stamina: "10"
+    {
+        name: "Mr",
+        surname: "Perfect",
+        Personality: "10",
+        Experience: "10",
+        Agility: "10",
+        Team_work: "10",
+        Leadership: "10",
+        Tactics: "10",
+        Communication: "10",
+        Pace: "10",
+        Strength: "10",
+        Technique: "10",
+        Passing: "10",
+        Composure: "10",
+        Dribbling: "10",
+        Finishing: "10",
+        Positioning: "10",
+        Aerial_ability: "10",
+        Shots: "10",
+        Stamina: "10"
 
-    // }
+    }
 
 
 
@@ -1052,12 +1058,12 @@ export const arrayPlayerTrainingRating1 = [
         Behaviour: "6",
         Rating: "6"
     },
-    // {
-    //     name: "Mr",
-    //     surname: "Perfect",
-    //     Behaviour: "10",
-    //     Rating: "10"
-    // }
+    {
+        name: "Mr",
+        surname: "Perfect",
+        Behaviour: "10",
+        Rating: "10"
+    }
 ]
 
 
@@ -1209,12 +1215,12 @@ export const arrayPlayerTrainingRating2 = [
         Behaviour: "7",
         Rating: "7"
     },
-    // {
-    //     name: "Mr",
-    //     surname: "Perfect",
-    //     Behaviour: "10",
-    //     Rating: "10"
-    // }
+    {
+        name: "Mr",
+        surname: "Perfect",
+        Behaviour: "10",
+        Rating: "10"
+    }
 ]
 
 
@@ -1367,12 +1373,12 @@ export const arrayPlayerTrainingRating3 = [
         Behaviour: "6",
         Rating: "6"
     },
-    // {
-    //     name: "Mr",
-    //     surname: "Perfect",
-    //     Behaviour: "10",
-    //     Rating: "10"
-    // }
+    {
+        name: "Mr",
+        surname: "Perfect",
+        Behaviour: "10",
+        Rating: "10"
+    }
 ]
 
 
@@ -1530,12 +1536,12 @@ export const arrayPlayerTrainingRating4 = [
         Behaviour: "8",
         Rating: "8"
     },
-    // {
-    //     name: "Mr",
-    //     surname: "Perfect",
-    //     Behaviour: "10",
-    //     Rating: "10"
-    // }
+    {
+        name: "Mr",
+        surname: "Perfect",
+        Behaviour: "10",
+        Rating: "10"
+    }
 ]
 
 
@@ -1700,12 +1706,12 @@ export const arrayPlayerTrainingRating5 = [
         Behaviour: "6.5",
         Rating: "6.5"
     },
-    // {
-    //     name: "Mr",
-    //     surname: "Perfect",
-    //     Behaviour: "10",
-    //     Rating: "10"
-    // }
+    {
+        name: "Mr",
+        surname: "Perfect",
+        Behaviour: "10",
+        Rating: "10"
+    }
 ]
 
 
@@ -2446,40 +2452,40 @@ export const totalMatchRatings = [
             Rating: "6",
         }]
     },
-    // {
-    //     name: "Mr",
-    //     surname: "Perfect",
-    //     matches: [{
-    //         Rating: "10",
-    //     },
-    //     {
-    //         Rating: "10",
-    //     },
-    //     {
-    //         Rating: "10",
-    //     },
-    //     {
-    //         Rating: "10",
-    //     },
-    //     {
-    //         Rating: "10",
-    //     },
-    //     {
-    //         Rating: "10",
-    //     },
-    //     {
-    //         Rating: "10",
-    //     },
-    //     {
-    //         Rating: "10",
-    //     },
-    //     {
-    //         Rating: "10",
-    //     },
-    //     {
-    //         Rating: "10",
-    //     }]
-    // }
+    {
+        name: "Mr",
+        surname: "Perfect",
+        matches: [{
+            Rating: "10",
+        },
+        {
+            Rating: "10",
+        },
+        {
+            Rating: "10",
+        },
+        {
+            Rating: "10",
+        },
+        {
+            Rating: "10",
+        },
+        {
+            Rating: "10",
+        },
+        {
+            Rating: "10",
+        },
+        {
+            Rating: "10",
+        },
+        {
+            Rating: "10",
+        },
+        {
+            Rating: "10",
+        }]
+    }
 
 ]
 
@@ -3392,47 +3398,47 @@ export const totalTrainingRatings = [
         }]
     },
     
-    // {
-    //     name: "Mr",
-    //     surname: "Perfect",
-    //     trainings: [{
-    //         Behaviour: "10",
-    //         Rating: "10",
-    //     },
-    //     {
-    //         Behaviour: "10",
-    //         Rating: "10",
-    //     },
-    //     {
-    //         Behaviour: "10",
-    //         Rating: "10",
-    //     },
-    //     {
-    //         Behaviour: "10",
-    //         Rating: "10",
-    //     },
-    //     {
-    //         Behaviour: "10",
-    //         Rating: "10",
-    //     },
-    //     {
-    //         Behaviour: "10",
-    //         Rating: "10",
-    //     },
-    //     {
-    //         Behaviour: "10",
-    //         Rating: "10",
-    //     }, {
-    //         Behaviour: "10",
-    //         Rating: "10",
-    //     }, {
-    //         Behaviour: "10",
-    //         Rating: "10",
-    //     }, {
-    //         Behaviour: "10",
-    //         Rating: "10",
-    //     }]
-    // },
+    {
+        name: "Mr",
+        surname: "Perfect",
+        trainings: [{
+            Behaviour: "10",
+            Rating: "10",
+        },
+        {
+            Behaviour: "10",
+            Rating: "10",
+        },
+        {
+            Behaviour: "10",
+            Rating: "10",
+        },
+        {
+            Behaviour: "10",
+            Rating: "10",
+        },
+        {
+            Behaviour: "10",
+            Rating: "10",
+        },
+        {
+            Behaviour: "10",
+            Rating: "10",
+        },
+        {
+            Behaviour: "10",
+            Rating: "10",
+        }, {
+            Behaviour: "10",
+            Rating: "10",
+        }, {
+            Behaviour: "10",
+            Rating: "10",
+        }, {
+            Behaviour: "10",
+            Rating: "10",
+        }]
+    },
 
 ]
 
@@ -3560,11 +3566,11 @@ export const arrayPlayerMatchRating1 = [
         surname: "Pexynakis",
         Rating: "6"
     },
-    // {
-    //     name: "Mr",
-    //     surname: "Perfect",
-    //     Rating: "10"
-    // }
+    {
+        name: "Mr",
+        surname: "Perfect",
+        Rating: "10"
+    }
 ]
 
 
@@ -3690,11 +3696,11 @@ export const arrayPlayerMatchRating2 = [
         surname: "Pexynakis",
         Rating: "6"
     },
-    // {
-    //     name: "Mr",
-    //     surname: "Perfect",
-    //     Rating: "10"
-    // }
+    {
+        name: "Mr",
+        surname: "Perfect",
+        Rating: "10"
+    }
 ]
 
 

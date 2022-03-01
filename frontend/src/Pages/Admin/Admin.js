@@ -286,7 +286,9 @@ const Admin = () => {
                             <th scope="col" onClick={() => requestSort('surname')}
                                 className={getClassNamesFor('surname')} >Surname</th>
                             <th>Email</th>
-                            <th>Team</th>
+                            {/* <th>Team</th> */}
+                            <th scope="col" onClick={() => requestSort('team')}
+                                className={getClassNamesFor('team')} >Team</th>
                             <th>Actions</th>
 
 

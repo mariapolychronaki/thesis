@@ -278,7 +278,7 @@ const ModalPlayerUser = ({ }) => {
                     </div>
                 </div>
             </div >}
-            <Modal show={show} onHide={handleClose} className="modal">
+            {/* <Modal show={show} onHide={handleClose} className="modal">
                 <Modal.Header closeButton>
                     <Modal.Title>Info</Modal.Title>
                 </Modal.Header>
@@ -294,7 +294,7 @@ const ModalPlayerUser = ({ }) => {
             <Modal.Footer>
 
             </Modal.Footer>
-        </Modal>
+        </Modal> */}
         </>
     )
 }

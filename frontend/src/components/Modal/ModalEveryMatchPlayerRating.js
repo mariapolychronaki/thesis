@@ -10,8 +10,8 @@ const ModalEveryMatchPlayerRating = (closeModalMatchEachPlayer) => {
     const [data, setdata] = useState({});
 
 
-    const positions = ["Goalkeeper", "Central Defender", "Right Defender", "Left Defender", "Midfielder",
-    "Attacking Midfielder center", "Attacking Midfielder Right", "Attacking Midfielder Left", "Forward",
+    const positions = [ "Forward","Goalkeeper", "Central Defender", "Right Defender", "Left Defender", "Midfielder",
+    "Attacking Midfielder center", "Attacking Midfielder Right", "Attacking Midfielder Left",
 ];
 
     const initializePlayers = () => {

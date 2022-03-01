@@ -229,7 +229,7 @@ export const AllPlayers = () => {
     const [player, setplayer] = useState();
 
     const maxPlayers = (player) => {
-        if (arrayPlayers.length > 25) {
+        if (arrayPlayers.length >25) {
             setmaxLimit(true)
         } else {
             setplayer(player)
