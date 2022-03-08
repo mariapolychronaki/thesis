@@ -6,7 +6,8 @@ const Dropdown_weight = ({ handleChangeCallback, weight }) => {
     }
     return (
         <div>
-        <input className='height_op' type="number" onChange={handleChange} min="50" max="120" placeholder="50"/>
+        <input className='height_op' type="number" onChange={handleChange}
+        defaultValue={weight} min="50" max="120" placeholder="50"/>
 
             {/* <select onChange={handleChange} className='height_op' defaultValue={weight}>
 

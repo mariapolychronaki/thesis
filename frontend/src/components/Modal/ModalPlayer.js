@@ -378,7 +378,7 @@ const ModalPlayer = ({ closeModalPlayer, isOpen }) => {
 
                         <div className='col-12 name'>
                             <div className='offset-1 col-4 text'>
-                                <label>Height(m)</label>
+                                <label>Height(cm)</label>
                             </div>
                             <div className='col-4 ' name="Height" >
                                 <Dropdown_height className="height_op" handleChangeCallback={handleChangeParent1} />

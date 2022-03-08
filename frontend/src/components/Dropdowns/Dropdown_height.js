@@ -8,7 +8,7 @@ const Dropdown_height = ({ handleChangeCallback, height }) => {
     return (
         <div>
             <input className='height_op' type="number" onChange={handleChange}
-                placeholder="150"
+                placeholder="150" defaultValue={height}
                 min="150" max="250" />
 
             {/* <select onChange={handleChange} className='height_op' defaultValue={height}>
