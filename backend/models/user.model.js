@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
+var validateEmail = function (email) {
+  var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  return re.test(email);
+};
+
 const userSchema = new Schema(
   {
     name: {
@@ -16,19 +21,39 @@ const userSchema = new Schema(
       trim: true,
       minlength: 3,
     },
-    AMKA: {
+    password: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: "Email address is required",
+      validate: [validateEmail, "Please fill a valid email address"],
+      match: [
+        /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+        "Please fill a valid email address",
+      ],
+    },
+    username: {
       type: String,
       required: true,
       unique: true,
     },
-    weight: {
-      duration: { type: Number, required: true },
+    user_type: {
+      type: String,
+      enum: ["player", "coach", "admin"],
+      default: "coach",
     },
-    birthdate: { type: Date, required: true },
-    nationality: { type: String, required: true },
-    position: { type: String, required: true },
-    preferred_foot: { type: String, required: true },
-    team_id: { type: String, required: true },
+    player_id: {
+      type: Schema.ObjectId,
+      require: false,
+      unique: true,
+    },
+    state: {
+      type: String,
+      enum: ["not-verified", "verified"],
+      default: "not-verified",
+    },
   },
   {
     timestamps: true,
