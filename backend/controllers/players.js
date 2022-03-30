@@ -16,7 +16,6 @@ exports.getSpecificPlayer = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({ message: "Error retrieving Player with id=" + id });
-      console.log("Test");
     });
 };
 
