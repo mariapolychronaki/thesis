@@ -19,8 +19,12 @@ connection.once('open',()=>{
 
 const playersRouter =require("./routes/players");
 const usersRouter =require("./routes/users");
+const gameRatingRouter =require("./routes/game_rating");
+const goalkeeperRouter =require("./routes/goalkeeper");
 app.use('/players',playersRouter);
 app.use('/users',usersRouter);
+app.use('/gameRating',gameRatingRouter);
+app.use('/goalkeeper',goalkeeperRouter);
 
 
 app.listen(port,()=>{
