@@ -1,4 +1,6 @@
 let User = require("../models/user.model");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 exports.getUsers = (req, res) => {
   User.find()
@@ -32,7 +34,7 @@ exports.addUser = (req, res) => {
     username,
     user_type,
     player_id,
-    state
+    state,
   } = req.body;
 
   const newUser = new User({
@@ -46,13 +48,20 @@ exports.addUser = (req, res) => {
     state,
   });
 
-  newUser
-    .save()
-    .then(() => res.json("User added!"))
-    .catch((err) => res.status(400).json("Error: " + err));
+  // Hash password before saving in database
+  bcrypt.genSalt(10, (err, salt) => {
+    bcrypt.hash(newUser.password, salt, (err, hash) => {
+      if (err) throw err;
+      newUser.password = hash;
+      newUser
+        .save()
+        .then((user) => res.json(user))
+        .catch((err) => res.status(400).json("Error: " + err));
+    });
+  });
 };
 
-exports.updateUser= (req, res) => {
+exports.updateUser = (req, res) => {
   if (!req.body) {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
@@ -90,6 +99,63 @@ exports.deleteUser = (req, res) => {
     .catch((err) => {
       res.status(500).send({
         message: "Could not delete User with id=" + id,
+      });
+    });
+};
+
+exports.loginUser = (req, res) => {
+  if (!req.body) {
+    res.status(400).send({ message: "Content can not be empty!" });
+    return;
+  }
+  const {
+    password,
+    email,
+    
+  } = req.body;
+
+  User.findOne({ email })
+    .then((data) => {
+      if (!data) {
+        res.status(404).send({
+          message: `Cannot find User with id=${email}.`,
+        });
+      } else {
+        // Check password
+        bcrypt.compare(password, data.password).then((isMatch) => {
+          if (isMatch) {
+            // User matched
+            // Create JWT Payload
+            const payload = {
+              id: data.id,
+              name: data.name,
+              role: data.user_type
+            };
+            // Sign token
+            jwt.sign(
+              payload,
+              process.env.AWS_KEY,
+              {
+                expiresIn: 31556926, // 1 year in seconds
+              },
+              (err, token) => {
+                res.json({
+                  success: true,
+                  token: "Bearer " + token,
+                });
+              }
+            );
+          } else {
+            return res
+              .status(400)
+              .json({ passwordincorrect: "Password incorrect" });
+          }
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Could not find User with email=" + email,
       });
     });
 };

@@ -44,7 +44,7 @@ app.use('/injury',injuryRouter);
 app.use('/team',teamRouter);
 app.use('/training',trainingRouter);
 
-
+//app.use(express.errorHandler({showStack: true, dumpExceptions: true}));
 
 app.listen(port,()=>{
     console.log(`Server is running on port : ${port}`)

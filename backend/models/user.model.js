@@ -48,6 +48,7 @@ const userSchema = new Schema(
       type: Schema.ObjectId,
       require: false,
       unique: true,
+      sparse:true,
     },
     state: {
       type: String,

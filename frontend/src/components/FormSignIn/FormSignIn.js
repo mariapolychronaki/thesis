@@ -1,27 +1,28 @@
-import React from 'react'
-import '../../assets/Style/FormSignIn.css'
-import { useState, useEffect, useRef } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
-import { users } from '../../Constants/Constants';
+import React from "react";
+import "../../assets/Style/FormSignIn.css";
+import { useState, useEffect, useRef } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
+import { users } from "../../Constants/Constants";
+import axios from "axios";
+import jwt_decode from "jwt-decode";
 
 const FormSignIn = ({ submitForm }) => {
+  const [errors, setErrors] = useState({});
+  const [isSubmiting, setIsSubmiting] = useState(false);
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+    role: "",
+  });
+  function onChange(value) {
+    console.log("Captcha value:", value);
+  }
 
-    const [errors, setErrors] = useState({});
-    const [isSubmiting, setIsSubmiting] = useState(false);
-    const [values, setValues] = useState({
-        email: '',
-        password: '',
-    });
-    function onChange(value) {
-        console.log('Captcha value:', value);
-    }
-
-
-    const validate = (values) => {
-        let flag = false;
-        let flagPassword = false;
-        let errors = {}
-
+  const validate = async (values) => {
+    let flag = false;
+    let flagPassword = false;
+    let errors = {};
+    /*
         users.map((user) => {
             if (user.email === values.email) {
                 console.log(values.password)
@@ -35,104 +36,126 @@ const FormSignIn = ({ submitForm }) => {
 
             }
 
-        })
+        })*/
 
-        if (!values.email.trim()) {
-            errors.email = "Email required"
-        } else if (flag === false) {
-            errors.email = "Invalid email"
-        } else if (flagPassword === false) {
-            console.log(flagPassword)
-            errors.password = "Invalid password"
-        }
-        console.log()
-
-        if (!values.password) {
-            errors.password = "Password is required"
-        } else if (values.password.length < 6) {
-            errors.password = 'Password must be more than 6 characters'
-        }
-
-
-
-        return errors;
+    if (!values.password) {
+      errors.password = "Password is required";
+    } else if (values.password.length < 6) {
+      errors.password = "Password must be more than 6 characters";
     }
 
-
-
-    const hadleChange = e => {
-        const { name, value } = e.target;
-        setValues({
-            ...values,
-            [name]: value
-        });
-        console.log(values)
-    };
-    const hadleSubmit = e => {
-        e.preventDefault();
-        setErrors(validate(values));
-        setIsSubmiting(true);
-    };
-
-    useEffect(() => {
-        if (Object.keys(errors).length === 0 && isSubmiting) {
-            submitForm(values);
+    await axios
+      .post(
+        "http://localhost:8080/users/login",
+        {
+          email: values.email,
+          password: values.password,
+        },
+        {
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
         }
-    }, [errors])
+      )
+      .then((res) => {
+        const { token } = res.data;
+        const decoded = jwt_decode(token);
+        if (decoded) {
+          flag = true;
+          flagPassword = true;
+          setValues((values) => ({
+            ...values,
+            role: decoded.role,
+          }));
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+    /*
+    if (!values.email.trim()) {
+      errors.email = "Email required";
+    } else if (flag === false) {
+      errors.email = "Invalid email";
+    } else if (flagPassword === false) {
+      console.log(flagPassword);
+      errors.password = "Invalid password";
+    }*/
+    console.log(values);
+    return errors;
+  };
 
+  const hadleChange = (e) => {
+    const { name, value } = e.target;
+    setValues({
+      ...values,
+      [name]: value,
+    });
+    console.log(values);
+  };
+  const hadleSubmit = (e) => {
+    e.preventDefault();
+    setErrors(validate(values));
+    setIsSubmiting(true);
+  };
 
+  useEffect(() => {
+    if (Object.keys(errors).length === 0 && isSubmiting) {
+      submitForm(values);
+    }
+  }, [values]);
 
-    const recaptchaRef = useRef(null)
+  const recaptchaRef = useRef(null);
+  console.log(values);
 
-    return (
-        <div className='form-content-right' >
-            <form className='form' onSubmit={hadleSubmit}>
-                <div className='title_Sign_In'>Welcome to Football App</div>
-                <div className='form1-inputs '>
-                    <label htmlFor='username'
-                        className='form-label'>
-                        *Email
-                    </label>
-                    <input
-                        id='username'
-                        type='text'
-                        name='email'
-                        className='form-input '
-                        placeholder='Enter your name'
-                        value={values.email}
-                        onChange={hadleChange}
-                    />
-                    {errors.email && <p>{errors.email}</p>}
-                </div>
-
-                <div className='form1-inputs'>
-                    <label htmlFor='password'
-                        className='form-label'>
-                        *Password
-                    </label>
-                    <input type='password'
-                        name='password'
-                        className='form-input'
-                        placeholder='Enter your password'
-                        value={values.password}
-                        onChange={hadleChange}
-                    />
-                    {errors.password && <p>{errors.password}</p>}
-                </div>
-                <button className='form-input-btn' type='submit'>Submit</button>
-                <div className='Already'>You don't have an account? <a href='/'>Sign up</a></div>
-                <ReCAPTCHA
-
-                    ref={recaptchaRef}
-                    sitekey={"6Ldr7GoeAAAAAGvm11RyeyquphZY8YHo5alDE2YV"}
-                    onChange={onChange}
-                />
-            </form>
-
-
-
+  return (
+    <div className="form-content-right">
+      <form className="form" onSubmit={hadleSubmit}>
+        <div className="title_Sign_In">Welcome to Football App</div>
+        <div className="form1-inputs ">
+          <label htmlFor="username" className="form-label">
+            *Email
+          </label>
+          <input
+            id="username"
+            type="text"
+            name="email"
+            className="form-input "
+            placeholder="Enter your name"
+            value={values.email}
+            onChange={hadleChange}
+          />
+          {errors.email && <p>{errors.email}</p>}
         </div>
-    )
-}
 
-export default FormSignIn
+        <div className="form1-inputs">
+          <label htmlFor="password" className="form-label">
+            *Password
+          </label>
+          <input
+            type="password"
+            name="password"
+            className="form-input"
+            placeholder="Enter your password"
+            value={values.password}
+            onChange={hadleChange}
+          />
+          {errors.password && <p>{errors.password}</p>}
+        </div>
+        <button className="form-input-btn" type="submit">
+          Submit
+        </button>
+        <div className="Already">
+          You don't have an account? <a href="/">Sign up</a>
+        </div>
+        <ReCAPTCHA
+          ref={recaptchaRef}
+          sitekey={"6Ldr7GoeAAAAAGvm11RyeyquphZY8YHo5alDE2YV"}
+          onChange={onChange}
+        />
+      </form>
+    </div>
+  );
+};
+
+export default FormSignIn;

@@ -17,12 +17,10 @@ export const SignIn = () => {
     function submitForm(e) {
         setIsSubmitted(true);
         console.log(e);
-        setUserType(users.find((user) => (
-            user.email === e.email
-        )))
+        setUserType(e.role)
         setForm(e)
         console.log(e.email)
-        dispatch(setName(e.username));
+        dispatch(setName(e.email));
 
     }
 

@@ -5,6 +5,8 @@ router.get("/", user_controller.getUsers);
 
 router.post("/", user_controller.addUser);
 
+router.post("/login", user_controller.loginUser);
+
 router.put("/:id", user_controller.updateUser);
 
 router.delete("/:id", user_controller.deleteUser);
