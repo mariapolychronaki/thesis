@@ -3,11 +3,15 @@ var user_controller = require("../controllers/users");
 
 router.get("/", user_controller.getUsers);
 
+router.get("/not-verified", user_controller.getUsersNotVerified);
+
 router.post("/", user_controller.addUser);
 
 router.post("/login", user_controller.loginUser);
 
 router.put("/:id", user_controller.updateUser);
+
+router.put("/verify/:id", user_controller.verifyUser);
 
 router.delete("/:id", user_controller.deleteUser);
 

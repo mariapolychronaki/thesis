@@ -1,12 +1,13 @@
-import React from 'react'
-import { useState } from 'react';
-import FormSignup from '../../components/FormSignup/FormSignup';
-import { Players } from '../Players';
-import { Navigate, Redirect } from 'react-router-dom'
-import { useDispatch } from 'react-redux';
-import { setName } from '../../Store/Slices/coachSlice';
+import React from "react";
+import { useState } from "react";
+import FormSignup from "../../components/FormSignup/FormSignup";
+import { Players } from "../Players";
+import { Navigate, Redirect } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setName } from "../../Store/Slices/coachSlice";
 
 export const SignUp = () => {
+  /*
 
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [form, setForm] = useState("");
@@ -32,5 +33,49 @@ export const SignUp = () => {
             )
         </div>
     );
-}
+    */
 
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [form, setForm] = useState("");
+  const dispatch = useDispatch();
+  const [userType, setUserType] = useState({});
+  const [userId, setUserId] = useState("");
+
+  function submitForm(e) {
+    if (e.created) {
+      setIsSubmitted(true);
+      console.log(e);
+      setUserType(e.role);
+      setForm(e);
+      console.log(e.email);
+      setUserId(e.userId);
+      dispatch(setName(e.email));
+    }
+  }
+
+  // const findPlayer = useCallback(() => {
+  //     setUserType()
+  // }, [form])
+
+  // useEffect(() => {
+  //     findPlayer()
+  // }, [findPlayer])
+
+  console.log(userType);
+
+  return (
+    <div>
+      <div className="form-container">
+        {/* {!isSubmitted ? (<FormSignup submitForm={submitForm} />) :
+  
+                      (userType !== undefined && userType.user_type === "Coach") ? <Navigate to='/players' /> : <Navigate to='/PlayerUser' />} */}
+
+        {!isSubmitted ? (
+          <FormSignup submitForm={submitForm} />
+        ) : (
+          <Navigate to="/signUpMessage" />
+        )}
+      </div>
+    </div>
+  );
+};

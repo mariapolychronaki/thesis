@@ -20,7 +20,7 @@ const authroutes = [{ path: "/players", component: <Players /> },
 ];
 
 const authroutesPl = [
-    { path: "/playerUser", component: <PlayerUser /> },
+    { path: "/users/:id", component: <PlayerUser /> },
     { path: "/Admin", component: <Admin /> },
 
 ]

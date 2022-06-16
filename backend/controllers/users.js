@@ -8,6 +8,13 @@ exports.getUsers = (req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 };
 
+exports.getUsersNotVerified = (req, res) => {
+  User.find({state:"not-verified"})
+    .then((users) => res.json(users))
+    .catch((err) => res.status(400).json("Error: " + err));
+};
+
+
 exports.getSpecificUser = (req, res) => {
   const id = req.params.id;
   User.findById(id)
@@ -81,6 +88,29 @@ exports.updateUser = (req, res) => {
     })
     .catch((err) => res.status(500).json("Error: " + err));
 };
+
+
+exports.verifyUser = (req, res) => {
+  if (!req.body) {
+    res.status(400).send({ message: "Content can not be empty!" });
+    return;
+  }
+
+  const id = req.params.id;
+
+  User.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+    .then((data) => {
+      if (!data) {
+        res
+          .status(404)
+          .send({ message: `Cannot find User with ${id} to update` });
+      } else {
+        res.json(data);
+      }
+    })
+    .catch((err) => res.status(500).json("Error: " + err));
+};
+
 
 exports.deleteUser = (req, res) => {
   const id = req.params.id;

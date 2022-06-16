@@ -13,6 +13,7 @@ const FormSignIn = ({ submitForm }) => {
     email: "",
     password: "",
     role: "",
+    userId:"",
   });
   function onChange(value) {
     console.log("Captcha value:", value);
@@ -38,7 +39,9 @@ const FormSignIn = ({ submitForm }) => {
 
         })*/
 
-    if (!values.password) {
+    if (!values.email.trim()) {
+      errors.email = "Email required";
+    }else if (!values.password) {
       errors.password = "Password is required";
     } else if (values.password.length < 6) {
       errors.password = "Password must be more than 6 characters";
@@ -65,11 +68,14 @@ const FormSignIn = ({ submitForm }) => {
           flagPassword = true;
           setValues((values) => ({
             ...values,
+            userId: decoded.id,
             role: decoded.role,
           }));
         }
       })
       .catch((e) => {
+        flag=false;
+        flagPassword = false;
         console.log(e);
       });
     /*
@@ -141,6 +147,7 @@ const FormSignIn = ({ submitForm }) => {
             onChange={hadleChange}
           />
           {errors.password && <p>{errors.password}</p>}
+          {errors.wrongPassword && <p>{errors.wrongPassword}</p>}
         </div>
         <button className="form-input-btn" type="submit">
           Submit

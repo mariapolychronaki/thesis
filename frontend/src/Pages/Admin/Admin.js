@@ -6,9 +6,10 @@ import ModalAddInjuredPlayer from '../../components/Modal/ModalAddInjuredPlayer'
 import { useState, useEffect } from 'react';
 import 'reactjs-popup/dist/index.css';
 import CustomPopup from './PopUp';
-import { Enquiries, usersCoaches, usersPlayers, SignUpMessages, users } from '../../Constants/Constants';
+import { Enquiries, usersCoaches, usersPlayers, SignUpMessages } from '../../Constants/Constants';
 import { useDispatch } from 'react-redux';
 import { setApproved, setRejected } from '../../Store/Slices/coachSlice';
+import axios from "axios";
 
 const Admin = () => {
     const [removePlayerBtn, setRemovePlayerBtn] = useState(false);
@@ -27,16 +28,42 @@ const Admin = () => {
     const [Sign_UP_messages, setSign_UP_messages] = useState(true);
     const [Coach_Enquries, setCoach_Enquries] = useState(false);
     const [players, setPlayers] = useState(false);
+    const [users,setUsers] = useState([]);
     const [coaches, setCoaches] = useState(false);
-
 
     const dispatch = useDispatch();
 
 
+
+    const fetchNVUsers = async () => {
+        await axios
+      .get(
+        "http://localhost:8080/users/not-verified",
+        {
+          
+        },
+        {
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        }
+      )
+      .then((res) => {
+       console.log(res.data);
+       setUsers(res.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+    }   
+
+    useEffect(() => {
+        fetchNVUsers();
+    },[Sign_UP_messages])
+
     const acceptEnquiry = (Player) => {
         setPlayer(Player)
         setAccept(true);
-
     }
 
     const [acceptEn, setAcceptEn] = useState(false);
@@ -138,7 +165,51 @@ const Admin = () => {
 
 
 
+    const approveUser = async () =>{
+        await axios
+      .put(
+        `http://localhost:8080/users/verify/${Player._id}`,
+        {
+          state:"verified"
+        },
+        {
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        }
+      )
+      .then((res) => {
+       console.log(res);
+       setSign_UP_messages(false);
+       setSign_UP_messages(true);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+    }
 
+    const deleteUser = async () =>{
+        await axios
+      .delete(
+        `http://localhost:8080/users/${Player._id}`,
+        {
+         
+        },
+        {
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        }
+      )
+      .then((res) => {
+       console.log(res);
+       setSign_UP_messages(false);
+       setSign_UP_messages(true);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+    }
 
 
 
@@ -148,9 +219,26 @@ const Admin = () => {
         dispatch(setApproved(true))
     }
     const acceptFunction = () => {
+        console.log(Player);
         popupCloseHandler();
         setAcceptEn(!acceptEn);
         dispatch(setRejected());
+    }
+
+    const acceptFunctionSignUp = () => {
+        console.log(Player);
+        popupCloseHandler();
+        setAccept(!accept);
+        dispatch(setRejected());
+        approveUser();
+    }
+
+    const rejectFunctionSignUp = () => {
+        console.log(Player);
+        popupCloseHandler();
+        setRemovePlayerBtn(!removePlayerBtn);
+        dispatch(setRejected());
+        deleteUser();
     }
 
 
@@ -468,7 +556,7 @@ const Admin = () => {
                     <div>Are you sure you want to reject <span className='RemovePlayerSurname'>{Player.name} {Player.surname}'s</span>  sign up request?</div>
                     <div className='space'></div>
                     <div className='offset-5 col-3'>
-                        <button onClick={popupCloseHandler, () => setRemovePlayerBtn(!removePlayerBtn)} className='YesBtnPopUp' >Yes</button>
+                        <button onClick={rejectFunctionSignUp} className='YesBtnPopUp' >Yes</button>
                         <button className='NoBtnPopUp' onClick={popupCloseHandler, () => setRemovePlayerBtn(!removePlayerBtn)}>No</button>
                     </div>
                 </CustomPopup>}
@@ -481,7 +569,7 @@ const Admin = () => {
                     <div>Are you sure you want to accept <span className='AddUserToBase'>{Player.name} {Player.surname}'s</span>  sign up request?</div>
                     <div className='space'></div>
                     <div className='offset-5 col-3'>
-                        <button onClick={popupCloseHandler, () => setAccept(!accept)} className='YesBtnAccept' >Yes</button>
+                        <button onClick={acceptFunctionSignUp} className='YesBtnAccept' >Yes</button>
                         <button className='NoBtnPopUp' onClick={popupCloseHandler, () => setAccept(!accept)}>No</button>
                     </div>
                 </CustomPopup>}
