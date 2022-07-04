@@ -1,13 +1,17 @@
 import React from 'react'
 
-const Dropdown_height = ({ handleChangeCallback, height }) => {
+const Dropdown_height = ({ handleChangeCallback,handleOnChange, height }) => {
 
     const handleChange = (e) => {
         handleChangeCallback(e.target.value);
+        if(handleOnChange){
+            handleOnChange(e);
+        }
+           
     }
     return (
         <div>
-            <input className='height_op' type="number" onChange={handleChange}
+            <input className='height_op' type="number" name='height' onChange={handleChange}
                 placeholder="150" defaultValue={height}
                 min="150" max="250" />
 

@@ -6,6 +6,42 @@ exports.getMidfielders = (req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 };
 
+exports.getSpecificPlayer = (req, res) => {
+  const id = req.params.id;
+  Midfielder.find({ player_id: id })
+    .then((midfielder) => res.json(midfielder))
+    .catch((err) => res.status(400).json("Error: " + err));
+};
+
+exports.getSpecificPlayerRating = (req, res) => {
+  const id = req.params.id;
+  Midfielder.find({ player_id: id })
+    .then((midfielder) => {
+      const player = midfielder[0];
+
+      let sum =
+        (0.05 * ~~player.personality +
+        0.05 * ~~player.experience +
+        0.05 * ~~player.agility +
+        0.05 * ~~player.team_work +
+        0.1 * ~~player.leadership +
+        0.05 * ~~player.aerial_ability +
+        0.1 * ~~player.shots +
+        0.05 * ~~player.creativity +
+        0.05 * ~~player.composure +
+        0.05 * ~~player.tactics +
+        0.05 * ~~player.communication +
+        0.05 * ~~player.positioning +
+        0.05 * ~~player.pace +
+        0.1 * ~~player.stamina +
+        0.05 * ~~player.strength +
+        0.05 * ~~player.technique)/16;
+
+      res.json(sum);
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
+};
+
 exports.getSpecificMidfielder = (req, res) => {
   const id = req.params.id;
   Midfielder.findById(id)
@@ -15,7 +51,9 @@ exports.getSpecificMidfielder = (req, res) => {
       else res.json(data);
     })
     .catch((err) => {
-      res.status(500).send({ message: "Error retrieving Midfielder with id=" + id });
+      res
+        .status(500)
+        .send({ message: "Error retrieving Midfielder with id=" + id });
     });
 };
 
@@ -34,7 +72,7 @@ exports.addMidfielder = (req, res) => {
     tactics,
     communication,
     positioning,
-    aerial_ablility,
+    aerial_ability,
     pace,
     stamina,
     strength,
@@ -43,7 +81,7 @@ exports.addMidfielder = (req, res) => {
     passing,
     creativity,
     shots,
-    composure
+    composure,
   } = req.body;
 
   const newMidfielder = new Midfielder({
@@ -62,10 +100,10 @@ exports.addMidfielder = (req, res) => {
     technique,
     marking,
     passing,
-    aerial_ablility,
+    aerial_ability,
     creativity,
     shots,
-    composure
+    composure,
   });
 
   newMidfielder

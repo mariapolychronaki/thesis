@@ -11,7 +11,7 @@ import Dropdown_nationality from '../Dropdowns/Dropdown_nationality'
 import ModalTrainingEachPlayer from './ModalTrainingEachPlayer'
 
 
-const ModalTraining = ({ closeModalTraining }) => {
+const ModalTraining = ({ closeModalTraining,players,teamId }) => {
 
     const [OpenModalTrainingEachPlayer, setOpenModalTrainingEachPlayer] = useState(false);
 
@@ -69,7 +69,7 @@ const ModalTraining = ({ closeModalTraining }) => {
                         <div className=' col-2'>
                             <button className='next-button trainingInModalTraining' onClick={() => setOpenModalTrainingEachPlayer(true)}> Next </button>
 
-                            {OpenModalTrainingEachPlayer && < ModalTrainingEachPlayer closeModalTrainingEachPlayer={setOpenModalTrainingEachPlayer} closeModalTraining={closeModalTraining}/>}
+                            {OpenModalTrainingEachPlayer && < ModalTrainingEachPlayer teamId={teamId} players={players} date={startDate} closeModalTrainingEachPlayer={setOpenModalTrainingEachPlayer} closeModalTraining={closeModalTraining}/>}
 
                         </div>
                     </div>

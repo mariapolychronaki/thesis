@@ -11,7 +11,6 @@ const attackingMidfielderCenterSchema = new Schema(
     team_work: { type: Number, required: true, min: 0, max:20},
     leadership: { type: Number, required: true, min: 0, max:20},
     tactics: { type: Number, required: true, min: 0, max:20},
-    positioning: { type: Number, required: true, min: 0, max:20},
     communication: { type: Number, required: true, min: 0, max:20},
     through_balls: { type: Number, required: true, min: 0, max:20},
     dribbling: { type: Number, required: true, min: 0, max:20},

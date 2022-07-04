@@ -6,6 +6,43 @@ exports.getCentralDefenders = (req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 };
 
+exports.getSpecificPlayer = (req, res) => {
+  const id = req.params.id;
+  CentralDefender.find({player_id:id})
+    .then((central_defender) => res.json(central_defender))
+    .catch((err) => res.status(400).json("Error: " + err));
+};
+
+exports.getSpecificPlayerRating = (req, res) => {
+  const id = req.params.id;
+  CentralDefender.find({ player_id: id })
+    .then((central_defender) => {
+      const player = central_defender[0];
+
+      let sum =
+        (0.05 * ~~player.personality +
+        0.05 * ~~player.experience +
+        0.05 * ~~player.agility +
+        0.05 * ~~player.team_work +
+        0.1 * ~~player.leadership +
+        0.1 * ~~player.aerial_ability +
+        0.05 * ~~player.tactics +
+        0.05 * ~~player.communication +
+        0.1 * ~~player.positioning +
+        0.05 * ~~player.pace +
+        0.1 * ~~player.stamina +
+        0.1 * ~~player.marking +
+        0.025 * ~~player.passing +
+        0.05 * ~~player.strength +
+        0.1 * ~~player.tackling +
+        0.05 * ~~player.technique)/16;
+
+      res.json(sum);
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
+};
+
+
 exports.getSpecificCentralDefender = (req, res) => {
   const id = req.params.id;
   CentralDefender.findById(id)
@@ -40,7 +77,7 @@ exports.addCentralDefender = (req, res) => {
     technique,
     marking,
     passing,
-    aerial_ablility,
+    aerial_ability,
     tackling
   } = req.body;
 
@@ -60,7 +97,7 @@ exports.addCentralDefender = (req, res) => {
     technique,
     marking,
     passing,
-    aerial_ablility,
+    aerial_ability,
     tackling
   });
 

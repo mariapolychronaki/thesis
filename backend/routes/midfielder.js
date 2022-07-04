@@ -7,6 +7,10 @@ router.post("/", midfielder_controller.addMidfielder);
 
 router.put("/:id", midfielder_controller.updateMidfielder);
 
+router.get("/player/:id", midfielder_controller.getSpecificPlayer);
+
+router.get("/player/:id/rating", midfielder_controller.getSpecificPlayerRating);
+
 router.delete("/:id", midfielder_controller.deleteMidfielder);
 
 router.get("/:id", midfielder_controller.getSpecificMidfielder);

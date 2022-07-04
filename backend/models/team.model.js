@@ -15,10 +15,10 @@ const teamSchema = new Schema(
       required: true,
     },
     coach_id: {
-      type: Number,
-      required: true,
+      type: Schema.ObjectId,
+      require: true,
       unique: true,
-    }
+    },
   },
   {
     timestamps: true,

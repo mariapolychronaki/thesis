@@ -3,7 +3,9 @@ var training_controller = require("../controllers/training");
 
 router.get("/", training_controller.getTrainings);
 
-router.get("/:user_id", training_controller.getPlayerTrainings);
+router.get("/user/:id", training_controller.getPlayerTrainings);
+
+router.get("/team/:id", training_controller.getTeamTrainings);
 
 router.post("/", training_controller.addTraining);
 

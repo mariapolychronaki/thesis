@@ -15,15 +15,17 @@ import ModalAttackingMidfielderCenter from './ModalAttMidCenter'
 import ModalAttackingMidfielderWide from './ModalAttMidWide'
 import ModalForward from './ModalForward'
 import ModalInjured from './ModalInjured'
+import axios from "axios";
 
 
 const ModalEditPlayer = ({ closeModalEditPlayer, player }) => {
 
 
 
-    const handleChangeParent = (data) => {
-        console.log(data);
-        setPosition(data);
+    const handleChangeParent = (d) => {
+        console.log(d);
+        setPosition(d);
+        setdata({...data,position:d});
     }
 
 
@@ -35,13 +37,36 @@ const ModalEditPlayer = ({ closeModalEditPlayer, player }) => {
     const [preferred_foot, setPreferredFoot] = useState("right")
 
     const [data, setdata] = useState({});
-    const chooseModal = () => {
-        setdata({
-            ...data, [`position`]: position, [`height`]: height, [`nationality`]: nationality, [`Preferred Foot`]: preferred_foot,
-            [`weight`]: weight, ['birthdate']: (date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate())
+
+    const updatePlayer = async () =>{
+        await axios
+        .put(
+          `http://localhost:8080/players/${player._id}`,
+          data,
+          {
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res.data);
+          closeModalEditPlayer(false)
         })
+        .catch((e) => {
+          console.log(e);
+        });
+    }
+
+    const chooseModal = () => {
+       /* setdata({
+            ...data, [`position`]: position, [`height`]: height, [`nationality`]: nationality,
+            [`weight`]: weight,
+        })*/
         console.log(data)
-        closeModalEditPlayer(false)
+
+        updatePlayer();
+       
     }
 
     // const chooseModal = () =>{
@@ -106,27 +131,30 @@ const ModalEditPlayer = ({ closeModalEditPlayer, player }) => {
     // }
 
 
-    const handleChangeParent1 = (data) => {
-        console.log(data);
-        setHeight(data);
+    const handleChangeParent1 = (d) => {
+        console.log(d);
+        setHeight(d);
+        setdata({...data,height:d});
     }
-    const handleChangeParent2 = (data) => {
-        console.log(data);
+    const handleChangeParent2 = (d) => {
+        console.log(d);
         console.log(nationality)
-        setNationality(data);
+        setNationality(d);
+        setdata({...data,nationality:d});
     }
 
-    const handleChangeParent3 = (data) => {
-        console.log(data);
-        setWeight(data);
+    const handleChangeParent3 = (d) => {
+        console.log(d);
+        setWeight(d);
+        setdata({...data,weight:d});
     }
     const handleChange = (e) => {
         setdata({ ...data, [e.target.name]: e.target.value })
-        if (e.target.name === "Preferred Foot") {
-            setPreferredFoot(e.target.value)
-        }
     }
     const [startDate, setStartDate] = useState(new Date());
+
+
+
 
     return (
 
@@ -175,7 +203,7 @@ const ModalEditPlayer = ({ closeModalEditPlayer, player }) => {
                             </div>
                             <div className='col-4'>
 
-                                <select className='positions' defaultValue={player.preferred_foot} name="Preferred Foot" onChange={handleChange}
+                                <select className='positions' defaultValue={player.preferred_foot} name="preferred_foot" onChange={handleChange}
                                 >
                                     <option value="Right">Right</option>
                                     <option value="Left">Left</option>

@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { setName } from "../../Store/Slices/coachSlice";
 import FormSignIn from "../../components/FormSignIn/FormSignIn";
 import { users } from "../../Constants/Constants";
+import { SET_USER_ID } from "../../Store/Slices/UserSlice"
 
 export const SignIn = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -23,6 +24,7 @@ export const SignIn = () => {
       console.log(e.email);
       setUserId(e.userId);
       dispatch(setName(e.email));
+      dispatch(SET_USER_ID(e.userId));
     }
   }
 

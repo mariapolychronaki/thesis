@@ -16,7 +16,7 @@ const goalkeeperSchema = new Schema(
     kicking: { type: Number, required: true, min: 0, max:20},
     tactics: { type: Number, required: true, min: 0, max:20},
     penalty_saving: { type: Number, required: true, min: 0, max:20},
-    ones_on_ones: { type: Number, required: true, min: 0, max:20},
+    one_on_ones: { type: Number, required: true, min: 0, max:20},
     rushing_out: { type: Number, required: true, min: 0, max:20},
     positioning: { type: Number, required: true, min: 0, max:20},
   },

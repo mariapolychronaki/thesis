@@ -1,18 +1,26 @@
-import React from 'react'
+import React,{useState} from 'react'
 
-const Dropdown_rating = ({ handleChangeCallback, name, playerId, tade }) => {
+const Dropdown_rating = ({ handleChangeCallback, name, playerId, tade,setTade }) => {
+
+    const [value,setValue] = useState(tade);
 
     const handleChange = (e) => {
         if (playerId !== undefined) {
+            if(setTade){
+                setTade(e.target.value);
+            }
+            
             handleChangeCallback(e.target.value, name, playerId)
         } else {
+            if(setTade){
+                setTade(name,e.target.value);
+            }
             handleChangeCallback(e.target.value, name);
         }
     }
-    console.log(tade)
     return (
         <div>
-            <select onChange={handleChange} defaultValue={tade}>
+            <select onChange={handleChange} value={tade}>
                 <option value='0'>0</option>
                 <option value='1'>1</option>
                 <option value="2">2</option>

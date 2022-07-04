@@ -7,6 +7,10 @@ router.post("/", attacking_midfielder_wide_controller.addAttackingMidfielderWide
 
 router.put("/:id", attacking_midfielder_wide_controller.updateAttackingMidfielderWide);
 
+router.get("/player/:id", attacking_midfielder_wide_controller.getSpecificPlayer);
+
+router.get("/player/:id/rating", attacking_midfielder_wide_controller.getSpecificPlayerRating);
+
 router.delete("/:id", attacking_midfielder_wide_controller.deleteAttackingMidfielderWide);
 
 router.get("/:id", attacking_midfielder_wide_controller.getSpecificAttackingMidfielderWide);

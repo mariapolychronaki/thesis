@@ -6,6 +6,43 @@ exports.getGoalkeepers = (req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 };
 
+
+exports.getSpecificPlayer = (req, res) => {
+  const id = req.params.id;
+  Goalkeeper.find({player_id:id})
+    .then((goalkeeper) => res.json(goalkeeper))
+    .catch((err) => res.status(400).json("Error: " + err));
+};
+
+exports.getSpecificPlayerRating = (req, res) => {
+  const id = req.params.id;
+  Goalkeeper.find({ player_id: id })
+    .then((goalkeeper) => {
+      const player = goalkeeper[0];
+
+      let sum =
+        (0.05 * ~~player.personality +
+        0.05 * ~~player.experience +
+        0.05 * ~~player.agility +
+        0.05 * ~~player.team_work +
+        0.05 * ~~player.leadership +
+        0.1 * ~~player.reflexes +
+        0.05 * ~~player.communication +
+        0.1 * ~~player.shot_stopping +
+        0.05 * ~~player.kicking +
+        0.05 * ~~player.tactics +
+        0.1 * ~~player.penalty_saving +
+        0.1 * ~~player.rushing_out +
+        0.1 * ~~player.positioning +
+        0.1 * ~~player.one_on_ones)/14;
+
+      res.json(sum);
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
+};
+
+
+
 exports.getSpecificGoalkeeper = (req, res) => {
   const id = req.params.id;
   Goalkeeper.findById(id)
@@ -37,7 +74,7 @@ exports.addGoalkeeper = (req, res) => {
     kicking,
     tactics,
     penalty_saving,
-    ones_on_ones,
+    one_on_ones,
     rushing_out,
     positioning
   } = req.body;
@@ -55,7 +92,7 @@ exports.addGoalkeeper = (req, res) => {
     kicking,
     tactics,
     penalty_saving,
-    ones_on_ones,
+    one_on_ones,
     rushing_out,
     positioning
   });

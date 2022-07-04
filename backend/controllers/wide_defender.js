@@ -6,6 +6,39 @@ exports.getWideDefenders = (req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 };
 
+exports.getSpecificPlayer = (req, res) => {
+  const id = req.params.id;
+  WideDefender.find({player_id:id})
+    .then((wide_defender) => res.json(wide_defender))
+    .catch((err) => res.status(400).json("Error: " + err));
+};
+
+exports.getSpecificPlayerRating = (req, res) => {
+  const id = req.params.id;
+  WideDefender.find({ player_id: id })
+    .then((wide_defender) => {
+      const player = wide_defender[0];
+      console.log(player)
+
+      let sum =
+        (0.05 * ~~player.personality +
+        0.05 * ~~player.experience +
+        0.05 * ~~player.agility +
+        0.05 * ~~player.team_work +
+        0.05 * ~~player.leadership +
+        0.05 * ~~player.tactics +
+        0.05 * ~~player.communication +
+        0.05 * ~~player.positioning +
+        0.1 * ~~player.pace +
+        0.05 * ~~player.stamina +
+        0.05 * ~~player.strength +
+        0.05 * ~~player.technique)/12;
+
+      res.json(sum);
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
+};
+
 exports.getSpecificWideDefender = (req, res) => {
   const id = req.params.id;
   WideDefender.findById(id)

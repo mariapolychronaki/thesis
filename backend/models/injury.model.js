@@ -16,11 +16,7 @@ const injurySchema = new Schema(
       trim: true,
       minlength: 3,
     },
-    player_id: {
-      type: Number,
-      required: true,
-      unique: true,
-    }
+    player_id: { type: String, required: true, unique: true },
   },
   {
     timestamps: true,

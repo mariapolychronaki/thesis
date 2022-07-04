@@ -25,11 +25,19 @@ const playerSchema = new Schema(
       type: Number,
       required: true,
     },
+    height: {
+      type: Number,
+      required: true,
+    },
+    email: { type: String, required: true },
     birthdate: { type: Date, required: true },
     nationality: { type: String, required: true },
     position: { type: String, required: true },
     preferred_foot: { type: String, required: true },
-    team_id: { type: String, required: true },
+    team: {
+      team_id: { type: Schema.ObjectId, require: false,parse: true},
+      name: { type: String, required: true },
+    },
   },
   {
     timestamps: true,

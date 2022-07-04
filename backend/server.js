@@ -19,6 +19,7 @@ connection.once('open',()=>{
 
 const playersRouter =require("./routes/players");
 const usersRouter =require("./routes/users");
+const enquiryRouter =require("./routes/enquiry");
 const gameRatingRouter =require("./routes/game_rating");
 const goalkeeperRouter =require("./routes/goalkeeper");
 const centralDefenderRouter =require("./routes/central_defender");
@@ -32,6 +33,7 @@ const teamRouter = require("./routes/team");
 const trainingRouter = require("./routes/training");
 app.use('/players',playersRouter);
 app.use('/users',usersRouter);
+app.use('/enquiry',enquiryRouter);
 app.use('/gameRating',gameRatingRouter);
 app.use('/goalkeeper',goalkeeperRouter);
 app.use('/central_defender',centralDefenderRouter);

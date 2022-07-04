@@ -17,7 +17,7 @@ import ModalAttackingMidfielderWide from './ModalAttMidWide'
 import ModalMatchEachPlayer from './ModalMatchEachPlayer'
 
 
-const ModalMatch = ({ closeModalMatch }) => {
+const ModalMatch = ({ closeModalMatch,players,teamId }) => {
 
 
     const [OpenModalMatchEachPlayer, setOpenModalMatchEachPlayer] = useState(false);
@@ -70,7 +70,7 @@ const ModalMatch = ({ closeModalMatch }) => {
                         </div>
                         <div className='col-2'>
                             <button className='next-button Next_match' onClick={() => setOpenModalMatchEachPlayer(true)}> Next </button>
-                            {OpenModalMatchEachPlayer && < ModalMatchEachPlayer closeModalMatchEachPlayer={setOpenModalMatchEachPlayer} closeModalMatch={closeModalMatch}/>}
+                            {OpenModalMatchEachPlayer && < ModalMatchEachPlayer teamId={teamId} players={players} date={startDate} closeModalMatchEachPlayer={setOpenModalMatchEachPlayer} closeModalMatch={closeModalMatch}/>}
 
                         </div>
                     </div>

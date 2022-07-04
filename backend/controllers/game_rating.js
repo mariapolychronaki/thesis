@@ -21,16 +21,32 @@ exports.getSpecificRating = (req, res) => {
     });
 };
 
+exports.getSpecificTeamGameRating = (req, res) => {
+  const id = req.params.id;
+  GameRating.find({team_id: id})
+    .then((data) => {
+      if (!data)
+        res.status(404).send({ message: "Not found GameRating with id " + id });
+      else res.json(data);
+    })
+    .catch((err) => {
+      res
+        .status(500)
+        .send({ message: "Error retrieving Player with id=" + id });
+    });
+};
+
 exports.addRating = (req, res) => {
   if (!req.body) {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
   }
-  const { player_id, date, rating } = req.body;
+  const { player_id, date, rating, team_id } = req.body;
 
   const newGameRating = new GameRating({
     player_id,
     date,
+    team_id,
     rating,
   });
 
@@ -85,7 +101,7 @@ exports.deleteRating = (req, res) => {
 exports.getSpecificPlayerRating = (req, res) => {
   const { player_id } = req.body;
 
-  GameRating.find({ "player_id":player_id })
+  GameRating.find({ player_id: player_id })
     .then((data) => {
       if (!data)
         res.status(404).send({ message: "Not found GameRating with id " + id });

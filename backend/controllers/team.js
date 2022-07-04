@@ -19,6 +19,19 @@ exports.getSpecificTeam = (req, res) => {
     });
 };
 
+exports.getTeamByCoach = (req, res) => {
+  const id = req.params.id;
+  Team.find({coach_id:id})
+    .then((data) => {
+      if (!data)
+        res.status(404).send({ message: "Not found Team with coach id " + id });
+      else res.json(data);
+    })
+    .catch((err) => {
+      res.status(500).send({ message: "Error retrieving Team with coach id=" + id });
+    });
+};
+
 exports.addTeam = (req, res) => {
   if (!req.body) {
     res.status(400).send({ message: "Content can not be empty!" });

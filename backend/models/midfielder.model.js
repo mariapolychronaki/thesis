@@ -21,7 +21,7 @@ const midfielderSchema = new Schema(
     technique: { type: Number, required: true, min: 0, max:20},
     composure: { type: Number, required: true, min: 0, max:20},
     creativity: { type: Number, required: true, min: 0, max:20},
-    aerial_ablility: { type: Number, required: true, min: 0, max:20},
+    aerial_ability: { type: Number, required: true, min: 0, max:20},
   },
   {
     timestamps: true,

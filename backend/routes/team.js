@@ -3,6 +3,8 @@ var team_controller = require("../controllers/team");
 
 router.get("/", team_controller.getTeams);
 
+router.get("/coach/:id", team_controller.getTeamByCoach);
+
 router.post("/", team_controller.addTeam);
 
 router.put("/:id", team_controller.updateTeam);

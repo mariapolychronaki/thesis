@@ -1,15 +1,19 @@
 import React from 'react'
 
 
-const Dropdown_nationality = ({ handleChangeCallback, nationality }) => {
+const Dropdown_nationality = ({ handleChangeCallback,handleOnChange, nationality }) => {
     
     const handleChange = (e) => {
         handleChangeCallback(e.target.value);
+        if(handleOnChange){
+            handleOnChange(e);
+        }
     }
+    console.log(nationality)
 
     return (
         <div>
-            <select onChange={handleChange} className='height_op' defaultValue={nationality} >
+            <select onChange={handleChange} name="nationality" className='height_op' value={nationality} >
                 <option value="Afghan">Afghan</option>
                 <option value="Albanian">Albanian</option>
                 <option value="Algerian">Algerian</option>

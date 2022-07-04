@@ -1,7 +1,16 @@
 let Player = require("../models/player.model");
+const User = require("../models/user.model");
+const Team = require("../models/team.model");
 
 exports.getPlayers = (req, res) => {
   Player.find()
+    .then((player) => res.json(player))
+    .catch((err) => res.status(400).json("Error: " + err));
+};
+
+exports.getPlayersByTeam = (req, res) => {
+  const id = req.params.id;
+  Player.find({ "team.team_id": id })
     .then((player) => res.json(player))
     .catch((err) => res.status(400).json("Error: " + err));
 };
@@ -15,11 +24,13 @@ exports.getSpecificPlayer = (req, res) => {
       else res.json(data);
     })
     .catch((err) => {
-      res.status(500).send({ message: "Error retrieving Player with id=" + id });
+      res
+        .status(500)
+        .send({ message: "Error retrieving Player with id=" + id });
     });
 };
 
-exports.addPlayer = (req, res) => {
+exports. addPlayer = async (req, res) => {
   if (!req.body) {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
@@ -29,32 +40,103 @@ exports.addPlayer = (req, res) => {
     surname,
     AMKA,
     weight,
+    height,
     birthdate,
     nationality,
     position,
     preferred_foot,
-    team_id,
+    team,
+    email,
   } = req.body;
 
-  const newPlayer = new Player({
-    name,
-    surname,
-    AMKA,
-    weight,
-    birthdate,
-    nationality,
-    position,
-    preferred_foot,
-    team_id,
-  });
+  console.log(email)
 
-  newPlayer
-    .save()
-    .then(() => res.json("Player added!"))
-    .catch((err) => res.status(400).json("Error: " + err));
+  await User.find({ email: email })
+    .then(async (data) => {
+      if (!data)
+        res
+          .status(404)
+          .send({ message: "Not found Player with email " + email });
+      else if (data.state === "not-verified") {
+        res.status(403).send({ message: "Player is not verified" });
+      } else {
+        console.log(data)
+        const newPlayer = new Player({
+          name,
+          surname,
+          AMKA,
+          weight,
+          birthdate,
+          nationality,
+          position,
+          preferred_foot,
+          team,
+          email,
+          height,
+        });
+
+        await newPlayer
+          .save()
+          .then(async (player) => {
+            console.log(data)
+            await User.findByIdAndUpdate(data[0]._id, { player_id: player._id })
+              .then((data) => {
+                if (!data) {
+                  res
+                    .status(404)
+                    .send({ message: `Cannot update user with ${data[0]._id}` });
+                    return;
+                }else{
+                  res.json(player);
+                  return;
+                }
+              })
+          })
+      }
+    })
+    .catch((err) => {
+      res
+        .status(500)
+        .send({ message: err });
+    });
 };
 
-exports.updatePlayer= (req, res) => {
+exports.transferPlayer = (req, res) => {
+  if (!req.body) {
+    res.status(400).send({ message: "Content can not be empty!" });
+    return;
+  }
+
+  const id = req.params.id;
+  const team_id = req.body.teamId;
+
+  Team.findById(team_id)
+    .then((data) => {
+      if (!data) {
+        res
+          .status(404)
+          .send({ message: `Cannot find team with ${team_id} to update` });
+      } else {
+        Player.findByIdAndUpdate(id, {
+          "team.name": data.name,
+          "team.team_id": data.team_id,
+        })
+          .then((data1) => {
+            if (!data1) {
+              res
+                .status(404)
+                .send({ message: `Cannot find Player with ${id} to update` });
+            } else {
+              res.json(data1);
+            }
+          })
+          .catch((err) => res.status(500).json("Error: " + err));
+      }
+    })
+    .catch((err) => res.status(500).json("Error: " + err));
+};
+
+exports.updatePlayer = (req, res) => {
   if (!req.body) {
     res.status(400).send({ message: "Content can not be empty!" });
     return;

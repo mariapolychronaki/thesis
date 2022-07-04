@@ -6,6 +6,42 @@ exports.getAttackingMidfielderWides = (req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 };
 
+exports.getSpecificPlayer = (req, res) => {
+  const id = req.params.id;
+  AttackingMidfielderWide.find({player_id:id})
+    .then((attacking_midfielder_wide) => res.json(attacking_midfielder_wide))
+    .catch((err) => res.status(400).json("Error: " + err));
+};
+
+exports.getSpecificPlayerRating = (req, res) => {
+  const id = req.params.id;
+  AttackingMidfielderWide.find({ player_id: id })
+    .then((attacking_midfielder_wide) => {
+      const player = attacking_midfielder_wide[0];
+
+      let sum =
+        (0.05 * ~~player.personality +
+        0.05 * ~~player.experience +
+        0.05 * ~~player.agility +
+        0.05 * ~~player.team_work +
+        0.05 * ~~player.leadership +
+        0.1 * ~~player.dribbling +
+        0.05 * ~~player.tactics +
+        0.05 * ~~player.communication +
+        0.05 * ~~player.composure +
+        0.05 * ~~player.pace +
+        0.05 * ~~player.stamina +
+        0.05 * ~~player.shots +
+        0.05 * ~~player.crossing +
+        0.05 * ~~player.strength +
+        0.05 * ~~player.finishing +
+        0.05 * ~~player.technique)/16;
+
+      res.json(sum);
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
+};
+
 exports.getSpecificAttackingMidfielderWide = (req, res) => {
   const id = req.params.id;
   AttackingMidfielderWide.findById(id)
@@ -33,8 +69,7 @@ exports.addAttackingMidfielderWide = (req, res) => {
     leadership,
     tactics,
     communication,
-    one_on_ones,
-    aerial_ablility,
+    passing,
     pace,
     stamina,
     strength,
@@ -53,14 +88,13 @@ exports.addAttackingMidfielderWide = (req, res) => {
     agility,
     team_work,
     leadership,
+    passing,
     tactics,
     communication,
-    one_on_ones,
     pace,
     stamina,
     strength,
     technique,
-    aerial_ablility,
     dribbling,
     shots,
     crossing,

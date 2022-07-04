@@ -20,7 +20,7 @@ const centralDefenderSchema = new Schema(
     strength: { type: Number, required: true, min: 0, max:20},
     technique: { type: Number, required: true, min: 0, max:20},
     positioning: { type: Number, required: true, min: 0, max:20},
-    aerial_ablility: { type: Number, required: true, min: 0, max:20},
+    aerial_ability: { type: Number, required: true, min: 0, max:20},
   },
   {
     timestamps: true,

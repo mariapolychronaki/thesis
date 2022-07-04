@@ -42,7 +42,7 @@ const Player = ({ handleChangeCallback, player }) => {
                 </div>
 
                 <div className='col-12'>
-                <div className="player_name" >{player}</div>
+                <div className="player_name" >{player?.surname}</div>
                     {/* {!show && <div className="player_name" onClick={setchoosePlayer}>{player}</div>}
                     {show &&
                         <select onChange={handleChange} className="player_name_select" defaultValue={player}>

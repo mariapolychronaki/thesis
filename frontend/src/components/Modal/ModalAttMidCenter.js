@@ -5,28 +5,29 @@ import '../../assets/Style/ModalPositions.css'
 import Dropdown_rating from '../Dropdowns/Dropdown_rating'
 import { useState } from 'react'
 import { Modal } from 'react-bootstrap'
+import axios from "axios";
 
 
-const ModalAttackingMidfielderCenter = ({ closeModalAttackingMidfielderCenter, closeModalPlayer }) => {
+const ModalAttackingMidfielderCenter = ({ closeModalAttackingMidfielderCenter, closeModalPlayer,response,player }) => {
     const [data, setdata] = useState({
-        Agility: "0",
-        Communication: "0",
-        Composure: "0",
-        Crossing: "0",
-        Dribbling: "0",
-        Experience: "0",
-        Finishing: "0",
-        Leadership: "0",
-        Pace: "0",
-        Passing: "0",
-        Personality: "0",
-        Shots: "0",
-        Stamina: "0",
-        Strength: "0",
-        Tactics: "0",
-        Team_work: "0",
-        Technique: "0",
-        Through_balls: "0",
+        agility: "0",
+        communication: "0",
+        composure: "0",
+        crossing: "0",
+        dribbling: "0",
+        experience: "0",
+        finishing: "0",
+        leadership: "0",
+        pace: "0",
+        passing: "0",
+        personality: "0",
+        shots: "0",
+        stamina: "0",
+        strength: "0",
+        tactics: "0",
+        team_work: "0",
+        technique: "0",
+        through_balls: "0",
     });
 
     const [showConfirm, setshowConfirm] = useState(false);
@@ -40,6 +41,44 @@ const ModalAttackingMidfielderCenter = ({ closeModalAttackingMidfielderCenter, c
 
     }
 
+    const createAttackingMidfielderCenter = async () => {
+        await axios
+          .post(
+            "http://localhost:8080/attacking_midfielder_center",
+            {
+                agility: attributes.agility,
+                communication: attributes.communication,
+                composure: attributes.composure,
+                crossing: attributes.crossing,
+                dribbling: attributes.dribbling,
+                experience: attributes.experience,
+                finishing: attributes.finishing,
+                leadership: attributes.leadership,
+                pace: attributes.pace,
+                passing: attributes.passing,
+                personality: attributes.personality,
+                shots: attributes.shots,
+                stamina: attributes.stamina,
+                strength: attributes.strength,
+                tactics: attributes.tactics,
+                team_work: attributes.team_work,
+                technique: attributes.technique,
+                through_balls: attributes.through_balls,
+                player_id:response._id
+            },
+            {
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+              },
+            }
+          )
+          .then((res) => {
+            console.log(res.data);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      };
 
 
     console.log(attributes)
@@ -48,7 +87,7 @@ const ModalAttackingMidfielderCenter = ({ closeModalAttackingMidfielderCenter, c
     const handleSubmit = () => {
         setshowConfirm(true)
         //edw tha ginontai oi eisagwges toy paixth kai twn attributes
-
+        createAttackingMidfielderCenter();
     }
 
     const handleClose1 = () => {
@@ -78,13 +117,13 @@ const ModalAttackingMidfielderCenter = ({ closeModalAttackingMidfielderCenter, c
                                         <label>Personality</label>
                                     </div>
                                     <div className='col-4 rating'>
-                                        <Dropdown_rating className="rating" name="Personality" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="personality" handleChangeCallback={handleChangeParent} />
                                     </div>
                                     <div className='offset-1 col-2 evaluation'>
                                         <label>Experience</label>
                                     </div>
                                     <div className='col-4 rating'>
-                                        <Dropdown_rating className="rating" name="Experience" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="experience" handleChangeCallback={handleChangeParent} />
                                     </div>
 
                                 </div>
@@ -97,14 +136,14 @@ const ModalAttackingMidfielderCenter = ({ closeModalAttackingMidfielderCenter, c
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Agility" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="agility" handleChangeCallback={handleChangeParent} />
                                     </div>
                                     <div className='offset-1 col-2 evaluation'>
                                         <label>Team work</label>
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Team_work" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="team_work" handleChangeCallback={handleChangeParent} />
                                     </div>
 
 
@@ -118,14 +157,14 @@ const ModalAttackingMidfielderCenter = ({ closeModalAttackingMidfielderCenter, c
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Leadership" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="leadership" handleChangeCallback={handleChangeParent} />
                                     </div>
                                     <div className='offset-1 col-2 evaluation'>
                                         <label>Tactics</label>
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Tactics" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="tactics" handleChangeCallback={handleChangeParent} />
                                     </div>
                                 </div>
 
@@ -138,14 +177,14 @@ const ModalAttackingMidfielderCenter = ({ closeModalAttackingMidfielderCenter, c
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Communication" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="communication" handleChangeCallback={handleChangeParent} />
                                     </div>
                                     <div className='offset-1 col-2 evaluation'>
                                         <label>Pace</label>
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Pace" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="pace" handleChangeCallback={handleChangeParent} />
                                     </div>
 
                                 </div>
@@ -159,14 +198,14 @@ const ModalAttackingMidfielderCenter = ({ closeModalAttackingMidfielderCenter, c
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Strength" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="strength" handleChangeCallback={handleChangeParent} />
                                     </div>
                                     <div className='offset-1 col-2 evaluation'>
                                         <label>Technique</label>
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Technique" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="technique" handleChangeCallback={handleChangeParent} />
                                     </div>
                                 </div>
 
@@ -178,14 +217,14 @@ const ModalAttackingMidfielderCenter = ({ closeModalAttackingMidfielderCenter, c
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Passing" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="passing" handleChangeCallback={handleChangeParent} />
                                     </div>
                                     <div className='offset-1 col-2 evaluation'>
                                         <label>Through balls</label>
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Through_balls" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="through_balls" handleChangeCallback={handleChangeParent} />
                                     </div>
 
                                 </div>
@@ -199,14 +238,14 @@ const ModalAttackingMidfielderCenter = ({ closeModalAttackingMidfielderCenter, c
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Dribbling" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="dribbling" handleChangeCallback={handleChangeParent} />
                                     </div>
                                     <div className='offset-1 col-2 evaluation'>
                                         <label>Finishing</label>
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Finishing" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="finishing" handleChangeCallback={handleChangeParent} />
                                     </div>
 
                                 </div>
@@ -220,14 +259,14 @@ const ModalAttackingMidfielderCenter = ({ closeModalAttackingMidfielderCenter, c
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Shots" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="shots" handleChangeCallback={handleChangeParent} />
                                     </div>
                                     <div className='offset-1 col-2 evaluation'>
                                         <label>Stamina</label>
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Stamina" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="stamina" handleChangeCallback={handleChangeParent} />
                                     </div>
 
 
@@ -241,14 +280,14 @@ const ModalAttackingMidfielderCenter = ({ closeModalAttackingMidfielderCenter, c
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Crossing" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="crossing" handleChangeCallback={handleChangeParent} />
                                     </div>
                                     <div className='offset-1 col-2 evaluation'>
                                         <label>Composure</label>
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Composure" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="composure" handleChangeCallback={handleChangeParent} />
                                     </div>
 
 

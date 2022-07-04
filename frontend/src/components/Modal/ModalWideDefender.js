@@ -5,30 +5,31 @@ import '../../assets/Style/ModalPositions.css'
 import Dropdown_rating from '../Dropdowns/Dropdown_rating'
 import { useState } from 'react'
 import { Modal } from 'react-bootstrap'
+import axios from "axios";
 
 
-const ModalWideDefender = ({ closeModalWideDefender, closeModalPlayer }) => {
+const ModalWideDefender = ({ closeModalWideDefender, closeModalPlayer,response }) => {
     const [data, setdata] = useState({});
 
     const [showConfirm, setshowConfirm] = useState(false);
 
     const [attributes, setAttributes] = useState({
-        Agility: "0",
-        Communication: "0",
-        Crossing: "0",
-        Experience: "0",
-        Going_forward: "0",
-        Leadership: "0",
-        Marking: "0",
-        Pace: "0",
-        Passing: "0",
-        Personality: "0",
-        Positioning: "0",
-        Stamina: "0",
-        Strength: "0",
-        Tactics: "0",
-        Team_work: "0",
-        Technique: "0"
+        agility: "0",
+        communication: "0",
+        crossing: "0",
+        experience: "0",
+        going_forward: "0",
+        leadership: "0",
+        marking: "0",
+        pace: "0",
+        passing: "0",
+        personality: "0",
+        positioning: "0",
+        stamina: "0",
+        strength: "0",
+        tactics: "0",
+        team_work: "0",
+        technique: "0"
     });
 
     const handleChangeParent = (data, name) => {
@@ -38,10 +39,47 @@ const ModalWideDefender = ({ closeModalWideDefender, closeModalPlayer }) => {
 
     }
 
+    const createWideDefender = async () => {
+        await axios
+          .post(
+            "http://localhost:8080/wide_defender",
+            {
+                agility: attributes.agility,
+                communication: attributes.communication,
+                crossing: attributes.crossing,
+                experience: attributes.experience,
+                going_forward: attributes.going_forward,
+                leadership: attributes.leadership,
+                marking: attributes.marking,
+                pace: attributes.pace,
+                passing: attributes.passing,
+                personality: attributes.personality,
+                positioning: attributes.positioning,
+                stamina: attributes.stamina,
+                strength: attributes.strength,
+                tactics: attributes.tactics,
+                team_work: attributes.team_work,
+                technique: attributes.technique,
+                player_id:response._id
+            },
+            {
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+              },
+            }
+          )
+          .then((res) => {
+            console.log(res.data);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      };
+
     const handleSubmit = () => {
         setshowConfirm(true)
         //edw tha ginontai oi eisagwges toy paixth kai twn attributes
-
+        createWideDefender();
     }
 
     const handleClose1 = () => {
@@ -71,13 +109,13 @@ const ModalWideDefender = ({ closeModalWideDefender, closeModalPlayer }) => {
                                         <label>Personality</label>
                                     </div>
                                     <div className='col-4 rating'>
-                                        <Dropdown_rating className="rating" name="Personality" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="personality" handleChangeCallback={handleChangeParent} />
                                     </div>
                                     <div className='offset-1 col-2 evaluation'>
                                         <label>Experience</label>
                                     </div>
                                     <div className='col-4 rating'>
-                                        <Dropdown_rating className="rating" name="Experience" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="experience" handleChangeCallback={handleChangeParent} />
                                     </div>
 
                                 </div>
@@ -90,14 +128,14 @@ const ModalWideDefender = ({ closeModalWideDefender, closeModalPlayer }) => {
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Agility" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="agility" handleChangeCallback={handleChangeParent} />
                                     </div>
                                     <div className='offset-1 col-2 evaluation'>
                                         <label>Team work</label>
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Team_work" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="team_work" handleChangeCallback={handleChangeParent} />
                                     </div>
 
 
@@ -111,14 +149,14 @@ const ModalWideDefender = ({ closeModalWideDefender, closeModalPlayer }) => {
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Leadership" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="leadership" handleChangeCallback={handleChangeParent} />
                                     </div>
                                     <div className='offset-1 col-2 evaluation'>
                                         <label>Tactics</label>
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Tactics" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="tactics" handleChangeCallback={handleChangeParent} />
                                     </div>
                                 </div>
 
@@ -131,14 +169,14 @@ const ModalWideDefender = ({ closeModalWideDefender, closeModalPlayer }) => {
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Communication" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="communication" handleChangeCallback={handleChangeParent} />
                                     </div>
                                     <div className='offset-1 col-2 evaluation'>
                                         <label>Positioning</label>
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Positioning" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="positioning" handleChangeCallback={handleChangeParent} />
                                     </div>
 
                                 </div>
@@ -152,14 +190,14 @@ const ModalWideDefender = ({ closeModalWideDefender, closeModalPlayer }) => {
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Pace" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="pace" handleChangeCallback={handleChangeParent} />
                                     </div>
                                     <div className='offset-1 col-2 evaluation'>
                                         <label>Stamina</label>
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Stamina" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="stamina" handleChangeCallback={handleChangeParent} />
                                     </div>
                                 </div>
 
@@ -171,15 +209,16 @@ const ModalWideDefender = ({ closeModalWideDefender, closeModalPlayer }) => {
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Strength" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="strength" handleChangeCallback={handleChangeParent} />
                                     </div>
                                     <div className='offset-1 col-2 evaluation'>
                                         <label>Technique</label>
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Technique" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="technique" handleChangeCallback={handleChangeParent} />
                                     </div>
+                                    
 
                                 </div>
 
@@ -192,14 +231,14 @@ const ModalWideDefender = ({ closeModalWideDefender, closeModalPlayer }) => {
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Marking" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="marking" handleChangeCallback={handleChangeParent} />
                                     </div>
                                     <div className='offset-1 col-2 evaluation'>
                                         <label>Passing</label>
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Passing" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="passing" handleChangeCallback={handleChangeParent} />
                                     </div>
 
                                 </div>
@@ -213,14 +252,14 @@ const ModalWideDefender = ({ closeModalWideDefender, closeModalPlayer }) => {
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Crossing" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="crossing" handleChangeCallback={handleChangeParent} />
                                     </div>
                                     <div className='offset-1 col-2 evaluation'>
                                         <label>Going forward </label>
                                     </div>
                                     <div className='col-4 rating'>
 
-                                        <Dropdown_rating className="rating" name="Going_forward" handleChangeCallback={handleChangeParent} />
+                                        <Dropdown_rating className="rating" name="going_forward" handleChangeCallback={handleChangeParent} />
                                     </div>
 
 

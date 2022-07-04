@@ -4,12 +4,14 @@ import { Button } from 'react-bootstrap'
 import Player from '../components/Player/Player';
 import "react-bootstrap"
 import Navbar from '../components/Navbar/Navbar';
-import { arrayPlayers, arrayplayersRating, arrayPlayerTrainingRating1, arrayPlayerTrainingRating2 } from '../Constants/Constants';
+import { arrayplayersRating, arrayPlayerTrainingRating1, arrayPlayerTrainingRating2 } from '../Constants/Constants';
 import { arrayPlayerTrainingRating3, arrayPlayerTrainingRating4, arrayPlayerTrainingRating5 } from '../Constants/Constants';
 import { arrayPlayerMatchRating1, arrayPlayerMatchRating2 } from '../Constants/Constants';
 import ModalInjured from '../components/Modal/ModalInjured';
-import { useState } from 'react';
+import { useState,useCallback,useEffect } from 'react';
 import { Document, Page } from 'react-pdf';
+import { useSelector } from 'react-redux';
+import axios from "axios";
 
 
 export const Lineup = () => {
@@ -47,6 +49,60 @@ export const Lineup = () => {
     const [best_Goalkeeper1, setBest_Goalkeeper1] = useState("None");
     const [best_Goalkeeper2, setBest_Goalkeeper2] = useState("None");
 
+    const userId = useSelector((state) => state.user.userId);
+    const [teamId, setTeamId] = useState("");
+    const [arrayPlayers, setArrayPlayers] = useState([]);
+    
+
+    
+    
+    
+    const fetchPlayers = useCallback(async (teamId) => {
+        await axios
+          .get(
+            `http://localhost:8080/players/team/${teamId}`,
+            {},
+            {
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+              },
+            }
+          )
+          .then((res) => {
+            console.log(res.data);
+            setArrayPlayers(res.data);
+            setTeamId(teamId);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      }, []);
+    
+      const fetchTeam = async () => {
+        await axios
+          .get(
+            `http://localhost:8080/team/coach/${userId}`,
+            {},
+            {
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+              },
+            }
+          )
+          .then((res) => {
+            console.log(res.data);
+            fetchPlayers(res.data[0]._id);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      };
+
+      useEffect(() => {
+        //getPlayerTraining(teamId)
+        fetchTeam();
+      }, [userId]);
+
 
     const suggested_lineup = () => {
         const filtered_by_position_Forward = arrayPlayers.filter((player) => {
@@ -54,7 +110,7 @@ export const Lineup = () => {
         })
 
         const filtered_by_position_Att_Mid_Center = arrayPlayers.filter((player) => {
-            return player.position === "Attacking Midfielder center";
+            return player.position === "Attacking Midfielder Center";
         })
 
         const filtered_by_position_Att_Mid_Right = arrayPlayers.filter((player) => {
@@ -83,8 +139,47 @@ export const Lineup = () => {
         const filtered_by_position_Goalkeeper = arrayPlayers.filter((player) => {
             return player.position === "Goalkeeper";
         })
+        
+        setBest_for1(filtered_by_position_Forward[0]);
+        if(filtered_by_position_Forward.lenght > 1) {
+            setBest_for2(filtered_by_position_Forward[1]);
+        }
+        setBest_Att_Mid_Center1(filtered_by_position_Att_Mid_Center[0]);
+        if(filtered_by_position_Att_Mid_Center.lenght > 1) {
+            setBest_Att_Mid_Center2(filtered_by_position_Att_Mid_Center[1]);
+        }
+        setBest_Att_Mid_Left1(filtered_by_position_Att_Mid_Left[0]);
+        if(filtered_by_position_Att_Mid_Left.lenght > 1) {
+            setBest_Att_Mid_Left2(filtered_by_position_Att_Mid_Left[1]);
+        }
+        setBest_Att_Mid_Right1(filtered_by_position_Att_Mid_Right[0]);
+        if(filtered_by_position_Att_Mid_Right.lenght > 1) {
+            setBest_Att_Mid_Right2(filtered_by_position_Att_Mid_Right[1]);
+        }
+        setBest_Central_Defender1(filtered_by_position_Central_Defender[0]);
+        if(filtered_by_position_Central_Defender.lenght > 1) {
+            setBest_Central_Defender2(filtered_by_position_Central_Defender[1]);
+        }
+        setBest_Midfielder1(filtered_by_position_Midfielder[0]);
+        if(filtered_by_position_Midfielder.lenght > 2) {
+            setBest_Midfielder2(filtered_by_position_Midfielder[1]);
+            setBest_Midfielder3(filtered_by_position_Midfielder[2]);
+        }
+        setBest_Left_Defender1(filtered_by_position_Left_Defender[0]);
+        if(filtered_by_position_Left_Defender.lenght > 1) {
+            setBest_Left_Defender2(filtered_by_position_Left_Defender[1]);
+        }
+        setBest_Right_Defender1(filtered_by_position_Right_Defender[0]);
+        if(filtered_by_position_Right_Defender.lenght > 1) {
+            setBest_Right_Defender2(filtered_by_position_Right_Defender[1]);
+        }
+        setBest_Goalkeeper1(filtered_by_position_Goalkeeper[0]);
+        if(filtered_by_position_Goalkeeper.lenght > 1) {
+            setBest_Goalkeeper2(filtered_by_position_Goalkeeper[1]);
+        }
 
 
+        /*
 
 
         var AVG_Forward = [];
@@ -1594,15 +1689,15 @@ export const Lineup = () => {
 
 
 
-            var Suggest_Goallkeeper = [];
-            var Suggest_Central_Defender = [];
-            var Suggest_Right_Defender = [];
-            var Suggest_Left_Defender = [];
-            var Suggest_Midfielder = [];
-            var Suggest_AMC = [];
-            var Suggest_AMR = [];
-            var Suggest_AML = [];
-            var Suggest_FOR = [];
+            var Suggest_Goallkeeper = filtered_by_position_Goalkeeper;
+            var Suggest_Central_Defender = filtered_by_position_Central_Defender;
+            var Suggest_Right_Defender = filtered_by_position_Right_Defender;
+            var Suggest_Left_Defender = filtered_by_position_Left_Defender;
+            var Suggest_Midfielder = filtered_by_position_Midfielder;
+            var Suggest_AMC = filtered_by_position_Att_Mid_Center;
+            var Suggest_AMR = filtered_by_position_Att_Mid_Right;
+            var Suggest_AML = filtered_by_position_Att_Mid_Left;
+            var Suggest_FOR = filtered_by_position_Forward;
 
 
 
@@ -1906,8 +2001,6 @@ export const Lineup = () => {
 
 
             function thirdLargest(arr, arr_size) {
-                /* There should be
-                atleast three elements */
                 if (arr_size < 3) {
                     document.write(" Invalid Input ");
                     return;
@@ -2267,7 +2360,7 @@ export const Lineup = () => {
             console.log(best_Goalkeeper1);
         }
 
-
+        */
     }
 
     const [openModalInjured, setOpenModalInjured] = useState(false);
