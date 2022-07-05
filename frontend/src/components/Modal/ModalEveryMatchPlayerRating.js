@@ -38,7 +38,7 @@ const ModalEveryMatchPlayerRating = ({
   };
   const [attributes, setAttributes] = useState(initializePlayers());
   const setTade = (name, value) => {
-    //console.log(name,value)
+    console.log(name,value)
     setAttributes({ ...attributes, [name]: value });
   };
 
@@ -84,6 +84,7 @@ const ModalEveryMatchPlayerRating = ({
           });
         });
         console.log(myArrayFiltered);
+        console.log(myArrayFiltered1);
         setHealthPlayers(myArrayFiltered);
       })
       .catch((e) => {
@@ -163,8 +164,9 @@ const ModalEveryMatchPlayerRating = ({
               <label>Rating</label>
               <div>
                 <Dropdown_rating
-                  name="Rating"
-                  playerId={player.surname}
+                  name="rating"
+                  setTade={setTade}
+                  playerId={player.player_id}
                   handleChangeCallback={handleChangeParent}
                 />
               </div>

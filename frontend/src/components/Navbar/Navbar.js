@@ -210,10 +210,10 @@ const Navbar = ({ comesFrom,handlePlayerId }) => {
   return (
     <>
       <div className="row-full-nav">
-        <div className={comesFrom !== "player" ? "col-3 FOOTBALLAPP" : "col-9 FOOTBALLAPP"}>
+        <div className={comesFrom !== "player" && comesFrom!=="admin" ? "col-3 FOOTBALLAPP" : "col-9 FOOTBALLAPP"}>
           <div className="nav-logo logo">Football App</div>
         </div>
-        {comesFrom !== "player" && (
+        {comesFrom !== "player" &&  comesFrom !== "admin" && (
           <>
             <div className="col-1 PlayersNav">
               <NavLink exact to="/players" className="nav-links">

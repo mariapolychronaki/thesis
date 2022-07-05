@@ -157,7 +157,7 @@ const ModalPlayerUser = ({ player_id }) => {
                   <div className="offset-1 col-4 text">
                     <label>SSN</label>
                   </div>
-                  <div className="col-4 BackendInputs">{data.AMKA}</div>
+                  <div className="col-4 BackendInputs">{data.SSN}</div>
                 </div>
 
                 <div className="col-12 name">

@@ -3,6 +3,7 @@ import React,{useState} from 'react'
 const Dropdown_rating = ({ handleChangeCallback, name, playerId, tade,setTade }) => {
 
     const [value,setValue] = useState(tade);
+    console.log(name, playerId, tade)
 
     const handleChange = (e) => {
         if (playerId !== undefined) {

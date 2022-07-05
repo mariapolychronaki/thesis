@@ -20,7 +20,8 @@ export const AllPlayers = () => {
   const userId = useSelector((state) => state.user.userId);
 
   const [enquiry, setEnquiry] = useState("Enquiry");
-
+  const [buttonName, setButtonName] = useState("Claim");
+  const [buttonClass, setButtonClass] = useState("enquiry_btn");
   const [maxLimit, setmaxLimit] = useState(false);
 
   const coach = useSelector((state) => state.coach);
@@ -215,17 +216,17 @@ export const AllPlayers = () => {
   const Pending_Btn = (e) => {
     maxPlayers();
 
-    if (e.target.value === "Enquiry") {
-      // console.log(e.target);
-      e.target.innerHTML = "Pending";
-      e.target.className = "Pending";
-      e.target.value = "Pending";
+    console.log(e.team,team._id);
+
+
+    if (e.team === undefined || e.team.team_id != team._id) {
+      setButtonName("Pending");
+      setButtonClass("Pending");
       // console.log(e.target);
     } else {
-      //createEnquiry();
-      e.target.innerHTML = "Claim";
-      e.target.className = "enquiry_btn";
-      e.target.value = "Enquiry";
+      //createEnquiry(e);
+      setButtonName("Claim");
+      setButtonClass("enquiry_btn");
     }
   };
 
@@ -365,14 +366,14 @@ export const AllPlayers = () => {
               </td>
               <td className="action_buttons">
                 <button
-                  className="enquiry_btn"
+                  className={buttonClass}
                   name={player.ssn}
                   value="Enquiry"
-                  onClick={Pending_Btn}
+                  onClick={()=>{Pending_Btn(player)}}
                   disabled={player?.team?.team_id != team._id}
                 >
                   {" "}
-                  Claim{" "}
+                  {buttonName}{" "}
                 </button>
               </td>
             </tr>

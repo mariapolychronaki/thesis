@@ -141,42 +141,32 @@ export const Lineup = () => {
         })
         
         setBest_for1(filtered_by_position_Forward[0]);
-        if(filtered_by_position_Forward.lenght > 1) {
-            setBest_for2(filtered_by_position_Forward[1]);
-        }
+        setBest_for2(filtered_by_position_Forward[1]);
+    
         setBest_Att_Mid_Center1(filtered_by_position_Att_Mid_Center[0]);
-        if(filtered_by_position_Att_Mid_Center.lenght > 1) {
-            setBest_Att_Mid_Center2(filtered_by_position_Att_Mid_Center[1]);
-        }
+        setBest_Att_Mid_Center2(filtered_by_position_Att_Mid_Center[1]);
+        
         setBest_Att_Mid_Left1(filtered_by_position_Att_Mid_Left[0]);
-        if(filtered_by_position_Att_Mid_Left.lenght > 1) {
-            setBest_Att_Mid_Left2(filtered_by_position_Att_Mid_Left[1]);
-        }
+        setBest_Att_Mid_Left2(filtered_by_position_Att_Mid_Left[1]);
+        
         setBest_Att_Mid_Right1(filtered_by_position_Att_Mid_Right[0]);
-        if(filtered_by_position_Att_Mid_Right.lenght > 1) {
-            setBest_Att_Mid_Right2(filtered_by_position_Att_Mid_Right[1]);
-        }
+        setBest_Att_Mid_Right2(filtered_by_position_Att_Mid_Right[1]);
+        
         setBest_Central_Defender1(filtered_by_position_Central_Defender[0]);
-        if(filtered_by_position_Central_Defender.lenght > 1) {
-            setBest_Central_Defender2(filtered_by_position_Central_Defender[1]);
-        }
+        setBest_Central_Defender2(filtered_by_position_Central_Defender[1]);
+      
         setBest_Midfielder1(filtered_by_position_Midfielder[0]);
-        if(filtered_by_position_Midfielder.lenght > 2) {
-            setBest_Midfielder2(filtered_by_position_Midfielder[1]);
-            setBest_Midfielder3(filtered_by_position_Midfielder[2]);
-        }
+        setBest_Midfielder2(filtered_by_position_Midfielder[1]);
+      
+        
         setBest_Left_Defender1(filtered_by_position_Left_Defender[0]);
-        if(filtered_by_position_Left_Defender.lenght > 1) {
-            setBest_Left_Defender2(filtered_by_position_Left_Defender[1]);
-        }
+        setBest_Left_Defender2(filtered_by_position_Left_Defender[1]);
+       
         setBest_Right_Defender1(filtered_by_position_Right_Defender[0]);
-        if(filtered_by_position_Right_Defender.lenght > 1) {
-            setBest_Right_Defender2(filtered_by_position_Right_Defender[1]);
-        }
+        setBest_Right_Defender2(filtered_by_position_Right_Defender[1]);
+
         setBest_Goalkeeper1(filtered_by_position_Goalkeeper[0]);
-        if(filtered_by_position_Goalkeeper.lenght > 1) {
-            setBest_Goalkeeper2(filtered_by_position_Goalkeeper[1]);
-        }
+        setBest_Goalkeeper2(filtered_by_position_Goalkeeper[1]);
 
 
         /*
@@ -3079,7 +3069,7 @@ export const Lineup = () => {
 
 
 
-            {openModalInjured && < ModalInjured closeModalInjured={setOpenModalInjured} />}
+            {openModalInjured && < ModalInjured players={arrayPlayers} closeModalInjured={setOpenModalInjured} />}
 
 
         </>

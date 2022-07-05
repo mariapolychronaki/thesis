@@ -722,7 +722,7 @@ const Admin = () => {
   return (
     <div>
       {/*<NavPlayer />*/}
-      <Navbar/>
+      <Navbar comesFrom={"admin"}/>
 
       {findUsers()}
 

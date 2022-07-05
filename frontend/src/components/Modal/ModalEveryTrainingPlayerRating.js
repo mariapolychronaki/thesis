@@ -183,13 +183,13 @@ const ModalEveryTrainingPlayerRating = ({
                                     Behaviour
                                 </label>
                                 <div>
-                                    <Dropdown_rating name="behavior" setTade={setTade} playerId={player._id} handleChangeCallback={handleChangeParent} />
+                                    <Dropdown_rating name="behavior" setTade={setTade} playerId={player.player_id} handleChangeCallback={handleChangeParent} />
                                 </div>
                                 <label>
                                     Rating
                                 </label>
                                 <div>
-                                    <Dropdown_rating name="rating" setTade={setTade} playerId={player._id} handleChangeCallback={handleChangeParent} />
+                                    <Dropdown_rating name="rating" setTade={setTade} playerId={player.player_id} handleChangeCallback={handleChangeParent} />
 
                                 </div>
                             </form>
