@@ -76,7 +76,7 @@ export const AllPlayers = () => {
   const fetchPlayers = useCallback(async () => {
     await axios
       .get(
-        "http://localhost:8080/players/free-agents",
+        "http://localhost:8080/players/",
         {},
         {
           headers: {
@@ -369,6 +369,7 @@ export const AllPlayers = () => {
                 {player.team ? player?.team?.name : "Free Agent"}
               </td>
               <td className="action_buttons">
+              {player?.team?.team_id != team._id  &&
                 <button
                   className="enquiry_btn"
                   name={player.ssn}
@@ -377,11 +378,10 @@ export const AllPlayers = () => {
                   onClick={() => {
                     Pending_Btn(player);
                   }}
-                  disabled={player?.team?.team_id == team._id}
                 >
                   {" "}
                   Claim{" "}
-                </button>
+                </button>} 
               </td>
             </tr>
           ))}

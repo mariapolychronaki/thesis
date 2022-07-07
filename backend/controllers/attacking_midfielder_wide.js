@@ -25,7 +25,7 @@ exports.getSpecificPlayerRating = (req, res) => {
         0.05 * ~~player.agility +
         0.05 * ~~player.team_work +
         0.05 * ~~player.leadership +
-        0.1 * ~~player.dribbling +
+        0.15 * ~~player.dribbling +
         0.05 * ~~player.tactics +
         0.05 * ~~player.communication +
         0.05 * ~~player.composure +

@@ -65,7 +65,7 @@ export const Players = () => {
     playersArray.map((player) => {
       getPlayerRating(player._id, player.position);
     });
-  },[playersArray])
+  },[playersArray,filteredPersons]);
 
   const fetchTeam = async () => {
     await axios

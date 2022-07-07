@@ -33,7 +33,7 @@ exports.getSpecificPlayerRating = (req, res) => {
         0.05 * ~~player.communication +
         0.05 * ~~player.positioning +
         0.05 * ~~player.pace +
-        0.1 * ~~player.stamina +
+        0.15 * ~~player.stamina +
         0.05 * ~~player.strength +
         0.05 * ~~player.technique)/16;
 

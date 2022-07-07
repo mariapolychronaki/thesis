@@ -17,7 +17,7 @@ exports.getPlayersByTeam = (req, res) => {
 
 exports.getPlayersFree = (req, res) => {
   const id = req.params.id;
-  Player.find({ team:{} })
+  Player.find({ team: {} })
     .then((player) => res.json(player))
     .catch((err) => res.status(400).json("Error: " + err));
 };
@@ -37,7 +37,7 @@ exports.getSpecificPlayer = (req, res) => {
     });
 };
 
-exports. addPlayer = async (req, res) => {
+exports.addPlayer = async (req, res) => {
   if (!req.body) {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
@@ -56,18 +56,59 @@ exports. addPlayer = async (req, res) => {
     email,
   } = req.body;
 
-  console.log(email)
+  console.log(email);
 
   await User.find({ email: email })
     .then(async (data) => {
-      if (!data)
-        res
-          .status(404)
-          .send({ message: "Not found Player with email " + email });
-      else if (data.state === "not-verified") {
+      if (data.length == 0) {
+        const user_type = "player";
+        const state = "not-verified";
+        const new_user = new User({
+          name,
+          surname,
+          email,
+          user_type,
+          state,
+        });
+
+        console.log(new_user)
+
+        new_user.save().then((user) => {
+          const newPlayer = new Player({
+            name,
+            surname,
+            AMKA,
+            weight,
+            birthdate,
+            nationality,
+            position,
+            preferred_foot,
+            team,
+            email,
+            height,
+          });
+
+          newPlayer.save().then(async (player) => {
+            console.log(data);
+            await User.findByIdAndUpdate(user._id, {
+              player_id: player._id,
+            }).then((data) => {
+              if (!data) {
+                res
+                  .status(404)
+                  .send({ message: `Cannot update user with ${user._id}` });
+                return;
+              } else {
+                res.json(player);
+                return;
+              }
+            });
+          });
+        });
+      } else if (data.state === "not-verified") {
         res.status(403).send({ message: "Player is not verified" });
       } else {
-        console.log(data)
+        console.log(data);
         const newPlayer = new Player({
           name,
           surname,
@@ -82,29 +123,26 @@ exports. addPlayer = async (req, res) => {
           height,
         });
 
-        await newPlayer
-          .save()
-          .then(async (player) => {
-            console.log(data)
-            await User.findByIdAndUpdate(data[0]._id, { player_id: player._id })
-              .then((data) => {
-                if (!data) {
-                  res
-                    .status(404)
-                    .send({ message: `Cannot update user with ${data[0]._id}` });
-                    return;
-                }else{
-                  res.json(player);
-                  return;
-                }
-              })
-          })
+        await newPlayer.save().then(async (player) => {
+          console.log(data);
+          await User.findByIdAndUpdate(data[0]._id, {
+            player_id: player._id,
+          }).then((data) => {
+            if (!data) {
+              res
+                .status(404)
+                .send({ message: `Cannot update user with ${data[0]._id}` });
+              return;
+            } else {
+              res.json(player);
+              return;
+            }
+          });
+        });
       }
     })
     .catch((err) => {
-      res
-        .status(500)
-        .send({ message: err });
+      res.status(500).send({ message: err });
     });
 };
 
@@ -117,6 +155,8 @@ exports.transferPlayer = (req, res) => {
   const id = req.params.id;
   const team_id = req.body.teamId;
 
+  console.log(team_id);
+
   Team.findById(team_id)
     .then((data) => {
       if (!data) {
@@ -124,10 +164,8 @@ exports.transferPlayer = (req, res) => {
           .status(404)
           .send({ message: `Cannot find team with ${team_id} to update` });
       } else {
-        Player.findByIdAndUpdate(id, {
-          "team.name": data.name,
-          "team.team_id": data.team_id,
-        })
+        const team = { name: data.name, team_id: team_id };
+        Player.findByIdAndUpdate(id, { team: team })
           .then((data1) => {
             if (!data1) {
               res

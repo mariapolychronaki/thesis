@@ -28,11 +28,11 @@ exports.getSpecificPlayerRating = (req, res) => {
         0.05 * ~~player.leadership +
         0.05 * ~~player.tactics +
         0.05 * ~~player.communication +
-        0.05 * ~~player.positioning +
-        0.1 * ~~player.pace +
-        0.05 * ~~player.stamina +
+        0.15 * ~~player.positioning +
+        0.15 * ~~player.pace +
+        0.2 * ~~player.stamina +
         0.05 * ~~player.strength +
-        0.05 * ~~player.technique)/12;
+        0.1 * ~~player.technique)/12;
 
       res.json(sum);
     })
