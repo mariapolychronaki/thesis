@@ -35,8 +35,8 @@ const playerSchema = new Schema(
     position: { type: String, required: true },
     preferred_foot: { type: String, required: true },
     team: {
-      team_id: { type: Schema.ObjectId, require: false,parse: true},
-      name: { type: String, required: true },
+      team_id: { type: Schema.ObjectId, require: false,},
+      name: { type: String, required: false ,parse: true},
     },
   },
   {

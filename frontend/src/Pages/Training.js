@@ -117,7 +117,7 @@ export const Training = () => {
           );
 
           console.log(index);
-          if (index != undefined) {
+          if (index != undefined && index>=0) {
             let newArr = [...playersArray]; // copying the old datas array
             if (newArr[index].trainings) {
               newArr[index].trainings = [...newArr[index].trainings, training];

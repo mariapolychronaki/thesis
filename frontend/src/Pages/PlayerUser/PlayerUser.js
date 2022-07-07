@@ -7,15 +7,20 @@ import Navbar from '../../components/Navbar/Navbar';
 const PlayerUser = () => {
 
     const [playerId,setPlayerId] = useState("")
+    const [user,setUser] = useState({})
 
     const handlePlayerId = (e) => {
         console.log(e)
         setPlayerId(e);
     }
 
+    const handleUser = (e) => {
+        setUser(e);
+    }
+
     return <div>
-        <Navbar comesFrom={"player"} handlePlayerId={handlePlayerId} />
-        <ModalPlayerUser player_id={playerId} />
+        <Navbar comesFrom={"player"} handlePlayerId={handlePlayerId} handleUser={handleUser}/>
+        <ModalPlayerUser player_id={playerId} user={user}/>
         <Footer />
     </div>;
 

@@ -18,15 +18,18 @@ const FormSignup = ({ submitForm }) => {
     password2: "",
     name: "",
     surname: "",
-    username:""
+    username: "",
+    userId: "",
+    recaptcha: false,
   });
 
   function onChange(value) {
     console.log("Captcha value:", value);
+    setValues({ ...values, recaptcha: true });
+    setErrors({});
   }
 
   const validate = async (values) => {
-    let errors = {};
     var flag = false;
 
     if (!values.email) {
@@ -82,26 +85,16 @@ const FormSignup = ({ submitForm }) => {
         }
       )
       .then((res) => {
-        if (res) {
-            setValues((values) => ({
-                ...values,
-                created: true,
-            }));
-          flag = false;
-        } else {
-          flag = true;
-        }
+        setValues({
+          ...values,
+          userId: res.data._id,
+          created: true,
+        });
       })
       .catch((e) => {
-        flag = true;
+        setErrors({ email: "Email already exists" });
         console.log(e);
       });
-
-    if (flag === true) {
-      errors.email = "Email already has an account";
-    }
-
-    return errors;
   };
 
   const hadleChange = (e) => {
@@ -114,7 +107,15 @@ const FormSignup = ({ submitForm }) => {
   };
   const hadleSubmit = (e) => {
     e.preventDefault();
-    setErrors(validate(values));
+    if (!values.recaptcha) {
+      console.log(values.recaptcha);
+      setErrors({
+        recaptcha: "You need to verify recaptcha!",
+      });
+    } else {
+      validate(values);
+    }
+
     setIsSubmiting(true);
   };
 
@@ -241,6 +242,8 @@ const FormSignup = ({ submitForm }) => {
         <div className="Already">
           Already have an account? <a href="/signIn">Sign in</a>
         </div>
+
+        {errors.recaptcha && <p>{errors.recaptcha}</p>}
 
         <ReCAPTCHA
           ref={recaptchaRef}

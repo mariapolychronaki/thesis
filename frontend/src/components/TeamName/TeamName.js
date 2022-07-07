@@ -2,8 +2,11 @@ import React, { useState } from 'react'
 import '../../assets/Style/TeamName.css'
 import { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import {useSelector} from "react-redux";
 
 export const TeamName = () => {
+    const userId = useSelector((state) => state.user.userId);
     const [values, setValues] = useState({
         TeamName: ''
     });
@@ -30,7 +33,6 @@ export const TeamName = () => {
     useEffect(() => {
         if (Object.keys(errors).length === 0 && isSubmiting) {
             navigate('/players')
-
         }
     }, [errors])
 
@@ -41,17 +43,15 @@ export const TeamName = () => {
     // function isNumeric(num) {
     //     return !isNaN(num)
     // }
-    const validate = (values) => {
-
-        let errors = {}
+    const validate = async(values) => {
 
 
         // console.log(values.TeamName[0].toUpperCase())
         if (!values.TeamName) {
-            errors.TeamName = "Team name is required"
+           setErrors({TeamName : "Team name is required"})
         }
         else if (values.TeamName.length < 3) {
-            errors.TeamName = 'Team name must be more than 3 characters'
+            setErrors({TeamName :'Team name must be more than 3 characters'})
         }
         // if (values.TeamName.length > 0) {
         //     if (isUpper(values.TeamName[0]) === false) {
@@ -59,7 +59,27 @@ export const TeamName = () => {
         //     }
         // }
 
-        return errors;
+        await axios
+      .post(
+        "http://localhost:8080/team",
+        {
+          name: values.TeamName,
+          number_of_players: 0,
+          coach_id:userId
+        },
+        {
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data)
+      })
+      .catch((e) => {
+        setErrors({TeamName : "Team already exists"})
+        console.log(e);
+      });
     }
 
     return (

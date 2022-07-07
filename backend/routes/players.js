@@ -9,6 +9,8 @@ router.put("/:id", player_controller.updatePlayer);
 
 router.put("/transfer/:id", player_controller.transferPlayer);
 
+router.get("/free-agents", player_controller.getPlayersFree);
+
 router.get("/team/:id", player_controller.getPlayersByTeam);
 
 router.delete("/:id", player_controller.deletePlayer);

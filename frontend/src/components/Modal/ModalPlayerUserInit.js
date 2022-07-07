@@ -24,7 +24,9 @@ const ModalPlayerPlayerUserInit = ({
   closeModalPlayer,
   isOpen,
   player,
+  user,
   fullname,
+  setPlayerId
 }) => {
   console.log(player);
 
@@ -33,7 +35,7 @@ const ModalPlayerPlayerUserInit = ({
   const [height, setHeight] = useState("");
   const [nationality, setNationality] = useState("");
   const [weight, setWeight] = useState("");
-  const [preferred_foot, setPreferredFoot] = useState("");
+  const [preferred_foot, setPreferredFoot] = useState("right");
 
   const [show, setShow] = useState(false);
 
@@ -44,7 +46,7 @@ const ModalPlayerPlayerUserInit = ({
 
   const [data, setdata] = useState({});
 
-  console.log(data);
+  console.log(fullname);
 
   const handleChangeParent = (data) => {
     console.log(data);
@@ -121,13 +123,45 @@ const ModalPlayerPlayerUserInit = ({
       });
   };
 
+  const createPlayer = async () => {
+    await axios
+      .post(
+        `http://localhost:8080/players/`,
+        {
+          ...data,
+          AMKA: SSN,
+          team: {},
+          name: user.name,
+          surname: user.surname,
+          email: user.email,
+          preferred_foot:preferred_foot
+        },
+        {
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+        setPlayerId(res.data._id)
+        setshowConfirm(true);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
   const chooseModal = () => {
-    validate(data)
+    validate(data);
     if (
       Object.keys(data).length != 0 &&
-      Object.keys(validate(data)).length == 0
+      Object.keys(validate(data)).length == 0 &&
+      fullname !== "undefined undefined"
     ) {
       updatePlayer();
+    } else if (fullname === "undefined undefined") {
+      createPlayer();
     }
 
     console.log(data);
@@ -136,8 +170,14 @@ const ModalPlayerPlayerUserInit = ({
   const handleChange = (e) => {
     if (e.target.name === "SSN") {
       setSSN(e.target.value);
+    }else{
+      setdata({ ...data, [e.target.name]: e.target.value });
     }
-    setdata({ ...data, [e.target.name]: e.target.value });
+    if(e.target.name==="preferred_foot"){
+      setPreferredFoot(e.target.value);
+      setdata({ ...data, [e.target.name]: e.target.value });
+    }
+    
   };
   console.log(data);
 
@@ -164,7 +204,11 @@ const ModalPlayerPlayerUserInit = ({
       <div className="modalContainerPlayer ">
         <div className="col-12 x-button"></div>
         <div className="col-12 space"></div>
-        <div className="col-12 title">{fullname}</div>
+        <div className="col-12 title">
+          {fullname === "undefined undefined"
+            ? user.name + " " + user.surname
+            : fullname}
+        </div>
         <div className="modalbody">
           <form>
             <div className="col-12 space"></div>
@@ -218,6 +262,7 @@ const ModalPlayerPlayerUserInit = ({
                 <select
                   className="positions"
                   name="preferred_foot"
+                  value={preferred_foot}
                   onChange={handleChange}
                 >
                   <option value="right">Right</option>

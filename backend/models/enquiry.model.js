@@ -35,12 +35,13 @@ const enquirySchema = new Schema(
       },
     },
     team: {
-      team_id: { type: Schema.ObjectId, require: true, unique: false },
+      team_id: { type: Schema.ObjectId, require: false, unique: false,parse: true },
       name: {
         type: String,
-        required: true,
+        required: false,
         trim: true,
         minlength: 3,
+        parse:true
       },
     },
     state: {

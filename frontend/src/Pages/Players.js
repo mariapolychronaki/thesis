@@ -99,7 +99,7 @@ export const Players = () => {
     "Right Defender",
     "Left Defender",
     "Midfielder",
-    "Attacking Midfielder center",
+    "Attacking Midfielder Center",
     "Attacking Midfielder Right",
     "Attacking Midfielder Left",
     "Forward",

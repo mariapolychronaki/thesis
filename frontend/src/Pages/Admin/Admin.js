@@ -272,6 +272,7 @@ const Admin = () => {
         `http://localhost:8080/users/verify/${Player._id}`,
         {
           state: "verified",
+          email: Player.email
         },
         {
           headers: {
@@ -992,7 +993,7 @@ const Admin = () => {
                           <span className="span1">{enquiry?.player?.surname}</span>
                         </td>
 
-                        <td className="font_bold">{enquiry?.team?.name}</td>
+                        <td className="font_bold">{enquiry.team ? enquiry.team.name : "Free Agent"}</td>
                         <td>
                           <button
                             className="BTN_Approve"

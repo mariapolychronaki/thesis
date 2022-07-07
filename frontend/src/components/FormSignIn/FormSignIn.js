@@ -13,16 +13,18 @@ const FormSignIn = ({ submitForm }) => {
     email: "",
     password: "",
     role: "",
-    userId:"",
+    userId: "",
+    recaptcha: false,
   });
   function onChange(value) {
     console.log("Captcha value:", value);
+    setValues({ ...values, recaptcha: true });
+    setErrors({})
   }
 
   const validate = async (values) => {
     let flag = false;
     let flagPassword = false;
-    let errors = {};
     /*
         users.map((user) => {
             if (user.email === values.email) {
@@ -41,11 +43,9 @@ const FormSignIn = ({ submitForm }) => {
 
     if (!values.email.trim()) {
       errors.email = "Email required";
-    }else if (!values.password) {
+    } else if (!values.password) {
       errors.password = "Password is required";
-    } else if (values.password.length < 6) {
-      errors.password = "Password must be more than 6 characters";
-    }
+    } 
 
     await axios
       .post(
@@ -71,11 +71,19 @@ const FormSignIn = ({ submitForm }) => {
             userId: decoded.id,
             role: decoded.role,
           }));
+
+          if (!values.recaptcha) {
+            console.log(values.recaptcha);
+            setErrors({
+              recaptcha: "You need to verify recaptcha!",
+            });
+          }
         }
       })
       .catch((e) => {
-        flag=false;
+        flag = false;
         flagPassword = false;
+        setErrors({ password: "Invalid password/email" });
         console.log(e);
       });
     /*
@@ -87,9 +95,11 @@ const FormSignIn = ({ submitForm }) => {
       console.log(flagPassword);
       errors.password = "Invalid password";
     }*/
+
     console.log(values);
-    return errors;
   };
+
+  console.log(errors);
 
   const hadleChange = (e) => {
     const { name, value } = e.target;
@@ -101,7 +111,7 @@ const FormSignIn = ({ submitForm }) => {
   };
   const hadleSubmit = (e) => {
     e.preventDefault();
-    setErrors(validate(values));
+    validate(values);
     setIsSubmiting(true);
   };
 
@@ -113,6 +123,7 @@ const FormSignIn = ({ submitForm }) => {
 
   const recaptchaRef = useRef(null);
   console.log(values);
+  console.log(errors);
 
   return (
     <div className="form-content-right">
@@ -148,6 +159,7 @@ const FormSignIn = ({ submitForm }) => {
           />
           {errors.password && <p>{errors.password}</p>}
           {errors.wrongPassword && <p>{errors.wrongPassword}</p>}
+          {errors.recaptcha && <p>{errors.recaptcha}</p>}
         </div>
         <button className="form-input-btn" type="submit">
           Submit

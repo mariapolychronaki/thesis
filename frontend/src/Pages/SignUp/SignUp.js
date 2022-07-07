@@ -5,6 +5,7 @@ import { Players } from "../Players";
 import { Navigate, Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setName } from "../../Store/Slices/coachSlice";
+import { SET_USER_ID } from "../../Store/Slices/UserSlice";
 
 export const SignUp = () => {
   /*
@@ -40,15 +41,17 @@ export const SignUp = () => {
   const dispatch = useDispatch();
   const [userType, setUserType] = useState({});
   const [userId, setUserId] = useState("");
+  const [recaptcha,setRecaptcha] = useState(false);
 
   function submitForm(e) {
     if (e.created) {
       setIsSubmitted(true);
       console.log(e);
-      setUserType(e.role);
+      setUserType(e.user);
       setForm(e);
       console.log(e.email);
       setUserId(e.userId);
+      dispatch(SET_USER_ID(e.userId));
       dispatch(setName(e.email));
     }
   }
@@ -73,6 +76,7 @@ export const SignUp = () => {
         {!isSubmitted ? (
           <FormSignup submitForm={submitForm} />
         ) : (
+          userType === "coach" ? <Navigate to="/teamName" /> : 
           <Navigate to="/signUpMessage" />
         )}
       </div>

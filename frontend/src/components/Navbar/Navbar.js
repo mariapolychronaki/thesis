@@ -14,9 +14,9 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import CustomPopup from "../../Pages/Admin/PopUp";
 import axios from "axios";
-import { RESET_USER, RESET_USER_ID } from "../../Store/Slices/UserSlice";
+import { RESET_USER, RESET_USER_ID, SET_USER } from "../../Store/Slices/UserSlice";
 
-const Navbar = ({ comesFrom,handlePlayerId }) => {
+const Navbar = ({ comesFrom,handlePlayerId,handleUser }) => {
   const userId = useSelector((state) => state.user.userId);
   const [user, setUser] = useState({});
   const [errors, setErrors] = useState({});
@@ -53,8 +53,12 @@ const Navbar = ({ comesFrom,handlePlayerId }) => {
       .then((res) => {
         console.log(res.data);
         setUser(res.data);
+        dispatch(SET_USER(res.data));
         if(handlePlayerId){
           handlePlayerId(res.data.player_id);
+        }
+        if(handleUser){
+          handleUser(res.data);
         }
         
       })
@@ -350,7 +354,7 @@ const Navbar = ({ comesFrom,handlePlayerId }) => {
                   type="password"
                   name="newpassword"
                   className="form-input"
-                  placeholder="Enter your newpassword"
+                  placeholder="Enter your new password"
                   value={values.newpassword}
                   onChange={hadleChange}
                 />

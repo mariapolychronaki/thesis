@@ -15,6 +15,13 @@ exports.getPlayersByTeam = (req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 };
 
+exports.getPlayersFree = (req, res) => {
+  const id = req.params.id;
+  Player.find({ team:{} })
+    .then((player) => res.json(player))
+    .catch((err) => res.status(400).json("Error: " + err));
+};
+
 exports.getSpecificPlayer = (req, res) => {
   const id = req.params.id;
   Player.findById(id)

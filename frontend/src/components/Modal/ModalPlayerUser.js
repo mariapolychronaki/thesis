@@ -13,9 +13,9 @@ import ModalPlayerUserInit from "../../components/Modal/ModalPlayerUserInit";
 import { Modal } from "react-bootstrap";
 import axios from "axios";
 
-const ModalPlayerUser = ({ player_id }) => {
+const ModalPlayerUser = ({ player_id, user }) => {
   const [data, setdata] = useState({});
-  const [secondaryData, setsecondaryData] = useState({})
+  const [secondaryData, setsecondaryData] = useState({});
   const [position, setPosition] = useState("");
   const [height, setHeight] = useState("");
   const [nationality, setNationality] = useState("");
@@ -25,6 +25,7 @@ const ModalPlayerUser = ({ player_id }) => {
   const [fullname, setfullname] = useState("");
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
+  const [temp_id, setTempId] = useState("");
   const [edit, setEdit] = useState(false);
 
   const [show, setShow] = useState(true);
@@ -34,12 +35,12 @@ const ModalPlayerUser = ({ player_id }) => {
   };
 
   const handleChange = (e) => {
-    if(e.target.name==="preferred_foot"){
-        setPreferredFoot(e.target.value)
+    if (e.target.name === "preferred_foot") {
+      setPreferredFoot(e.target.value);
     }
     setsecondaryData({ ...secondaryData, [e.target.name]: e.target.value });
   };
-  console.log(secondaryData);
+  console.log(player_id);
 
   const handleChangeParent = (data) => {
     console.log(data);
@@ -61,10 +62,16 @@ const ModalPlayerUser = ({ player_id }) => {
     setWeight(data);
   };
 
+  const setPlayerId = (data) => {
+    setTempId(data);
+  };
+
   const updatePlayer = async () => {
     await axios
       .put(
-        `http://localhost:8080/players/${player_id}`,
+        `http://localhost:8080/players/${
+          player_id === undefined ? temp_id : player_id
+        }`,
         secondaryData,
         {
           headers: {
@@ -74,16 +81,19 @@ const ModalPlayerUser = ({ player_id }) => {
       )
       .then((res) => {
         console.log(res.data);
-        setEdit(!edit)
+        setEdit(!edit);
       })
       .catch((e) => {
         console.log(e);
+      })
+      .finally((data) => {
+        setEdit(!edit);
       });
   };
 
   const confirm = () => {
-    if(Object.keys(secondaryData).length !==0){
-        updatePlayer();
+    if (Object.keys(secondaryData).length !== 0) {
+      updatePlayer();
     }
     console.log(player_id);
   };
@@ -91,7 +101,9 @@ const ModalPlayerUser = ({ player_id }) => {
   const fetchPlayer = async () => {
     await axios
       .get(
-        `http://localhost:8080/players/${player_id}`,
+        `http://localhost:8080/players/${
+          player_id === undefined ? temp_id : player_id
+        }`,
         {},
         {
           headers: {
@@ -130,8 +142,7 @@ const ModalPlayerUser = ({ player_id }) => {
 
   useEffect(() => {
     fetchPlayer();
-  }, [player_id, closeModalPlayer,edit]);
-
+  }, [player_id, closeModalPlayer, edit]);
 
   const [startDate, setStartDate] = useState(new Date());
 
@@ -141,6 +152,8 @@ const ModalPlayerUser = ({ player_id }) => {
         <ModalPlayerUserInit
           player={data}
           fullname={fullname}
+          setPlayerId={setPlayerId}
+          user={user}
           closeModalPlayer={setcloseModalPlayer}
         />
       )}
@@ -333,13 +346,16 @@ const ModalPlayerUser = ({ player_id }) => {
             </div>
             <div className="footer">
               <div className="col-12 btns">
-                <div className="offset-9 col-2">
-                  <button
-                    className="confirm_button"
-                    onClick={confirm}
-                  >
+                <div className="d-flex offset-6 col-2">
+                  <button className="confirm_button" onClick={confirm}>
                     Confirm
                   </button>
+
+                  <div className="offset-2 col-2">
+                    <button className="confirm_button" onClick={()=>{setEdit(!edit)}}>
+                      Cancel
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

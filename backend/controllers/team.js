@@ -28,7 +28,7 @@ exports.getTeamByCoach = (req, res) => {
       else res.json(data);
     })
     .catch((err) => {
-      res.status(500).send({ message: "Error retrieving Team with coach id=" + id });
+      res.status(500).send({ message: err});
     });
 };
 
@@ -49,10 +49,21 @@ exports.addTeam = (req, res) => {
     number_of_players
   });
 
-  newTeam
+  Team.find({name:name}).then((data) => {
+    if(data.length == 0){
+      newTeam
     .save()
     .then(() => res.json("Team added!"))
     .catch((err) => res.status(400).json("Error: " + err));
+    }else{
+      console.log(data)
+      res.status(403).send({ message: "Team already exists!" + name });
+    }
+  }).catch((err) => {
+    res.status(500).send({ message: err});
+  });
+
+  
 };
 
 exports.updateTeam= (req, res) => {

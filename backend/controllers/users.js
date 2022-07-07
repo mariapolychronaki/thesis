@@ -1,9 +1,19 @@
 let User = require("../models/user.model");
+let Player = require("../models/player.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const nodemailer = require("nodemailer");
+
+const transporter = nodemailer.createTransport({
+  service : process.env.EMAIL_SERVICE,
+  auth : {
+      user : process.env.EMAIL_USERNAME,
+      pass : process.env.EMAIL_PASSWORD
+  }
+});
 
 exports.getUsers = (req, res) => {
-  User.find()
+  User.find({state:"verified",})
     .then((users) => res.json(users))
     .catch((err) => res.status(400).json("Error: " + err));
 };
@@ -116,7 +126,7 @@ exports.changePassword = (req, res) => {
             bcrypt.genSalt(10, (err, salt) => {
               bcrypt.hash(new_password, salt, (err, hash) => {
                 if (err) throw err;
-                User.findByIdAndUpdate(id, {password:hash})
+                User.findByIdAndUpdate(id, { password: hash })
                   .then((data) => {
                     if (!data) {
                       res.status(404).send({
@@ -145,10 +155,17 @@ exports.verifyUser = (req, res) => {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
   }
-
   const id = req.params.id;
+  const { state, email } = req.body;
 
-  User.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+  const options = {
+    from: process.env.EMAIL_SENDER, // sender address
+    to: email, // list of receivers
+    subject: "Football App Approval",
+    text: "You have been verified! Please join the Football App",
+  };
+
+  User.findByIdAndUpdate(id, { state: state }, { useFindAndModify: false })
     .then((data) => {
       if (!data) {
         res
@@ -156,6 +173,11 @@ exports.verifyUser = (req, res) => {
           .send({ message: `Cannot find User with ${id} to update` });
       } else {
         res.json(data);
+
+        transporter.sendMail(options, function (err, info) {
+          if (err) console.log(err);
+          else console.log(info);
+        });
       }
     })
     .catch((err) => res.status(500).json("Error: " + err));
@@ -170,9 +192,13 @@ exports.deleteUser = (req, res) => {
           message: `Cannot delete User with id=${id}.`,
         });
       } else {
-        res.send({
-          message: "User was deleted successfully!",
-        });
+        if (data.user_type === "player") {
+          Player.findById(data.player_id).then((data) => {
+            res.send({
+              message: "User and Player was deleted successfully!",
+            });
+          });
+        }
       }
     })
     .catch((err) => {

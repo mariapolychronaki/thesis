@@ -19,10 +19,15 @@ export const AllPlayers = () => {
   const [team, setTeam] = useState({});
   const userId = useSelector((state) => state.user.userId);
 
+  const coach_user = useSelector((state) => state.user.user);
+
+  console.log(coach_user)
+
   const [enquiry, setEnquiry] = useState("Enquiry");
   const [buttonName, setButtonName] = useState("Claim");
   const [buttonClass, setButtonClass] = useState("enquiry_btn");
   const [maxLimit, setmaxLimit] = useState(false);
+  const [temp_player, setTempPlayer] = useState({});
 
   const coach = useSelector((state) => state.coach);
 
@@ -48,9 +53,10 @@ export const AllPlayers = () => {
   console.log(userId);
 
   const fetchTeam = async () => {
+    console.log(coach_user);
     await axios
       .get(
-        `http://localhost:8080/team/coach/${userId}`,
+        `http://localhost:8080/team/coach/${coach_user._id}`,
         {},
         {
           headers: {
@@ -67,14 +73,10 @@ export const AllPlayers = () => {
       });
   };
 
-  useEffect(() => {
-    fetchTeam();
-  }, []);
-
   const fetchPlayers = useCallback(async () => {
     await axios
       .get(
-        "http://localhost:8080/players",
+        "http://localhost:8080/players/free-agents",
         {},
         {
           headers: {
@@ -106,6 +108,10 @@ export const AllPlayers = () => {
       })
     );
   }, [searchField]);
+
+  useEffect(() => {
+    fetchTeam();
+  },[coach_user,userId])
 
   const useSortableData = (arrayPlayers, config = null) => {
     const [sortConfig, setSortConfig] = React.useState(config);
@@ -176,26 +182,22 @@ export const AllPlayers = () => {
     return { arrayPlayers: sortedarrayPlayers, requestSort, sortConfig };
   };
 
-  /*
-  const createEnquiry = async () => {
-   /* await axios
+  const createEnquiry = async (player) => {
+    await axios
       .post(
         "http://localhost:8080/enquiry",
         {
-          "coach": {
-            "coach_id": "62aa1c2cf26fa2c9012acebe",
-            "name": "maria",
-            "surname": "maria"
-        },
-        player: {
-            player_id: player.,
-            "name": "giannis",
-            "surname": "giannakis"
-        },
-        "team": {
-            "team_id": "62ac8a58f754a8caefca0ff0",
-            "name": "AEK"
-        }
+          coach: {
+            coach_id: coach_user._id,
+            name: coach_user.name,
+            surname: coach_user.surname,
+          },
+          player: {
+            player_id: player._id,
+            name: player.name,
+            surname: player.surname,
+          },
+          team: player.team,
         },
         {
           headers: {
@@ -205,28 +207,30 @@ export const AllPlayers = () => {
       )
       .then((res) => {
         console.log(res.data);
-        setPlayersArray(res.data);
-        setfilteredPersons(res.data);
       })
       .catch((e) => {
         console.log(e);
       });
-  };*/
+  };
 
   const Pending_Btn = (e) => {
     maxPlayers();
 
-    console.log(e.team,team._id);
+    console.log(e);
 
+    const button = document.getElementById(e._id);
 
     if (e.team === undefined || e.team.team_id != team._id) {
-      setButtonName("Pending");
-      setButtonClass("Pending");
+      button.value = "Pending";
+      button.innerHTML = "Pending";
+      button.className = "Pending";
+      button.disabled = true;
       // console.log(e.target);
+      createEnquiry(e);
     } else {
-      //createEnquiry(e);
-      setButtonName("Claim");
-      setButtonClass("enquiry_btn");
+      button.value = "Claim";
+      button.innerHTML = "Claim";
+      button.className = "enquiry_btn";
     }
   };
 
@@ -235,7 +239,7 @@ export const AllPlayers = () => {
     return tempDate.toLocaleDateString();
   };
 
-  console.log(team,playersArray)
+  console.log(team, playersArray);
 
   const ProductTable = (props) => {
     const { arrayPlayers, requestSort, sortConfig } =
@@ -366,14 +370,17 @@ export const AllPlayers = () => {
               </td>
               <td className="action_buttons">
                 <button
-                  className={buttonClass}
+                  className="enquiry_btn"
                   name={player.ssn}
-                  value="Enquiry"
-                  onClick={()=>{Pending_Btn(player)}}
-                  disabled={player?.team?.team_id != team._id}
+                  id={player._id}
+                  value={player}
+                  onClick={() => {
+                    Pending_Btn(player);
+                  }}
+                  disabled={player?.team?.team_id == team._id}
                 >
                   {" "}
-                  {buttonName}{" "}
+                  Claim{" "}
                 </button>
               </td>
             </tr>
