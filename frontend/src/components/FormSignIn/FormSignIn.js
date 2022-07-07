@@ -19,7 +19,7 @@ const FormSignIn = ({ submitForm }) => {
   function onChange(value) {
     console.log("Captcha value:", value);
     setValues({ ...values, recaptcha: true });
-    setErrors({})
+    setErrors({});
   }
 
   const validate = async (values) => {
@@ -45,7 +45,7 @@ const FormSignIn = ({ submitForm }) => {
       errors.email = "Email required";
     } else if (!values.password) {
       errors.password = "Password is required";
-    } 
+    }
 
     await axios
       .post(
@@ -64,6 +64,13 @@ const FormSignIn = ({ submitForm }) => {
         const { token } = res.data;
         const decoded = jwt_decode(token);
         if (decoded) {
+          if (!values.recaptcha) {
+            console.log(values.recaptcha);
+            setErrors({
+              recaptcha: "You need to verify recaptcha!",
+            });
+          }
+
           flag = true;
           flagPassword = true;
           setValues((values) => ({
@@ -71,13 +78,6 @@ const FormSignIn = ({ submitForm }) => {
             userId: decoded.id,
             role: decoded.role,
           }));
-
-          if (!values.recaptcha) {
-            console.log(values.recaptcha);
-            setErrors({
-              recaptcha: "You need to verify recaptcha!",
-            });
-          }
         }
       })
       .catch((e) => {
