@@ -67,7 +67,7 @@ export const SignUp = () => {
   console.log(userType);
 
   return (
-    <div>
+    <div className="">
       <div className="form-container">
         {/* {!isSubmitted ? (<FormSignup submitForm={submitForm} />) :
   
