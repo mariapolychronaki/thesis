@@ -52,7 +52,10 @@ export const Lineup = () => {
     const userId = useSelector((state) => state.user.userId);
     const [teamId, setTeamId] = useState("");
     const [arrayPlayers, setArrayPlayers] = useState([]);
-    
+    const [injuries, setInjuries] = useState([]);
+    const [injuredPlayers, setInjuredPlayers] = useState([]);
+    const [healthyplayers, setHealthPlayers] = useState([]);
+    const [openModalInjured, setOpenModalInjured] = useState(false);
 
     
     
@@ -91,7 +94,41 @@ export const Lineup = () => {
           )
           .then((res) => {
             console.log(res.data);
-            fetchPlayers(res.data[0]._id);
+            fetchPlayers(res.data._id);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      };
+
+      const fetchInjuries = async () => {
+        await axios
+          .get(
+            `http://localhost:8080/injury/`,
+            {},
+            {
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+              },
+            }
+          )
+          .then((res) => {
+            console.log(res.data);
+            setInjuries(res.data);
+            const myArrayFiltered1 = res.data.filter((injury) => {
+              return arrayPlayers.some((player) => {
+                return player._id === injury.player_id;
+              });
+            });
+            setInjuredPlayers(myArrayFiltered1);
+            const myArrayFiltered = arrayPlayers.filter((player) => {
+              return res.data.every((injury) => {
+                return injury.player_id != player._id;
+              });
+            });
+            console.log(myArrayFiltered);
+            console.log(arrayPlayers);
+            setHealthPlayers(myArrayFiltered);
           })
           .catch((e) => {
             console.log(e);
@@ -103,40 +140,45 @@ export const Lineup = () => {
         fetchTeam();
       }, [userId]);
 
+      useEffect(() => {
+        //getPlayerTraining(teamId)
+        fetchInjuries();
+      }, [arrayPlayers,openModalInjured]);
+
 
     const suggested_lineup = () => {
-        const filtered_by_position_Forward = arrayPlayers.filter((player) => {
+        const filtered_by_position_Forward = healthyplayers.filter((player) => {
             return player.position === "Forward";
         })
 
-        const filtered_by_position_Att_Mid_Center = arrayPlayers.filter((player) => {
+        const filtered_by_position_Att_Mid_Center = healthyplayers.filter((player) => {
             return player.position === "Attacking Midfielder Center";
         })
 
-        const filtered_by_position_Att_Mid_Right = arrayPlayers.filter((player) => {
+        const filtered_by_position_Att_Mid_Right = healthyplayers.filter((player) => {
             return player.position === "Attacking Midfielder Right";
         })
-        const filtered_by_position_Att_Mid_Left = arrayPlayers.filter((player) => {
+        const filtered_by_position_Att_Mid_Left = healthyplayers.filter((player) => {
             return player.position === "Attacking Midfielder Left";
         })
-        const filtered_by_position_Midfielder = arrayPlayers.filter((player) => {
+        const filtered_by_position_Midfielder = healthyplayers.filter((player) => {
             return player.position === "Midfielder";
         })
 
-        const filtered_by_position_Right_Defender = arrayPlayers.filter((player) => {
+        const filtered_by_position_Right_Defender = healthyplayers.filter((player) => {
             return player.position === "Right Defender";
         })
 
-        const filtered_by_position_Left_Defender = arrayPlayers.filter((player) => {
+        const filtered_by_position_Left_Defender = healthyplayers.filter((player) => {
             return player.position === "Left Defender";
         })
 
-        const filtered_by_position_Central_Defender = arrayPlayers.filter((player) => {
+        const filtered_by_position_Central_Defender = healthyplayers.filter((player) => {
             return player.position === "Central Defender";
         })
 
 
-        const filtered_by_position_Goalkeeper = arrayPlayers.filter((player) => {
+        const filtered_by_position_Goalkeeper = healthyplayers.filter((player) => {
             return player.position === "Goalkeeper";
         })
         
@@ -2352,8 +2394,6 @@ export const Lineup = () => {
 
         */
     }
-
-    const [openModalInjured, setOpenModalInjured] = useState(false);
 
     const clear = () => {
 

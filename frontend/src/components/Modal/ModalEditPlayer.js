@@ -1,7 +1,7 @@
 import React from 'react'
 import 'react-bootstrap'
 import ModalGoalkeeper from './ModalGoalkeeper'
-import { useState } from 'react'
+import { useState,useEffect} from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import Dropdown_height from '../Dropdowns/Dropdown_height'
@@ -68,6 +68,10 @@ const ModalEditPlayer = ({ closeModalEditPlayer, player }) => {
         updatePlayer();
        
     }
+
+    useEffect(() => {
+        setdata({position:player.position,height:player.height,nationality:player.nationality,weight:player.weight })
+    },[player])
 
     // const chooseModal = () =>{
     //     if(position==="goalkeeper"){
@@ -181,7 +185,7 @@ const ModalEditPlayer = ({ closeModalEditPlayer, player }) => {
                             </div>
                             <div className='col-4 '>
 
-                                <Dropdown_nationality nationality={player.nationality} handleChangeCallback={handleChangeParent2} onChange={handleChange} />
+                                <Dropdown_nationality nationality={data.nationality} handleChangeCallback={handleChangeParent2} onChange={handleChange} />
                             </div>
                         </div>
 
@@ -192,7 +196,7 @@ const ModalEditPlayer = ({ closeModalEditPlayer, player }) => {
                                 <label>Position</label>
                             </div>
                             <div className='col-4 '>
-                                <Dropdown_position handleChangeCallback={handleChangeParent} position={player.position} />
+                                <Dropdown_position handleChangeCallback={handleChangeParent} position={data.position} />
                             </div>
                         </div>
 

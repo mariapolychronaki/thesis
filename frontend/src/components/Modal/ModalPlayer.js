@@ -46,6 +46,8 @@ const ModalPlayer = ({ closeModalPlayer, isOpen }) => {
   const [preferredFoot, setPreferredFoot] = useState("right");
   const [date, setDate] = useState(new Date());
   const team = useSelector((state) => state.user.team);
+
+  console.log(team)
   const [player, setPlayer] = useState({});
 
   const [show, setShow] = useState(false);
@@ -75,7 +77,6 @@ const ModalPlayer = ({ closeModalPlayer, isOpen }) => {
   };
 
   const validate = (values) => {
-    let errors = {};
     // var flagSSN = false;
     // arrayPlayers.map((player) => {
     //     if (player.ssn === values.ssn) {
@@ -108,6 +109,11 @@ const ModalPlayer = ({ closeModalPlayer, isOpen }) => {
       return false;
     } else if (values.AMKA.length !== 11) {
       errors.ssn = "Snn must be 11 numbers!";
+      setShow(true);
+      setErrors(errors);
+      return false;
+    }else if(parseInt(values.AMKA[0]+""+values.AMKA[1])<=0 || parseInt(values.AMKA[0]+""+values.AMKA[1])>31){
+      errors.ssn = "SSN first two numbers!";
       setShow(true);
       setErrors(errors);
       return false;
@@ -175,8 +181,8 @@ const ModalPlayer = ({ closeModalPlayer, isOpen }) => {
             "/" +
             date.getDate(),
           team: {
-            name: team[0].name,
-            team_id: team[0]._id,
+            name: team.name,
+            team_id: team._id,
           },
         },
         {
@@ -206,8 +212,8 @@ const ModalPlayer = ({ closeModalPlayer, isOpen }) => {
       ["birthdate"]:
         date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate(),
       team: {
-        name: team[0].name,
-        team_id: team[0]._id,
+        name: team.name,
+        team_id: team._id,
       },
     });
 
@@ -215,9 +221,10 @@ const ModalPlayer = ({ closeModalPlayer, isOpen }) => {
     console.log(errors);
     console.log(errors.length);
 
-    createPlayer();
+    
 
     if (flag === true) {
+      createPlayer();
       if (position === "Goalkeeper") {
         setOpenModalGoalkeeper(true);
         setOpenModalCentralDefender(false);

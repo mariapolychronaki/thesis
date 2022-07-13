@@ -72,30 +72,27 @@ const Navbar = ({ comesFrom,handlePlayerId,handleUser }) => {
   }, [userId]);
 
   const validate = (values) => {
-    let errors = {};
 
     console.log(values);
 
     if (!values.email) {
-      errors.email = "Email required";
+      setErrors({...errors, email:"Email required"})
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-      errors.email = "Email address is invalid";
+      setErrors({...errors, email:"Email address is invalid"})
     }
     if (!values.password) {
-      errors.password = "Password is required";
+      setErrors({...errors, password:"Password is required"})
     }
 
     if (!values.newpassword) {
-      errors.newpassword = "New Password is required";
+      setErrors({...errors, newpassword:"New Password is required"})
     }
 
-    if (!values.password2) {
-      errors.password2 = "Password verification is required";
+    if (values.password2=="") {
+      setErrors({...errors, newpassword:"Password verification is required"})
     } else if (values.password2 !== values.newpassword) {
-      errors.password2 = "Passwords don't match!";
+      setErrors({...errors, password2: "Passwords don't match!"})
     }
-
-    return errors;
   };
 
   const changePassword = async () => {
@@ -151,31 +148,23 @@ const Navbar = ({ comesFrom,handlePlayerId,handleUser }) => {
     setValues({
       ...values,
       [name]: value,
+      email: user.email,
     });
     console.log(values);
   };
   const hadleSubmit = (e) => {
-    setValues({
-      ...values,
-      email: user.email,
-    });
-    setErrors(validate(values));
+    validate(values);
     setIsSubmiting(true);
-    if (!errors) {
+    
+    if (Object.keys(errors).length==0) {
       changePassword();
       setShow(false);
       setEdit(!edit);
+      console.log(values,errors)
     }
-    console.log(errors);
     setValues("");
     e.preventDefault();
   };
-
-  useEffect(() => {
-    if (Object.keys(errors).length === 0 && isSubmiting) {
-      submitForm(values);
-    }
-  }, [errors]);
 
   const username = useSelector((state) => state.coach);
 
@@ -331,7 +320,7 @@ const Navbar = ({ comesFrom,handlePlayerId,handleUser }) => {
         )}
         {edit && (
           <div className=" container_settings 2">
-            <form className="form_settings InputsEdit" onSubmit={hadleSubmit}>
+            <div className="form_settings InputsEdit" >
               <div className="form-inputs_settings">
                 <label htmlFor="password_settings" className="form-label">
                   *Password
@@ -384,7 +373,7 @@ const Navbar = ({ comesFrom,handlePlayerId,handleUser }) => {
               <button className="Btn_settingsCancel" onClick={cancel_f}>
                 Cancel
               </button>
-            </form>
+            </div>
           </div>
         )}{" "}
         <Modal.Footer></Modal.Footer>

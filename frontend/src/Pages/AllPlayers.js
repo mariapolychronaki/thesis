@@ -37,7 +37,7 @@ export const AllPlayers = () => {
     "Right Defender",
     "Left Defender",
     "Midfielder",
-    "Attacking Midfielder center",
+    "Attacking Midfielder Center",
     "Attacking Midfielder Right",
     "Attacking Midfielder Left",
     "Forward",
@@ -66,7 +66,7 @@ export const AllPlayers = () => {
       )
       .then((res) => {
         console.log(res.data);
-        setTeam(res.data[0]);
+        setTeam(res.data);
       })
       .catch((e) => {
         console.log(e);

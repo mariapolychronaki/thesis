@@ -176,7 +176,7 @@ const Admin = () => {
 
   useEffect(() => {
     fetchCoaches();
-  }, [coaches]);
+  }, [coaches,removePlayerBtn]);
 
   useEffect(() => {
     fetchEnquries();
@@ -631,7 +631,7 @@ const Admin = () => {
                 <td className="font_bold">{user.surname}</td>
                 <td className="font_bold">{user?.email}</td>
 
-                <td className="font_bold">{user?.team?.name}</td>
+                <td className="font_bold">{user?.team ? user.team.name : "Free Agent"}</td>
 
                 <td>
                   <button

@@ -1,3 +1,4 @@
+let Player = require("../models/player.model");
 let Team = require("../models/team.model");
 
 exports.getTeams = (req, res) => {
@@ -23,9 +24,23 @@ exports.getTeamByCoach = (req, res) => {
   const id = req.params.id;
   Team.find({coach_id:id})
     .then((data) => {
-      if (!data)
+      if (!data){
         res.status(404).send({ message: "Not found Team with coach id " + id });
-      else res.json(data);
+      }else{
+        console.log(data)
+        const team_id = data[0]._id; 
+        Player.find({"team.team_id":team_id}).then((players) => {
+          console.log(team_id,players)
+          Team.findByIdAndUpdate(team_id, {number_of_players:players.length}, { useFindAndModify: true }).then((team)=>{
+            console.log(team,team_id)
+            if(!team){
+              res.status(404).send({ message: "Not found Team with coach id " + id });
+            }else{
+              res.json(team)
+            }
+          })
+        })
+      }
     })
     .catch((err) => {
       res.status(500).send({ message: err});

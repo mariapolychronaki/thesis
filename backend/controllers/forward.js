@@ -8,7 +8,7 @@ exports.getForwards = (req, res) => {
 
 exports.getSpecificPlayer = (req, res) => {
   const id = req.params.id;
-  Forward.find({player_id:id})
+  Forward.find({ player_id: id })
     .then((forward) => res.json(forward))
     .catch((err) => res.status(400).json("Error: " + err));
 };
@@ -18,30 +18,34 @@ exports.getSpecificPlayerRating = (req, res) => {
   Forward.find({ player_id: id })
     .then((forward) => {
       const player = forward[0];
+      let sum = 0;
 
-      let sum =
-        (0.05 * ~~player.personality +
-        0.05 * ~~player.experience +
-        0.05 * ~~player.agility +
-        0.05 * ~~player.team_work +
-        0.05 * ~~player.leadership +
-        0.05 * ~~player.aerial_ability +
-        0.1 * ~~player.shots +
-        0.1 * ~~player.finishing +
-        0.05 * ~~player.composure +
-        0.05 * ~~player.tactics +
-        0.05 * ~~player.communication +
-        0.15 * ~~player.positioning +
-        0.05 * ~~player.pace +
-        0.05 * ~~player.stamina +
-        0.05 * ~~player.strength +
-        0.05 * ~~player.technique)/16;
+      if (player != undefined) {
+        console.log(player);
+        sum =
+          (0.05 * ~~player.personality +
+            0.05 * ~~player.experience +
+            0.05 * ~~player.agility +
+            0.05 * ~~player.team_work +
+            0.05 * ~~player.leadership +
+            0.05 * ~~player.aerial_ability +
+            0.1 * ~~player.shots +
+            0.1 * ~~player.finishing +
+            0.05 * ~~player.composure +
+            0.05 * ~~player.tactics +
+            0.05 * ~~player.communication +
+            0.15 * ~~player.positioning +
+            0.05 * ~~player.pace +
+            0.05 * ~~player.stamina +
+            0.05 * ~~player.strength +
+            0.05 * ~~player.technique) /
+          16;
+      }
 
       res.json(sum);
     })
     .catch((err) => res.status(400).json("Error: " + err));
 };
-
 
 exports.getSpecificForward = (req, res) => {
   const id = req.params.id;
@@ -52,7 +56,9 @@ exports.getSpecificForward = (req, res) => {
       else res.json(data);
     })
     .catch((err) => {
-      res.status(500).send({ message: "Error retrieving Forward with id=" + id });
+      res
+        .status(500)
+        .send({ message: "Error retrieving Forward with id=" + id });
     });
 };
 

@@ -82,7 +82,7 @@ export const Players = () => {
         console.log(res.data);
         setTeam(res.data);
         dispatch(SET_TEAM(res.data));
-        fetchPlayers(res.data[0]._id);
+        fetchPlayers(res.data._id);
       })
       .catch((e) => {
         console.log(e);
@@ -91,7 +91,7 @@ export const Players = () => {
 
   useEffect(() => {
     fetchTeam();
-  }, [userId, openModalPlayer, removePlayerBtn, openModalEditPlayer]);
+  }, [userId, openModalPlayer, removePlayerBtn, openModalEditPlayer,openModalPlayerRating]);
 
   const positions = [
     "Goalkeeper",
@@ -730,7 +730,12 @@ export const Players = () => {
   // }
 
   const formatRating = (rating) =>{
-    return parseFloat(rating*10).toFixed(2);
+    if(rating){
+      return parseFloat(rating*10).toFixed(2);
+    }else{
+      return 0.0;
+    }
+   
   }
 
   const functionEdit = (Player) => {

@@ -22,7 +22,6 @@ const Player = ({ handleChangeCallback, player }) => {
     }
     const [show, setShow] = useState(false);
 
-    console.log(arrayPlayers)
 
     const setchoosePlayer = () => {
         setShow(true)

@@ -19,22 +19,21 @@ const ModalPlayerRating = ({
   OpenModalForward,
 }) => {
   console.log(player);
-  const [payload,setPayload] = useState({});
+  const [payload, setPayload] = useState({});
   const [attributes, setAttributes] = useState({});
 
-  const handleChangeParent = (e,name) => {
-    console.log(e,name);
-    setPayload({...payload,[name]:e})
+  const handleChangeParent = (e, name) => {
+    console.log(e, name);
+    setPayload({ ...payload, [name]: e });
+    
   };
 
-  console.log(payload)
-  console.log(attributes)
-
+  console.log(payload);
+  console.log(attributes);
 
   useEffect(() => {
     fetchRating();
   }, [player]);
-
 
   const fetchRating = async () => {
     if (player.position == "Goalkeeper") {
@@ -50,7 +49,9 @@ const ModalPlayerRating = ({
         )
         .then((res) => {
           console.log(res.data);
-          setAttributes(res.data[0])
+          if (res.data.length > 0) {
+            setAttributes(res.data[0]);
+          }
         })
         .catch((e) => {
           console.log(e);
@@ -68,12 +69,19 @@ const ModalPlayerRating = ({
         )
         .then((res) => {
           console.log(res.data);
-          setAttributes(res.data[0])
+          if (res.data) {
+            if (res.data.length > 0) {
+              setAttributes(res.data[0]);
+            }
+          }
         })
         .catch((e) => {
           console.log(e);
         });
-    } else if (player.position === "Right Defender" || player.position === "Left Defender") {
+    } else if (
+      player.position === "Right Defender" ||
+      player.position === "Left Defender"
+    ) {
       await axios
         .get(
           `http://localhost:8080/wide_defender/player/${player._id}`,
@@ -86,7 +94,9 @@ const ModalPlayerRating = ({
         )
         .then((res) => {
           console.log(res.data);
-          setAttributes(res.data[0])
+          if (res.data.length > 0) {
+            setAttributes(res.data[0]);
+          }
         })
         .catch((e) => {
           console.log(e);
@@ -104,7 +114,9 @@ const ModalPlayerRating = ({
         )
         .then((res) => {
           console.log(res.data);
-          setAttributes(res.data[0])
+          if (res.data.length > 0) {
+            setAttributes(res.data[0]);
+          }
         })
         .catch((e) => {
           console.log(e);
@@ -125,7 +137,9 @@ const ModalPlayerRating = ({
         )
         .then((res) => {
           console.log(res.data);
-          setAttributes(res.data[0])
+          if (res.data.length > 0) {
+            setAttributes(res.data[0]);
+          }
         })
         .catch((e) => {
           console.log(e);
@@ -143,7 +157,9 @@ const ModalPlayerRating = ({
         )
         .then((res) => {
           console.log(res.data);
-          setAttributes(res.data[0])
+          if (res.data.length > 0) {
+            setAttributes(res.data[0]);
+          }
         })
         .catch((e) => {
           console.log(e);
@@ -161,7 +177,9 @@ const ModalPlayerRating = ({
         )
         .then((res) => {
           console.log(res.data);
-          setAttributes(res.data[0])
+          if (res.data.length > 0) {
+            setAttributes(res.data[0]);
+          }
         })
         .catch((e) => {
           console.log(e);
@@ -169,22 +187,18 @@ const ModalPlayerRating = ({
     }
   };
 
-
   const updateRating = async () => {
-    if (player.position == "Goalkeeper") {
+    if (attributes._id) {
+      if (player.position == "Goalkeeper") {
         await axios
-          .put(
-            `http://localhost:8080/goalkeeper/${attributes._id}`,
-            payload,
-            {
-              headers: {
-                "Content-type": "application/json; charset=UTF-8",
-              },
-            }
-          )
+          .put(`http://localhost:8080/goalkeeper/${attributes._id}`, payload, {
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+            },
+          })
           .then((res) => {
             console.log(res.data);
-            closeModalPlayerRating(false)
+            closeModalPlayerRating(false);
           })
           .catch((e) => {
             console.log(e);
@@ -202,12 +216,15 @@ const ModalPlayerRating = ({
           )
           .then((res) => {
             console.log(res.data);
-            closeModalPlayerRating(false)
+            closeModalPlayerRating(false);
           })
           .catch((e) => {
             console.log(e);
           });
-      } else if (player.position === "Right Defender" || player.position === "Left Defender") {
+      } else if (
+        player.position === "Right Defender" ||
+        player.position === "Left Defender"
+      ) {
         await axios
           .put(
             `http://localhost:8080/wide_defender/${attributes._id}`,
@@ -220,25 +237,21 @@ const ModalPlayerRating = ({
           )
           .then((res) => {
             console.log(res.data);
-            closeModalPlayerRating(false)
+            closeModalPlayerRating(false);
           })
           .catch((e) => {
             console.log(e);
           });
       } else if (player.position === "Midfielder") {
         await axios
-          .put(
-            `http://localhost:8080/midfielder/${attributes._id}`,
-            payload,
-            {
-              headers: {
-                "Content-type": "application/json; charset=UTF-8",
-              },
-            }
-          )
+          .put(`http://localhost:8080/midfielder/${attributes._id}`, payload, {
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+            },
+          })
           .then((res) => {
             console.log(res.data);
-            closeModalPlayerRating(false)
+            closeModalPlayerRating(false);
           })
           .catch((e) => {
             console.log(e);
@@ -259,7 +272,7 @@ const ModalPlayerRating = ({
           )
           .then((res) => {
             console.log(res.data);
-            closeModalPlayerRating(false)
+            closeModalPlayerRating(false);
           })
           .catch((e) => {
             console.log(e);
@@ -277,16 +290,46 @@ const ModalPlayerRating = ({
           )
           .then((res) => {
             console.log(res.data);
-            closeModalPlayerRating(false)
+            closeModalPlayerRating(false);
           })
           .catch((e) => {
             console.log(e);
           });
       } else if (player.position === "Forward") {
         await axios
-          .put(
-            `http://localhost:8080/forward/${attributes._id}`,
-            payload,
+          .put(`http://localhost:8080/forward/${attributes._id}`, payload, {
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+            },
+          })
+          .then((res) => {
+            console.log(res.data);
+            closeModalPlayerRating(false);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      }
+    }else{
+      if (player.position == "Goalkeeper") {
+        await axios
+          .post(`http://localhost:8080/goalkeeper/`, {...payload ,player_id:player._id}, {
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+            },
+          })
+          .then((res) => {
+            console.log(res.data);
+            closeModalPlayerRating(false);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      } else if (player.position === "Central Defender") {
+        await axios
+          .post(
+            `http://localhost:8080/central_defender/`,
+            {...payload ,player_id:player._id},
             {
               headers: {
                 "Content-type": "application/json; charset=UTF-8",
@@ -295,15 +338,102 @@ const ModalPlayerRating = ({
           )
           .then((res) => {
             console.log(res.data);
-            closeModalPlayerRating(false)
+            closeModalPlayerRating(false);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      } else if (
+        player.position === "Right Defender" ||
+        player.position === "Left Defender"
+      ) {
+        await axios
+          .post(
+            `http://localhost:8080/wide_defender/`,
+            {...payload ,player_id:player._id},
+            {
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+              },
+            }
+          )
+          .then((res) => {
+            console.log(res.data);
+            closeModalPlayerRating(false);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      } else if (player.position === "Midfielder") {
+        await axios
+          .post(`http://localhost:8080/midfielder/`, {...payload ,player_id:player._id}, {
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+            },
+          })
+          .then((res) => {
+            console.log(res.data);
+            closeModalPlayerRating(false);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      } else if (
+        player.position === "Attacking Midfielder Right" ||
+        player.position === "Attacking Midfielder Left"
+      ) {
+        await axios
+          .post(
+            `http://localhost:8080/attacking_midfielder_wide/`,
+            {...payload ,player_id:player._id},
+            {
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+              },
+            }
+          )
+          .then((res) => {
+            console.log(res.data);
+            closeModalPlayerRating(false);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      } else if (player.position === "Attacking Midfielder Center") {
+        await axios
+          .post(
+            `http://localhost:8080/attacking_midfielder_center/`,
+            {...payload ,player_id:player._id},
+            {
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+              },
+            }
+          )
+          .then((res) => {
+            console.log(res.data);
+            closeModalPlayerRating(false);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      } else if (player.position === "Forward") {
+        await axios
+          .post(`http://localhost:8080/forward/`, {...payload ,player_id:player._id}, {
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+            },
+          })
+          .then((res) => {
+            console.log(res.data);
+            closeModalPlayerRating(false);
           })
           .catch((e) => {
             console.log(e);
           });
       }
-  }
-
- 
+    }
+  };
 
   // const [OpenModalGoalkeeper, setOpenModalGoalkeeper] = useState(false);
   // const [OpenModalCentralDefender, setOpenModalCentralDefender] = useState(false);
@@ -377,19 +507,19 @@ const ModalPlayerRating = ({
   // }
 
   // console.log(arrayplayersRating[0])
- /* var temp = useState({});
+  /* var temp = useState({});
   arrayplayersRating.map((player1, index) => {
     if (player.name === player1.name && player.surname === player1.surname) {
       temp = arrayplayersRating[index];
     }
   });*/
-  
+
   console.log(player);
 
   const setTade = (name, value) => {
-    console.log(name,value)
-    setAttributes({...attributes,[name]:value})
-  }
+    console.log(name, value);
+    setAttributes({ ...attributes, [name]: value });
+  };
 
   console.log(attributes);
 
@@ -598,10 +728,7 @@ const ModalPlayerRating = ({
                   {/* <button className='cancel-button' onClick={() => closeModalPlayerRating(false)}>Cancel</button> */}
                 </div>
                 <div className="col-2">
-                  <button
-                    className="next-button"
-                    onClick={updateRating}
-                  >
+                  <button className="next-button" onClick={updateRating}>
                     {" "}
                     Confirm{" "}
                   </button>
@@ -854,10 +981,7 @@ const ModalPlayerRating = ({
                   {/* <button className='cancel-button' onClick={() => closeModalPlayerRating(false)}>Cancel</button> */}
                 </div>
                 <div className="col-2">
-                  <button
-                    className="next-button"
-                    onClick={updateRating}
-                  >
+                  <button className="next-button" onClick={updateRating}>
                     {" "}
                     Confirm{" "}
                   </button>
@@ -1110,10 +1234,7 @@ const ModalPlayerRating = ({
                   {/* <button className='cancel-button' onClick={() => closeModalPlayerRating(false)}>Cancel</button> */}
                 </div>
                 <div className="col-2">
-                  <button
-                    className="next-button"
-                    onClick={updateRating}
-                  >
+                  <button className="next-button" onClick={updateRating}>
                     {" "}
                     Confirm{" "}
                   </button>
@@ -1393,10 +1514,7 @@ const ModalPlayerRating = ({
                   {/* <button className='cancel-button' onClick={() => closeModalPlayerRating(false)}>Cancel</button> */}
                 </div>
                 <div className="col-2">
-                  <button
-                    className="next-button"
-                    onClick={updateRating}
-                  >
+                  <button className="next-button" onClick={updateRating}>
                     {" "}
                     Confirm{" "}
                   </button>
@@ -1676,10 +1794,7 @@ const ModalPlayerRating = ({
                   {/* <button className='cancel-button' onClick={() => closeModalPlayerRating(false)}>Cancel</button> */}
                 </div>
                 <div className="col-2">
-                  <button
-                    className="next-button"
-                    onClick={updateRating}
-                  >
+                  <button className="next-button" onClick={updateRating}>
                     {" "}
                     Confirm{" "}
                   </button>
@@ -1959,10 +2074,7 @@ const ModalPlayerRating = ({
                   {/* <button className='cancel-button' onClick={() => closeModalPlayerRating(false)}>Cancel</button> */}
                 </div>
                 <div className="col-2">
-                  <button
-                    className="next-button"
-                    onClick={updateRating}
-                  >
+                  <button className="next-button" onClick={updateRating}>
                     {" "}
                     Confirm{" "}
                   </button>
@@ -2242,10 +2354,7 @@ const ModalPlayerRating = ({
                   {/* <button className='cancel-button' onClick={() => closeModalPlayerRating(false)}>Cancel</button> */}
                 </div>
                 <div className="col-2">
-                  <button
-                    className="next-button"
-                    onClick={updateRating}
-                  >
+                  <button className="next-button" onClick={updateRating}>
                     {" "}
                     Confirm{" "}
                   </button>

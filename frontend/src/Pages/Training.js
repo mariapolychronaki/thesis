@@ -81,7 +81,7 @@ export const Training = () => {
       )
       .then((res) => {
         console.log(res.data);
-        fetchPlayers(res.data[0]._id);
+        fetchPlayers(res.data._id);
       })
       .catch((e) => {
         console.log(e);

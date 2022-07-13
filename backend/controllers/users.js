@@ -1,4 +1,5 @@
 let User = require("../models/user.model");
+let Team = require("../models/team.model");
 let Player = require("../models/player.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -162,7 +163,7 @@ exports.verifyUser = (req, res) => {
     from: process.env.EMAIL_SENDER, // sender address
     to: email, // list of receivers
     subject: "Football App Approval",
-    text: "You have been verified! Please join the Football App",
+    text: "You have been verified! You may now join the football app.",
   };
 
   User.findByIdAndUpdate(id, { state: state }, { useFindAndModify: false })
@@ -198,6 +199,12 @@ exports.deleteUser = (req, res) => {
               message: "User and Player was deleted successfully!",
             });
           });
+        }else{
+          Team.findOneAndDelete({coach_id: data._id}).then((team) => {
+            Player.updateMany({"team.team_id":team._id},{team:{}}).then((player)=>{
+             res.json("Coach,Team and Players are deleted")
+            })
+          })
         }
       }
     })
