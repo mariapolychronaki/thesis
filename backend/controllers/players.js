@@ -71,7 +71,7 @@ exports.addPlayer = async (req, res) => {
           state,
         });
 
-        console.log(new_user)
+        console.log(new_user);
 
         new_user.save().then((user) => {
           const newPlayer = new Player({
@@ -211,8 +211,10 @@ exports.deletePlayer = (req, res) => {
           message: `Cannot delete Player with id=${id}.`,
         });
       } else {
-        res.send({
-          message: "Player was deleted successfully!",
+        User.findOneAndDelete({ player_id: id }).then((data) => {
+          res.send({
+            message: "Player was deleted successfully!",
+          });
         });
       }
     })

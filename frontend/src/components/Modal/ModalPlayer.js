@@ -113,11 +113,17 @@ const ModalPlayer = ({ closeModalPlayer, isOpen }) => {
       setErrors(errors);
       return false;
     }else if(parseInt(values.AMKA[0]+""+values.AMKA[1])<=0 || parseInt(values.AMKA[0]+""+values.AMKA[1])>31){
-      errors.ssn = "SSN first two numbers!";
+      errors.ssn = "SSN first two numbers have to be between 0 and 31!";
+      setShow(true);
+      setErrors(errors);
+      return false;
+    }else if(parseInt(values.AMKA[2]+""+values.AMKA[3])<=0 || parseInt(values.AMKA[2]+""+values.AMKA[3])>12){
+      errors.ssn = "SSN next two numbers have to be between 0 and 12!";
       setShow(true);
       setErrors(errors);
       return false;
     }
+
     if (!values.name) {
       errors.name = "Name required!";
       setShow(true);

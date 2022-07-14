@@ -96,7 +96,18 @@ const ModalPlayerPlayerUserInit = ({
       return false;
     } else if (values.SSN.length !== 11) {
       errors.SSN = "SNN must be 11 numbers!";
+    }else if(parseInt(values.SSN[0]+""+values.SSN[1])<=0 || parseInt(values.SSN[0]+""+values.SSN[1])>31){
+      errors.ssn = "SSN first two numbers have to be between 0 and 31!";
+      setShow(true);
+      setErrors(errors);
+      return false;
+    }else if(parseInt(values.SSN[2]+""+values.SSN[3])<=0 || parseInt(values.SSN[2]+""+values.SSN[3])>12){
+      errors.ssn = "SSN next two numbers have to be between 0 and 12!";
+      setShow(true);
+      setErrors(errors);
+      return false;
     }
+
     console.log(errors);
     setErrors(errors);
 
