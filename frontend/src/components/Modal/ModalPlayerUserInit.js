@@ -78,7 +78,6 @@ const ModalPlayerPlayerUserInit = ({
   }, [player]);
 
   const validate = (values) => {
-    let errors = {};
 
     console.log(values);
 
@@ -86,30 +85,29 @@ const ModalPlayerPlayerUserInit = ({
       console.log("HELLOOOOO");
       setshowConfirm(true);
     } else if (!values.SSN) {
-      errors.SSN = "SSN is required!";
+      setErrors({...errors,SSN:"SSN is required!"})
       setShow(true);
     } else if (!/^\d+$/.test(values.SSN)) {
-      errors.SSN = "Snn must be only numbers!";
+      setErrors({...errors,SSN:"SSN must be only numbers!"})
       setShow(true);
       setErrors(errors);
       console.log(errors);
       return false;
     } else if (values.SSN.length !== 11) {
-      errors.SSN = "SNN must be 11 numbers!";
+      setErrors({...errors,SSN:"SNN must be 11 numbers!"})
     }else if(parseInt(values.SSN[0]+""+values.SSN[1])<=0 || parseInt(values.SSN[0]+""+values.SSN[1])>31){
-      errors.ssn = "SSN first two numbers have to be between 0 and 31!";
+      setErrors({...errors,SSN:"SSN first two numbers have to be between 0 and 31!"})
       setShow(true);
       setErrors(errors);
       return false;
     }else if(parseInt(values.SSN[2]+""+values.SSN[3])<=0 || parseInt(values.SSN[2]+""+values.SSN[3])>12){
-      errors.ssn = "SSN next two numbers have to be between 0 and 12!";
+      setErrors({...errors,SSN:"SSN next two numbers have to be between 0 and 12!"})
       setShow(true);
       setErrors(errors);
       return false;
     }
 
     console.log(errors);
-    setErrors(errors);
 
     return errors;
   };
@@ -167,7 +165,7 @@ const ModalPlayerPlayerUserInit = ({
     validate(data);
     if (
       Object.keys(data).length != 0 &&
-      Object.keys(validate(data)).length == 0 &&
+      Object.keys(errors).length == 0 &&
       fullname !== "undefined undefined"
     ) {
       updatePlayer();
