@@ -115,7 +115,7 @@ const ModalPlayerUser = ({ player_id, user }) => {
         console.log(res.data);
 
         setdata({
-          SSN: res.data.AMKA,
+          SSN: res.data.AMKA==undefined ? res.data.AMKA : String(res.data.AMKA).padStart(11,'0'),
           nationality: res.data.nationality,
           position: res.data.position,
           weight: res.data.weight,

@@ -189,6 +189,7 @@ const ModalPlayerPlayerUserInit = ({
     
   };
   console.log(data);
+  console.log(SSN);
 
   const [values, setValues] = useState({
     ssn: "",
